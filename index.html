@@ -1,22 +1,97 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEF1-A-2026</title>
 </head>
+
 <body>
+    <!-- En-tête du site -->
     <header>
-        <h1>Bienvenue sur notre site web</h1>
+        <h1>Sip & Spill</h1>
+        <p>Vous savez que vous nous adorez, alors installez-vous et laissez-vous séduire.</p>
     </header>
+
+    <!-- Menu de navigation -->
     <nav>
-        <!-- Menu de navigation -->
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="inscription.html">S'inscrire</a></li>
+            <li><a href="connexion.html">Connexion</a></li>
+            <li><a href="menu.html">La Carte</a></li>
+            <li><a href="reservation.html">Reserver</a></li>
+
+        </ul>
     </nav>
+
+    <!-- Contenu principal -->
     <main>
-        <!-- Contenu principal -->
+
+        <section class="search-area">
+            <h2>Spotted: Un plat en vue ?</h2>
+            <form>
+                <input type="text" placeholder="Rechercher un ragot... ou un pancake">
+                <button type="submit" class="cta">Chercher</button>
+            </form>
+        </section>
+
+        <!-- Section Présentation -->
+        <section>
+            <h2>Présentation</h2>
+            <p>Bienvenue dans notre univers où chaque bouchée est une histoire, et chaque gorgée un secret bien gardé.
+            </p>
+        </section>
+
+        <!-- Section Plat Du Jour -->
+        <section>
+            <h2>Plat Du Jour</h2>
+            <p>Découvrez notre plat du jour, concocté avec amour et une pincée de mystère.</p>
+        </section>
+
+        <!-- Section Les Adorés -->
+        <section class="dishes-list">
+            <h2>Les Favoris de l'Upper East Side</h2>
+            <div class="dish-card">
+                <h3>Pancakes "Secret Scandal"</h3>
+                <p>Fraises fraîches et chantilly maison. Un délice dont tout le monde parle.</p>
+            </div>
+            <div class="dish-card">
+                <h3>Avocado Toast "Spotted"</h3>
+                <p>Le favori de B.W., avec une pincée de piment.</p>
+            </div>
+        </section>
+        <section>
+            <h2>Reservez Maintenant</h2>
+
+        </section>
     </main>
+
+    <!-- Pied de page -->
     <footer>
-        <!-- Pied de page -->
+        <div class="footer-container">
+            <!-- Section Contact -->
+            <section class="footer-contact">
+                <h4>Contact the Gossip</h4>
+                <p>📍 123 Rue du vice, 95000 Cergy</p>
+                <p>📞 01 23 45 67 89</p>
+                <p>✉️ <a href="mailto:caryl.le-breton1@cyu.fr">hello@gossipbrunch.fr</a></p>
+            </section>
+
+            <!-- Section Auteurs -->
+            <section class="footer-authors">
+                <h4>Projet Creative-Yumland</h4>
+                <p>Filière : préING2 </p>
+                <p>Année : 2025-2026 </p>
+                <p>Auteurs : C.LE BRETON & R.GRIGNON </p>
+            </section>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Spotted: The Brunch - XOXO</p>
+        </div>
     </footer>
 </body>
+
 </html>
