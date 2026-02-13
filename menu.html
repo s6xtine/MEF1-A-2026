@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brunch · SIP AND SPILL</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts pour le style girlie -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Taille compacte pour les vignettes de plat */
+        .plat-image {
+            width: 80px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        /* Ajustement sur petits écrans */
+        @media (max-width: 480px) {
+            .plat-image { width: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- EN-TÊTE SIMPLE -->
+    <header>
+        <h1>SIP AND SPILL</h1>
+        <p class="tagline">brunch, gossip & good vibes</p>
+    </header>
+
+    <!-- MENU BRUNCH -->
+    <main class="menu">
+
+        <!-- Navigation interne rapide -->
+        <div class="menu-nav">
+            <a href="#boissons">☕ Boissons</a>
+            <a href="#sale">🥑 Salé</a>
+            <a href="#sucre">🧁 Sucré</a>
+        </div>
+
+        <!-- SECTION BOISSONS -->
+        <section id="boissons" class="menu-section">
+            <h2>☕ Boissons chaudes</h2>
+            <ul class="menu-list">
+                <li><span>Latte</span> <span class="prix">4,5€</span></li>
+                <li><span>Cappuccino</span> <span class="prix">5€</span></li>
+                <li><span>Chocolat chaud</span> <span class="prix">5€</span></li>
+                <li><span>Matcha latte</span> <span class="prix">5€</span></li>
+                <li><span>Thé (jasmin, earl grey, verveine)</span> <span class="prix">4,5€</span></li>
+            </ul>
+
+            <h2>🧃 Soft & jus</h2>
+            <ul class="menu-list">
+                <li><span>Lemonade bio (passion/citron vert)</span> <span class="prix">4,8€</span></li>
+                <li><span>Thé glacé maison</span> <span class="prix">4,5€</span></li>
+                <li><span>Jus d'orange pressé</span> <span class="prix">5€</span></li>
+                <li><span>Jus détox (pomme, céleri, citron)</span> <span class="prix">6€</span></li>
+                <li><span>Jus vitaminé (carotte, orange, gingembre)</span> <span class="prix">6€</span></li>
+            </ul>
+        </section>
+
+        <!-- SECTION SALÉ -->
+        <section id="sale" class="menu-section">
+            <h2>🥑 Salé</h2>
+            
+            <h3>Gaufres ou pancakes salés</h3>
+            <ul class="menu-list">
+                <li class="plat-avec-image">
+    <img src="https://img.cuisineaz.com/1280x720/2016/04/28/i17079-oeufs-mollets-au-saumon-fume.webp" alt="Saumon & œuf poché" class="plat-image">
+    <div class="plat-infos">
+        <span class="item-nom">Saumon & œuf poché</span>
+        <span class="item-desc">avocat, saumon fumé, œuf poché bio, grenade</span>
+    </div>
+    <span class="prix">14€</span>
+</li>
+<li class="plat-avec-image">
+    <img src="https://lestresorsderable.com/img/cms/recette/bacon-sirop-erable-260x180_1.jpeg" alt="Bacon & sirop d'érable" class="plat-image">
+    <div class="plat-infos">
+        <span class="item-nom">Bacon & sirop d'érable</span>
+        <span class="item-desc">bacon croustillant, œuf poché bio, sirop d'érable</span>
+    </div>
+    <span class="prix">13€</span>
+</li>
+<li class="plat-avec-image">
+    <img src="https://www.buffalo-grill.fr/sites/default/files/styles/product_full_fallback/public/images/avocado_toast_oct2024.png?itok=nk225Dmm" alt="Chèvre & avocat" class="plat-image">
+    <div class="plat-infos">
+        <span class="item-nom">Chèvre & avocat</span>
+        <span class="item-desc">crème de chèvre, avocat, épinards, tomates confites, noix</span>
+    </div>
+    <span class="prix">13€</span>
+</li>
+
+            <h3>Les incontournables</h3>
+            <ul class="menu-list">
+                <li>
+                    <span class="item-nom">Œuf Bénédicte</span>
+                    <span class="item-desc">muffin, bacon, œuf poché bio, sauce hollandaise</span>
+                    <span class="prix">14€</span>
+                </li>
+                <li>
+                    <span class="item-nom">Œuf Norvégien</span>
+                    <span class="item-desc">muffin, saumon fumé, œuf poché bio, sauce hollandaise</span>
+                    <span class="prix">15€</span>
+                </li>
+                <li>
+                    <span class="item-nom">Lady Bowl</span>
+                    <span class="item-desc">quinoa, légumes rôtis, feta, pickles, grenade</span>
+                    <span class="prix">13€</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- SECTION SUCRÉ -->
+        <section id="sucre" class="menu-section">
+            <h2>🧁 Sucré</h2>
+            
+            <h3>Gaufres ou pancakes sucrés</h3>
+            <ul class="menu-list">
+                <li>
+                    <span class="item-nom">Banane & amande</span>
+                    <span class="item-desc">bananes, amandes effilées, sauce chocolat maison</span>
+                    <span class="prix">9€</span>
+                </li>
+                <li>
+                    <span class="item-nom">Fruits de saison</span>
+                    <span class="item-desc">crème fouettée légère, sirop d'érable</span>
+                    <span class="prix">9€</span>
+                </li>
+                <li>
+                    <span class="item-nom">Pâte à tartiner maison</span>
+                    <span class="item-desc">noisettes, chocolat, crème fouettée (+1€)</span>
+                    <span class="prix">7€</span>
+                </li>
+            </ul>
+
+            <h3>Les petites douceurs</h3>
+            <ul class="menu-list">
+                <li>
+                    <span class="item-nom">Brioche perdue</span>
+                    <span class="item-desc">caramel beurre salé, glace vanille</span>
+                    <span class="prix">11€</span>
+                </li>
+                <li>
+                    <span class="item-nom">Granola bowl</span>
+                    <span class="item-desc">granola croustillant, fruits frais, miel, fromage blanc</span>
+                    <span class="prix">8€</span>
+                </li>
+                <li>
+                    <span class="item-nom">Pudding de chia</span>
+                    <span class="item-desc">lait de coco, fruits rouges, granola, sirop d'érable</span>
+                    <span class="prix">8€</span>
+                </li>
+            </ul>
+        </section>
+        
+         
+
+
+        <!-- MENTION ALLERGÈNES -->
+        <p class="allergenes">🌸 Dis-nous si t'as des allergies, on s'adapte !</p>
+    </main>
+
+    <!-- FOOTER SIMPLE -->
+    <footer>
+        <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
+    </footer>
+
+</body>
+</html>
