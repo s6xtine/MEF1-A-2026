@@ -1,0 +1,133 @@
+/* Palette de couleurs définie pour la charte graphique [cite: 37] */
+:root {
+    --pink-light: #fdf0f1;   /* Fond doux */
+    --pink-coquette: #ffc0cb; /* Rose ruban */
+    --gossip-red: #b01b2e;   /* Rouge cerise pour les titres et liens */
+    --white: #ffffff;
+    --shadow: rgba(176, 27, 46, 0.1);
+}
+
+body {
+    background-color: var(--pink-light); 
+    color: var(--gossip-red); 
+    font-family: 'Georgia', serif; /* Un côté journal/roman pour le gossip */
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* En-tête avec effet ruban */
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--white);
+    border-bottom: 3px double var(--gossip-red); 
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+header p {
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+/* Navigation style "Club des copines" */
+nav {
+    background: var(--white);
+    padding: 15px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--gossip-red); [cite: 37]
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--pink-coquette);
+    border-bottom: 2px solid var(--pink-coquette);
+}
+
+/* Contenu principal */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    background: var(--white);
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: 20px; /* Bords arrondis pour la douceur */
+    box-shadow: 10px 10px 0px var(--shadow);
+    border: 1px solid var(--pink-coquette);
+}
+
+h2 {
+    border-left: 5px solid var(--gossip-red);
+    padding-left: 15px;
+    margin-top: 0;
+}
+
+/* Footer structuré selon le cahier des charges [cite: 41, 101] */
+footer {
+    background-color: var(--white);
+    padding: 40px 20px;
+    margin-top: 50px;
+    border-top: 3px double var(--gossip-red); 
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-contact, .footer-authors {
+    margin: 20px;
+    min-width: 250px;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    font-size: 0.8rem;
+    border-top: 1px solid var(--pink-light);
+    padding-top: 20px;
+}
+
+/* Boutons et éléments interactifs à venir */
+button, .cta {
+    background-color: var(--gossip-red);
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+}
