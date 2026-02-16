@@ -9,26 +9,25 @@
 
 /* --- STYLES GLOBAUX --- */
 body {
-    background: linear-gradient(to bottom, #FFD1DC,  #E0959C); /* Dégradé initial */
-    background-attachment: fixed; /* Fixe le dégradé pour un effet fluide */
-    transition: background 0.2s ease-in-out; /* Transition douce pour les changements */
+    background: var(-pink-background);
     background-color: var(--pink-background);
     color: var(--text-brown);
     font-family: 'Didot', serif; /* Mix cocooning et chic [cite: 37] */
     line-height: 1.6;
 
-    /* Le petit nœud magique en fond */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 100 100'%3E%3Cpath d='M30 40 Q 15 25 10 40 Q 5 60 25 55 L 50 50 L 75 55 Q 95 60 90 40 Q 85 25 70 40 L 50 50 Z' fill='%23FFC0CB' fill-opacity='0.3'/%3E%3C/svg%3E");
+    
+    
 
-    /* Pour que le nœud se répète joliment sans être trop gros */
-    background-size: 80px 80px; 
-    background-repeat: repeat;
-    background-attachment: fixed; /* Le fond reste fixe quand on scrolle */
+    
+    
+    
 }
 
 /* Ajout d'une police élégante pour les titres */
 h1{
     font-family: 'Snell Roundhand', cursive; /* Police manuscrite élégante */
+    font-size: 8rem; /* Taille énorme */
+    
     font-weight: 1000; /* Mettre en valeur les titres */
     color: var(--gossip-red); /* Couleur rouge pour les titres */
     text-align: center; /* Centrage des titres pour un effet harmonieux */
@@ -45,7 +44,7 @@ h2 {
 
 /* --- HEADER & NAVIGATION --- */
 header {
-    background: linear-gradient(135deg, var(--white) 0%, var(--pink-accent) 100%);
+    background: var(-pink-background);
     padding: 20px 10px;
     border-bottom: 2px solid var(--gossip-red);
     text-align: center;
@@ -77,11 +76,11 @@ main {
 
 /* Ajout d'espacement entre les sections pour un design plus aéré */
 section {
-    margin: 0 auto 50px auto; /* Centrer horizontalement et espacer verticalement */
-    padding: 0; /* Suppression des marges internes */
-    border: 20px; /* Suppression des bordures */
-    box-shadow: 2px; 
-    max-width: 800px; /* Limiter la largeur pour un design harmonieux */
+    display: flex;
+    
+    border: 4px; /* Suppression des bordures */
+    box-shadow: 6px 6px 0px var(--text-brown); 
+    background: var(--white);
     text-align: center; /* Centrer le texte à l'intérieur des sections */
 }
 
