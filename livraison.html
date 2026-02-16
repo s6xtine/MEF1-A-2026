@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--pour que le smartphone n'affiche pas la page en tout petit-->
+    <title>Livraison - Sip & Spill</title>
+</head>
+<body>
+    <header>
+        <h1>Sip & Spill</h1>
+        <nav>
+                <a href="index.html">Accueil</a> |
+                <a href="connexion.html">Déconnexion</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Commande à livrer</h2>
+
+        <section id="adresse-client">
+            <h3>Destination</h3>
+            <p>123 Rue de la Soif, 95000 Cergy</p>
+            <a href="https://maps.google.com/?q=123+Rue+de+la+Soif+Cergy" target="_blank" class="bouton-nav">
+                Itinéraire (Maps)
+            </a> 
+        </section>
+
+        <section id="contact">
+            <h3>Contact Client</h3>
+            <p>Téléphone : 06 01 02 03 04</p> 
+            <a href="tel:0601020304" class="bouton-appel">Appeler le client</a>
+        </section>
+
+        <section id="instructions">
+            <h3>Instructions du client</h3>
+            <blockquote>                                  <!--indique au navigateur que le texte est un message provenant d'une personne-->
+                "Le bâtiment est au fond de la cour"
+            </blockquote> 
+        </section>
+
+        <section id="acces-immeuble">
+            <h3>Codes et Accès</h3>
+            <p>Code interphone : 123</p> 
+            <p>Étage : 2ème étage</p> 
+        </section>
+
+        <br><br>
+
+        <form>
+            <button type="button" id="valider-livraison">Livraison terminée</button>
+        </form>
+    </main>
+
+    <br>
+    
+    <footer>
+        <p>Sip & Spill - Interface Livreur</p>
+    </footer>
+</body>
+</html>
