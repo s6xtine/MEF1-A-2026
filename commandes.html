@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Commandes - Sip & Spill</title>
+</head>
+<body>
+    <header>
+        <h1>Sip & Spill - Espace Restaurateur</h1>
+        <nav>
+            <a href="index.html">Accueil</a> | 
+            <a href="administrateur.html">Admin</a> |
+            <a href="connexion.html">Déconnexion</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Gestion des commandes</h2>
+
+        <section id="a-preparer">
+            <h3>Commandes à préparer</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>N° Commande</th>
+                        <th>Détails des plats</th>
+                        <th>Heure de commande</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1001</td>
+                        <td></td>
+                        <td>12:15</td>
+                        <td>
+                            <button type="button">Passer en livraison</button> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#1002</td>
+                        <td></td>
+                        <td>12:20</td>
+                        <td>
+                            <button type="button">Passer en livraison</button> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <section id="en-livraison">
+            <h3>Commandes en cours de livraison</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>N° Commande</th>
+                        <th>Livreur</th>
+                        <th>Destination</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#0998</td>
+                        <td>Marc L.</td>
+                        <td>Cergy - Avenue du Parc</td>
+                        <td>En route</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
