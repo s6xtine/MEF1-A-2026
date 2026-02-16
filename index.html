@@ -5,25 +5,32 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEF1-A-2026</title>
+    <title>Sip & Spill - Accueil</title>
 </head>
 
 <body>
     <!-- En-tête du site -->
     <header>
-        <h1>Sip & Spill</h1>
-        <p>Vous savez que vous nous adorez, alors installez-vous et laissez-vous séduire.</p>
+        <div class="logo">
+            <h1>Sip & Spill</h1>
+            <p>Vous savez que vous nous adorez, alors installez-vous et laissez-vous séduire.</p>
+        </div>
+
+        <div class="user-menu">
+            <button type="button" class="profile-btn">Mon Profil</button>
+            <ul class="deroulant">
+                <li><a href="connexion.html">Connexion</a></li> 
+                <li><a href="inscription.html">S'inscrire</a></li> 
+                <li><a href="administrateur.html">Administration</a></li> 
+            </ul>
+        </div>
     </header>
+
 
     <!-- Menu de navigation -->
     <nav>
         <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="inscription.html">S'inscrire</a></li>
-            <li><a href="connexion.html">Connexion</a></li>
             <li><a href="menu.html">La Carte</a></li>
-            <li><a href="reservation.html">Reserver</a></li>
-
         </ul>
     </nav>
 
@@ -46,7 +53,7 @@
         </section>
 
         <!-- Section Plat Du Jour -->
-        <section>
+        <section id="plat-du-jour">
             <h2>Plat Du Jour</h2>
             <p>Découvrez notre plat du jour, concocté avec amour et une pincée de mystère.</p>
         </section>
@@ -63,9 +70,9 @@
                 <p>Le favori de B.W., avec une pincée de piment.</p>
             </div>
         </section>
-        <section>
-            <h2>Reservez Maintenant</h2>
 
+        <section>
+            <h2><a href="reservation.html">Reservez Maintenant</a></h2>
         </section>
     </main>
 
