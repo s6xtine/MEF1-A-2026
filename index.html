@@ -10,11 +10,9 @@
 
 <body>
     <!-- En-tête du site -->
-    <header>
-        <div class="logo">
-            <h1>Sip & Spill</h1>
-            <p>Vous savez que vous nous adorez, alors installez-vous et laissez-vous séduire.</p>
-        </div>
+    <header class="site-header">
+        <h1 class="titre-page">Sip & Spill</h1>
+        <p>Vous savez que vous nous adorez, alors installez-vous et laissez-vous séduire.</p>
 
         <div class="user-menu">
             <button type="button" class="profile-btn">Mon Profil</button>
@@ -28,43 +26,38 @@
 
 
     <!-- Menu de navigation -->
-    <nav>
+    <nav class="main-nav">
         <ul>
             <li><a href="menu.html">La Carte</a></li>
         </ul>
     </nav>
-
+    
     <!-- Contenu principal -->
     <main>
-
         <section class="search-area">
-            <h2>Spotted: Un plat en vue ?</h2>
-            <form>
+            <h2 class="titre-section">Spotted: Un plat en vue ?</h2>
+            <form class="search-form">
                 <input type="text" placeholder="Rechercher un ragot... ou un pancake">
-                <button type="submit" class="cta">Chercher</button>
+                <button type="submit" class="btn-principal">Chercher</button>
             </form>
         </section>
 
         <!-- Section Présentation -->
-        <section>
-            <h2>Présentation</h2>
+        <section class="presentation-section">
+            <h2 class="titre-section">Présentation</h2>
             <p>Bienvenue dans notre univers où chaque bouchée est une histoire, et chaque gorgée un secret bien gardé.
             </p>
         </section>
 
         <!-- Section Plat Du Jour -->
-        <section id="plat-du-jour">
-            <h2>Plat Du Jour</h2>
+        <section class="daily-special">
+            <h2 class="titre-section">Plat Du Jour</h2>
             <p>Découvrez notre plat du jour, concocté avec amour et une pincée de mystère.</p>
         </section>
 
         <!-- Section Les Adorés -->
-        <section class="dishes-list">
-            <h2>Les Favoris de l'Upper East Side</h2>
-            <div class="dish-card">
-                <h3>Pancakes "Secret Scandal"</h3>
-                <p>Fraises fraîches et chantilly maison. Un délice dont tout le monde parle.</p>
-            </div>
+        <section class="favorites-section">
+            <h2 class="titre-section">Les Favoris de l'Upper East Side</h2>
             <div class="dish-card">
                 <h3>Avocado Toast "Spotted"</h3>
                 <p>Le favori de B.W., avec une pincée de piment.</p>
@@ -72,7 +65,7 @@
         </section>
 
         <section>
-            <h2><a href="reservation.html">Reservez Maintenant</a></h2>
+            <h2><a href="reservation.html" class="btn-joli">Reservez Maintenant</a></h2>
         </section>
     </main>
 
@@ -81,7 +74,7 @@
         <div class="footer-container">
             <!-- Section Contact -->
             <section class="footer-contact">
-                <h4>Contact the Gossip</h4>
+                <h4 class="titre-footer">Contact the Gossip</h4>
                 <p>📍 123 Rue du vice, 95000 Cergy</p>
                 <p>📞 01 23 45 67 89</p>
                 <p>✉️ <a href="mailto:caryl.le-breton1@cyu.fr">hello@gossipbrunch.fr</a></p>
@@ -89,7 +82,7 @@
 
             <!-- Section Auteurs -->
             <section class="footer-authors">
-                <h4>Projet Creative-Yumland</h4>
+                <h4 class="titre-footer">Projet Creative-Yumland</h4>
                 <p>Filière : préING2 </p>
                 <p>Année : 2025-2026 </p>
                 <p>Auteurs : C.LE BRETON & R.GRIGNON </p>
