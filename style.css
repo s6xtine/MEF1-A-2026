@@ -9,28 +9,26 @@
 
 /* --- STYLES GLOBAUX --- */
 body {
-    background: var(-pink-background);
+    background: var(--pink-background);
     background-color: var(--pink-background);
     color: var(--text-brown);
-    font-family: 'Didot', serif; /* Mix cocooning et chic [cite: 37] */
+    font-family: 'Didot', serif; 
     line-height: 1.6;
 
-    
-    
-
-    
-    
-    
+   
 }
 
 /* Ajout d'une police élégante pour les titres */
 h1{
     font-family: 'Snell Roundhand', cursive; /* Police manuscrite élégante */
-    font-size: 8rem; /* Taille énorme */
+    font-size: 5rem; /* Taille énorme */
     
-    font-weight: 1000; /* Mettre en valeur les titres */
+    font-weight: 800; /* Mettre en valeur les titres */
     color: var(--gossip-red); /* Couleur rouge pour les titres */
     text-align: center; /* Centrage des titres pour un effet harmonieux */
+    margin-bottom: 0;  /* Supprime l'espace sous le titre */
+    margin-top: 20px;     /* Garde un peu d'espace au-dessus si besoin */
+    line-height: 0.9;
 }
 
 /* Ajustement des titres pour un style plus fluide */
@@ -38,25 +36,39 @@ h2 {
     font-family: 'Snell Roundhand', cursive;
     margin-top: 0;
     margin-bottom: 20px; /* Espacement entre le titre et le contenu */
-    font-size: 2rem; /* Taille légèrement augmentée pour plus d'impact */
     text-align: center; /* Centrage des titres pour un effet plus harmonieux */
 }
 
 /* --- HEADER & NAVIGATION --- */
 header {
-    background: var(-pink-background);
-    padding: 20px 10px;
-    border-bottom: 2px solid var(--gossip-red);
+    background-color: var(--pink-accent);
+    padding: 5px 0; /* Réduction du padding pour un header moins épais */
+    border-bottom: 1px solid var(--secondary-pink);
     text-align: center;
+    position: relative;
 }
 
 nav {
-    background: var(--pink-accent);
+    /* L'effet Glossy "Intense" */
+    background: linear-gradient(
+        135deg, 
+        #FF8FA3 0%,             /* Rose plus foncé sur le bord (Fraise) */
+        var(--pink-accent) 40%, /* Ton rose clair habituel */
+        #FFFFFF 50%,            /* La ligne de lumière (Reflet) */
+        var(--pink-accent) 60%, /* Retour au rose clair */
+        #FF8FA3 100%            /* Rose foncé de l'autre côté */
+    );
+    
     padding: 15px;
     text-align: center;
-    box-shadow: 0 2px 5px var(--shadow);
+    
+    /* On renforce un peu l'ombre pour que le bandeau se détache bien */
+    box-shadow: 0 4px 8px rgba(164, 22, 26, 0.2);
+    
+    /* Une petite bordure blanche en haut et en bas pour l'effet "Ruban" */
+    border-top: 2px solid rgba(255,255,255,0.5);
+    border-bottom: 2px solid rgba(255,255,255,0.5);
 }
-
 nav ul { list-style: none; padding: 0; margin: 0; }
 nav ul li { display: inline; margin: 0 15px; }
 nav a {
@@ -69,21 +81,64 @@ nav a {
 
 /* --- CONTENEURS ET SECTIONS [cite: 41, 42] --- */
 main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+    max-width: 100%; /* On autorise la pleine largeur */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Évite les débordements horizontaux */
 }
-
 /* Ajout d'espacement entre les sections pour un design plus aéré */
 section {
     display: flex;
     
-    border: 4px; /* Suppression des bordures */
-    box-shadow: 6px 6px 0px var(--text-brown); 
-    background: var(--white);
+    
+    background: var(--pink-accent);
     text-align: center; /* Centrer le texte à l'intérieur des sections */
 }
 
+/* --- MISE EN PAGE : IMAGE GAUCHE / TEXTE DROITE --- */
+/* --- SECTION DIVISÉE (SPLIT SCREEN) --- */
+.search-area {
+    display: flex;          /* Active les colonnes */
+    padding: 0;             /* ZÉRO marge intérieure : l'image doit toucher les bords ! */
+    background-color: var(--bg-cream);
+    overflow: hidden;       /* Pour couper ce qui dépasse si besoin */
+    min-height: 400px;      /* Force une hauteur minimum pour que l'image soit grande */
+    align-items: stretch;   /* Force les deux côtés à avoir la même hauteur */
+}
+
+/* --- CÔTÉ GAUCHE (Texte) --- */
+.search-content {
+    flex: 1;                /* Prend 50% de la largeur (ou le reste dispo) */
+    padding: 60px 40px;     /* On remet de l'air autour du texte ici */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre le texte verticalement */
+}
+
+/* --- CÔTÉ DROIT (Conteneur Image) --- */
+.search-image-wrapper {
+    flex: 1;                /* Prend l'autre 50% de la largeur */
+    position: relative;     /* Nécessaire pour l'image */
+}
+
+/* --- L'IMAGE ELLE-MÊME --- */
+.full-image {
+    width: 100%;            /* Largeur totale du bloc droit */
+    height: 100%;           /* Hauteur totale du bloc droit */
+    object-fit: cover;      /* MAGIQUE : Coupe l'image pour remplir le rectangle sans la déformer */
+    display: block;         /* Supprime le petit espace blanc sous l'image */
+}
+
+/* --- MOBILE (Les uns sous les autres) --- */
+@media (max-width: 768px) {
+    .search-area {
+        flex-direction: column-reverse; /* L'image passe au-dessus ou en dessous */
+    }
+    .search-image-wrapper {
+        height: 250px; /* On fixe une hauteur pour l'image sur mobile */
+        width: 100%;
+    }
+}
 /* --- FORMULAIRES (Inscription/Connexion) [cite: 44, 45] --- */
 fieldset {
     border: 1px solid var(--pink-accent);
@@ -156,7 +211,7 @@ td { padding: 10px; text-align: center; border-bottom: 1px solid var(--pink-acce
 
 /* --- FOOTER [cite: 57, 101] --- */
 footer {
-    background-color: var(--white);
+    background-color: var(--pink-accent);
     color: var(--text-brown);
     text-align: center;
     padding: 30px 10px;
@@ -169,4 +224,161 @@ footer {
     justify-content: space-around;
     flex-wrap: wrap;
     font-size: 0.9rem;
+}
+
+/* --- POSITIONNEMENT DU BOUTON DANS LE HEADER --- */
+/* On s'assure que le header est la référence pour le positionnement */
+/* =========================================
+   HEADER AVEC IMAGE DE FOND ET CONTRASTE
+   ========================================= */
+   .site-header {
+    position: relative; /* Nécessaire pour le menu déroulant */
+
+    /* LA MAGIE EST ICI : Deux couches de fond */
+    background-image: 
+        /* Couche 1 : Le filtre couleur (ici un bordeaux semi-transparent) */
+        linear-gradient(
+            rgba(89, 13, 34, 0.7),  /* Couleur bordeaux avec 70% d'opacité */
+            rgba(89, 13, 34, 0.5)   /* Un peu plus clair en bas */
+        ),
+        /* Couche 2 : Ton image (remplace le nom si besoin) */
+        url('carrelage.jpg'); 
+
+    /* Pour que l'image couvre tout l'espace sans se déformer */
+    background-size: cover;
+    /* Pour centrer l'image */
+    background-position: center center;
+    /* Pas de répétition */
+    background-repeat: no-repeat;
+
+    /* Style du texte pour le contraste */
+    color: var(--white); /* Le texte devient blanc */
+    text-align: center;
+    
+    /* On augmente le padding pour que le header soit plus grand et dramatique */
+    padding: 120px 20px;
+    
+    /* On garde la bordure rétro en bas */
+    border-bottom: var(--border-thick);
+}
+
+/* --- Ajustements des textes pour la lisibilité --- */
+
+/* Le grand titre */
+.titre-page {
+    color: var(--white); /* Force le blanc */
+    /* Ajoute une petite ombre noire sous le texte pour le détacher encore plus */
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.5); 
+    margin-bottom: 20px;
+}
+
+/* Le sous-titre */
+.site-header p {
+    color: var(--bg-cream); /* Un blanc cassé/crème pour le sous-texte */
+    font-size: 1.3rem;
+    font-weight: 600;
+    max-width: 700px;
+    margin: 0 auto; /* Centre le paragraphe */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* --- Ajustement du bouton profil pour qu'il ressorte sur le fond foncé --- */
+.profile-btn {
+    /* On inverse les couleurs : Fond crème, texte rouge */
+    background-color: var(--bg-cream);
+    color: var(--retro-dark);
+    border-color: var(--retro-dark);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.3); /* Ombre plus foncée */
+}
+
+.profile-btn:hover {
+    background-color: var(--retro-pink);
+    color: var(--white);
+    border-color: var(--retro-pink);
+}
+
+/* Le conteneur global (Bouton + Liste) placé en haut à droite */
+.user-menu {
+    position: absolute;
+    top: 30px;  /* Ajuste selon la hauteur de ton header */
+    right: 30px; /* Marge à droite */
+    z-index: 1000; /* Pour passer au-dessus du reste */
+}
+
+/* --- STYLE DU BOUTON PROFIL --- */
+.profile-btn {
+    background-color: var(--white);
+    color: var(--border-color); /* Rouge Brique */
+    border: 2px solid var(--border-color);
+    padding: 10px 25px;
+    border-radius: var(--radius-pill); /* 50px */
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+
+
+
+/* --- LE MENU DÉROULANT (Caché par défaut) --- */
+.deroulant {
+    display: none; /* C'est ici que la magie opère : caché au départ */
+    position: absolute;
+    top: 100%; /* Se place juste en dessous du bouton */
+    right: 0;  /* S'aligne à droite du bouton */
+    
+    background-color: var(--white);
+    border: 2px solid var(--border-color);
+    border-radius: 15px; /* Coins arrondis style carte */
+    padding: 15px;
+    min-width: 180px; /* Largeur minimum pour être lisible */
+    list-style: none;
+    box-shadow: 6px 6px 0px var(--border-color); /* Ombre rétro solide */
+    margin-top: 10px; /* Petit espace entre le bouton et le menu */
+}
+
+/* --- L'AFFICHAGE AU SURVOL --- */
+/* Quand on survole .user-menu, .deroulant s'affiche */
+.user-menu:hover .deroulant {
+    display: block;
+}
+/* Création d'une zone invisible qui relie le bouton au menu */
+.user-menu::after {
+    content: '';        /* Obligatoire pour créer un faux élément */
+    display: block;
+    position: absolute;
+    top: 100%;          /* Commence juste en bas du bouton */
+    left: 0;
+    width: 100%;        /* Même largeur que le bouton */
+    height: 30px;       /* La hauteur du "pont" (doit être assez grand pour toucher le menu) */
+    background: transparent; /* Invisible ! (mets 'red' pour tester si besoin) */
+    z-index: 10;
+}
+
+/* --- STYLE DES LIENS DANS LE MENU --- */
+.deroulant li {
+    margin-bottom: 8px; /* Espace entre les liens */
+}
+
+.deroulant li:last-child {
+    margin-bottom: 0;
+}
+
+.deroulant a {
+    display: block; /* Prend toute la largeur */
+    text-decoration: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.deroulant a:hover {
+    background-color: var(--bg); /* Fond crème au survol */
+    color: var(--accent); /* Texte rose */
+    transform: translateX(5px); /* Petit décalage vers la droite */
 }
