@@ -1,599 +1,469 @@
-:root {
-    --pink-background: #FFF5F6;  /* Rose Nuage - Fond [cite: 37] */
-    --pink-accent: #FFD1DC;      /* Rose Ruban - Dégradés */
-    --gossip-red: #A4161A;       /* Rouge Ruban - Titres et Alertes [cite: 37] */
-    --text-brown: #5E3023;       /* Chocolat Doux - Prose [cite: 37] */
+/* ==========================================================================
+   CHARTE GRAPHIQUE & VARIABLES
+   ========================================================================== */
+   :root {
+    /* --- PALETTE DE COULEURS --- */
+    --bg-cream: #FFF5F6;       /* Fond général (Nuage Rose) */
+    --pink-light: #FFD1DC;     /* Rose Ruban (Accents doux) */
+    --pink-mid: #FFC2D1;       /* Rose Bonbon (Cartes) */
+    --pink-border: #FF8FA3;    /* Rose Vif (Bordures 3D) */
+    
+    --red-gossip: #A4161A;     /* Rouge Vif (Alertes / Call to Action) */
+    --bordeaux-chic: #590D22;  /* Bordeaux Sombre (Textes / Contrastes) */
+    
     --white: #FFFFFF;
-    --shadow: rgba(164, 22, 26, 0.1);
+    
+    /* --- OMBRES & EFFETS --- */
+    --shadow-soft: 0 5px 15px rgba(89, 13, 34, 0.05);
+    --shadow-hover: 0 15px 30px rgba(89, 13, 34, 0.15);
 }
 
-/* --- STYLES GLOBAUX --- */
+/* ==========================================================================
+   RESET & BASES
+   ========================================================================== */
+* {
+    box-sizing: border-box; /* Indispensable pour que les paddings ne cassent pas la page */
+}
+
 body {
-    background: var(--pink-background);
-    background-color: var(--pink-background);
-    color: var(--text-brown);
-    font-family: 'Didot', serif; 
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-cream);
+    color: var(--bordeaux-chic);
+    font-family: 'Didot', 'Times New Roman', serif; /* Police "Magazine" par défaut */
     line-height: 1.6;
-
-   
+    font-size: 16px;
 }
 
-/* Ajout d'une police élégante pour les titres */
-h1{
-    font-family: 'Snell Roundhand', cursive; /* Police manuscrite élégante */
-    font-size: 5rem; /* Taille énorme */
-    
-    font-weight: 800; /* Mettre en valeur les titres */
-    color: var(--gossip-red); /* Couleur rouge pour les titres */
-    text-align: center; /* Centrage des titres pour un effet harmonieux */
-    margin-bottom: 0;  /* Supprime l'espace sous le titre */
-    margin-top: 20px;     /* Garde un peu d'espace au-dessus si besoin */
-    line-height: 0.9;
+/* --- TYPOGRAPHIE --- */
+h1, h2, h3 {
+    font-family: 'Snell Roundhand', 'Brush Script MT', cursive; /* Police "Signature" */
+    font-weight: normal;
+    margin: 0 0 20px 0;
 }
 
-/* Ajustement des titres pour un style plus fluide */
-h2 {
-    font-family: 'Snell Roundhand', cursive;
-    margin-top: 0;
-    margin-bottom: 20px; /* Espacement entre le titre et le contenu */
-    text-align: center; /* Centrage des titres pour un effet plus harmonieux */
-}
-
-/* --- HEADER & NAVIGATION --- */
-header {
-    background-color: var(--pink-accent);
-    padding: 5px 0; /* Réduction du padding pour un header moins épais */
-    border-bottom: 1px solid var(--secondary-pink);
-    text-align: center;
-    position: relative;
-}
-
-nav {
-    /* L'effet Glossy "Intense" */
-    background: linear-gradient(
-        135deg, 
-        #FF8FA3 0%,             /* Rose plus foncé sur le bord (Fraise) */
-        var(--pink-accent) 40%, /* Ton rose clair habituel */
-        #FFFFFF 50%,            /* La ligne de lumière (Reflet) */
-        var(--pink-accent) 60%, /* Retour au rose clair */
-        #FF8FA3 100%            /* Rose foncé de l'autre côté */
-    );
-    
-    padding: 15px;
-    text-align: center;
-    
-    /* On renforce un peu l'ombre pour que le bandeau se détache bien */
-    box-shadow: 0 4px 8px rgba(164, 22, 26, 0.2);
-    
-    /* Une petite bordure blanche en haut et en bas pour l'effet "Ruban" */
-    border-top: 2px solid rgba(255,255,255,0.5);
-    border-bottom: 2px solid rgba(255,255,255,0.5);
-}
-nav ul { list-style: none; padding: 0; margin: 0; }
-nav ul li { display: inline; margin: 0 15px; }
-nav a {
+a {
     text-decoration: none;
-    color: var(--gossip-red);
-    font-weight: 600;
-    text-transform: uppercase;
+    color: inherit;
+    transition: 0.3s;
+}
+
+/* ==========================================================================
+   HEADER (BANDEAU DU HAUT)
+   ========================================================================== */
+.site-header {
+    position: relative;
+    /* Image de fond avec filtre bordeaux semi-transparent */
+    background-image: 
+        linear-gradient(rgba(89, 13, 34, 0.6), rgba(89, 13, 34, 0.4)),
+        url('carrelage.jpg'); /* Vérifie bien que l'image est là ! */
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    padding: 100px 20px;
+    text-align: center;
+    color: var(--white);
+    border-bottom: 5px double var(--white); /* Finition "Luxe" */
+}
+
+.titre-page {
+    font-size: 5rem;
+    color: var(--white);
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.site-header p {
+    font-family: 'Courier New', monospace; /* Touche Y2K */
+    font-size: 1.1rem;
+    color: var(--pink-light);
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* --- MENU UTILISATEUR (Bouton Profil) --- */
+.user-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.profile-btn {
+    background-color: var(--bg-cream);
+    color: var(--bordeaux-chic);
+    border: 2px solid var(--bordeaux-chic);
+    padding: 10px 20px;
+    border-radius: 50px; /* Pill shape */
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+}
+
+.profile-btn:hover {
+    background-color: var(--pink-mid);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+}
+
+/* Menu Déroulant */
+.deroulant {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--white);
+    border: 2px solid var(--bordeaux-chic);
+    list-style: none;
+    padding: 10px;
+    min-width: 150px;
+    margin-top: 10px;
+    box-shadow: 5px 5px 0px var(--bordeaux-chic);
+}
+
+.user-menu:hover .deroulant {
+    display: block;
+}
+
+.deroulant li { margin-bottom: 5px; }
+.deroulant a {
+    display: block;
+    padding: 5px;
+    font-family: 'Courier New', monospace;
     font-size: 0.9rem;
 }
+.deroulant a:hover { background-color: var(--bg-cream); color: var(--red-gossip); }
 
 
-/* Ajout d'espacement entre les sections pour un design plus aéré */
-section {
+/* ==========================================================================
+   NAVIGATION (RUBAN GLOSSY)
+   ========================================================================== */
+.main-nav {
+    background: linear-gradient(
+        135deg, 
+        #FF8FA3 0%,             
+        var(--pink-light) 40%, 
+        #FFFFFF 50%,            /* Reflet lumière */
+        var(--pink-light) 60%, 
+        #FF8FA3 100%            
+    );
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(89, 13, 34, 0.1);
+    border-bottom: 2px solid var(--white);
+}
+
+.main-nav ul { padding: 0; margin: 0; list-style: none; }
+.main-nav li { display: inline-block; }
+.main-nav a {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--bordeaux-chic);
+    padding: 10px 20px;
+}
+.main-nav a:hover { color: var(--white); text-shadow: 1px 1px 0px var(--bordeaux-chic); }
+
+
+/* ==========================================================================
+   MAIN LAYOUT (INTELLIGENT)
+   ========================================================================== */
+main {
     display: flex;
-    
-    
-    background: var(--pink-accent);
-    text-align: center; /* Centrer le texte à l'intérieur des sections */
+    flex-wrap: wrap; /* Permet le retour à la ligne des sections */
+    width: 100%;
+    gap: 0; /* On gère les espaces dans les sections elles-mêmes */
 }
 
-/* --- MISE EN PAGE : IMAGE GAUCHE / TEXTE DROITE --- */
-/* --- SECTION DIVISÉE (SPLIT SCREEN) --- */
-/* --- STRUCTURE GLOBALE (On garde ton agencement) --- */
+/* Règle par défaut : Une section prend toute la largeur */
+main > section {
+    width: 100%;
+}
+
+
+/* ==========================================================================
+   SECTION 1 : RECHERCHE (STYLE Y2K SPLIT)
+   ========================================================================== */
 .search-area {
-    display: flex;          
-    padding: 0;             
-    background-color: var(--bg-cream); /* Ou var(--pink-background) selon ton choix */
-    overflow: hidden;       
-    min-height: 500px;      /* J'ai augmenté un peu la hauteur min pour que ça respire */
-    align-items: stretch;   
+    display: flex;
+    min-height: 500px;
+    background-color: var(--bg-cream);
+    align-items: stretch;
 }
 
-/* --- CÔTÉ GAUCHE (Texte & Formulaire) --- */
+/* Bloc Gauche (Texte) */
 .search-content {
-    flex: 1;                
-    padding: 40px 60px;     /* J'ai augmenté le padding pour centrer le contenu et éviter le vide */
+    flex: 1;
+    padding: 60px;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
+    /* Texture grain subtile */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
-/* 1. REMPLIR LE VIDE : TYPOGRAPHIE XXL */
-.search-content h2.titre-section {
-    font-family: 'Snell Roundhand', cursive; /* Ta police actuelle */
-    font-size: 4rem;      /* BEAUCOUP plus gros pour combler le vide */
-    line-height: 1.1;     /* Resserre un peu les lignes */
-    color: var(--gossip-red);
-    text-shadow: 2px 2px 0px #FFD1DC; /* Petite ombre rose pour le style */
-    margin-bottom: 30px;  /* Espace avant la barre */
-    border: none;         /* On enlève la ligne de soulignement si elle y était */
-    text-align: left;     /* Aligné à gauche */
+.search-content .titre-section {
+    font-size: 4.5rem;
+    color: var(--bordeaux-chic); /* Harmonisé bordeaux */
+    text-shadow: 3px 3px 0px var(--pink-light);
+    line-height: 1;
+    text-align: left;
 }
 
-/* 2. BARRE DE RECHERCHE "RELIEF 3D Y2K" */
+/* Formulaire Y2K */
 .search-form {
     display: flex;
-    flex-direction: column; /* On met le bouton sous l'input pour prendre de la place */
-    gap: 15px;              /* Espace entre input et bouton */
-    max-width: 100%;        /* Utilise toute la largeur dispo */
+    flex-direction: column;
+    gap: 15px;
+    max-width: 100%;
 }
 
-/* L'Input style "Enfoncé" (Sunken) */
 .search-form input {
     width: 100%;
-    padding: 20px;          /* Gros padding pour un input épais */
-    font-family: 'Courier New', monospace; /* Police style "Ordi rétro" */
+    padding: 20px;
+    font-family: 'Courier New', monospace;
     font-size: 1rem;
-    background-color: #FFFFFF;
-    color: var(--text-brown);
+    background: var(--white);
+    border: none;
     outline: none;
     
-    /* LE RELIEF CARRÉ */
-    border-radius: 0;             /* Carré strict */
-    border-top: 5px solid #888;   /* Ombre en haut */
-    border-left: 5px solid #888;  /* Ombre à gauche */
-    border-bottom: 5px solid #FFF; /* Lumière en bas */
-    border-right: 5px solid #FFF;  /* Lumière à droite */
-    
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.05); /* Légère ombre externe */
+    /* BORDURES 3D Windows 95 */
+    border-top: 5px solid #888;
+    border-left: 5px solid #888;
+    border-bottom: 5px solid #FFF;
+    border-right: 5px solid #FFF;
 }
 
-/* Le Bouton style "Surélevé" (Raised) */
-.search-form .btn-principal {
-    width: fit-content;    /* Le bouton s'adapte à son texte */
+.search-form input:focus {
+    background-color: #FFF0F5;
+    outline: 3px dashed var(--red-gossip);
+    outline-offset: -5px;
+}
+
+.btn-principal {
+    align-self: flex-start;
     padding: 15px 40px;
-    background-color: var(--gossip-red);
+    background-color: var(--red-gossip);
     color: var(--white);
     font-family: 'Arial', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
     cursor: pointer;
-    margin-top: 10px;
+    border: none;
     
-    /* LE RELIEF BOUTON (Inverse de l'input) */
-    border-radius: 0;              /* Carré strict */
-    border-top: 3px solid #FF8FA3; /* Lumière en haut (Rose clair) */
+    /* Bouton en relief */
+    border-top: 3px solid #FF8FA3;
     border-left: 3px solid #FF8FA3;
-    border-bottom: 3px solid #590D22; /* Ombre en bas (Bordeaux) */
+    border-bottom: 3px solid #590D22;
     border-right: 3px solid #590D22;
-    
-    transition: all 0.1s;
 }
-
-/* Petit effet quand on clique */
-.search-form .btn-principal:active {
-    transform: translate(2px, 2px);
+.btn-principal:active {
     border-top: 3px solid #590D22;
     border-bottom: 3px solid #FF8FA3;
+    transform: translate(1px, 1px);
 }
 
-/* --- CÔTÉ DROIT (Image - ON TOUCHE À RIEN !) --- */
+/* Bloc Droit (Image) */
 .search-image-wrapper {
-    flex: 1;                
-    position: relative;     
+    flex: 1;
+    position: relative;
 }
-
 .full-image {
-    width: 100%;            
-    height: 100%;           
-    object-fit: cover;      
-    display: block;         
-}
-
-/* --- MOBILE --- */
-@media (max-width: 768px) {
-    .search-area {
-        flex-direction: column-reverse; 
-    }
-    .search-image-wrapper {
-        height: 300px;
-        flex: none;
-    }
-}
-
-/* --- SECTION PRÉSENTATION "VIP" --- */
-/* --- SECTION PRÉSENTATION (Séparation Nette) --- */
-/* --- SECTION PRÉSENTATION CORRIGÉE --- */
-.presentation-section {
-    /* 1. COULEURS */
-    background-color: var(--pink-background); 
-    color: #590D22; /* Couleur du texte général */
-    
-    /* 2. LA SÉPARATION (Correction) */
-    /* Il manquait le mot 'solid' pour que la ligne apparaisse ! */
-    border-top: 10px solid #590D22; 
-    
-    /* 3. MISE EN PAGE (Correction des débordements) */
     width: 100%;
-    /* INDISPENSABLE : Empêche le padding de faire déborder la page */
-    box-sizing: border-box; 
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* ==========================================================================
+   SECTION 2 : PRÉSENTATION (DARK MODE CHIC)
+   ========================================================================== */
+.presentation-section {
+    background-color: var(--bordeaux-chic);
+    color: var(--bg-cream);
+    
+    /* La séparation nette */
+    border-top: 6px double var(--white);
+    border-bottom: 6px double var(--white);
     
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* J'ai réduit l'écart pour que tout rentre bien */
-    gap: 50px; 
-    /* J'ai réduit les marges sur les côtés (5% au lieu de 10%) */
-    padding: 80px 5%; 
+    gap: 50px;
+    padding: 100px 5%;
 }
 
-/* --- LE TITRE "Présentation" --- */
 .presentation-section .titre-section {
     font-size: 5rem;
-    color: var(--gossip-red);
-    margin: 0;
+    color: var(--pink-mid);
     text-align: right;
-    flex: 1; /* Prend 50% de l'espace */
-    
-    /* Petit ajustement pour éviter que le titre ne soit coupé si l'écran rétrécit */
-    min-width: 300px; 
+    flex: 1;
+    line-height: 0.9;
 }
 
-/* --- LE TEXTE À DROITE --- */
 .presentation-section p {
-    flex: 1; /* Prend l'autre 50% */
+    flex: 1;
     font-family: 'Courier New', monospace;
     font-size: 1.1rem;
-    line-height: 1.6;
     text-align: justify;
-    
-    /* La ligne verticale à gauche du texte */
-    border-left: 2px solid #590D22; /* J'ai mis 2px pour qu'on la voie mieux */
+    border-left: 2px solid var(--pink-mid);
     padding-left: 30px;
 }
 
-/* --- MOBILE --- */
-@media (max-width: 900px) { /* J'ai augmenté un peu le point de rupture */
-    .presentation-section {
-        flex-direction: column; /* On empile */
-        padding: 50px 20px;
-        text-align: center;
-        gap: 20px;
-    }
-    
-    .presentation-section .titre-section {
-        text-align: center;
-        font-size: 3.5rem;
-        min-width: auto;
-    }
-    
-    .presentation-section p {
-        border-left: none;
-        padding-left: 0;
-        /* Sur mobile, on évite le justifié, c'est plus lisible aligné à gauche ou centré */
-        text-align: center; 
-    }
-}
 
-main {
-    display: flex;       /* Active le mode flexible */
-    flex-wrap: wrap;     /* CRUCIAL : Autorise les éléments à passer à la ligne */
-    gap: 30px;           /* Espace entre les éléments */
-    width: 100%;
-    box-sizing: border-box;
-}
+/* ==========================================================================
+   SECTION 3 & 4 : CARTES DUO (Plat du jour / Favoris)
+   ========================================================================== */
+/* CONTENEUR GLOBAL POUR CES SECTIONS */
+/* Note : On utilise le main flex, mais on ajoute un wrapper ou des marges */
+/* Ici, on applique un padding au main container global via une div si besoin, 
+   ou on gère l'espacement sur les sections */
 
-/* 2. LA SÉCURITÉ (C'est ici qu'on protège le reste du site) */
-/* On dit à TOUTES les sections de prendre toute la largeur par défaut.
-   Comme ça, ta "Search Area" et ta "Présentation" ne bougent pas ! */
-main > section {
-    width: 100%;         
-    box-sizing: border-box;
-}
-
-/* 3. L'EXCEPTION (Juste pour tes deux boîtes) */
 .daily-special, 
 .favorites-section {
-    /* Calcul : 50% de la page moins la moitié de l'écart (15px) */
-    width: calc(50% - 15px); 
+    /* LE CALCUL MAGIQUE : 50% de largeur */
+    width: calc(50% - 40px); 
+    margin: 20px; /* Espace autour */
     
-    /* On s'assure que le texte DANS la boîte s'empile bien verticalement */
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    /* Style visuel des boîtes */
-    padding: 40px;
+    padding: 50px;
     border-radius: 20px;
+    
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
 }
 
-/* --- LE STYLE DES COULEURS (Pour respecter ta charte) --- */
-
-/* Boîte Gauche (Rose) */
-.daily-special {
-    background-color: #FFC2D1; 
-    border: 3px solid #FF8FA3;
-    color: #590D22;
-}
-
-/* Boîte Droite (Blanche) */
-.favorites-section {
-    background-color: #FFFFFF; 
-    border: 3px solid #590D22;
-    color: #590D22;
-}
-
-/* Petit ajustement des titres dans ces boîtes pour qu'ils ne soient pas trop gros */
-.daily-special .titre-section,
-.favorites-section .titre-section {
-    font-size: 2.5rem; /* Plus petit que les titres géants du haut */
-    margin-bottom: 20px;
-}
-
-/* --- ANIMATION AU SURVOL --- */
-.daily-special:hover,
+.daily-special:hover, 
 .favorites-section:hover {
-    transform: translateY(-10px); /* Hop, ça monte ! */
-    box-shadow: 0 15px 30px rgba(89, 13, 34, 0.2);
-}
-
-/* --- SÉCURITÉ MOBILE --- */
-/* Sur téléphone, on annule l'effet 50% pour que ce soit lisible */
-@media (max-width: 900px) {
-    .daily-special, 
-    .favorites-section {
-        width: 100%; /* Retour à la pleine largeur */
-    }
-}
-
-
-
-/* --- FORMULAIRES (Inscription/Connexion) [cite: 44, 45] --- */
-fieldset {
-    border: 1px solid var(--pink-accent);
-    border-radius: 10px;
-    padding: 20px;
-}
-
-input[type="text"], input[type="email"], input[type="password"], textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid var(--pink-accent);
-    border-radius: 8px;
-    box-sizing: border-box;
-}
-
-/* --- BOUTONS (Standard et Livreur) [cite: 19, 53] --- */
-/* Ajout d'un espacement entre les boutons et les zones de texte */
-button, .cta, .bouton-nav, .bouton-appel {
-    background-color: var(--gossip-red);
-    color: var(--white);
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.2s;
-    margin-top: 10px; /* Ajout d'un espacement au-dessus des boutons */
-}
-
-button:hover { transform: scale(1.05); }
-
-/* CONTRAINTE LIVREUR : Gros boutons pour les gants  */
-#valider-livraison, .bouton-nav, .bouton-appel {
-    display: block;
-    width: 100%;
-    padding: 20px; /* Zone de clic agrandie */
-    font-size: 1.2rem;
-    margin: 15px 0;
-    text-align: center;
-}
-
-/* --- CARTES DE PLATS (Accueil/Menu) [cite: 42, 43] --- */
-.dish-card, .plat-avec-image {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    border-bottom: 1px solid var(--pink-accent);
-    padding: 15px 0;
-}
-
-.plat-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* Cercle pour le côté girly */
-    border: 2px solid var(--pink-accent);
-}
-
-/* --- TABLEAUX (Profil/Admin) [cite: 46, 48] --- */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-th { background-color: var(--pink-accent); color: var(--gossip-red); padding: 10px; }
-td { padding: 10px; text-align: center; border-bottom: 1px solid var(--pink-accent); }
-
-/* --- FOOTER [cite: 57, 101] --- */
-footer {
-    background-color: var(--pink-accent);
-    color: var(--text-brown);
-    text-align: center;
-    padding: 30px 10px;
-    border-top: 2px solid var(--gossip-red);
-    margin-top: 40px;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    font-size: 0.9rem;
-}
-
-/* --- POSITIONNEMENT DU BOUTON DANS LE HEADER --- */
-/* On s'assure que le header est la référence pour le positionnement */
-/* =========================================
-   HEADER AVEC IMAGE DE FOND ET CONTRASTE
-   ========================================= */
-   .site-header {
-    position: relative; /* Nécessaire pour le menu déroulant */
-
-    /* LA MAGIE EST ICI : Deux couches de fond */
-    background-image: 
-        /* Couche 1 : Le filtre couleur (ici un bordeaux semi-transparent) */
-        linear-gradient(
-            rgba(89, 13, 34, 0.7),  /* Couleur bordeaux avec 70% d'opacité */
-            rgba(89, 13, 34, 0.5)   /* Un peu plus clair en bas */
-        ),
-        /* Couche 2 : Ton image (remplace le nom si besoin) */
-        url('carrelage.jpg'); 
-
-    /* Pour que l'image couvre tout l'espace sans se déformer */
-    background-size: cover;
-    /* Pour centrer l'image */
-    background-position: center center;
-    /* Pas de répétition */
-    background-repeat: no-repeat;
-
-    /* Style du texte pour le contraste */
-    color: var(--white); /* Le texte devient blanc */
-    text-align: center;
-    
-    /* On augmente le padding pour que le header soit plus grand et dramatique */
-    padding: 120px 20px;
-    
-    /* On garde la bordure rétro en bas */
-    border-bottom: var(--border-thick);
-}
-
-/* --- Ajustements des textes pour la lisibilité --- */
-
-/* Le grand titre */
-.titre-page {
-    color: var(--white); /* Force le blanc */
-    /* Ajoute une petite ombre noire sous le texte pour le détacher encore plus */
-    text-shadow: 3px 3px 5px rgba(0,0,0,0.5); 
-    margin-bottom: 20px;
-}
-
-/* Le sous-titre */
-.site-header p {
-    color: var(--pink-accent); 
-    font-size: 1.3rem;
-    font-weight: 600;
-    max-width: 700px;
-    margin: 0 auto; /* Centre le paragraphe */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-/* --- Ajustement du bouton profil pour qu'il ressorte sur le fond foncé --- */
-.profile-btn {
-    /* On inverse les couleurs : Fond crème, texte rouge */
-    background-color: var(--bg-cream);
-    color: var(--gossip-red);
-    border-color: var(--gossip-red);
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.3); /* Ombre plus foncée */
-}
-
-.profile-btn:hover {
-    background-color: var(--pink-accent);
-    color: var(--gossip-red);
-    border-color: var(--gossip-red);
-}
-
-/* Le conteneur global (Bouton + Liste) placé en haut à droite */
-.user-menu {
-    position: absolute;
-    top: 30px;  /* Ajuste selon la hauteur de ton header */
-    right: 30px; /* Marge à droite */
-    z-index: 1000; /* Pour passer au-dessus du reste */
-}
-
-/* --- STYLE DU BOUTON PROFIL --- */
-.profile-btn {
-    background-color: var(--white);
-    color: var(--border-color); /* Rouge Brique */
-    border: 2px solid var(--border-color);
-    padding: 10px 25px;
-    border-radius: var(--radius-pill); /* 50px */
-    font-family: 'DM Sans', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
-}
-
-
-
-
-/* --- LE MENU DÉROULANT (Caché par défaut) --- */
-.deroulant {
-    display: none; /* C'est ici que la magie opère : caché au départ */
-    position: absolute;
-    top: 100%; /* Se place juste en dessous du bouton */
-    right: 0;  /* S'aligne à droite du bouton */
-    
-    background-color: var(--white);
-    border: 2px solid var(--border-color);
-    border-radius: 15px; /* Coins arrondis style carte */
-    padding: 15px;
-    min-width: 180px; /* Largeur minimum pour être lisible */
-    list-style: none;
-    box-shadow: 6px 6px 0px var(--border-color); /* Ombre rétro solide */
-    margin-top: 10px; /* Petit espace entre le bouton et le menu */
-}
-
-/* --- L'AFFICHAGE AU SURVOL --- */
-/* Quand on survole .user-menu, .deroulant s'affiche */
-.user-menu:hover .deroulant {
-    display: block;
-}
-/* Création d'une zone invisible qui relie le bouton au menu */
-.user-menu::after {
-    content: '';        /* Obligatoire pour créer un faux élément */
-    display: block;
-    position: absolute;
-    top: 100%;          /* Commence juste en bas du bouton */
-    left: 0;
-    width: 100%;        /* Même largeur que le bouton */
-    height: 30px;       /* La hauteur du "pont" (doit être assez grand pour toucher le menu) */
-    background: transparent; /* Invisible ! (mets 'red' pour tester si besoin) */
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
     z-index: 10;
 }
 
-/* --- STYLE DES LIENS DANS LE MENU --- */
-.deroulant li {
-    margin-bottom: 8px; /* Espace entre les liens */
+/* Style Boîte Rose (Plat du Jour) */
+.daily-special {
+    background-color: var(--pink-mid);
+    border: 3px solid var(--pink-border);
+    color: var(--bordeaux-chic);
+}
+.daily-special .titre-section {
+    color: var(--bordeaux-chic);
+    font-size: 3rem;
 }
 
-.deroulant li:last-child {
-    margin-bottom: 0;
+/* Style Boîte Blanche (Favoris) */
+.favorites-section {
+    background-color: var(--white);
+    border: 3px solid var(--bordeaux-chic);
+    color: var(--bordeaux-chic);
+}
+.favorites-section .titre-section {
+    font-size: 2.5rem;
 }
 
-.deroulant a {
-    display: block; /* Prend toute la largeur */
-    text-decoration: none;
-    color: var(--text-brown);
-    font-family: 'DM Sans', sans-serif;
+/* Styles internes des cartes */
+.dish-card h3 {
+    font-family: 'Didot', serif;
     font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 10px;
-    transition: 0.2s;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+.dish-card p {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #888;
 }
 
-.deroulant a:hover {
-    background-color: var(--pink-accent); /* Fond crème au survol */
-    color: var(--gossip-red); /* Texte rose */
-    transform: translateX(5px); /* Petit décalage vers la droite */
+
+/* ==========================================================================
+   BOUTONS & FORMULAIRES CLASSIQUES (Connexion/Inscription)
+   ========================================================================== */
+.btn-joli, button[type="submit"]:not(.btn-principal) {
+    background-color: var(--bordeaux-chic);
+    color: var(--white);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 0; /* Carré chic */
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 1px solid var(--bordeaux-chic);
+}
+.btn-joli:hover {
+    background-color: transparent;
+    color: var(--bordeaux-chic);
+}
+
+fieldset {
+    border: 2px solid var(--pink-mid);
+    padding: 20px;
+    margin-bottom: 20px;
+    background: var(--white);
+}
+
+input:not(.search-form input), textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--pink-border);
+    background: var(--bg-cream);
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    background-color: var(--bordeaux-chic);
+    color: var(--pink-mid);
+    text-align: center;
+    padding: 40px 20px;
+    width: 100%;
+    margin-top: 40px;
+    border-top: 5px solid var(--pink-mid);
+}
+
+footer a {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE (MOBILE)
+   ========================================================================== */
+@media (max-width: 900px) {
+    /* Le Header */
+    .site-header { padding: 60px 20px; }
+    .titre-page { font-size: 3.5rem; }
+    
+    /* La Recherche */
+    .search-area { flex-direction: column-reverse; }
+    .search-image-wrapper { height: 300px; flex: none; }
+    .search-content { padding: 30px; }
+    .search-content .titre-section { font-size: 3rem; text-align: center; }
+    
+    /* La Présentation */
+    .presentation-section { flex-direction: column; text-align: center; gap: 30px; }
+    .presentation-section .titre-section { text-align: center; font-size: 3.5rem; }
+    .presentation-section p { border-left: none; padding-left: 0; }
+    
+    /* Les Cartes Duo */
+    .daily-special, 
+    .favorites-section {
+        width: 100%; /* Repasse en pleine largeur */
+        margin: 0 0 20px 0; /* Enlève les marges latérales */
+    }
 }
