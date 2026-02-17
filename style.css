@@ -1,133 +1,599 @@
-/* Palette de couleurs définie pour la charte graphique [cite: 37] */
 :root {
-    --pink-light: #fdf0f1;   /* Fond doux */
-    --pink-coquette: #ffc0cb; /* Rose ruban */
-    --gossip-red: #b01b2e;   /* Rouge cerise pour les titres et liens */
-    --white: #ffffff;
-    --shadow: rgba(176, 27, 46, 0.1);
+    --pink-background: #FFF5F6;  /* Rose Nuage - Fond [cite: 37] */
+    --pink-accent: #FFD1DC;      /* Rose Ruban - Dégradés */
+    --gossip-red: #A4161A;       /* Rouge Ruban - Titres et Alertes [cite: 37] */
+    --text-brown: #5E3023;       /* Chocolat Doux - Prose [cite: 37] */
+    --white: #FFFFFF;
+    --shadow: rgba(164, 22, 26, 0.1);
 }
 
+/* --- STYLES GLOBAUX --- */
 body {
-    background-color: var(--pink-light); 
-    color: var(--gossip-red); 
-    font-family: 'Georgia', serif; /* Un côté journal/roman pour le gossip */
-    margin: 0;
+    background: var(--pink-background);
+    background-color: var(--pink-background);
+    color: var(--text-brown);
+    font-family: 'Didot', serif; 
     line-height: 1.6;
+
+   
 }
 
-/* En-tête avec effet ruban */
+/* Ajout d'une police élégante pour les titres */
+h1{
+    font-family: 'Snell Roundhand', cursive; /* Police manuscrite élégante */
+    font-size: 5rem; /* Taille énorme */
+    
+    font-weight: 800; /* Mettre en valeur les titres */
+    color: var(--gossip-red); /* Couleur rouge pour les titres */
+    text-align: center; /* Centrage des titres pour un effet harmonieux */
+    margin-bottom: 0;  /* Supprime l'espace sous le titre */
+    margin-top: 20px;     /* Garde un peu d'espace au-dessus si besoin */
+    line-height: 0.9;
+}
+
+/* Ajustement des titres pour un style plus fluide */
+h2 {
+    font-family: 'Snell Roundhand', cursive;
+    margin-top: 0;
+    margin-bottom: 20px; /* Espacement entre le titre et le contenu */
+    text-align: center; /* Centrage des titres pour un effet plus harmonieux */
+}
+
+/* --- HEADER & NAVIGATION --- */
 header {
+    background-color: var(--pink-accent);
+    padding: 5px 0; /* Réduction du padding pour un header moins épais */
+    border-bottom: 1px solid var(--secondary-pink);
     text-align: center;
-    padding: 50px 20px;
-    background-color: var(--white);
-    border-bottom: 3px double var(--gossip-red); 
+    position: relative;
+}
+
+nav {
+    /* L'effet Glossy "Intense" */
+    background: linear-gradient(
+        135deg, 
+        #FF8FA3 0%,             /* Rose plus foncé sur le bord (Fraise) */
+        var(--pink-accent) 40%, /* Ton rose clair habituel */
+        #FFFFFF 50%,            /* La ligne de lumière (Reflet) */
+        var(--pink-accent) 60%, /* Retour au rose clair */
+        #FF8FA3 100%            /* Rose foncé de l'autre côté */
+    );
+    
+    padding: 15px;
+    text-align: center;
+    
+    /* On renforce un peu l'ombre pour que le bandeau se détache bien */
+    box-shadow: 0 4px 8px rgba(164, 22, 26, 0.2);
+    
+    /* Une petite bordure blanche en haut et en bas pour l'effet "Ruban" */
+    border-top: 2px solid rgba(255,255,255,0.5);
+    border-bottom: 2px solid rgba(255,255,255,0.5);
+}
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav ul li { display: inline; margin: 0 15px; }
+nav a {
+    text-decoration: none;
+    color: var(--gossip-red);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+
+/* Ajout d'espacement entre les sections pour un design plus aéré */
+section {
+    display: flex;
+    
+    
+    background: var(--pink-accent);
+    text-align: center; /* Centrer le texte à l'intérieur des sections */
+}
+
+/* --- MISE EN PAGE : IMAGE GAUCHE / TEXTE DROITE --- */
+/* --- SECTION DIVISÉE (SPLIT SCREEN) --- */
+/* --- STRUCTURE GLOBALE (On garde ton agencement) --- */
+.search-area {
+    display: flex;          
+    padding: 0;             
+    background-color: var(--bg-cream); /* Ou var(--pink-background) selon ton choix */
+    overflow: hidden;       
+    min-height: 500px;      /* J'ai augmenté un peu la hauteur min pour que ça respire */
+    align-items: stretch;   
+}
+
+/* --- CÔTÉ GAUCHE (Texte & Formulaire) --- */
+.search-content {
+    flex: 1;                
+    padding: 40px 60px;     /* J'ai augmenté le padding pour centrer le contenu et éviter le vide */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+/* 1. REMPLIR LE VIDE : TYPOGRAPHIE XXL */
+.search-content h2.titre-section {
+    font-family: 'Snell Roundhand', cursive; /* Ta police actuelle */
+    font-size: 4rem;      /* BEAUCOUP plus gros pour combler le vide */
+    line-height: 1.1;     /* Resserre un peu les lignes */
+    color: var(--gossip-red);
+    text-shadow: 2px 2px 0px #FFD1DC; /* Petite ombre rose pour le style */
+    margin-bottom: 30px;  /* Espace avant la barre */
+    border: none;         /* On enlève la ligne de soulignement si elle y était */
+    text-align: left;     /* Aligné à gauche */
+}
+
+/* 2. BARRE DE RECHERCHE "RELIEF 3D Y2K" */
+.search-form {
+    display: flex;
+    flex-direction: column; /* On met le bouton sous l'input pour prendre de la place */
+    gap: 15px;              /* Espace entre input et bouton */
+    max-width: 100%;        /* Utilise toute la largeur dispo */
+}
+
+/* L'Input style "Enfoncé" (Sunken) */
+.search-form input {
+    width: 100%;
+    padding: 20px;          /* Gros padding pour un input épais */
+    font-family: 'Courier New', monospace; /* Police style "Ordi rétro" */
+    font-size: 1rem;
+    background-color: #FFFFFF;
+    color: var(--text-brown);
+    outline: none;
+    
+    /* LE RELIEF CARRÉ */
+    border-radius: 0;             /* Carré strict */
+    border-top: 5px solid #888;   /* Ombre en haut */
+    border-left: 5px solid #888;  /* Ombre à gauche */
+    border-bottom: 5px solid #FFF; /* Lumière en bas */
+    border-right: 5px solid #FFF;  /* Lumière à droite */
+    
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.05); /* Légère ombre externe */
+}
+
+/* Le Bouton style "Surélevé" (Raised) */
+.search-form .btn-principal {
+    width: fit-content;    /* Le bouton s'adapte à son texte */
+    padding: 15px 40px;
+    background-color: var(--gossip-red);
+    color: var(--white);
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 10px;
+    
+    /* LE RELIEF BOUTON (Inverse de l'input) */
+    border-radius: 0;              /* Carré strict */
+    border-top: 3px solid #FF8FA3; /* Lumière en haut (Rose clair) */
+    border-left: 3px solid #FF8FA3;
+    border-bottom: 3px solid #590D22; /* Ombre en bas (Bordeaux) */
+    border-right: 3px solid #590D22;
+    
+    transition: all 0.1s;
+}
+
+/* Petit effet quand on clique */
+.search-form .btn-principal:active {
+    transform: translate(2px, 2px);
+    border-top: 3px solid #590D22;
+    border-bottom: 3px solid #FF8FA3;
+}
+
+/* --- CÔTÉ DROIT (Image - ON TOUCHE À RIEN !) --- */
+.search-image-wrapper {
+    flex: 1;                
+    position: relative;     
+}
+
+.full-image {
+    width: 100%;            
+    height: 100%;           
+    object-fit: cover;      
+    display: block;         
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+    .search-area {
+        flex-direction: column-reverse; 
+    }
+    .search-image-wrapper {
+        height: 300px;
+        flex: none;
+    }
+}
+
+/* --- SECTION PRÉSENTATION "VIP" --- */
+/* --- SECTION PRÉSENTATION (Séparation Nette) --- */
+/* --- SECTION PRÉSENTATION CORRIGÉE --- */
+.presentation-section {
+    /* 1. COULEURS */
+    background-color: var(--pink-background); 
+    color: #590D22; /* Couleur du texte général */
+    
+    /* 2. LA SÉPARATION (Correction) */
+    /* Il manquait le mot 'solid' pour que la ligne apparaisse ! */
+    border-top: 10px solid #590D22; 
+    
+    /* 3. MISE EN PAGE (Correction des débordements) */
+    width: 100%;
+    /* INDISPENSABLE : Empêche le padding de faire déborder la page */
+    box-sizing: border-box; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* J'ai réduit l'écart pour que tout rentre bien */
+    gap: 50px; 
+    /* J'ai réduit les marges sur les côtés (5% au lieu de 10%) */
+    padding: 80px 5%; 
+}
+
+/* --- LE TITRE "Présentation" --- */
+.presentation-section .titre-section {
+    font-size: 5rem;
+    color: var(--gossip-red);
+    margin: 0;
+    text-align: right;
+    flex: 1; /* Prend 50% de l'espace */
+    
+    /* Petit ajustement pour éviter que le titre ne soit coupé si l'écran rétrécit */
+    min-width: 300px; 
+}
+
+/* --- LE TEXTE À DROITE --- */
+.presentation-section p {
+    flex: 1; /* Prend l'autre 50% */
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: justify;
+    
+    /* La ligne verticale à gauche du texte */
+    border-left: 2px solid #590D22; /* J'ai mis 2px pour qu'on la voie mieux */
+    padding-left: 30px;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 900px) { /* J'ai augmenté un peu le point de rupture */
+    .presentation-section {
+        flex-direction: column; /* On empile */
+        padding: 50px 20px;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .presentation-section .titre-section {
+        text-align: center;
+        font-size: 3.5rem;
+        min-width: auto;
+    }
+    
+    .presentation-section p {
+        border-left: none;
+        padding-left: 0;
+        /* Sur mobile, on évite le justifié, c'est plus lisible aligné à gauche ou centré */
+        text-align: center; 
+    }
+}
+
+main {
+    display: flex;       /* Active le mode flexible */
+    flex-wrap: wrap;     /* CRUCIAL : Autorise les éléments à passer à la ligne */
+    gap: 30px;           /* Espace entre les éléments */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 2. LA SÉCURITÉ (C'est ici qu'on protège le reste du site) */
+/* On dit à TOUTES les sections de prendre toute la largeur par défaut.
+   Comme ça, ta "Search Area" et ta "Présentation" ne bougent pas ! */
+main > section {
+    width: 100%;         
+    box-sizing: border-box;
+}
+
+/* 3. L'EXCEPTION (Juste pour tes deux boîtes) */
+.daily-special, 
+.favorites-section {
+    /* Calcul : 50% de la page moins la moitié de l'écart (15px) */
+    width: calc(50% - 15px); 
+    
+    /* On s'assure que le texte DANS la boîte s'empile bien verticalement */
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+
+    /* Style visuel des boîtes */
+    padding: 40px;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- LE STYLE DES COULEURS (Pour respecter ta charte) --- */
+
+/* Boîte Gauche (Rose) */
+.daily-special {
+    background-color: #FFC2D1; 
+    border: 3px solid #FF8FA3;
+    color: #590D22;
+}
+
+/* Boîte Droite (Blanche) */
+.favorites-section {
+    background-color: #FFFFFF; 
+    border: 3px solid #590D22;
+    color: #590D22;
+}
+
+/* Petit ajustement des titres dans ces boîtes pour qu'ils ne soient pas trop gros */
+.daily-special .titre-section,
+.favorites-section .titre-section {
+    font-size: 2.5rem; /* Plus petit que les titres géants du haut */
     margin-bottom: 20px;
 }
 
-header h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+/* --- ANIMATION AU SURVOL --- */
+.daily-special:hover,
+.favorites-section:hover {
+    transform: translateY(-10px); /* Hop, ça monte ! */
+    box-shadow: 0 15px 30px rgba(89, 13, 34, 0.2);
 }
 
-header p {
-    font-style: italic;
-    font-size: 1.2rem;
+/* --- SÉCURITÉ MOBILE --- */
+/* Sur téléphone, on annule l'effet 50% pour que ce soit lisible */
+@media (max-width: 900px) {
+    .daily-special, 
+    .favorites-section {
+        width: 100%; /* Retour à la pleine largeur */
+    }
 }
 
-/* Navigation style "Club des copines" */
-nav {
-    background: var(--white);
-    padding: 15px 0;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
 
-nav ul li {
-    display: inline;
-    margin: 0 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--gossip-red); [cite: 37]
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: var(--pink-coquette);
-    border-bottom: 2px solid var(--pink-coquette);
-}
-
-/* Contenu principal */
-main {
-    max-width: 900px;
-    margin: 0 auto;
+/* --- FORMULAIRES (Inscription/Connexion) [cite: 44, 45] --- */
+fieldset {
+    border: 1px solid var(--pink-accent);
+    border-radius: 10px;
     padding: 20px;
 }
 
-section {
-    background: var(--white);
-    margin-bottom: 30px;
-    padding: 30px;
-    border-radius: 20px; /* Bords arrondis pour la douceur */
-    box-shadow: 10px 10px 0px var(--shadow);
-    border: 1px solid var(--pink-coquette);
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--pink-accent);
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
-h2 {
-    border-left: 5px solid var(--gossip-red);
-    padding-left: 15px;
-    margin-top: 0;
+/* --- BOUTONS (Standard et Livreur) [cite: 19, 53] --- */
+/* Ajout d'un espacement entre les boutons et les zones de texte */
+button, .cta, .bouton-nav, .bouton-appel {
+    background-color: var(--gossip-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+    margin-top: 10px; /* Ajout d'un espacement au-dessus des boutons */
 }
 
-/* Footer structuré selon le cahier des charges [cite: 41, 101] */
-footer {
-    background-color: var(--white);
-    padding: 40px 20px;
-    margin-top: 50px;
-    border-top: 3px double var(--gossip-red); 
+button:hover { transform: scale(1.05); }
+
+/* CONTRAINTE LIVREUR : Gros boutons pour les gants  */
+#valider-livraison, .bouton-nav, .bouton-appel {
+    display: block;
+    width: 100%;
+    padding: 20px; /* Zone de clic agrandie */
+    font-size: 1.2rem;
+    margin: 15px 0;
     text-align: center;
+}
+
+/* --- CARTES DE PLATS (Accueil/Menu) [cite: 42, 43] --- */
+.dish-card, .plat-avec-image {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid var(--pink-accent);
+    padding: 15px 0;
+}
+
+.plat-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Cercle pour le côté girly */
+    border: 2px solid var(--pink-accent);
+}
+
+/* --- TABLEAUX (Profil/Admin) [cite: 46, 48] --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th { background-color: var(--pink-accent); color: var(--gossip-red); padding: 10px; }
+td { padding: 10px; text-align: center; border-bottom: 1px solid var(--pink-accent); }
+
+/* --- FOOTER [cite: 57, 101] --- */
+footer {
+    background-color: var(--pink-accent);
+    color: var(--text-brown);
+    text-align: center;
+    padding: 30px 10px;
+    border-top: 2px solid var(--gossip-red);
+    margin-top: 40px;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    max-width: 1000px;
-    margin: 0 auto;
+    font-size: 0.9rem;
 }
 
-.footer-contact, .footer-authors {
-    margin: 20px;
-    min-width: 250px;
+/* --- POSITIONNEMENT DU BOUTON DANS LE HEADER --- */
+/* On s'assure que le header est la référence pour le positionnement */
+/* =========================================
+   HEADER AVEC IMAGE DE FOND ET CONTRASTE
+   ========================================= */
+   .site-header {
+    position: relative; /* Nécessaire pour le menu déroulant */
+
+    /* LA MAGIE EST ICI : Deux couches de fond */
+    background-image: 
+        /* Couche 1 : Le filtre couleur (ici un bordeaux semi-transparent) */
+        linear-gradient(
+            rgba(89, 13, 34, 0.7),  /* Couleur bordeaux avec 70% d'opacité */
+            rgba(89, 13, 34, 0.5)   /* Un peu plus clair en bas */
+        ),
+        /* Couche 2 : Ton image (remplace le nom si besoin) */
+        url('carrelage.jpg'); 
+
+    /* Pour que l'image couvre tout l'espace sans se déformer */
+    background-size: cover;
+    /* Pour centrer l'image */
+    background-position: center center;
+    /* Pas de répétition */
+    background-repeat: no-repeat;
+
+    /* Style du texte pour le contraste */
+    color: var(--white); /* Le texte devient blanc */
+    text-align: center;
+    
+    /* On augmente le padding pour que le header soit plus grand et dramatique */
+    padding: 120px 20px;
+    
+    /* On garde la bordure rétro en bas */
+    border-bottom: var(--border-thick);
 }
 
-.footer-bottom {
-    margin-top: 30px;
-    font-size: 0.8rem;
-    border-top: 1px solid var(--pink-light);
-    padding-top: 20px;
+/* --- Ajustements des textes pour la lisibilité --- */
+
+/* Le grand titre */
+.titre-page {
+    color: var(--white); /* Force le blanc */
+    /* Ajoute une petite ombre noire sous le texte pour le détacher encore plus */
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.5); 
+    margin-bottom: 20px;
 }
 
-/* Boutons et éléments interactifs à venir */
-button, .cta {
-    background-color: var(--gossip-red);
-    color: white;
+/* Le sous-titre */
+.site-header p {
+    color: var(--pink-accent); 
+    font-size: 1.3rem;
+    font-weight: 600;
+    max-width: 700px;
+    margin: 0 auto; /* Centre le paragraphe */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* --- Ajustement du bouton profil pour qu'il ressorte sur le fond foncé --- */
+.profile-btn {
+    /* On inverse les couleurs : Fond crème, texte rouge */
+    background-color: var(--bg-cream);
+    color: var(--gossip-red);
+    border-color: var(--gossip-red);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.3); /* Ombre plus foncée */
+}
+
+.profile-btn:hover {
+    background-color: var(--pink-accent);
+    color: var(--gossip-red);
+    border-color: var(--gossip-red);
+}
+
+/* Le conteneur global (Bouton + Liste) placé en haut à droite */
+.user-menu {
+    position: absolute;
+    top: 30px;  /* Ajuste selon la hauteur de ton header */
+    right: 30px; /* Marge à droite */
+    z-index: 1000; /* Pour passer au-dessus du reste */
+}
+
+/* --- STYLE DU BOUTON PROFIL --- */
+.profile-btn {
+    background-color: var(--white);
+    color: var(--border-color); /* Rouge Brique */
+    border: 2px solid var(--border-color);
     padding: 10px 25px;
-    border: none;
-    border-radius: 50px;
+    border-radius: var(--radius-pill); /* 50px */
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
     cursor: pointer;
-    font-family: 'Georgia', serif;
+    transition: 0.3s;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+
+
+
+/* --- LE MENU DÉROULANT (Caché par défaut) --- */
+.deroulant {
+    display: none; /* C'est ici que la magie opère : caché au départ */
+    position: absolute;
+    top: 100%; /* Se place juste en dessous du bouton */
+    right: 0;  /* S'aligne à droite du bouton */
+    
+    background-color: var(--white);
+    border: 2px solid var(--border-color);
+    border-radius: 15px; /* Coins arrondis style carte */
+    padding: 15px;
+    min-width: 180px; /* Largeur minimum pour être lisible */
+    list-style: none;
+    box-shadow: 6px 6px 0px var(--border-color); /* Ombre rétro solide */
+    margin-top: 10px; /* Petit espace entre le bouton et le menu */
+}
+
+/* --- L'AFFICHAGE AU SURVOL --- */
+/* Quand on survole .user-menu, .deroulant s'affiche */
+.user-menu:hover .deroulant {
+    display: block;
+}
+/* Création d'une zone invisible qui relie le bouton au menu */
+.user-menu::after {
+    content: '';        /* Obligatoire pour créer un faux élément */
+    display: block;
+    position: absolute;
+    top: 100%;          /* Commence juste en bas du bouton */
+    left: 0;
+    width: 100%;        /* Même largeur que le bouton */
+    height: 30px;       /* La hauteur du "pont" (doit être assez grand pour toucher le menu) */
+    background: transparent; /* Invisible ! (mets 'red' pour tester si besoin) */
+    z-index: 10;
+}
+
+/* --- STYLE DES LIENS DANS LE MENU --- */
+.deroulant li {
+    margin-bottom: 8px; /* Espace entre les liens */
+}
+
+.deroulant li:last-child {
+    margin-bottom: 0;
+}
+
+.deroulant a {
+    display: block; /* Prend toute la largeur */
+    text-decoration: none;
+    color: var(--text-brown);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.deroulant a:hover {
+    background-color: var(--pink-accent); /* Fond crème au survol */
+    color: var(--gossip-red); /* Texte rose */
+    transform: translateX(5px); /* Petit décalage vers la droite */
 }
