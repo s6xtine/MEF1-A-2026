@@ -1,66 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <title>Formulaire d'inscription - [Sip & Spill]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sip & Spill - Inscription </title>
 </head>
 <body>
-    <h1>Sip & Spill</h1>
-    <h2>Formulaire d'inscription</h2>
-    <form action="submit_inscription.php" method="post">
 
-        <fieldset>
-            <legend>Informations personnelles</legend>
+    <header class="site-header">
+        <h1 class="titre-page">Sip & Spill</h1>
+    </header>
 
-            <label for="nom">Nom:</label><br>
-            <input type="text" id="nom" name="nom" autocomplete="family-name" required><br><br> <!-- required pour s'assurer que le champ est rempli avant de soumettre le formulaire -->
+    <main class="container-form">
+        <h2 class="titre-section">Formulaire d'inscription</h2>
+        <form action="submit_inscription.php" method="post">
 
-            <label for="prenom">Prenom:</label><br>
-            <input type="text" id="prenom" name="prenom" autocomplete="given-name" required><br><br> <!-- autocomplete pour que le navigateur propose de compléter la cellule-->
+            <fieldset class="form-group">
+                <legend>Informations personnelles</legend>
 
-            <label for="telephone">Numero de telephone:</label><br>
-            <input type="text" id="telephone" name="telephone" autocomplete="tel" required><br><br>
+                <label for="nom">Nom:</label><br>
+                <input type="text" id="nom" name="nom" autocomplete="family-name" required><br><br> <!-- required pour s'assurer que le champ est rempli avant de soumettre le formulaire -->
 
-        </fieldset><br><br>
+                <label for="prenom">Prenom:</label><br>
+                <input type="text" id="prenom" name="prenom" autocomplete="given-name" required><br><br> <!-- autocomplete pour que le navigateur propose de compléter la cellule-->
 
+                <label for="telephone">Numero de telephone:</label><br>
+                <input type="text" id="telephone" name="telephone" autocomplete="tel" required><br><br>
+            </fieldset><br><br>
 
-        <fieldset>
-            <legend>Informations de connexion</legend>
+            <fieldset class="form-group">
+                <legend>Informations de connexion</legend>
 
-            <label for="email">Adresse e-mail:</label><br>
-            <input type="email" id="email" name="email" autocomplete="email" required><br><br>
+                <label for="email">Adresse e-mail:</label><br>
+                <input type="email" id="email" name="email" autocomplete="email" required><br><br>
 
-            <label for="password">Mot de passe:</label><br>
-            <input type="password" id="password" name="password" autocomplete="new-password" required><br><br>
+                <label for="password">Mot de passe:</label><br>
+                <input type="password" id="password" name="password" autocomplete="new-password" required><br><br>
+            </fieldset><br><br>
 
-        </fieldset><br><br>
+            <fieldset class="form-group">
+                <legend>Détails de livraison</legend>
 
-        <fieldset>
-            <legend>Détails de livraison</legend>
+                <label for="adresse">Adresse postale:</label><br>
+                <input type="text" id="adresse" name="adresse" autocomplete="street-address" required><br><br>
 
-            <label for="adresse">Adresse postale:</label><br>
-            <input type="text" id="adresse" name="adresse" autocomplete="street-address" required><br><br>
+                <label for="interphone">Code Interphone :</label><br>
+                <input type="text" id="interphone" name="interphone"><br><br>
 
-            <label for="interphone">Code Interphone :</label><br>
-            <input type="text" id="interphone" name="interphone"><br><br>
+                <label for="etage">Étage / Appartement :</label><br>
+                <input type="text" id="etage" name="etage"><br><br>
 
-            <label for="etage">Étage / Appartement :</label><br>
-            <input type="text" id="etage" name="etage"><br><br>
+                <label for="commentaires">Instructions particulières :</label><br>
+                <textarea id="commentaires" name="commentaires" rows="3" ></textarea>
+            </fieldset><br><br>
 
-            <label for="commentaires">Instructions particulières :</label><br>
-            <textarea id="commentaires" name="commentaires" rows="3" ></textarea>
-        </fieldset><br><br>
+            <button type="submit" class="btn-principal">S'inscrire</button><br><br>
 
-        <input type="submit" value="S'inscrire">
+            <div class="form-footer"></div>
+                <p>Déjà membre ? <a href="connexion.html">Connectez-vous ici</a></p>
+                <p><a href="index.html">Retour au menu principal</a></p>
+            </div>
 
-        <p>Déjà membre ? <a href="connexion.html">Connectez-vous ici</a></p>
-        <hr>
-        <p><a href="index.html">Retour au menu principal</a></p>
+        </form>
+    </main>
 
-    </form>
     <footer>
-        <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
+        <div class="footer-bottom">
+            <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
+        </div>
     </footer>
 </body>
 </html>
