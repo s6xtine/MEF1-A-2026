@@ -1,6 +1,4 @@
-/* ==========================================================================
-   CHARTE GRAPHIQUE & VARIABLES
-   ========================================================================== */
+
    :root {
     /* --- PALETTE DE COULEURS --- */
     --bg-cream: #FFF5F6;       /* Fond général (Nuage Rose) */
@@ -171,7 +169,7 @@ a {
 
 
 /* ==========================================================================
-   MAIN LAYOUT (INTELLIGENT)
+   MAIN LAYOUT 
    ========================================================================== */
 main {
     display: flex;
@@ -387,40 +385,199 @@ main > section {
 /* ==========================================================================
    BOUTONS & FORMULAIRES CLASSIQUES (Connexion/Inscription)
    ========================================================================== */
-.btn-joli, button[type="submit"]:not(.btn-principal) {
-    background-color: var(--bordeaux-chic);
-    color: var(--white);
-    padding: 15px 30px;
-    border: none;
-    border-radius: 0; /* Carré chic */
+/* ==========================================================================
+   FORMULAIRES STYLISÉS (CONNEXION / INSCRIPTION)
+   ========================================================================== */
+
+/* 1. LE CONTENEUR DU FORMULAIRE */
+/* On centre le formulaire et on lui donne un look "Carte d'invitation" */
+form {
+    max-width: 600px;        /* Largeur max pour pas que ce soit trop étiré */
+    margin: 40px auto;       /* Centré au milieu de la page */
+    padding: 40px;
+    background-color: var(--white);
+    
+    /* BORDURE DOUBLE (Comme la section présentation) */
+    border: 4px double var(--bordeaux-chic);
+    
+    /* Petite ombre portée pour le décoller du fond */
+    box-shadow: 10px 10px 0px rgba(89, 13, 34, 0.1);
+}
+
+/* 2. LES GROUPES (FIELDSET) */
+/* On stylise les cadres qui regroupent les infos */
+fieldset {
+    border: 2px solid var(--pink-mid); /* Bordure Rose Bonbon */
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #FFFAFA; /* Fond très légèrement rosé */
+}
+
+/* LE TITRE DU GROUPE (LEGEND) */
+legend {
+    background-color: var(--pink-mid);
+    color: var(--bordeaux-chic);
+    padding: 5px 15px;
     font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--pink-border);
+}
+
+/* 3. LES TEXTES (LABELS) */
+label {
+    font-family: 'Courier New', monospace; /* Police Rétro */
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--bordeaux-chic);
+    margin-bottom: 5px;
+    display: block; /* Force le passage à la ligne */
+}
+
+/* 4. LES CHAMPS DE SAISIE (INPUTS) */
+/* On reprend le style "Windows 95" de ta barre de recherche */
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px; /* Espace après chaque champ */
+    background-color: var(--white);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: var(--bordeaux-chic);
+    outline: none; /* On enlève le bleu moche par défaut */
+
+    /* EFFET 3D "CREUSÉ" (SUNKEN) */
+    border-top: 3px solid #CCC;    /* Ombre grise en haut */
+    border-left: 3px solid #CCC;   /* Ombre grise à gauche */
+    border-bottom: 3px solid #FFF; /* Lumière en bas */
+    border-right: 3px solid #FFF;  /* Lumière à droite */
+    
+    /* Petite ombre interne */
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+/* QUAND ON CLIQUE DANS LA CASE */
+input:focus, textarea:focus {
+    background-color: #FFF0F5; /* Devient rose pâle */
+    border-color: var(--pink-border);
+    /* Outline pointillé rouge comme sur la recherche */
+    outline: 2px dashed var(--red-gossip);
+    outline-offset: -5px;
+}
+
+/* 5. LE BOUTON "SE CONNECTER / S'INSCRIRE" */
+input[type="submit"], button[type="submit"] {
+    width: 100%; /* Prend toute la largeur */
+    padding: 15px;
+    background-color: var(--bordeaux-chic);
+    color: var(--pink-mid); /* Texte rose sur fond bordeaux */
+    font-family: 'Arial', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     cursor: pointer;
-    border: 1px solid var(--bordeaux-chic);
-}
-.btn-joli:hover {
-    background-color: transparent;
-    color: var(--bordeaux-chic);
-}
-
-fieldset {
-    border: 2px solid var(--pink-mid);
-    padding: 20px;
-    margin-bottom: 20px;
-    background: var(--white);
+    margin-top: 10px;
+    
+    /* EFFET 3D "RESSORTI" (RAISED) */
+    border-top: 4px solid var(--pink-light);
+    border-left: 4px solid var(--pink-light);
+    border-bottom: 4px solid #330000; /* Noir/Rouge très foncé */
+    border-right: 4px solid #330000;
 }
 
-input:not(.search-form input), textarea {
+/* QUAND ON CLIQUE SUR LE BOUTON */
+input[type="submit"]:active, button[type="submit"]:active {
+    /* Le bouton s'enfonce */
+    border-top: 4px solid #330000;
+    border-bottom: 4px solid var(--pink-light);
+    transform: translate(2px, 2px);
+}
+
+/* 6. LES LIENS EN BAS (Déjà membre ? etc) */
+form p {
+    text-align: center;
+    font-family: 'Didot', serif;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+form a {
+    color: var(--red-gossip);
+    text-decoration: underline;
+    font-weight: bold;
+}
+form a:hover {
+    background-color: var(--pink-mid); /* Surlignage au survol */
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   LAYOUT SPÉCIAL INSCRIPTION (2 Colonnes)
+   ========================================================================== */
+
+/* 1. LA GRILLE (Seulement si le formulaire a 3 fieldsets) */
+form:has(fieldset:nth-of-type(3)) {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes de largeur égale */
+    gap: 30px; /* Espace entre les colonnes */
+    max-width: 900px; /* On élargit un peu le formulaire pour que tout rentre */
+    align-items: start; /* Les éléments s'alignent en haut */
+}
+
+/* 2. COLONNE DE GAUCHE (Infos Perso + Connexion) */
+/* Le 1er groupe (Perso) : Colonne 1, Ligne 1 */
+form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0; /* Plus besoin de marge, le gap gère l'espace */
+}
+
+/* Le 2ème groupe (Connexion) : Colonne 1, Ligne 2 */
+form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(2) {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0;
+}
+
+/* 3. COLONNE DE DROITE (Livraison) */
+/* Le 3ème groupe (Livraison) : Colonne 2, s'étend sur les 2 lignes de gauche */
+form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(3) {
+    grid-column: 2;
+    grid-row: 1 / span 2; /* "Span 2" veut dire "prend la hauteur de 2 lignes" */
+    height: 100%; /* Force le bloc à prendre toute la hauteur dispo */
+    margin-bottom: 0;
+}
+
+/* 4. LE BAS DE PAGE (Bouton et Liens) */
+/* On force ces éléments à prendre toute la largeur en bas */
+form:has(fieldset:nth-of-type(3)) input[type="submit"],
+form:has(fieldset:nth-of-type(3)) p,
+form:has(fieldset:nth-of-type(3)) hr {
+    grid-column: 1 / -1; /* "-1" veut dire "jusqu'à la fin" */
     width: 100%;
-    padding: 10px;
-    border: 1px solid var(--pink-border);
-    background: var(--bg-cream);
-    margin-bottom: 10px;
-    font-family: 'Courier New', monospace;
 }
 
+/* 5. NETTOYAGE */
+/* On cache les balises <br> qui traînent et qui décalent la grille */
+form:has(fieldset:nth-of-type(3)) > br {
+    display: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE (MOBILE)
+   ========================================================================== */
+/* Sur téléphone, on annule la grille pour tout remettre l'un sous l'autre */
+@media (max-width: 768px) {
+    form:has(fieldset:nth-of-type(3)) {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 /* ==========================================================================
    FOOTER
