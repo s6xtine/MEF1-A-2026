@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <title>Administration - [Sip & Spill]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sip & Spill - Administration</title>
 </head>
 <body>
-    <header>
-        <h1>Sip & Spill</h1>
-        <h2>Espace Administrateur</h2>
-        <nav>
+    <header class="site-header">
+        <h1 class="titre-page">Sip & Spill</h1>
+        <h2 class="titre-section">Espace Administrateur</h2>
+        <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="inscription.html">Page Inscription</a></li>
@@ -22,35 +23,41 @@
     </header>
 
     <main>
-        <h3>Gestion des utilisateurs</h3>
+        <section class="admin-section">
+            <h3 class="sub-titre">Gestion des utilisateurs</h3>
 
-        <table border="1">
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
+            <table border="1">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
             
-            <tr>
-                <td>Doe</td>
-                <td>John</td>
-                <td>john.doe@email.com</td>
-                <td><a href="profil.html">Voir le profil</a></td> </tr>
-            <tr>
-                <td>Smith</td>
-                <td>Jane</td>
-                <td>jane.smith@email.com</td>
-                <td><a href="profil.html">Voir le profil</a></td>
-            </tr>
-        </table>
+                <tr>
+                    <td>Doe</td>
+                    <td>John</td>
+                    <td>john.doe@email.com</td>
+                    <td><a href="profil.html">Voir le profil</a></td> 
+                </tr>
+
+                <tr>
+                    <td>Smith</td>
+                    <td>Jane</td>
+                    <td>jane.smith@email.com</td>
+                    <td><a href="profil.html">Voir le profil</a></td>
+                </tr>
+            </table>
+        </section>
     </main>
 
 
     
 
     <footer>
-        <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
+        <div class="footer-bottom">
+            <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
+        </div>
     </footer>
 </body>
 </html>
