@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Commandes - Sip & Spill</title>
 </head>
 <body>
-    <header>
-        <h1>Sip & Spill - Espace Restaurateur</h1>
+    <header class="site-header">
+        <h1 class="titre-page">Sip & Spill - Espace Restaurateur</h1>
+        <h2 class="titre-section">Espace Restaurateur</h2>
         <nav>
             <a href="index.html">Accueil</a> | 
             <a href="administrateur.html">Admin</a> |
@@ -15,64 +17,61 @@
         </nav>
     </header>
 
-    <main>
-        <h2>Gestion des commandes</h2>
+    <main class="admin-container">
+        <h3 class="sub-titre">Gestion des commandes</h3>
 
         <section id="a-preparer">
-            <h3>Commandes à préparer</h3>
+            <h4 class="sub-titre">Commandes à préparer</h4>
             <table border="1">
-                <thead>
-                    <tr>
-                        <th>N° Commande</th>
-                        <th>Détails des plats</th>
-                        <th>Heure de commande</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#1001</td>
-                        <td>Cappuccino</td>
-                        <td>12:15</td>
-                        <td>
-                            <button type="button">Passer en livraison</button> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>#1002</td>
-                        <td>Brioche perdue</td>
-                        <td>12:20</td>
-                        <td>
-                            <button type="button">Passer en livraison</button> 
-                        </td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <th>N° Commande</th>
+                    <th>Détails des plats</th>
+                    <th>Heure de commande</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>#1001</td>
+                    <td>Cappuccino</td>
+                    <td>12:15</td>
+                    <td>
+                    <button type="button">Passer en livraison</button> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>#1002</td>
+                    <td>Brioche perdue</td>
+                    <td>12:20</td>
+                    <td>
+                    <button type="button">Passer en livraison</button> 
+                    </td>
+                </tr>
+
             </table>
         </section>
 
-        <hr>
-
         <section id="en-livraison">
-            <h3>Commandes en cours de livraison</h3>
+            <h4 class="sub-titre">Commandes en cours de livraison</h4>
             <table border="1">
-                <thead>
-                    <tr>
-                        <th>N° Commande</th>
-                        <th>Livreur</th>
-                        <th>Destination</th>
-                        <th>Statut</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#0998</td>
-                        <td>Marc L.</td>
-                        <td>Cergy - Avenue du Parc</td>
-                        <td>En route</td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <th>N° Commande</th>
+                    <th>Livreur</th>
+                    <th>Destination</th>
+                    <th>Statut</th>
+                </tr>
+                <tr>
+                    <td>#0998</td>
+                    <td>Marc L.</td>
+                    <td>Cergy - Avenue du Parc</td>
+                    <td>En route</td>
+                </tr>
             </table>
         </section>
     </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
+        </div>
+    </footer>
 </body>
 </html>
