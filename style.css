@@ -580,6 +580,26 @@ form:has(fieldset:nth-of-type(3)) > br {
 }
 
 /* ==========================================================================
+   FOND SPÉCIAL POUR LES PAGES DE FORMULAIRE (Connexion, Inscription...)
+   ========================================================================== */
+
+/* On cible le BODY des pages qui ont un formulaire "classique" (pas la recherche) */
+body:has(form:not(.search-form)) {
+    /* L'image de fond (les tuiles roses par exemple) */
+    background-image: url('rose.jpg'); 
+    
+    /* L'image se répète pour remplir tout l'écran */
+    background-repeat: no-repeat; 
+    
+    /* Optionnel : Une taille idéale pour que les tuiles soient jolies */
+    background-size: cover; 
+    
+    /* L'image reste fixe quand on scrolle (effet très moderne) */
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 footer {
