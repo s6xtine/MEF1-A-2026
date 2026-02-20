@@ -1,64 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--pour que le smartphone n'affiche pas la page en tout petit-->
-    <title>Noter ma commande - Sip & Spill</title>
+    <title>Sip & Spill - Noter ma commande</title>
 </head>
 
 <body>
-    <header>
-        <h1>Sip & Spill</h1>
-        <nav>
-            <a href="index.html">Accueil</a> | 
-            <a href="profil.html">Mon Profil</a> |
-            <a href="connexion.html">Déconnexion</a>
-        </nav>
+    <header class="site-header">
+        <h1 class="titre-page">Sip & Spill</h1>
     </header>
 
+    <nav class="main-nav">
+        <a href="index.html">Accueil</a> | 
+        <a href="profil.html">Mon Profil</a> |
+        <a href="connexion.html">Déconnexion</a>
+    </nav>
+
     <main>
-        <h2>Merci pour votre commande !</h2>
+        <h2 class="titre-section">Merci pour votre commande !</h2>
         <p>Votre avis nous aide à améliorer nos services.</p>
 
         <form action="#" method="post">
-            <fieldset>
+            <fieldset class="form-group">
                 <legend>La Livraison</legend>
                 <p>Etes-vous satisfait de la livraison ?</p>
-                <input type="radio" id="livraison-5" name="note-livraison" value="5">
-                <label for="livraison-5">Excellent</label>
-                
-                <input type="radio" id="livraison-3" name="note-livraison" value="3">
-                <label for="livraison-3">Correct</label>
-                
-                <input type="radio" id="livraison-1" name="note-livraison" value="1">
-                <label for="livraison-1">À améliorer</label>
+
+                <div class="radio-group">
+                    <input type="radio" id="livraison-5" name="note-livraison" value="5">
+                    <label for="livraison-5">Excellent</label>
+                </div>
+
+                 <div class="radio-group">
+                    <input type="radio" id="livraison-3" name="note-livraison" value="3">
+                    <label for="livraison-3">Correct</label>
+                </div>
+
+                 <div class="radio-group">
+                    <input type="radio" id="livraison-1" name="note-livraison" value="1">
+                    <label for="livraison-1">À améliorer</label>
+                </div>
             </fieldset><br>
 
-            <fieldset>
+            <fieldset class="form-group">
                 <legend>Les Produits</legend>
                 <p>Comment était votre repas ?</p>
-                <input type="radio" id="produit-5" name="note-produit" value="5">
-                <label for="produit-5">Délicieux</label>
-                
-                <input type="radio" id="produit-3" name="note-produit" value="3">
-                <label for="produit-3">Bon</label>
-                
-                <input type="radio" id="produit-1" name="note-produit" value="1">
-                <label for="produit-1">Décevant</label>
+                <div class="radio-group">
+                    <input type="radio" id="produit-5" name="note-produit" value="5">
+                    <label for="produit-5">Délicieux</label>
+                </div>
+
+                <div class="radio-group">
+                    <input type="radio" id="produit-3" name="note-produit" value="3">
+                    <label for="produit-3">Bon</label>
+                </div>
+
+                 <div class="radio-group">
+                    <input type="radio" id="produit-1" name="note-produit" value="1">
+                    <label for="produit-1">Décevant</label>
+                </div>
             </fieldset><br>
 
-            <section>
+            <div class="form-group">
                 <label for="avis">Un commentaire particulier ?</label><br>
                 <textarea id="avis" name="avis" rows="4" placeholder="Dites-nous en plus..."></textarea>
-            </section>
+            </div><br>
 
-            <button type="submit">Envoyer</button>
+            <button type="submit" class="btn-principal">Envoyer</button>
         </form>
     </main>
 
     <footer>
-        <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
+        <div class="footer-bottom">
+            <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
+        </div>
     </footer>
 </body>
 </html>
