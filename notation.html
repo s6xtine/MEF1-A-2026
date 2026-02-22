@@ -1,79 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--pour que le smartphone n'affiche pas la page en tout petit-->
-    <title>Sip & Spill - Noter ma commande</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laissez un avis - Sip & Spill</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header class="site-header">
-        <h1 class="titre-page">Sip & Spill</h1>
+
+    <header class="form-header">
+        <a href="index.html" class="logo-mini">Sip & Spill</a>
     </header>
 
-    <nav class="main-nav">
-        <a href="index.html">Accueil</a> | 
-        <a href="profil.html">Mon Profil</a> |
-        <a href="connexion.html">Déconnexion</a>
-    </nav>
+    <h1 class="titre-centre">Votre Avis</h1>
 
     <main>
-        <h2 class="titre-section">Merci pour votre commande !</h2>
-        <p>Votre avis nous aide à améliorer nos services.</p>
+        <form action="submit_notation.php" method="POST">
+            
+            <fieldset>
+                <legend>Notez votre expérience</legend>
 
-        <form action="#" method="post">
-            <fieldset class="form-group">
-                <legend>La Livraison</legend>
-                <p>Etes-vous satisfait de la livraison ?</p>
+                <label for="nom">Votre prénom / pseudo :</label>
+                <input type="text" id="nom" name="nom" placeholder="Ex: Serena V." required>
 
-                <div class="radio-group">
-                    <input type="radio" id="livraison-5" name="note-livraison" value="5">
-                    <label for="livraison-5">Excellent</label>
-                </div>
+                <label for="note">Note (sur 5 étoiles) :</label>
+                <input type="number" id="note" name="note" min="1" max="5" placeholder="5" required>
 
-                 <div class="radio-group">
-                    <input type="radio" id="livraison-3" name="note-livraison" value="3">
-                    <label for="livraison-3">Correct</label>
-                </div>
+                <label for="commentaire">Votre commentaire :</label>
+                <textarea id="commentaire" name="commentaire" rows="5" placeholder="Qu'avez-vous pensé de notre brunch ? L'ambiance, les plats..." required></textarea>
+            </fieldset>
 
-                 <div class="radio-group">
-                    <input type="radio" id="livraison-1" name="note-livraison" value="1">
-                    <label for="livraison-1">À améliorer</label>
-                </div>
-            </fieldset><br>
+            <button type="submit">Envoyer mon avis</button>
+            
+            <p><a href="index.html">Retour au menu principal</a></p>
 
-            <fieldset class="form-group">
-                <legend>Les Produits</legend>
-                <p>Comment était votre repas ?</p>
-                <div class="radio-group">
-                    <input type="radio" id="produit-5" name="note-produit" value="5">
-                    <label for="produit-5">Délicieux</label>
-                </div>
-
-                <div class="radio-group">
-                    <input type="radio" id="produit-3" name="note-produit" value="3">
-                    <label for="produit-3">Bon</label>
-                </div>
-
-                 <div class="radio-group">
-                    <input type="radio" id="produit-1" name="note-produit" value="1">
-                    <label for="produit-1">Décevant</label>
-                </div>
-            </fieldset><br>
-
-            <div class="form-group">
-                <label for="avis">Un commentaire particulier ?</label><br>
-                <textarea id="avis" name="avis" rows="4" placeholder="Dites-nous en plus..."></textarea>
-            </div><br>
-
-            <button type="submit" class="btn-principal">Envoyer</button>
         </form>
     </main>
 
     <footer>
         <div class="footer-bottom">
-            <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
+            <p>&copy; 2026 SIP AND SPILL · brunch de 9h à 16h</p>
         </div>
     </footer>
 </body>

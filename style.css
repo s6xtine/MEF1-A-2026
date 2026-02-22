@@ -1,17 +1,11 @@
-
-   :root {
-    /* --- PALETTE DE COULEURS --- */
-    --bg-cream: #FFF5F6;       /* Fond général (Nuage Rose) */
-    --pink-light: #FFD1DC;     /* Rose Ruban (Accents doux) */
-    --pink-mid: #FFC2D1;       /* Rose Bonbon (Cartes) */
-    --pink-border: #FF8FA3;    /* Rose Vif (Bordures 3D) */
-    
-    --red-gossip: #A4161A;     /* Rouge Vif (Alertes / Call to Action) */
-    --bordeaux-chic: #590D22;  /* Bordeaux Sombre (Textes / Contrastes) */
-    
+:root {
+    --bg-cream: #FFF5F6;
+    --pink-light: #FFD1DC;
+    --pink-mid: #FFC2D1;
+    --pink-border: #FF8FA3;
+    --red-gossip: #A4161A;
+    --bordeaux-chic: #590D22;
     --white: #FFFFFF;
-    
-    /* --- OMBRES & EFFETS --- */
     --shadow-soft: 0 5px 15px rgba(89, 13, 34, 0.05);
     --shadow-hover: 0 15px 30px rgba(89, 13, 34, 0.15);
 }
@@ -20,7 +14,7 @@
    RESET & BASES
    ========================================================================== */
 * {
-    box-sizing: border-box; /* Indispensable pour que les paddings ne cassent pas la page */
+    box-sizing: border-box;
 }
 
 body {
@@ -28,14 +22,13 @@ body {
     padding: 0;
     background-color: var(--bg-cream);
     color: var(--bordeaux-chic);
-    font-family: 'Didot', 'Times New Roman', serif; /* Police "Magazine" par défaut */
+    font-family: 'Didot', 'Times New Roman', serif;
     line-height: 1.6;
     font-size: 16px;
 }
 
-/* --- TYPOGRAPHIE --- */
 h1, h2, h3 {
-    font-family: 'Snell Roundhand', 'Brush Script MT', cursive; /* Police "Signature" */
+    font-family: 'Snell Roundhand', 'Brush Script MT', cursive;
     font-weight: normal;
     margin: 0 0 20px 0;
 }
@@ -47,23 +40,18 @@ a {
 }
 
 /* ==========================================================================
-   HEADER (BANDEAU DU HAUT)
+   HEADERS & TITRES
    ========================================================================== */
 .site-header {
     position: relative;
-    /* Image de fond avec filtre bordeaux semi-transparent */
-    background-image: 
-        linear-gradient(rgba(89, 13, 34, 0.6), rgba(89, 13, 34, 0.4)),
-        url('carrelage.jpg'); /* Vérifie bien que l'image est là ! */
-    
+    background-image: linear-gradient(rgba(89, 13, 34, 0.6), rgba(89, 13, 34, 0.4)), url('carrelage.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
     padding: 100px 20px;
     text-align: center;
     color: var(--white);
-    border-bottom: 5px double var(--white); /* Finition "Luxe" */
+    border-bottom: 5px double var(--white);
 }
 
 .titre-page {
@@ -75,14 +63,48 @@ a {
 }
 
 .site-header p {
-    font-family: 'Courier New', monospace; /* Touche Y2K */
+    font-family: 'Courier New', monospace;
     font-size: 1.1rem;
     color: var(--pink-light);
     letter-spacing: 1px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-/* --- MENU UTILISATEUR (Bouton Profil) --- */
+.form-header {
+    background-image: linear-gradient(rgba(89, 13, 34, 0.7), rgba(89, 13, 34, 0.5)), url('carrelage.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 15px 30px;
+    text-align: left;
+    border-bottom: 3px double var(--white);
+    width: 100%;
+}
+
+.logo-mini {
+    font-family: 'Snell Roundhand', cursive;
+    font-size: 2.5rem;
+    color: var(--white);
+    margin: 0;
+    display: inline-block;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.logo-mini:hover {
+    color: var(--pink-mid);
+}
+
+.titre-centre {
+    font-family: 'Snell Roundhand', cursive;
+    font-size: 5rem;
+    color: var(--bordeaux-chic);
+    text-align: center;
+    margin: 40px 0 10px 0;
+    text-shadow: -2px -2px 0 var(--white), 2px -2px 0 var(--white), -2px 2px 0 var(--white), 2px 2px 0 var(--white), 4px 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ==========================================================================
+   MENU UTILISATEUR & NAVIGATION
+   ========================================================================== */
 .user-menu {
     position: absolute;
     top: 20px;
@@ -95,7 +117,7 @@ a {
     color: var(--bordeaux-chic);
     border: 2px solid var(--bordeaux-chic);
     padding: 10px 20px;
-    border-radius: 50px; /* Pill shape */
+    border-radius: 50px;
     font-family: 'Courier New', monospace;
     font-weight: bold;
     cursor: pointer;
@@ -108,7 +130,6 @@ a {
     box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
 }
 
-/* Menu Déroulant */
 .deroulant {
     display: none;
     position: absolute;
@@ -121,34 +142,30 @@ a {
     min-width: 150px;
     margin-top: 10px;
     box-shadow: 5px 5px 0px var(--bordeaux-chic);
+    z-index: 101;
 }
 
-.user-menu:hover .deroulant {
-    display: block;
-}
-
+.user-menu:hover .deroulant { display: block; }
+.user-menu::after { content: ''; display: block; position: absolute; top: 100%; left: 0; width: 100%; height: 15px; }
 .deroulant li { margin-bottom: 5px; }
+
 .deroulant a {
     display: block;
-    padding: 5px;
+    padding: 8px 10px;
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
+    color: var(--bordeaux-chic);
+    font-weight: bold;
+    border-radius: 5px;
 }
-.deroulant a:hover { background-color: var(--bg-cream); color: var(--red-gossip); }
 
+.deroulant a:hover {
+    background-color: var(--bg-cream);
+    color: var(--red-gossip);
+}
 
-/* ==========================================================================
-   NAVIGATION (RUBAN GLOSSY)
-   ========================================================================== */
 .main-nav {
-    background: linear-gradient(
-        135deg, 
-        #FF8FA3 0%,             
-        var(--pink-light) 40%, 
-        #FFFFFF 50%,            /* Reflet lumière */
-        var(--pink-light) 60%, 
-        #FF8FA3 100%            
-    );
+    background: linear-gradient(135deg, #FF8FA3 0%, var(--pink-light) 40%, #FFFFFF 50%, var(--pink-light) 60%, #FF8FA3 100%);
     text-align: center;
     padding: 15px;
     box-shadow: 0 4px 10px rgba(89, 13, 34, 0.1);
@@ -157,6 +174,7 @@ a {
 
 .main-nav ul { padding: 0; margin: 0; list-style: none; }
 .main-nav li { display: inline-block; }
+
 .main-nav a {
     font-family: 'Courier New', monospace;
     font-weight: bold;
@@ -165,28 +183,24 @@ a {
     color: var(--bordeaux-chic);
     padding: 10px 20px;
 }
-.main-nav a:hover { color: var(--white); text-shadow: 1px 1px 0px var(--bordeaux-chic); }
 
+.main-nav a:hover {
+    color: var(--white);
+    text-shadow: 1px 1px 0px var(--bordeaux-chic);
+}
 
 /* ==========================================================================
-   MAIN LAYOUT 
+   LAYOUT PRINCIPAL & SECTIONS ACCUEIL
    ========================================================================== */
 main {
     display: flex;
-    flex-wrap: wrap; /* Permet le retour à la ligne des sections */
+    flex-wrap: wrap;
     width: 100%;
-    gap: 0; /* On gère les espaces dans les sections elles-mêmes */
+    gap: 0;
 }
 
-/* Règle par défaut : Une section prend toute la largeur */
-main > section {
-    width: 100%;
-}
+main > section { width: 100%; }
 
-
-/* ==========================================================================
-   SECTION 1 : RECHERCHE (STYLE Y2K SPLIT)
-   ========================================================================== */
 .search-area {
     display: flex;
     min-height: 500px;
@@ -194,83 +208,28 @@ main > section {
     align-items: stretch;
 }
 
-/* Bloc Gauche (Texte) */
 .search-content {
     flex: 1;
     padding: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Texture grain subtile */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
 .search-content .titre-section {
     font-size: 4.5rem;
-    color: var(--bordeaux-chic); /* Harmonisé bordeaux */
+    color: var(--bordeaux-chic);
     text-shadow: 3px 3px 0px var(--pink-light);
     line-height: 1;
     text-align: left;
 }
 
-/* Formulaire Y2K */
-.search-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 100%;
-}
-
-.search-form input {
-    width: 100%;
-    padding: 20px;
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    background: var(--white);
-    border: none;
-    outline: none;
-    
-    /* BORDURES 3D Windows 95 */
-    border-top: 5px solid #888;
-    border-left: 5px solid #888;
-    border-bottom: 5px solid #FFF;
-    border-right: 5px solid #FFF;
-}
-
-.search-form input:focus {
-    background-color: #FFF0F5;
-    outline: 3px dashed var(--red-gossip);
-    outline-offset: -5px;
-}
-
-.btn-principal {
-    align-self: flex-start;
-    padding: 15px 40px;
-    background-color: var(--red-gossip);
-    color: var(--white);
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: none;
-    
-    /* Bouton en relief */
-    border-top: 3px solid #FF8FA3;
-    border-left: 3px solid #FF8FA3;
-    border-bottom: 3px solid #590D22;
-    border-right: 3px solid #590D22;
-}
-.btn-principal:active {
-    border-top: 3px solid #590D22;
-    border-bottom: 3px solid #FF8FA3;
-    transform: translate(1px, 1px);
-}
-
-/* Bloc Droit (Image) */
 .search-image-wrapper {
     flex: 1;
     position: relative;
 }
+
 .full-image {
     width: 100%;
     height: 100%;
@@ -278,18 +237,11 @@ main > section {
     display: block;
 }
 
-
-/* ==========================================================================
-   SECTION 2 : PRÉSENTATION (DARK MODE CHIC)
-   ========================================================================== */
 .presentation-section {
     background-color: var(--bordeaux-chic);
     color: var(--bg-cream);
-    
-    /* La séparation nette */
     border-top: 6px double var(--white);
     border-bottom: 6px double var(--white);
-    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,106 +266,118 @@ main > section {
     padding-left: 30px;
 }
 
-
-/* ==========================================================================
-   SECTION 3 & 4 : CARTES DUO (Plat du jour / Favoris)
-   ========================================================================== */
-/* CONTENEUR GLOBAL POUR CES SECTIONS */
-/* Note : On utilise le main flex, mais on ajoute un wrapper ou des marges */
-/* Ici, on applique un padding au main container global via une div si besoin, 
-   ou on gère l'espacement sur les sections */
-
-.daily-special, 
-.favorites-section {
-    /* LE CALCUL MAGIQUE : 50% de largeur */
-    width: calc(50% - 40px); 
-    margin: 20px; /* Espace autour */
-    
+.daily-special, .favorites-section {
+    width: calc(50% - 40px);
+    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 50px;
     border-radius: 20px;
-    
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
 }
 
-.daily-special:hover, 
-.favorites-section:hover {
+.daily-special:hover, .favorites-section:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
     z-index: 10;
 }
 
-/* Style Boîte Rose (Plat du Jour) */
 .daily-special {
     background-color: var(--pink-mid);
     border: 3px solid var(--pink-border);
     color: var(--bordeaux-chic);
 }
-.daily-special .titre-section {
-    color: var(--bordeaux-chic);
-    font-size: 3rem;
-}
 
-/* Style Boîte Blanche (Favoris) */
+.daily-special .titre-section { font-size: 3rem; }
+
 .favorites-section {
     background-color: var(--white);
     border: 3px solid var(--bordeaux-chic);
     color: var(--bordeaux-chic);
 }
-.favorites-section .titre-section {
-    font-size: 2.5rem;
-}
 
-/* Styles internes des cartes */
+.favorites-section .titre-section { font-size: 2.5rem; }
+
 .dish-card h3 {
     font-family: 'Didot', serif;
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 5px;
 }
+
 .dish-card p {
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
     color: #888;
 }
 
+.cta-reservation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--bg-cream);
+}
+
+.cta-reservation .titre-section {
+    font-size: 3.5rem;
+    color: var(--bordeaux-chic);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.btn-geant {
+    display: inline-block;
+    background-color: var(--bordeaux-chic);
+    color: var(--white);
+    font-family: 'Didot', serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px 50px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.btn-geant:hover {
+    background-color: var(--pink-mid);
+    color: var(--bordeaux-chic);
+}
 
 /* ==========================================================================
-   BOUTONS & FORMULAIRES CLASSIQUES (Connexion/Inscription)
+   FORMULAIRES (Recherche, Connexion, Inscription)
    ========================================================================== */
-/* ==========================================================================
-   FORMULAIRES STYLISÉS (CONNEXION / INSCRIPTION)
-   ========================================================================== */
+body:has(form:not(.search-form)) {
+    background-image: url('https://images.unsplash.com/photo-1526887593587-a307c1d474dd?q=80&w=2000&auto=format&fit=crop');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-/* 1. LE CONTENEUR DU FORMULAIRE */
-/* On centre le formulaire et on lui donne un look "Carte d'invitation" */
 form {
-    max-width: 600px;        /* Largeur max pour pas que ce soit trop étiré */
-    margin: 40px auto;       /* Centré au milieu de la page */
+    max-width: 600px;
+    margin: 40px auto;
     padding: 40px;
     background-color: var(--white);
-    
-    /* BORDURE DOUBLE (Comme la section présentation) */
     border: 4px double var(--bordeaux-chic);
-    
-    /* Petite ombre portée pour le décoller du fond */
     box-shadow: 10px 10px 0px rgba(89, 13, 34, 0.1);
 }
 
-/* 2. LES GROUPES (FIELDSET) */
-/* On stylise les cadres qui regroupent les infos */
 fieldset {
-    border: 2px solid var(--pink-mid); /* Bordure Rose Bonbon */
+    border: 2px solid var(--pink-mid);
     margin-bottom: 25px;
     padding: 20px;
-    background-color: #FFFAFA; /* Fond très légèrement rosé */
+    background-color: #FFFAFA;
 }
 
-/* LE TITRE DU GROUPE (LEGEND) */
 legend {
     background-color: var(--pink-mid);
     color: var(--bordeaux-chic);
@@ -425,80 +389,81 @@ legend {
     border: 1px solid var(--pink-border);
 }
 
-/* 3. LES TEXTES (LABELS) */
 label {
-    font-family: 'Courier New', monospace; /* Police Rétro */
+    font-family: 'Courier New', monospace;
     font-size: 0.9rem;
     font-weight: bold;
     color: var(--bordeaux-chic);
     margin-bottom: 5px;
-    display: block; /* Force le passage à la ligne */
+    display: block;
 }
 
-/* 4. LES CHAMPS DE SAISIE (INPUTS) */
-/* On reprend le style "Windows 95" de ta barre de recherche */
-input[type="text"], 
-input[type="email"], 
-input[type="password"], 
-input[type="tel"],
-textarea {
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"], textarea {
     width: 100%;
     padding: 15px;
-    margin-bottom: 20px; /* Espace après chaque champ */
+    margin-bottom: 20px;
     background-color: var(--white);
     font-family: 'Courier New', monospace;
     font-size: 1rem;
     color: var(--bordeaux-chic);
-    outline: none; /* On enlève le bleu moche par défaut */
-
-    /* EFFET 3D "CREUSÉ" (SUNKEN) */
-    border-top: 3px solid #CCC;    /* Ombre grise en haut */
-    border-left: 3px solid #CCC;   /* Ombre grise à gauche */
-    border-bottom: 3px solid #FFF; /* Lumière en bas */
-    border-right: 3px solid #FFF;  /* Lumière à droite */
-    
-    /* Petite ombre interne */
+    outline: none;
+    border-top: 3px solid #CCC;
+    border-left: 3px solid #CCC;
+    border-bottom: 3px solid #FFF;
+    border-right: 3px solid #FFF;
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
 }
 
-/* QUAND ON CLIQUE DANS LA CASE */
 input:focus, textarea:focus {
-    background-color: #FFF0F5; /* Devient rose pâle */
+    background-color: #FFF0F5;
     border-color: var(--pink-border);
-    /* Outline pointillé rouge comme sur la recherche */
     outline: 2px dashed var(--red-gossip);
     outline-offset: -5px;
 }
 
-/* 5. LE BOUTON "SE CONNECTER / S'INSCRIRE" */
-input[type="submit"], button[type="submit"] {
-    width: 100%; /* Prend toute la largeur */
+input[type="submit"], button[type="submit"], .btn-principal {
+    width: 100%;
     padding: 15px;
     background-color: var(--bordeaux-chic);
-    color: var(--pink-mid); /* Texte rose sur fond bordeaux */
+    color: var(--pink-mid);
     font-family: 'Arial', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
     cursor: pointer;
     margin-top: 10px;
-    
-    /* EFFET 3D "RESSORTI" (RAISED) */
     border-top: 4px solid var(--pink-light);
     border-left: 4px solid var(--pink-light);
-    border-bottom: 4px solid #330000; /* Noir/Rouge très foncé */
+    border-bottom: 4px solid #330000;
     border-right: 4px solid #330000;
 }
 
-/* QUAND ON CLIQUE SUR LE BOUTON */
-input[type="submit"]:active, button[type="submit"]:active {
-    /* Le bouton s'enfonce */
-    border-top: 4px solid #330000;
-    border-bottom: 4px solid var(--pink-light);
+.btn-principal {
+    background-color: var(--red-gossip);
+    color: var(--white);
+    border-top-color: #FF8FA3;
+    border-left-color: #FF8FA3;
+    border-bottom-color: #590D22;
+    border-right-color: #590D22;
+}
+
+input[type="submit"]:active, button[type="submit"]:active, .btn-principal:active {
+    border-top-color: #330000;
+    border-bottom-color: var(--pink-light);
     transform: translate(2px, 2px);
 }
 
-/* 6. LES LIENS EN BAS (Déjà membre ? etc) */
+.btn-principal:active {
+    border-top-color: #590D22;
+    border-bottom-color: #FF8FA3;
+}
+
 form p {
     text-align: center;
     font-family: 'Didot', serif;
@@ -511,93 +476,328 @@ form a {
     text-decoration: underline;
     font-weight: bold;
 }
+
 form a:hover {
-    background-color: var(--pink-mid); /* Surlignage au survol */
+    background-color: var(--pink-mid);
     text-decoration: none;
 }
 
-/* ==========================================================================
-   LAYOUT SPÉCIAL INSCRIPTION (2 Colonnes)
-   ========================================================================== */
-
-/* 1. LA GRILLE (Seulement si le formulaire a 3 fieldsets) */
 form:has(fieldset:nth-of-type(3)) {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Deux colonnes de largeur égale */
-    gap: 30px; /* Espace entre les colonnes */
-    max-width: 900px; /* On élargit un peu le formulaire pour que tout rentre */
-    align-items: start; /* Les éléments s'alignent en haut */
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 900px;
+    align-items: start;
 }
 
-/* 2. COLONNE DE GAUCHE (Infos Perso + Connexion) */
-/* Le 1er groupe (Perso) : Colonne 1, Ligne 1 */
-form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(1) {
-    grid-column: 1;
-    grid-row: 1;
-    margin-bottom: 0; /* Plus besoin de marge, le gap gère l'espace */
-}
+form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(1) { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(2) { grid-column: 1; grid-row: 2; margin-bottom: 0; }
+form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(3) { grid-column: 2; grid-row: 1 / span 2; height: 100%; margin-bottom: 0; }
 
-/* Le 2ème groupe (Connexion) : Colonne 1, Ligne 2 */
-form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(2) {
-    grid-column: 1;
-    grid-row: 2;
-    margin-bottom: 0;
-}
-
-/* 3. COLONNE DE DROITE (Livraison) */
-/* Le 3ème groupe (Livraison) : Colonne 2, s'étend sur les 2 lignes de gauche */
-form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(3) {
-    grid-column: 2;
-    grid-row: 1 / span 2; /* "Span 2" veut dire "prend la hauteur de 2 lignes" */
-    height: 100%; /* Force le bloc à prendre toute la hauteur dispo */
-    margin-bottom: 0;
-}
-
-/* 4. LE BAS DE PAGE (Bouton et Liens) */
-/* On force ces éléments à prendre toute la largeur en bas */
 form:has(fieldset:nth-of-type(3)) input[type="submit"],
+form:has(fieldset:nth-of-type(3)) button[type="submit"],
 form:has(fieldset:nth-of-type(3)) p,
 form:has(fieldset:nth-of-type(3)) hr {
-    grid-column: 1 / -1; /* "-1" veut dire "jusqu'à la fin" */
+    grid-column: 1 / -1;
     width: 100%;
 }
 
-/* 5. NETTOYAGE */
-/* On cache les balises <br> qui traînent et qui décalent la grille */
-form:has(fieldset:nth-of-type(3)) > br {
-    display: none;
+form:has(fieldset:nth-of-type(3)) > br { display: none; }
+
+/* ==========================================================================
+   PAGE MENU (LA CARTE)
+   ========================================================================== */
+.menu {
+    padding: 40px 5%;
+    background-color: var(--bg-cream);
+}
+
+.menu-nav {
+    text-align: center;
+    margin-bottom: 50px;
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-soft);
+    border: 2px solid var(--pink-mid);
+}
+
+.menu-nav a {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: var(--bordeaux-chic);
+    margin: 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-nav a:hover {
+    color: var(--red-gossip);
+    text-decoration: underline;
+}
+
+.menu-section {
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--pink-border);
+    display: block;
+    text-align: center;
+}
+
+.menu-section:last-of-type { border-bottom: none; }
+
+.menu-section h2 {
+    font-size: 5rem;
+    color: var(--bordeaux-chic);
+    background: transparent;
+    margin: 20px auto 40px auto;
+    text-shadow: 4px 4px 0px var(--bg-cream), 6px 6px 0px var(--pink-mid);
+}
+
+.menu-section h3 {
+    font-family: 'Didot', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--red-gossip);
+    margin: 60px auto 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu-section h3::before, .menu-section h3::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 1px;
+    background-color: var(--pink-border);
+}
+
+.menu-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.menu-list li {
+    background-color: var(--white);
+    border: 3px solid var(--pink-mid);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 4px 4px 0px rgba(89, 13, 34, 0.05);
+}
+
+.menu-list li:hover {
+    transform: translateY(-8px);
+    box-shadow: 8px 8px 0px rgba(89, 13, 34, 0.15);
+    border-color: var(--bordeaux-chic);
+}
+
+.plat-image {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--bg-cream);
+    box-shadow: 0 10px 20px rgba(89, 13, 34, 0.1);
+    margin-bottom: 20px;
+}
+
+.plat-infos {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.item-nom {
+    font-family: 'Didot', serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--bordeaux-chic);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.item-desc {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.item-prix, .prix {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--red-gossip);
+    background-color: var(--pink-light);
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-top: auto;
+    border: 1px solid var(--pink-border);
+}
+
+.menu-list li:not(.plat-avec-image) {
+    border: 2px dashed var(--pink-border);
+    justify-content: center;
+}
+
+.menu-list li:not(.plat-avec-image) span:first-child {
+    font-family: 'Didot', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--bordeaux-chic);
+    text-transform: uppercase;
 }
 
 /* ==========================================================================
-   RESPONSIVE (MOBILE)
+   PAGES INTERNES : PROFIL, COMMANDES, LIVRAISON
    ========================================================================== */
-/* Sur téléphone, on annule la grille pour tout remettre l'un sous l'autre */
-@media (max-width: 768px) {
-    form:has(fieldset:nth-of-type(3)) {
-        display: flex;
-        flex-direction: column;
-    }
+.admin-container, .profile-container, main:has(#adresse-client) {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    border: 3px solid var(--pink-light);
 }
 
-/* ==========================================================================
-   FOND SPÉCIAL POUR LES PAGES DE FORMULAIRE (Connexion, Inscription...)
-   ========================================================================== */
-
-/* On cible le BODY des pages qui ont un formulaire "classique" (pas la recherche) */
-body:has(form:not(.search-form)) {
-    /* L'image de fond (les tuiles roses par exemple) */
-    background-image: url('rose.jpg'); 
-    
-    /* L'image se répète pour remplir tout l'écran */
-    background-repeat: no-repeat; 
-    
-    /* Optionnel : Une taille idéale pour que les tuiles soient jolies */
-    background-size: cover; 
-    
-    /* L'image reste fixe quand on scrolle (effet très moderne) */
-    background-position: center;
-    background-attachment: fixed;
+.sub-titre {
+    color: var(--bordeaux-chic);
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--pink-mid);
+    padding-bottom: 10px;
+    margin: 30px 0 20px 0;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: var(--white);
+    font-family: 'Arial', sans-serif;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+th {
+    background-color: var(--pink-mid);
+    color: var(--bordeaux-chic);
+    padding: 15px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--pink-light);
+    color: #444;
+}
+
+tr:hover td { background-color: #FFF0F5; }
+
+td button {
+    background-color: var(--bordeaux-chic);
+    color: var(--white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    transition: 0.2s;
+}
+
+td button:hover { background-color: var(--red-gossip); }
+
+.info-item, .fidelite {
+    background-color: var(--bg-cream);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px dashed var(--pink-border);
+    margin-bottom: 20px;
+}
+
+.info-item p, .fidelite p {
+    margin: 10px 0;
+    font-family: 'Courier New', monospace;
+    color: var(--bordeaux-chic);
+}
+
+.info-item span {
+    float: right;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.info-item span:hover { opacity: 1; }
+
+.fidelite strong {
+    font-size: 1.5rem;
+    color: var(--red-gossip);
+}
+
+blockquote {
+    background-color: #FFF0F5;
+    border-left: 5px solid var(--red-gossip);
+    padding: 15px 20px;
+    margin: 0 0 20px 0;
+    font-style: italic;
+    font-family: 'Didot', serif;
+    font-size: 1.1rem;
+    color: var(--bordeaux-chic);
+}
+
+.bouton-nav, .bouton-appel, .btn-livreur {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin: 15px 0 10px 0;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.bouton-nav { background-color: var(--bordeaux-chic); color: var(--white); }
+.bouton-appel { background-color: var(--pink-mid); color: var(--bordeaux-chic); }
+
+.btn-livreur {
+    background-color: var(--red-gossip);
+    color: var(--white);
+    padding: 25px;
+    font-size: 1.4rem;
+    margin-top: 40px;
+    border: 4px solid #720e13;
+}
+
+.btn-livreur:active { transform: scale(0.98); }
 
 /* ==========================================================================
    FOOTER
@@ -617,30 +817,37 @@ footer a {
     text-decoration: underline;
 }
 
-
 /* ==========================================================================
-   RESPONSIVE (MOBILE)
+   RESPONSIVE GLOBALE (Tablettes & Mobiles)
    ========================================================================== */
+@media (max-width: 1024px) {
+    .menu-list { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 900px) {
-    /* Le Header */
     .site-header { padding: 60px 20px; }
     .titre-page { font-size: 3.5rem; }
-    
-    /* La Recherche */
     .search-area { flex-direction: column-reverse; }
     .search-image-wrapper { height: 300px; flex: none; }
     .search-content { padding: 30px; }
     .search-content .titre-section { font-size: 3rem; text-align: center; }
-    
-    /* La Présentation */
     .presentation-section { flex-direction: column; text-align: center; gap: 30px; }
     .presentation-section .titre-section { text-align: center; font-size: 3.5rem; }
     .presentation-section p { border-left: none; padding-left: 0; }
-    
-    /* Les Cartes Duo */
-    .daily-special, 
-    .favorites-section {
-        width: 100%; /* Repasse en pleine largeur */
-        margin: 0 0 20px 0; /* Enlève les marges latérales */
+    .daily-special, .favorites-section { width: 100%; margin: 0 0 20px 0; }
+}
+
+@media (max-width: 768px) {
+    form:has(fieldset:nth-of-type(3)) { display: flex; flex-direction: column; }
+    .menu-list { grid-template-columns: 1fr; }
+    .menu-nav {
+        position: relative;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        border-radius: 20px;
     }
+    .admin-container, .profile-container, main:has(#adresse-client) { margin: 20px 10px; padding: 20px; }
+    table { display: block; overflow-x: auto; white-space: nowrap; }
 }
