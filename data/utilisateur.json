@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "nom": "Lechevallier",
+        "prenom": "Morgan",
+        "email": "admin1@cyu.fr",
+        "mot_de_passe": "motdepasse123", 
+        "role": "admin",
+        "telephone": "0601020304",
+        "adresse": "1 avenue du Parc, Cergy",
+        "date_inscription": "2026-03-16"
+    },
+    {
+        "id": 2,
+        "nom": "Deschamps",
+        "prenom": "Sixtine",
+        "email": "admin2@cyu.fr",
+        "mot_de_passe": "admin456", 
+        "role": "admin",
+        "telephone": "0605060708",
+        "adresse": "2 avenue du Parc, Cergy",
+        "date_inscription": "2026-03-16"
+    },
+    {
+        "id": 3,
+        "nom": "Van der Woodsen",
+        "prenom": "Serena",
+        "email": "serena@gossip.com",
+        "mot_de_passe": "brunchlover", 
+        "role": "client",
+        "telephone": "0708091011",
+        "adresse": "Upper East Side, NY",
+        "date_inscription": "2026-03-16"
+    }
+
+    {
+        "id": 4,
+        "nom": "Maxou",
+        "prenom": "Lucie",
+        "email": "lulu@cyu.fr",
+        "mot_de_passe": "mot", 
+        "role": "client",
+        "telephone": "0601020305",
+        "adresse": "3 avenue du Parc, Cergy",
+        "date_inscription": "2026-03-16"
+    },
+    {
+        "id": 5,
+        "nom": "Deleche",
+        "prenom": "Cam",
+        "email": "camcam@cyu.fr",
+        "mot_de_passe": "skate", 
+        "role": "client",
+        "telephone": "0605060708",
+        "adresse": "4 avenue du Parc, Cergy",
+        "date_inscription": "2026-03-16"
+    },
+    {
+        "id": 6,
+        "nom": "Ahoudia",
+        "prenom": "Soso",
+        "email": "soso@gossip.com",
+        "mot_de_passe": "girlInRed", 
+        "role": "client",
+        "telephone": "0708091011",
+        "adresse": "1 parv. marie, NY",
+        "date_inscription": "2026-03-16"
+    },
+    {"id": 7,
+        "nom": "Dadon",
+        "prenom": "Tenzin",
+        "email": "ten@cyu.com",
+        "mot_de_passe": "girlboss", 
+        "role": "client",
+        "telephone": "0708091011",
+        "adresse": "3 parv. marie, NY",
+        "date_inscription": "2026-03-16"
+    }
+
+    
+
+]

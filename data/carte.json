@@ -1,0 +1,30 @@
+{
+    "plats": [
+        {
+            "id": "P01",
+            "categorie": "sale",
+            "nom": "SALMON SPILL TOAST",
+            "description": "Avocat, saumon fumé, œuf poché bio, grenade",
+            "prix": 14.50,
+            "allergenes": ["poisson", "gluten", "oeuf"],
+            "image": "https://img.cuisineaz.com/1280x720/2016/04/28/i17079-oeufs-mollets-au-saumon-fume.webp"
+        },
+        {
+            "id": "P02",
+            "categorie": "boissons",
+            "nom": "Matcha latte",
+            "description": "Matcha de cérémonie, lait d'avoine",
+            "prix": 5.00,
+            "allergenes": [],
+            "image": "https://www.caterermiddleeast.com/cloud/2025/08/20/Brunch-Cake-Matcha-Latte.jpg"
+        }
+    ],
+    "menus": [
+        {
+            "id": "M01",
+            "nom": "Menu Gossip Girl",
+            "description": "1 Plat salé + 1 Plat Sucré + 1 Boisson chaude",
+            "prix_total": 28.00
+        }
+    ]
+}
