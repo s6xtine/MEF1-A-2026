@@ -1,21 +1,28 @@
 <?php
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email_saisi = $_POST['email'];
     $mdp_saisi = $_POST['password'];
 
-    $chemin_fichier = 'data/utilisateurs.json';
+    $chemin_fichier = 'data/utilisateur.json';
 
     if(file_exists($chemin_fichier)) {
         $contenu_json = file_get_contents($chemin_fichier);
         $utilisateurs = json_decode($contenu_json, true);
 
-        foreach($utilisateurs as $user) {
-            if($user['login'] === $email_saisi && $user['mdp'] === $mdp_saisi) {
-                $utilisateur_trouve = $user;
-                break;
+        if (is_array($utilisateurs)) {
+            $utilisateur_trouve = null;
+
+            foreach($utilisateurs as $user) {
+                if($user['login'] === $email_saisi && $user['mdp'] === $mdp_saisi) {
+                    $utilisateur_trouve = $user;
+                    break;
+                }
             }
         }
 
@@ -25,21 +32,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             switch($utilisateur_trouve['role']) {
                 case 'admin':
-                    header('Location: admin.php');
-                    break;
-                case 'restaurateur':
-                    header('Location: restaurateur.php');
+                    header('Location: administrateur.php');
                     break;
                 case 'livreur':
-                    header('Location: livreur.php');
+                    header('Location: livraison.php');
                     break;
-                case 'client':
-                    header('Location: index.php');
+                case 'restaurateur':
+                    header('Location: commandes.php');
                     break;
+                default:
+                        header('Location: index.php');
+                        break;
             }
             exit();
         } else {
             header("Location: connexion.php?erreur=1");
+            exit();
         }
     }
 }
