@@ -1,16 +1,16 @@
 <?php 
 session_start();
 
-if ($SERVER ['REQUEST_METHOD']) {
-    $nom = $POST{'nom'};
-    $prenom = $POST{'prenom'};
-    $email = $POST{'email'};
-    $mot_de_passe = $POST{'mot_de_passe'};
-    $numero_telephone = $POST{'telephone'};
-    $adresse = $POST{'adresse'};
-    $interphone = $POST{'interphone'};
-    $etage = $POST{'etage'};
-    $commentaires = $POST{'commentaires'};
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+    $mot_de_passe = $_POST['password'];
+    $numero_telephone = $_POST['telephone'];
+    $adresse = $_POST['adresse'];
+    $interphone = $_POST['interphone'];
+    $etage = $_POST['etage'];
+    $commentaires = $_POST['commentaires'];
 
     $fichier_json = 'data/utilisateur.json';
     $utilisateurs=[];
@@ -25,20 +25,21 @@ if ($SERVER ['REQUEST_METHOD']) {
         'nom' => $nom,
         'prenom' => $prenom,
         'email' => $email,
-        'mot_de_passe' => $mot_de_passe,
+        'password' => $mot_de_passe,
         'numero_telephone' => $numero_telephone,
         'adresse' => $adresse,
         'interphone' => $interphone,
         'etage' => $etage,
         'commentaires' => $commentaires
     ];
-    $utilisateur[] = $nouvel_utilisateur;
+    $utilisateurs[] = $nouvel_utilisateur;
     $nouveau_contenu_json = json_encode($utilisateurs, JSON_PRETTY_PRINT);
     file_put_contents($fichier_json, $nouveau_contenu_json);
 
-    header('Lcation: connexion.php?sucess=inscription');
+    header('Location: connexion.php?sucess=inscription');
     exit();
 }
+?>
 
 
 

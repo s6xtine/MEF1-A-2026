@@ -15,7 +15,7 @@
     <h1 class="titre-centre">Inscription</h1>
 
     <main>
-        <form action="submit_inscription.php" method="post">
+        <form action="submit_inscription.php" method="POST">
 
             <fieldset>
                 <legend>Informations personnelles</legend>
@@ -59,11 +59,10 @@
             <button type="submit">S'inscrire</button>
 
             <p>Déjà membre ? <a href="connexion.php">Connectez-vous ici</a></p>
-<<<<<<< HEAD
+
             <p><a href="index.html">Retour au menu principal</a></p>
-=======
-            <p><a href="index.php">Retour au menu principal</a></p>
->>>>>>> 264f551 (ok j'ai modifié mauvais fichier)
+            
+
 
         </form>
     </main>
