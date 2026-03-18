@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: connexion.php');
+    exit();
+}
+$chemin_fichier = 'data/utilisateur.json';
+$utilisateurs = [];
+
+if (file_exists($chemin_fichier)) {
+    $contenu_json = file_get_contents($chemin_fichier);
+    $utilisateurs = json_decode($contenu_json, true);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
