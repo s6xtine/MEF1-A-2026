@@ -14,12 +14,12 @@
 
     <nav class="main-nav">
         <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="inscription.html">Page Inscription</a></li>
-            <li><a href="connexion.html">Page Connexion</a></li>
-            <li><a href="profil.html">Page Profil</a></li>
-            <li><a href="commandes.html">Gestion Commandes</a></li>
-            <li><a href="livraison.html">Interface Livreur</a></li>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="inscription.php">Page Inscription</a></li>
+            <li><a href="connexion.php">Page Connexion</a></li>
+            <li><a href="profil.php">Page Profil</a></li>
+            <li><a href="commandes.php">Gestion Commandes</a></li>
+            <li><a href="livraison.php">Interface Livreur</a></li>
         </ul>
     </nav>
 
@@ -39,14 +39,14 @@
                     <td>Doe</td>
                     <td>John</td>
                     <td>john.doe@email.com</td>
-                    <td><a href="profil.html">Voir le profil</a></td> 
+                    <td><a href="profil.php">Voir le profil</a></td> 
                 </tr>
 
                 <tr>
                     <td>Smith</td>
                     <td>Jane</td>
                     <td>jane.smith@email.com</td>
-                    <td><a href="profil.html">Voir le profil</a></td>
+                    <td><a href="profil.php">Voir le profil</a></td>
                 </tr>
             </table>
         </section>
