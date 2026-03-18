@@ -11,7 +11,7 @@
 <body>
 
     <header class="form-header">
-        <a href="index.html" class="logo-mini">Sip & Spill</a>
+        <a href="index.php" class="logo-mini">Sip & Spill</a>
     </header>
 
     <h1 class="titre-centre">Notre Carte</h1>

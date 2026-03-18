@@ -8,7 +8,7 @@
 </head>
 <body>
     <header class="form-header">
-        <a href="index.html" class="logo-mini">Sip & Spill</a>
+        <a href="index.php" class="logo-mini">Sip & Spill</a>
     </header>
 
     <h1 class="titre-centre">Réservez votre table</h1>
@@ -40,7 +40,7 @@
 
             <button type="submit">Réserver</button>
             
-            <p><a href="index.html">Retour au menu principal</a></p>
+            <p><a href="index.php">Retour au menu principal</a></p>
         </form>
     </main>
 

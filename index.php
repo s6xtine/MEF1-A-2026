@@ -76,7 +76,7 @@
 
         <section class="cta-reservation">
             <h2 class="titre-section">Envie de nous rejoindre ?</h2>
-            <a href="reservation.html" class="btn-geant">Réservez Maintenant</a>
+            <a href="reservation.php" class="btn-geant">Réservez Maintenant</a>
         </section>
     </main>
 
