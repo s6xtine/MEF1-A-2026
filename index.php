@@ -18,9 +18,9 @@
         <div class="user-menu">
             <button type="button" class="profile-btn">Mon Profil</button>
             <ul class="deroulant">
-                <li><a href="connexion.html">Connexion</a></li> 
-                <li><a href="inscription.html">S'inscrire</a></li> 
-                <li><a href="administrateur.html">Administration</a></li> 
+                <li><a href="connexion.php">Connexion</a></li> 
+                <li><a href="inscription.php">S'inscrire</a></li> 
+                <li><a href="administrateur.php">Administration</a></li> 
             </ul>
         </div>
     </header>
@@ -29,10 +29,10 @@
     <!-- Menu de navigation -->
     <nav class="main-nav">
         <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="menu.html">Notre Carte</a></li>
-            <li><a href="reservation.html">Réservation</a></li>
-            <li><a href="notation.html">Laissez un avis</a></li>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="menu.php">Notre Carte</a></li>
+            <li><a href="reservation.php">Réservation</a></li>
+            <li><a href="notation.php">Laissez un avis</a></li>
         </ul>
     </nav>
     

@@ -58,7 +58,7 @@
 
             <button type="submit">S'inscrire</button>
 
-            <p>Déjà membre ? <a href="connexion.html">Connectez-vous ici</a></p>
+            <p>Déjà membre ? <a href="connexion.php">Connectez-vous ici</a></p>
             <p><a href="index.html">Retour au menu principal</a></p>
 
         </form>
