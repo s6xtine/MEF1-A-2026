@@ -9,7 +9,7 @@
 
 <body>
     <header class="form-header">
-        <a href="index.html" class="logo-mini">Sip & Spill</a>
+        <a href="index.php" class="logo-mini">Sip & Spill</a>
     </header>
 
     <h1 class="titre-centre">Connexion</h1>
@@ -30,8 +30,8 @@
             
             <button type="submit">Se connecter</button>
 
-            <p>Nouveau chez Sip & Spill ? <a href="inscription.html">Créez un compte ici</a></p>
-            <p><a href="index.html">Retour au menu principal</a></p>
+            <p>Nouveau chez Sip & Spill ? <a href="inscription.php">Créez un compte ici</a></p>
+            <p><a href="index.php">Retour au menu principal</a></p>
 
         </form>
     </main>

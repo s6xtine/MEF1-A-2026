@@ -13,8 +13,8 @@
     </header>
 
     <nav class="main-nav">
-        <a href="index.html">Accueil</a></li>
-        <a href="connexion.html">Déconnexion</a></li> 
+        <a href="index.php">Accueil</a></li>
+        <a href="connexion.php">Déconnexion</a></li> 
     </nav>
 
     <main class="profile-container">

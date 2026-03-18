@@ -9,7 +9,7 @@
 <body>
 
     <header class="form-header">
-        <a href="index.html" class="logo-mini">Sip & Spill</a>
+        <a href="index.php" class="logo-mini">Sip & Spill</a>
     </header>
 
     <h1 class="titre-centre">Inscription</h1>
@@ -58,8 +58,12 @@
 
             <button type="submit">S'inscrire</button>
 
-            <p>Déjà membre ? <a href="connexion.html">Connectez-vous ici</a></p>
+            <p>Déjà membre ? <a href="connexion.php">Connectez-vous ici</a></p>
+<<<<<<< HEAD
             <p><a href="index.html">Retour au menu principal</a></p>
+=======
+            <p><a href="index.php">Retour au menu principal</a></p>
+>>>>>>> 264f551 (ok j'ai modifié mauvais fichier)
 
         </form>
     </main>
