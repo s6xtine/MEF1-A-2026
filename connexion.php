@@ -26,7 +26,8 @@
                 <label for="password">Mot de passe:</label>
                 <input type="password" id="password" name="password" autocomplete="current-password" required>
             </fieldset>
-
+            
+            
             <button type="submit">Se connecter</button>
 
             <p>Nouveau chez Sip & Spill ? <a href="inscription.html">Créez un compte ici</a></p>
