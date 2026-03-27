@@ -18,7 +18,7 @@ session_start()
 
     <nav class="main-nav">
         <a href="index.html">Accueil</a> |
-        <a href="connexion.html">Déconnexion</a>
+        <a href="deconnexion.html">Déconnexion</a>
     </nav>
 
     <main>
