@@ -36,7 +36,7 @@ session_start()
 
             <button type="submit">Envoyer mon avis</button>
             
-            <p><a href="index.html">Retour au menu principal</a></p>
+            <p><a href="index.php">Retour au menu principal</a></p>
 
         </form>
     </main>
