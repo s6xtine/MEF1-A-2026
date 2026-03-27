@@ -17,8 +17,8 @@ session_start()
     </header>
 
     <nav class="main-nav">
-        <a href="index.html">Accueil</a> |
-        <a href="deconnexion.html">Déconnexion</a>
+        <a href="index.php">Accueil</a> |
+        <a href="deconnexion.php">Déconnexion</a>
     </nav>
 
     <main>
