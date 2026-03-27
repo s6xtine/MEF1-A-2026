@@ -108,7 +108,7 @@
         "id": 10,
         "nom": "Martin",
         "prenom": "Paul",
-        "login": "martin paul@gossip.com",
+        "login": "martinpaul@gossip.com",
         "mdp": "password056",
         "role": "restaurateur",
         "telephone": "0601020304",
