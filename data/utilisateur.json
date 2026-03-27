@@ -81,5 +81,39 @@
         "adresse": "3 parv. marie, NY",
         "date_inscription": "2026-03-16",
         "statut": "Regular"
+    },
+    {
+        "id": 8,
+        "nom": "Dupont",
+        "prenom": "Jean",
+        "login": "dptjean@gossip.com",
+        "mdp": "password",
+        "role": "livreur",
+        "telephone": "0601020304",
+        "adresse": "5 avenue du Parc, Cergy",
+        "date_inscription": "2025-12-12"
+    },
+    {
+        "id": 9,
+        "nom": "Durand",
+        "prenom": "Sophie",
+        "login": "dursoph@gossip.com",
+        "mdp": "12345678",
+        "role": "livreur",
+        "telephone": "0605060708",
+        "adresse": "6 avenue du Parc, Cergy",
+        "date_inscription": "2024-10-3"
+    },
+    {
+        "id": 10,
+        "nom": "Martin",
+        "prenom": "Paul",
+        "login": "martin paul@gossip.com",
+        "mdp": "password056",
+        "role": "restaurateur",
+        "telephone": "0601020304",
+        "adresse": "7 avenue du Parc, Cergy",
+        "date_inscription": "2015-04-01"
     }
+
 ]
