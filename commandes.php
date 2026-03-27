@@ -17,9 +17,9 @@ session_start()
     </header>
 
     <nav class="main-nav">
-        <a href="index.html">Accueil</a> | 
-        <a href="administrateur.html">Admin</a> |
-        <a href="connexion.html">Déconnexion</a>
+        <a href="index.php">Accueil</a> | 
+        <a href="modif_menu.php">Modifier la carte</a> |
+        <a href="deconnexion.php">Déconnexion</a>
     </nav>
 
     <main class="admin-container">
