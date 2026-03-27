@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+// Protection : si pas connecté, retour à la connexion
+if (!isset($_SESSION['login'])) {
+    header('Location: connexion.php');
+    exit();
+}
+
+// On récupère les données de la session pour plus de lisibilité
+$nom = $_SESSION['nom'] ?? 'Non renseigné';
+$prenom = $_SESSION['prenom'] ?? 'Non renseigné';
+$email = $_SESSION['login'] ?? 'Non renseigné';
+$tel = $_SESSION['telephone'] ?? 'Non renseigné';
+$adresse = $_SESSION['adresse'] ?? 'Non renseigné';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,29 +30,29 @@
 
     <nav class="main-nav">
         <a href="index.php">Accueil</a></li>
-        <a href="connexion.php">Déconnexion</a></li> 
+        <a href="deconnexion.php">Déconnexion</a></li> 
     </nav>
 
     <main class="profile-container">
-        <h2 class="titre-section">Mon Profil</h2><br>
+    <h2 class="titre-section">Mon Profil</h2><br>
 
-        <section class="infos-personnelles">
-            <h3 class="sub-titre">Mes Informations</h3>
-            <div class="info-item">
-                <p><strong>Nom :</strong> Jean <span>✏️</span></p>
-                <p><strong>Prénom :</strong> Jean <span>✏️</span></p>
-                <p><strong>Email :</strong> jj@gmail.com <span>✏️</span></p>
-                <p><strong>Téléphone :</strong> 06 01 02 03 04 <span>✏️</span></p>
-            </div>
-            <br>
+    <section class="infos-personnelles">
+        <h3 class="sub-titre">Mes Informations</h3>
+        <div class="info-item">
+            <p><strong>Nom :</strong> <?php echo htmlspecialchars($nom); ?> <span>✏️</span></p>
+            <p><strong>Prénom :</strong> <?php echo htmlspecialchars($prenom); ?> <span>✏️</span></p>
+            <p><strong>Email :</strong> <?php echo htmlspecialchars($email); ?> <span>✏️</span></p>
+            <p><strong>Téléphone :</strong> <?php echo htmlspecialchars($tel); ?> <span>✏️</span></p>
+        </div>
+        <br>
 
-            <h3 class="sub-titre">Adresse de livraison</h3>
-            <div class="info-item">
-                <p>123 Rue de la Soif, 95000 Cergy <span>✏️</span></p>
-                <p><strong>Interphone :</strong> B123 <span>✏️</span></p>
-                <p><strong>Étage :</strong> 2ème <span>✏️</span></p>
-            </div>
-        </section>
+        <h3 class="sub-titre">Adresse de livraison</h3>
+        <div class="info-item">
+            <p><?php echo htmlspecialchars($adresse); ?> <span>✏️</span></p>
+            <p><strong>Interphone :</strong> B123 <span>✏️</span></p>
+            <p><strong>Étage :</strong> 2ème <span>✏️</span></p>
+        </div>
+    </section>
 
         <section class="fidelite">
             <h3 class="sub-titre">Mon Compte Fidélité</h3>

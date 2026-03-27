@@ -30,12 +30,8 @@ if (file_exists($chemin_fichier)) {
 
     <nav class="main-nav">
         <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="inscription.php">Page Inscription</a></li>
-            <li><a href="connexion.php">Page Connexion</a></li>
-            <li><a href="profil.php">Page Profil</a></li>
-            <li><a href="commandes.php">Gestion Commandes</a></li>
-            <li><a href="livraison.php">Interface Livreur</a></li>
+            <li><a href="deconnexion.php">Deconnexion</a></li>
+            
         </ul>
     </nav>
 
@@ -43,32 +39,36 @@ if (file_exists($chemin_fichier)) {
         <section class="admin-section">
             <h3 class="sub-titre">Gestion des utilisateurs</h3>
 
-            <table border="1">
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            
-                <tr>
-                    <td>Doe</td>
-                    <td>John</td>
-                    <td>john.doe@email.com</td>
-                    <td><a href="profil.php">Voir le profil</a></td> 
-                </tr>
-
-                <tr>
-                    <td>Smith</td>
-                    <td>Jane</td>
-                    <td>jane.smith@email.com</td>
-                    <td><a href="profil.php">Voir le profil</a></td>
-                </tr>
-            </table>
+   
         </section>
     </main>
 
+    <table border="1">
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email (Login)</th>
+        <th>Rôle</th> <th>Actions</th>
+    </tr>
 
+    <?php if (!empty($utilisateurs)): ?>
+        <?php foreach ($utilisateurs as $user): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($user['nom']); ?></td>
+                <td><?php echo htmlspecialchars($user['prenom']); ?></td>
+                <td><?php echo htmlspecialchars($user['login']); ?></td>
+                <td><?php echo htmlspecialchars($user['role']); ?></td>
+                <td>
+                    <a href="profil.php?id=<?php echo $user['id']; ?>">Voir le profil</a>
+                </td> 
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="5" align="center">Aucun utilisateur trouvé dans le fichier.</td>
+        </tr>
+    <?php endif; ?>
+</table>
     
 
     <footer>
