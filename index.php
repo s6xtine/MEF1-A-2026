@@ -20,12 +20,19 @@ session_start()
         
 
         <div class="user-menu">
-            <button type="button" class="profile-btn">Mon Profil</button>
-            <ul class="deroulant">
-                <li><a href="connexion.php">Connexion</a></li> 
-                <li><a href="inscription.php">S'inscrire</a></li> 
-                <li><a href="administrateur.php">Administration</a></li> 
-            </ul>
+            <?php if (isset($_SESSION['nom'])): ?>
+                <button type="button" class="profile-btn">*</button>
+                <ul class="deroulant">
+                    <li><a href="profil.php">Mon Profil</a></li>
+                    <li><a href="deconnexion.php">Déconnexion</a></li>
+                </ul>
+            <?php else: ?>
+                <button type="button" class="profile-btn">Mon Compte</button>
+                <ul class="deroulant">
+                    <li><a href="connexion.php">Connexion</a></li>
+                    <li><a href="inscription.php">S'inscrire</a></li>
+                </ul>
+            <?php endif; ?>
         </div>
     </header>
 
