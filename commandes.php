@@ -8,7 +8,7 @@
 </head>
 <body>
     <header class="site-header">
-        <h1 class="titre-page">Sip & Spill - Espace Restaurateur</h1>
+        <h1 class="titre-page">Sip & Spill</h1>
         <h2 class="titre-section">Espace Restaurateur</h2>
     </header>
 
