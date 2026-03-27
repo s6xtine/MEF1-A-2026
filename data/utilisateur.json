@@ -9,6 +9,7 @@
         "telephone": "0601020304",
         "adresse": "1 avenue du Parc, Cergy",
         "date_inscription": "2026-03-16"
+        
     },
     {
         "id": 2,
@@ -30,7 +31,8 @@
         "role": "client",
         "telephone": "0708091011",
         "adresse": "Upper East Side, NY",
-        "date_inscription": "2026-03-16"
+        "date_inscription": "2026-03-16",
+        "statut": "Regular"
     },
     {
         "id": 4,
@@ -41,7 +43,8 @@
         "role": "client",
         "telephone": "0601020305",
         "adresse": "3 avenue du Parc, Cergy",
-        "date_inscription": "2026-03-16"
+        "date_inscription": "2026-03-16",
+        "statut": "Premium"
     },
     {
         "id": 5,
@@ -52,7 +55,8 @@
         "role": "client",
         "telephone": "0605060708",
         "adresse": "4 avenue du Parc, Cergy",
-        "date_inscription": "2026-03-16"
+        "date_inscription": "2026-03-16",
+        "statut": "Premium"
     },
     {
         "id": 6,
@@ -63,7 +67,8 @@
         "role": "client",
         "telephone": "0708091011",
         "adresse": "1 parv. marie, NY",
-        "date_inscription": "2026-03-16"
+        "date_inscription": "2026-03-16",
+        "statut": "VIP"
     },
     {
         "id": 7,
@@ -74,6 +79,7 @@
         "role": "client",
         "telephone": "0708091011",
         "adresse": "3 parv. marie, NY",
-        "date_inscription": "2026-03-16"
+        "date_inscription": "2026-03-16",
+        "statut": "Regular"
     }
 ]
