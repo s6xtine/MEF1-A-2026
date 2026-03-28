@@ -1,4 +1,5 @@
 :root {
+    
     --bg-cream: #FFF5F6;
     --pink-light: #FFD1DC;
     --pink-mid: #FFC2D1;
@@ -8,6 +9,11 @@
     --white: #FFFFFF;
     --shadow-soft: 0 5px 15px rgba(89, 13, 34, 0.05);
     --shadow-hover: 0 15px 30px rgba(89, 13, 34, 0.15);
+    --menu-card-bg: #FFFFFF;
+    --menu-text: #2C2C2C;
+    --menu-shadow: 0 12px 28px rgba(89, 13, 34, 0.08);
+    --menu-hover-shadow: 0 20px 40px rgba(89, 13, 34, 0.12);
+    
 }
 
 /* ==========================================================================
@@ -509,23 +515,24 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
    ========================================================================== */
 .menu {
     padding: 40px 5%;
-    background-color: var(--bg-cream);
+    background-color: #FFEFF5;   /* nouvelle teinte légèrement plus rose */
 }
 
+
 .menu-nav {
-    text-align: center;
-    margin-bottom: 50px;
     position: sticky;
     top: 20px;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 15px;
-    border-radius: 50px;
-    box-shadow: var(--shadow-soft);
+    background: rgba(255, 245, 246, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 60px;
+    border: 1px solid var(--pink-light);
+    box-shadow: var(--menu-shadow);
+    text-align: center;
+    padding: 10px 20px;
+    margin-bottom: 50px;
     border: 2px solid var(--pink-mid);
 }
-
 .menu-nav a {
     font-family: 'Courier New', monospace;
     font-weight: bold;
@@ -539,6 +546,8 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     color: var(--red-gossip);
     text-decoration: underline;
 }
+
+
 
 .menu-section {
     margin-bottom: 60px;
@@ -569,7 +578,6 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     justify-content: center;
     gap: 20px;
 }
-
 .menu-section h3::before, .menu-section h3::after {
     content: "";
     display: block;
@@ -577,6 +585,7 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     height: 1px;
     background-color: var(--pink-border);
 }
+
 
 .menu-list {
     display: grid;
@@ -586,6 +595,7 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     margin: 0;
     list-style: none;
 }
+
 
 .menu-list li {
     background-color: var(--white);
@@ -602,26 +612,24 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
 
 .menu-list li:hover {
     transform: translateY(-8px);
-    box-shadow: 8px 8px 0px rgba(89, 13, 34, 0.15);
-    border-color: var(--bordeaux-chic);
+    box-shadow: var(--menu-hover-shadow);
+    border-color: (--bordeaux-chic);
 }
 
 .plat-image {
-    width: 220px;
-    height: 220px;
+    width: 100%;
+    height: 260px;
     object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid var(--bg-cream);
-    box-shadow: 0 10px 20px rgba(89, 13, 34, 0.1);
-    margin-bottom: 20px;
+    border-radius: 28px 28px 0 0;
+    margin-bottom: 0;
+    border: none;
+    box-shadow: none;
 }
-
 .plat-infos {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
-
 .item-nom {
     font-family: 'Didot', serif;
     font-size: 1.3rem;
@@ -663,6 +671,70 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     margin-bottom: 15px;
     color: var(--bordeaux-chic);
     text-transform: uppercase;
+}
+.btn-order {
+    display: inline-block;
+    background: var(--red-gossip);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 0;
+    margin: 0 20px 20px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+    text-align: center;
+    cursor: pointer;
+}
+.btn-order:hover {
+    background: #8B1A1F;
+    transform: scale(1.02);
+}
+.promo-banner {
+    background: var(--pink-light);
+    border-radius: 40px;
+    padding: 30px 40px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: var(--menu-shadow);
+}
+.promo-banner h2 {
+    font-family: 'Snell Roundhand', cursive;
+    font-size: 2.2rem;
+    color: var(--bordeaux-chic);
+    margin: 0;
+}
+.promo-banner p {
+    font-family: 'Poppins', sans-serif;
+    color: var(--bordeaux-chic);
+    margin: 5px 0 0;
+}
+.promo-badge {
+    background: var(--red-gossip);
+    color: white;
+    padding: 8px 24px;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.btn-promo {
+    background: var(--bordeaux-chic);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+.btn-promo:hover {
+    background: var(--red-gossip);
 }
 
 /* ==========================================================================
