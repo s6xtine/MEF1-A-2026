@@ -28,8 +28,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if($utilisateur_trouve) {
+            $_SESSION['id'] = $utilisateur_trouve['id'];
             $_SESSION['nom'] = $utilisateur_trouve['nom'];
+            $_SESSION['prenom'] = $utilisateur_trouve['prenom'];
+            $_SESSION['login'] = $utilisateur_trouve['login'];
             $_SESSION['role'] = $utilisateur_trouve['role'];
+            $_SESSION['statut'] = $utilisateur_trouve['statut'] ?? 'Regular'; 
+            $_SESSION['telephone'] = $utilisateur_trouve['telephone'] ?? 'Non renseigné';
+            $_SESSION['adresse'] = $utilisateur_trouve['adresse'] ?? 'Non renseignée';
+            $_SESSION['points'] = $utilisateur_trouve['points'] ?? 0;
             
             switch($utilisateur_trouve['role']) {
                 case 'admin':
