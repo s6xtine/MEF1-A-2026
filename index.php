@@ -25,6 +25,7 @@ session_start()
                 <ul class="deroulant">
                     <li><a href="profil.php">Mon Profil</a></li>
                     <li><a href="deconnexion.php">Déconnexion</a></li>
+                    <li><a href="panier.php">Mon Panier</a></li>
                 </ul>
             <?php else: ?>
                 <button type="button" class="profile-btn">Mon Compte</button>

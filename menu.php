@@ -73,6 +73,17 @@ if (file_exists($fichier_carte)) {
                                 <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span> 
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
                                 <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
+                                <form action="ajoute_panier.php" method="POST" style="margin-top: 15px;">
+                                
+                                <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id'] ?? $menu['id']) ?>">
+                                <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
+                                <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix'] ?? $menu['prix_total']) ?>">
+                                
+                                <label for="quantite">Qté :</label>
+                                <input type="number" name="quantite" value="1" min="1" max="10" style="width: 50px; text-align: center; border-radius: 10px; border: 1px solid var(--pink-border);">
+                                
+                                <button type="submit" class="btn-order" style="margin-top: 10px; width: 100%;">Ajouter</button>
+                            </form>
                             </div>
                         </li>
                     <?php endif; ?>
@@ -91,6 +102,16 @@ if (file_exists($fichier_carte)) {
                                 <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span>
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
                                 <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
+                                <form action="ajoute_panier.php" method="POST" style="margin-top: 15px;">
+                                    <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id'] ?? $menu['id']) ?>">
+                                    <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
+                                    <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix'] ?? $menu['prix_total']) ?>">
+                                    
+                                    <label for="quantite">Qté :</label>
+                                    <input type="number" name="quantite" value="1" min="1" max="10" style="width: 50px; text-align: center; border-radius: 10px; border: 1px solid var(--pink-border);">
+                                    
+                                    <button type="submit" class="btn-order" style="margin-top: 10px; width: 100%;">Ajouter</button>
+                                </form>
                             </div>
                         </li>
                     <?php endif; ?>
@@ -109,6 +130,16 @@ if (file_exists($fichier_carte)) {
                                 <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span>
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
                                 <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
+                                <form action="ajoute_panier.php" method="POST" style="margin-top: 15px;">
+                                    <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id'] ?? $menu['id']) ?>">
+                                    <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
+                                    <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix'] ?? $menu['prix_total']) ?>">
+                                    
+                                    <label for="quantite">Qté :</label>
+                                    <input type="number" name="quantite" value="1" min="1" max="10" style="width: 50px; text-align: center; border-radius: 10px; border: 1px solid var(--pink-border);">
+                                    
+                                    <button type="submit" class="btn-order" style="margin-top: 10px; width: 100%;">Ajouter</button>
+                                </form>
                             </div>
                         </li>
                     <?php endif; ?>
