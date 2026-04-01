@@ -11,6 +11,11 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sip & Spill - Accueil</title>
 </head>
+<?php if (isset($_GET['succes']) && $_GET['succes'] === 'commande'): ?>
+    <div style="background-color: #d4edda; color: #155724; padding: 20px; text-align: center; font-weight: bold; border-bottom: 2px solid #c3e6cb;">
+        🎉 Merci pour votre commande ! Nos chefs se mettent aux fourneaux.
+    </div>
+<?php endif; ?>
 
 <body>
     <!-- En-tête du site -->
