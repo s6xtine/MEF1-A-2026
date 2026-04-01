@@ -1,0 +1,21 @@
+[
+    {
+        "id_commande": "CMD_69cce0f39cc6a",
+        "client": "Client Anonyme",
+        "date": "2026-04-01 11:10:11",
+        "articles": {
+            "B03": {
+                "nom": "Matcha latte",
+                "prix": 5,
+                "quantite": 1
+            },
+            "S01": {
+                "nom": "Oreo shake",
+                "prix": 5,
+                "quantite": 1
+            }
+        },
+        "total": 10,
+        "statut": "En livraison"
+    }
+]

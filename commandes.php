@@ -1,5 +1,30 @@
 <?php
-session_start()
+session_start();
+
+// 1. On lit le fichier des commandes
+$fichier_commandes = 'data/commandes.json';
+$toutes_les_commandes = [];
+
+if (file_exists($fichier_commandes)) {
+    $contenu = file_get_contents($fichier_commandes);
+    if (!empty($contenu)) {
+        $toutes_les_commandes = json_decode($contenu, true);
+        // On inverse pour avoir les plus récentes en premier
+        $toutes_les_commandes = array_reverse($toutes_les_commandes);
+    }
+}
+
+// 2. On trie les commandes selon leur statut
+$commandes_a_preparer = [];
+$commandes_en_livraison = [];
+
+foreach ($toutes_les_commandes as $cmd) {
+    if ($cmd['statut'] === 'En préparation') {
+        $commandes_a_preparer[] = $cmd;
+    } elseif ($cmd['statut'] === 'En livraison' || $cmd['statut'] === 'En route') {
+        $commandes_en_livraison[] = $cmd;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,48 +52,71 @@ session_start()
 
         <section id="a-preparer">
             <h4 class="sub-titre">Commandes à préparer</h4>
-            <table border="1">
+            <table border="1" style="width: 100%; text-align: left;">
                 <tr>
                     <th>N° Commande</th>
                     <th>Détails des plats</th>
                     <th>Heure de commande</th>
                     <th>Action</th>
                 </tr>
-                <tr>
-                    <td>#1001</td>
-                    <td>Cappuccino</td>
-                    <td>12:15</td>
-                    <td>
-                    <button type="button">Passer en livraison</button> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>#1002</td>
-                    <td>Brioche perdue</td>
-                    <td>12:20</td>
-                    <td>
-                    <button type="button">Passer en livraison</button> 
-                    </td>
-                </tr>
-
+                
+                <?php if (empty($commandes_a_preparer)): ?>
+                    <tr>
+                        <td colspan="4" style="text-align: center;">Aucune commande à préparer.</td>
+                    </tr>
+                <?php else: ?>
+                    <?php foreach ($commandes_a_preparer as $cmd): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
+                            <td>
+                                <?php 
+                                
+                                $details_plats = [];
+                                foreach ($cmd['articles'] as $article) {
+                                    $details_plats[] = $article['quantite'] . 'x ' . $article['nom'];
+                                }
+                                echo htmlspecialchars(implode(', ', $details_plats));
+                                ?>
+                            </td>
+                            <td><?= date('H:i', strtotime($cmd['date'])) ?></td>
+                            <td>
+                                <form action="update_statut.php" method="POST">
+                                    <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
+                                    <input type="hidden" name="nouveau_statut" value="En livraison">
+                                    <button type="submit">Passer en livraison</button> 
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                
             </table>
         </section>
 
         <section id="en-livraison">
             <h4 class="sub-titre">Commandes en cours de livraison</h4>
-            <table border="1">
+            <table border="1" style="width: 100%; text-align: left;">
                 <tr>
                     <th>N° Commande</th>
                     <th>Livreur</th>
                     <th>Destination</th>
                     <th>Statut</th>
                 </tr>
-                <tr>
-                    <td>#0998</td>
-                    <td>Marc L.</td>
-                    <td>Cergy - Avenue du Parc</td>
-                    <td>En route</td>
-                </tr>
+                
+                <?php if (empty($commandes_en_livraison)): ?>
+                    <tr>
+                        <td colspan="4" style="text-align: center;">Aucune commande en livraison.</td>
+                    </tr>
+                <?php else: ?>
+                    <?php foreach ($commandes_en_livraison as $cmd): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
+                            <td>Non assigné</td> <td><?= htmlspecialchars($cmd['client']) ?></td>
+                            <td><?= htmlspecialchars($cmd['statut']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
             </table>
         </section>
     </main>
