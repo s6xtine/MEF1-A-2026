@@ -5,162 +5,213 @@
             "categorie": "boissons",
             "nom": "Latte",
             "description": "Café espresso doux et mousse de lait",
-            "prix": 4.50,
-            "allergenes": ["lactose"],
-            "image": "https://smallcakesbakery.com/wp-content/uploads/2024/01/capuccino.png"
+            "prix": 4.5,
+            "allergenes": [
+                "lactose"
+            ],
+            "image": "https:\/\/smallcakesbakery.com\/wp-content\/uploads\/2024\/01\/capuccino.png"
         },
         {
             "id": "B02",
             "categorie": "boissons",
             "nom": "Chocolat chaud",
             "description": "Chocolat fondu onctueux, façon grand-mère",
-            "prix": 5.00,
-            "allergenes": ["lactose"],
-            "image": "https://img.fourchette-et-bikini.fr/660x495/2025/06/24/i228227-chocolat-chaud-light-fait-maison.png"
+            "prix": 5,
+            "allergenes": [
+                "lactose"
+            ],
+            "image": "https:\/\/img.fourchette-et-bikini.fr\/660x495\/2025\/06\/24\/i228227-chocolat-chaud-light-fait-maison.png"
         },
         {
             "id": "B03",
             "categorie": "boissons",
             "nom": "Matcha latte",
             "description": "Matcha de cérémonie, lait végétal au choix",
-            "prix": 5.00,
+            "prix": 5,
             "allergenes": [],
-            "image": "https://www.caterermiddleeast.com/cloud/2025/08/20/Brunch-Cake-Matcha-Latte.jpg"
+            "image": "https:\/\/www.caterermiddleeast.com\/cloud\/2025\/08\/20\/Brunch-Cake-Matcha-Latte.jpg"
         },
         {
             "id": "B04",
             "categorie": "boissons",
             "nom": "Thé spécial",
             "description": "Infusion signature aux fleurs séchées",
-            "prix": 4.50,
+            "prix": 4.5,
             "allergenes": [],
-            "image": "https://cdn.pratico-pratiques.com/app/uploads/sites/7/2018/09/11132336/le-the-une-infusion-sante.jpeg"
+            "image": "https:\/\/cdn.pratico-pratiques.com\/app\/uploads\/sites\/7\/2018\/09\/11132336\/le-the-une-infusion-sante.jpeg"
         },
         {
             "id": "S01",
             "categorie": "boissons",
             "nom": "Oreo shake",
             "description": "Milkshake glacé aux brisures d'Oreo",
-            "prix": 5.00,
-            "allergenes": ["lactose", "gluten"],
-            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1bDK2oaEb1Q-v7BGR5IBrTSHrt9gOCna8pw&s"
+            "prix": 5,
+            "allergenes": [
+                "lactose",
+                "gluten"
+            ],
+            "image": "https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcR1bDK2oaEb1Q-v7BGR5IBrTSHrt9gOCna8pw&s"
         },
         {
             "id": "S02",
             "categorie": "boissons",
             "nom": "Lemonade bio",
             "description": "Limonade maison passion et citron vert",
-            "prix": 4.50,
+            "prix": 4.5,
             "allergenes": [],
-            "image": "https://cdn-ikphhgl.nitrocdn.com/MDXiwuZNYFhpWkyKZnkUxOYMelioZPnB/assets/images/optimized/rev-5957e1a/www.destinationcocktails.fr/wp-content/uploads/2026/01/cocktail-chuflay-1-225x300.jpg"
+            "image": "https:\/\/cdn-ikphhgl.nitrocdn.com\/MDXiwuZNYFhpWkyKZnkUxOYMelioZPnB\/assets\/images\/optimized\/rev-5957e1a\/www.destinationcocktails.fr\/wp-content\/uploads\/2026\/01\/cocktail-chuflay-1-225x300.jpg"
         },
         {
             "id": "S03",
             "categorie": "boissons",
             "nom": "Jus d'orange pressé",
             "description": "100% pur jus d'oranges fraîches",
-            "prix": 4.00,
+            "prix": 4,
             "allergenes": [],
-            "image": "https://thumbs.dreamstime.com/b/recette-de-cocktail-mimosa-jus-d-orange-frais-et-champagne-brunch-concept-boisson-un-rafraîchissant-parfait-pour-ou-des-387517754.jpg"
+            "image": "https:\/\/thumbs.dreamstime.com\/b\/recette-de-cocktail-mimosa-jus-d-orange-frais-et-champagne-brunch-concept-boisson-un-rafraîchissant-parfait-pour-ou-des-387517754.jpg"
         },
         {
             "id": "P01",
             "categorie": "sale",
             "nom": "SALMON SPILL TOAST",
             "description": "Avocat, saumon fumé, œuf poché bio, grenade",
-            "prix": 14.50,
-            "allergenes": ["poisson", "gluten", "oeuf"],
-            "image": "https://img.cuisineaz.com/1280x720/2016/04/28/i17079-oeufs-mollets-au-saumon-fume.webp"
+            "prix": 14.5,
+            "allergenes": [
+                "poisson",
+                "gluten",
+                "oeuf"
+            ],
+            "image": "https:\/\/img.cuisineaz.com\/1280x720\/2016\/04\/28\/i17079-oeufs-mollets-au-saumon-fume.webp"
         },
         {
             "id": "P02",
             "categorie": "sale",
             "nom": "PANCAKE BACON",
             "description": "Bacon croustillant, 3 pancakes, œuf poché bio, sirop d'érable",
-            "prix": 13.90,
-            "allergenes": ["gluten", "oeuf", "lactose"],
-            "image": "https://lestresorsderable.com/img/cms/recette/bacon-sirop-erable-260x180_1.jpeg"
+            "prix": 13.9,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose"
+            ],
+            "image": "https:\/\/lestresorsderable.com\/img\/cms\/recette\/bacon-sirop-erable-260x180_1.jpeg"
         },
         {
             "id": "P03",
             "categorie": "sale",
             "nom": "AVOCADO GIRLIES",
             "description": "Crème de chèvre, avocat, épinards, œuf poché bio, tomates confites, noix",
-            "prix": 14.90,
-            "allergenes": ["gluten", "oeuf", "lactose", "fruits à coque"],
-            "image": "https://www.buffalo-grill.fr/sites/default/files/styles/product_full_fallback/public/images/avocado_toast_oct2024.png?itok=nk225Dmm"
+            "prix": 14.9,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose",
+                "fruits à coque"
+            ],
+            "image": "https:\/\/www.buffalo-grill.fr\/sites\/default\/files\/styles\/product_full_fallback\/public\/images\/avocado_toast_oct2024.png?itok=nk225Dmm"
         },
         {
             "id": "P04",
             "categorie": "sale",
             "nom": "OEUF NORVEGIEN",
             "description": "Muffin, saumon fumé, œuf poché bio, sauce hollandaise",
-            "prix": 15.00,
-            "allergenes": ["gluten", "oeuf", "lactose", "poisson"],
-            "image": "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg"
+            "prix": 15,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose",
+                "poisson"
+            ],
+            "image": "https:\/\/images.pexels.com\/photos\/699953\/pexels-photo-699953.jpeg"
         },
         {
             "id": "P05",
             "categorie": "sale",
             "nom": "LADY BOWL",
             "description": "Quinoa, légumes rôtis, feta, pickles, grenade",
-            "prix": 14.50,
-            "allergenes": ["lactose"],
-            "image": "https://images.pexels.com/photos/1213710/pexels-photo-1213710.jpeg"
+            "prix": 14.5,
+            "allergenes": [
+                "lactose"
+            ],
+            "image": "https:\/\/images.pexels.com\/photos\/1213710\/pexels-photo-1213710.jpeg"
         },
         {
             "id": "D01",
             "categorie": "sucre",
             "nom": "CINNAMON ROLLS PANCAKES",
             "description": "3 pancakes, vanille, noix de pécan caramélisées, cannelle, sirop d’érable",
-            "prix": 13.90,
-            "allergenes": ["gluten", "oeuf", "lactose", "fruits à coque"],
-            "image": "https://www.halfbakedharvest.com/wp-content/uploads/2012/11/IMG_9304.jpg"
+            "prix": 13.9,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose",
+                "fruits à coque"
+            ],
+            "image": "https:\/\/www.halfbakedharvest.com\/wp-content\/uploads\/2012\/11\/IMG_9304.jpg"
         },
         {
             "id": "D02",
             "categorie": "sucre",
             "nom": "CHOCO BERRY PANCAKES",
             "description": "Fruits rouges, amandes effilées caramélisées, pépites de chocolat au lait",
-            "prix": 14.50,
-            "allergenes": ["gluten", "oeuf", "lactose", "fruits à coque"],
-            "image": "https://www.frugalmomeh.com/wp-content/uploads/2022/01/Chocolate-chip-pancakes-14-1200x800.jpg"
+            "prix": 14.5,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose",
+                "fruits à coque"
+            ],
+            "image": "https:\/\/www.frugalmomeh.com\/wp-content\/uploads\/2022\/01\/Chocolate-chip-pancakes-14-1200x800.jpg"
         },
         {
             "id": "D03",
             "categorie": "sucre",
             "nom": "FRENCH TOAST CHOCO BERRIES",
             "description": "3 pains perdus moelleux, fruits rouges, caramel, pépites de chocolat au lait",
-            "prix": 14.90,
-            "allergenes": ["gluten", "oeuf", "lactose"],
-            "image": "https://freshberries.com.au/wp-content/uploads/2022/01/french.jpg"
+            "prix": 14.9,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose"
+            ],
+            "image": "https:\/\/freshberries.com.au\/wp-content\/uploads\/2022\/01\/french.jpg"
         },
         {
             "id": "D04",
             "categorie": "sucre",
             "nom": "WAFFLE CHOCO BERRIES",
             "description": "2 gauffres caramélisées, fruits rouges, crème, pépites de chocolat au lait",
-            "prix": 15.00,
-            "allergenes": ["gluten", "oeuf", "lactose"],
-            "image": "https://freshberries.com.au/wp-content/uploads/2021/04/waffles-1.png"
+            "prix": 15,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose"
+            ],
+            "image": "https:\/\/freshberries.com.au\/wp-content\/uploads\/2021\/04\/waffles-1.png"
         },
         {
             "id": "D05",
             "categorie": "sucre",
             "nom": "GRANOLA BOWL",
             "description": "Granola croustillant, fruits frais, miel, fromage blanc",
-            "prix": 8.50,
-            "allergenes": ["lactose", "gluten", "fruits à coque"],
-            "image": "https://d36fw6y2wq3bat.cloudfront.net/recipes/bowl-de-granola-con-fresas-y-kiwi/900/bowl-de-granola-con-fresas-y-kiwi_version_1683710203.jpg"
+            "prix": 8.5,
+            "allergenes": [
+                "lactose",
+                "gluten",
+                "fruits à coque"
+            ],
+            "image": "https:\/\/d36fw6y2wq3bat.cloudfront.net\/recipes\/bowl-de-granola-con-fresas-y-kiwi\/900\/bowl-de-granola-con-fresas-y-kiwi_version_1683710203.jpg"
         },
         {
             "id": "D06",
             "categorie": "sucre",
             "nom": "PUDDING LOVERS",
             "description": "Pudding de chia lait de coco, fruits rouges, granola, sirop d'érable",
-            "prix": 7.90,
-            "allergenes": ["fruits à coque"],
-            "image": "https://i-sam.unimedias.fr/2021/08/30/pudding-chia-fruits-rouges.jpg?auto=format,compress&cs=tinysrgb&ixlib=php-4.1.0"
+            "prix": 7.9,
+            "allergenes": [
+                "fruits à coque"
+            ],
+            "image": "https:\/\/i-sam.unimedias.fr\/2021\/08\/30\/pudding-chia-fruits-rouges.jpg?auto=format,compress&cs=tinysrgb&ixlib=php-4.1.0"
         }
     ],
     "menus": [
@@ -168,19 +219,19 @@
             "id": "M01",
             "nom": "Le Menu Gossip Girl",
             "description": "Pour les reines de l'Upper East Side : 1 Boisson Chaude + 1 Plat Salé au choix + 1 Plat Sucré",
-            "prix_total": 29.00
+            "prix_total": 29
         },
         {
             "id": "M02",
             "nom": "Le Menu Healthy Queen",
             "description": "Léger et frais : Jus d'orange pressé + Lady Bowl + Granola Bowl",
-            "prix_total": 24.00
+            "prix_total": 24
         },
         {
             "id": "M03",
             "nom": "Le Menu Hangover Cure",
             "description": "Pour les lendemains difficiles : Oreo Shake + Pancake Bacon + Waffle Choco Berries",
-            "prix_total": 30.00
+            "prix_total": 30
         }
     ]
 }
