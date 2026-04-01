@@ -4,8 +4,8 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
-    $email = $_POST['email'];
-    $mot_de_passe = $_POST['password'];
+    $email = $_POST['login'];
+    $mot_de_passe = $_POST['mdp'];
     $numero_telephone = $_POST['telephone'];
     $adresse = $_POST['adresse'];
     $interphone = $_POST['interphone'];

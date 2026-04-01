@@ -18,7 +18,7 @@ session_start()
     <h1 class="titre-centre">Réservez votre table</h1>
 
     <main>
-        <form action="/submit-reservation" method="POST">
+        <form action="submit_reservation.php" method="POST">
             
             <fieldset>
                 <legend>Formulaire de Réservation</legend>

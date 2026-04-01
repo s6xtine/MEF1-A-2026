@@ -62,9 +62,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'restaurateur') {
                 <td><?= $plat['prix'] ?> €</td>
                 <td><?= htmlspecialchars($plat['description']) ?></td>
                 <td>
-                    <a href="modif_menu.php?id=<?= $id ?>" class="btn-edit">Modifier</a>
+                    <a href="modif_menu.php?id=<?= $plat['id'] ?>" class="btn-edit">Modifier</a>
                     
-                    <form action="submit-menu.php" method="POST" style="display:inline;">
+                    <form action="submit_menu.php" method="POST" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $plat['id'] ?>">
                         <button type="submit" name="action" value="supprimer" onclick="return confirm('Supprimer ce plat ?')">Supprimer</button>
                     </form>
