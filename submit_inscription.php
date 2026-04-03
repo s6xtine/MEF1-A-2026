@@ -24,13 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'id' => count($utilisateurs) + 1,
         'nom' => $nom,
         'prenom' => $prenom,
-        'email' => $email,
-        'password' => $mot_de_passe,
+        'login' => $email,
+        'mdp' => $mot_de_passe,
         'numero_telephone' => $numero_telephone,
         'adresse' => $adresse,
         'interphone' => $interphone,
         'etage' => $etage,
-        'commentaires' => $commentaires
+        'commentaires' => $commentaires,
+        'role' => 'client'
     ];
     $utilisateurs[] = $nouvel_utilisateur;
     $nouveau_contenu_json = json_encode($utilisateurs, JSON_PRETTY_PRINT);

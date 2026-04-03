@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// 1. On lit le fichier des commandes
 $fichier_commandes = 'data/commandes.json';
 $toutes_les_commandes = [];
 
@@ -14,7 +13,17 @@ if (file_exists($fichier_commandes)) {
     }
 }
 
-// 2. On trie les commandes selon leur statut
+$fichier_users = 'data/utilisateur.json';
+$liste_livreurs = [];
+if (file_exists($fichier_users)) {
+    $users = json_decode(file_get_contents($fichier_users), true);
+    foreach ($users as $u) {
+        if (isset($u['role']) && $u['role'] === 'livreur') {
+            $liste_livreurs[] = $u;
+        }
+    }
+}
+
 $commandes_a_preparer = [];
 $commandes_en_livraison = [];
 
@@ -83,6 +92,16 @@ foreach ($toutes_les_commandes as $cmd) {
                                 <form action="update_statut.php" method="POST">
                                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                                     <input type="hidden" name="nouveau_statut" value="En livraison">
+
+                                    <select name="id_livreur" style="margin-bottom: 10px; display: block;" required>
+                                        <option value="">-- Choisir un livreur --</option>
+                                        <?php foreach ($liste_livreurs as $livreur): ?>
+                                            <option value="<?= $livreur['id'] ?>">
+                                                <?= htmlspecialchars($livreur['prenom'] . " " . $livreur['nom']) ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+
                                     <button type="submit">Passer en livraison</button> 
                                 </form>
                             </td>

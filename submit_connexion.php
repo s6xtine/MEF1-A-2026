@@ -4,11 +4,10 @@ session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-session_start();
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email_saisi = $_POST['email'];
-    $mdp_saisi = $_POST['password'];
+    $email_saisi = $_POST['login'];
+    $mdp_saisi = $_POST['mdp'];
 
     $chemin_fichier = 'data/utilisateur.json';
 

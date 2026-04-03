@@ -17,5 +17,38 @@
         },
         "total": 10,
         "statut": "En livraison"
+    },
+    {
+        "id_commande": "CMD_69cfca3a4525d",
+        "client": "Client Anonyme",
+        "date": "2026-04-03 16:10:02",
+        "articles": {
+            "B02": {
+                "nom": "Chocolat chaud",
+                "prix": 5,
+                "quantite": 1
+            },
+            "P01": {
+                "nom": "SALMON SPILL TOAST",
+                "prix": 14.5,
+                "quantite": 1
+            }
+        },
+        "total": 19.5,
+        "statut": "En livraison"
+    },
+    {
+        "id_commande": "CMD_69cfcc38109cb",
+        "client": "Client Anonyme",
+        "date": "2026-04-03 16:18:32",
+        "articles": {
+            "B01": {
+                "nom": "Latte",
+                "prix": 4.5,
+                "quantite": 1
+            }
+        },
+        "total": 4.5,
+        "statut": "En pr\u00e9paration"
     }
 ]

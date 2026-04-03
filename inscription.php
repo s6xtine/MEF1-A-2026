@@ -38,10 +38,10 @@ session_start()
                 <legend>Informations de connexion</legend>
 
                 <label for="email">Adresse e-mail :</label>
-                <input type="email" id="email" name="email" autocomplete="email" required>
+                <input type="email" id="email" name="login" autocomplete="email" required>
 
                 <label for="password">Mot de passe :</label>
-                <input type="password" id="password" name="password" autocomplete="new-password" required>
+                <input type="password" id="password" name="mdp" autocomplete="new-password" required>
             </fieldset>
 
             <fieldset>
