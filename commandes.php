@@ -26,12 +26,15 @@ if (file_exists($fichier_users)) {
 
 $commandes_a_preparer = [];
 $commandes_en_livraison = [];
+$commandes_terminees = []; 
 
 foreach ($toutes_les_commandes as $cmd) {
     if ($cmd['statut'] === 'En préparation') {
         $commandes_a_preparer[] = $cmd;
     } elseif ($cmd['statut'] === 'En livraison' || $cmd['statut'] === 'En route') {
         $commandes_en_livraison[] = $cmd;
+    } elseif ($cmd['statut'] === 'Livrée') {
+        $commandes_terminees[] = $cmd; 
     }
 }
 ?>
@@ -61,7 +64,7 @@ foreach ($toutes_les_commandes as $cmd) {
 
         <section id="a-preparer">
             <h4 class="sub-titre">Commandes à préparer</h4>
-            <table border="1" style="width: 100%; text-align: left;">
+            <table>
                 <tr>
                     <th>N° Commande</th>
                     <th>Détails des plats</th>
@@ -71,7 +74,7 @@ foreach ($toutes_les_commandes as $cmd) {
                 
                 <?php if (empty($commandes_a_preparer)): ?>
                     <tr>
-                        <td colspan="4" style="text-align: center;">Aucune commande à préparer.</td>
+                        <td colspan="4" >Aucune commande à préparer.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($commandes_a_preparer as $cmd): ?>
@@ -93,10 +96,10 @@ foreach ($toutes_les_commandes as $cmd) {
                                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                                     <input type="hidden" name="nouveau_statut" value="En livraison">
 
-                                    <select name="id_livreur" style="margin-bottom: 10px; display: block;" required>
+                                    <select name="id_livreur" >
                                         <option value="">-- Choisir un livreur --</option>
                                         <?php foreach ($liste_livreurs as $livreur): ?>
-                                            <option value="<?= $livreur['id'] ?>">
+                                            <option value="<?= htmlspecialchars($livreur['prenom'] . ' ' . $livreur['nom']) ?>">
                                                 <?= htmlspecialchars($livreur['prenom'] . " " . $livreur['nom']) ?>
                                             </option>
                                         <?php endforeach; ?>
@@ -114,7 +117,7 @@ foreach ($toutes_les_commandes as $cmd) {
 
         <section id="en-livraison">
             <h4 class="sub-titre">Commandes en cours de livraison</h4>
-            <table border="1" style="width: 100%; text-align: left;">
+            <table border="1">
                 <tr>
                     <th>N° Commande</th>
                     <th>Livreur</th>
@@ -124,14 +127,41 @@ foreach ($toutes_les_commandes as $cmd) {
                 
                 <?php if (empty($commandes_en_livraison)): ?>
                     <tr>
-                        <td colspan="4" style="text-align: center;">Aucune commande en livraison.</td>
+                        <td colspan="4" >Aucune commande en livraison.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($commandes_en_livraison as $cmd): ?>
                         <tr>
                             <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
-                            <td>Non assigné</td> <td><?= htmlspecialchars($cmd['client']) ?></td>
+                            <td><?= htmlspecialchars($cmd['livreur'] ?? 'Non assigné') ?></td> <td><?= htmlspecialchars($cmd['client']) ?></td>
                             <td><?= htmlspecialchars($cmd['statut']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+            </table>
+        </section>
+        <section id="terminees" style="margin-top: 40px;">
+            <h4 class="sub-titre">Historique : Commandes Terminées</h4>
+            <table border="1" style="width: 100%; text-align: left; opacity: 0.8;">
+                <tr>
+                    <th>N° Commande</th>
+                    <th>Client</th>
+                    <th>Livreur</th>
+                    <th>Statut</th>
+                </tr>
+                
+                <?php if (empty($commandes_terminees)): ?>
+                    <tr>
+                        <td colspan="4" style="text-align: center;">Aucune commande terminée.</td>
+                    </tr>
+                <?php else: ?>
+                    <?php foreach ($commandes_terminees as $cmd): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
+                            <td><?= htmlspecialchars($cmd['client']) ?></td>
+                            <td><?= htmlspecialchars($cmd['livreur'] ?? 'Non assigné') ?></td>
+                            <td style="color: green; font-weight: bold;">✅ <?= htmlspecialchars($cmd['statut']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>

@@ -14,12 +14,20 @@ foreach ($_SESSION['panier'] as $article) {
 }
 
 // 3. Récupération du client (ou Anonyme si non connecté)
-$client_email = isset($_SESSION['email']) ? $_SESSION['email'] : 'Client Anonyme';
+if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
+    $client_identite = $_SESSION['prenom'] . ' ' . $_SESSION['nom'];
+} else {
+    $client_identite = 'Client Anonyme';
+}
 
+// 4. Création du "ticket" de commande
 // 4. Création du "ticket" de commande
 $nouvelle_commande = [
     "id_commande" => uniqid('CMD_'),
-    "client" => $client_email,
+    "client" => $client_identite, 
+    "telephone" => $_SESSION['telephone'] ?? 'Non renseigné', // NOUVEAU
+    "adresse" => $_SESSION['adresse'] ?? 'Adresse non renseignée', // NOUVEAU
+    "instructions" => "À remettre en main propre", // (On met ça par défaut pour l'instant)
     "date" => date('Y-m-d H:i:s'),
     "articles" => $_SESSION['panier'],
     "total" => $total_commande,

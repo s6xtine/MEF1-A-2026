@@ -1,39 +1,38 @@
 <?php
 session_start();
 
-
-// 2. On vérifie qu'on a bien reçu les données du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_commande = $_POST['id_commande'] ?? '';
-    $nouveau_statut = $_POST['nouveau_statut'] ?? '';
+    $id_commande = trim($_POST['id_commande'] ?? '');
+    $nouveau_statut = trim($_POST['nouveau_statut'] ?? '');
+    $nom_livreur = trim($_POST['id_livreur'] ?? 'Non assigné');
 
-    // Si on a bien un ID et un statut
     if (!empty($id_commande) && !empty($nouveau_statut)) {
         
         $fichier_commandes = 'data/commandes.json';
 
-        // 3. On ouvre le carnet de commandes
         if (file_exists($fichier_commandes)) {
             $commandes = json_decode(file_get_contents($fichier_commandes), true);
 
             if (is_array($commandes)) {
-                // 4. On fouille dans toutes les commandes pour trouver la bonne
+                
                 foreach ($commandes as $index => $cmd) {
-                    if ($cmd['id_commande'] === $id_commande) {
-                        // BINGO ! On modifie le statut de cette commande précise
+                    if (trim($cmd['id_commande']) === $id_commande) {
+                        // On modifie le statut et le livreur
                         $commandes[$index]['statut'] = $nouveau_statut;
-                        break; // On arrête de fouiller, on a trouvé
+                        $commandes[$index]['livreur'] = $nom_livreur;
+                        break; 
                     }
                 }
 
-                // 5. On referme le carnet et on sauvegarde
+                // On sauvegarde !
                 file_put_contents($fichier_commandes, json_encode($commandes, JSON_PRETTY_PRINT));
             }
         }
     }
 }
 
-// 6. Quoi qu'il arrive, on renvoie le restaurateur sur son tableau de bord
-header('Location: commandes.php');
+// On retourne sur le tableau de bord
+$page_precedente = $_SERVER['HTTP_REFERER'] ?? 'index.php';
+header('Location: ' . $page_precedente);
 exit();
 ?>

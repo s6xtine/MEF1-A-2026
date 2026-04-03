@@ -1,9 +1,30 @@
+<?php
+session_start();
+
+$fichier_commandes = 'data/commandes.json';
+$commandes_en_livraison = [];
+
+if (file_exists($fichier_commandes)) {
+    $contenu = file_get_contents($fichier_commandes);
+    if (!empty($contenu)) {
+        $toutes_les_commandes = json_decode($contenu, true);
+        
+        foreach ($toutes_les_commandes as $cmd) {
+            if ($cmd['statut'] === 'En livraison' || $cmd['statut'] === 'En route') {
+                $commandes_en_livraison[] = $cmd;
+            }
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Sip & Spill - Livraison</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sip & Spill - Livraison</title>
 </head>
 
 <body>
@@ -29,16 +50,17 @@
 
                 <section id="adresse-client">
                     <h3 class="sub-titre">Destination</h3>
-                    <p>123 Rue de la Soif, 95000 Cergy</p>
-                    <a href="https://maps.google.com/?q=123+Rue+de+la+Soif+Cergy" target="_blank" class="bouton-nav">
+                    <p><?= htmlspecialchars($cmd['adresse'] ?? 'Adresse non renseignée') ?></p>
+                    
+                    <a href="https://maps.google.com/?q=<?= urlencode($cmd['adresse'] ?? '') ?>" target="_blank" class="bouton-nav">
                         Itinéraire (Maps)
                     </a> 
                 </section>
 
                 <section id="contact">
                     <h3 class="sub-titre">Contact Client</h3>
-                    <p>Téléphone : 06 01 02 03 04</p> 
-                    <a href="tel:0601020304" class="bouton-appel">Appeler le client</a>
+                    <p>Téléphone : <?= htmlspecialchars($cmd['telephone'] ?? 'Non renseigné') ?></p> 
+                    <a href="tel:<?= htmlspecialchars($cmd['telephone'] ?? '') ?>" class="bouton-appel">Appeler le client</a>
                 </section>
 
                 <section id="instructions">
@@ -50,14 +72,7 @@
                         <?php endforeach; ?>
                     </ul>
 
-                    <blockquote>                                  "Le bâtiment est au fond de la cour"
-                    </blockquote> 
-                </section>
-
-                <section id="acces-immeuble">
-                    <h3 class="sub-titre">Codes et Accès</h3>
-                    <p>Code interphone : 123</p> 
-                    <p>Étage : 2ème étage</p> 
+                    <blockquote>"<?= htmlspecialchars($cmd['instructions'] ?? 'Aucune instruction particulière') ?>"</blockquote> 
                 </section>
 
                 <br><br>

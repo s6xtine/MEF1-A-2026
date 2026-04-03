@@ -1,54 +1,45 @@
 [
     {
-        "id_commande": "CMD_69cce0f39cc6a",
-        "client": "Client Anonyme",
-        "date": "2026-04-01 11:10:11",
+        "id_commande": "CMD_69d0163cf0095",
+        "client": "Cam Deleche",
+        "date": "2026-04-03 21:34:20",
         "articles": {
-            "B03": {
-                "nom": "Matcha latte",
-                "prix": 5,
+            "B01": {
+                "nom": "Latte",
+                "prix": 4.5,
+                "quantite": 2
+            },
+            "S03": {
+                "nom": "Jus d'orange press\u00e9",
+                "prix": 4,
                 "quantite": 1
             },
-            "S01": {
-                "nom": "Oreo shake",
-                "prix": 5,
+            "P03": {
+                "nom": "AVOCADO GIRLIES",
+                "prix": 14.9000000000000003552713678800500929355621337890625,
                 "quantite": 1
             }
         },
-        "total": 10,
-        "statut": "En livraison"
+        "total": 27.89999999999999857891452847979962825775146484375,
+        "statut": "Livr\u00e9e",
+        "livreur": "Non assign\u00e9"
     },
     {
-        "id_commande": "CMD_69cfca3a4525d",
-        "client": "Client Anonyme",
-        "date": "2026-04-03 16:10:02",
+        "id_commande": "CMD_69d017d4593a7",
+        "client": "Jean Dupont",
+        "telephone": "0601020304",
+        "adresse": "5 avenue du Parc, Cergy",
+        "instructions": "\u00c0 remettre en main propre",
+        "date": "2026-04-03 21:41:08",
         "articles": {
-            "B02": {
-                "nom": "Chocolat chaud",
-                "prix": 5,
-                "quantite": 1
-            },
             "P01": {
                 "nom": "SALMON SPILL TOAST",
                 "prix": 14.5,
                 "quantite": 1
             }
         },
-        "total": 19.5,
-        "statut": "En livraison"
-    },
-    {
-        "id_commande": "CMD_69cfcc38109cb",
-        "client": "Client Anonyme",
-        "date": "2026-04-03 16:18:32",
-        "articles": {
-            "B01": {
-                "nom": "Latte",
-                "prix": 4.5,
-                "quantite": 1
-            }
-        },
-        "total": 4.5,
-        "statut": "En pr\u00e9paration"
+        "total": 14.5,
+        "statut": "Livr\u00e9e",
+        "livreur": "Non assign\u00e9"
     }
 ]
