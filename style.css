@@ -1,5 +1,4 @@
 :root {
-    
     --bg-cream: #FFF5F6;
     --pink-light: #FFD1DC;
     --pink-mid: #FFC2D1;
@@ -13,11 +12,10 @@
     --menu-text: #2C2C2C;
     --menu-shadow: 0 12px 28px rgba(89, 13, 34, 0.08);
     --menu-hover-shadow: 0 20px 40px rgba(89, 13, 34, 0.12);
-    
 }
 
 /* ==========================================================================
-   RESET & BASES
+   RESET, BASES & UTILITAIRES GÉNERAUX
    ========================================================================== */
 * {
     box-sizing: border-box;
@@ -44,6 +42,11 @@ a {
     color: inherit;
     transition: 0.3s;
 }
+
+/* Utilitaires globaux d'alignement */
+.text-center { text-align: center; }
+.form-centre { text-align: center; }
+.form-inline { display: inline; }
 
 /* ==========================================================================
    HEADERS & TITRES
@@ -358,7 +361,7 @@ main > section { width: 100%; }
 }
 
 /* ==========================================================================
-   FORMULAIRES (Recherche, Connexion, Inscription)
+   FORMULAIRES (Recherche, Connexion, Inscription, Réservation)
    ========================================================================== */
 body:has(form:not(.search-form)) {
     background-image: url('https://images.unsplash.com/photo-1526887593587-a307c1d474dd?q=80&w=2000&auto=format&fit=crop');
@@ -410,7 +413,7 @@ label {
     gap: 15px;
 }
 
-input[type="text"], input[type="email"], input[type="password"], input[type="tel"], textarea {
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="date"], input[type="time"], input[type="number"], textarea {
     width: 100%;
     padding: 15px;
     margin-bottom: 20px;
@@ -515,9 +518,8 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
    ========================================================================== */
 .menu {
     padding: 40px 5%;
-    background-color: #FFEFF5;   /* nouvelle teinte légèrement plus rose */
+    background-color: #FFEFF5;   
 }
-
 
 .menu-nav {
     position: sticky;
@@ -533,6 +535,7 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     margin-bottom: 50px;
     border: 2px solid var(--pink-mid);
 }
+
 .menu-nav a {
     font-family: 'Courier New', monospace;
     font-weight: bold;
@@ -546,8 +549,6 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     color: var(--red-gossip);
     text-decoration: underline;
 }
-
-
 
 .menu-section {
     margin-bottom: 60px;
@@ -586,7 +587,6 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     background-color: var(--pink-border);
 }
 
-
 .menu-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -595,7 +595,6 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     margin: 0;
     list-style: none;
 }
-
 
 .menu-list li {
     background-color: var(--white);
@@ -625,11 +624,13 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     border: none;
     box-shadow: none;
 }
+
 .plat-infos {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
+
 .item-nom {
     font-family: 'Didot', serif;
     font-size: 1.3rem;
@@ -672,6 +673,7 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     color: var(--bordeaux-chic);
     text-transform: uppercase;
 }
+
 .btn-order {
     display: inline-block;
     background: var(--red-gossip);
@@ -689,10 +691,12 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     text-align: center;
     cursor: pointer;
 }
+
 .btn-order:hover {
     background: #8B1A1F;
     transform: scale(1.02);
 }
+
 .promo-banner {
     background: var(--pink-light);
     border-radius: 40px;
@@ -705,17 +709,20 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     gap: 20px;
     box-shadow: var(--menu-shadow);
 }
+
 .promo-banner h2 {
     font-family: 'Snell Roundhand', cursive;
     font-size: 2.2rem;
     color: var(--bordeaux-chic);
     margin: 0;
 }
+
 .promo-banner p {
     font-family: 'Poppins', sans-serif;
     color: var(--bordeaux-chic);
     margin: 5px 0 0;
 }
+
 .promo-badge {
     background: var(--red-gossip);
     color: white;
@@ -724,6 +731,7 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     font-weight: 700;
     font-size: 1.2rem;
 }
+
 .btn-promo {
     background: var(--bordeaux-chic);
     color: white;
@@ -733,8 +741,150 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
     font-weight: 600;
     transition: 0.2s;
 }
+
 .btn-promo:hover {
     background: var(--red-gossip);
+}
+
+/* Classes ajout panier */
+.form-ajout-panier { margin-top: 15px; }
+.input-qte { 
+    width: 50px; 
+    text-align: center; 
+    border-radius: 10px; 
+    border: 1px solid var(--pink-border); 
+}
+.btn-ajout-panier { margin-top: 10px; width: 100%; }
+.alerte-allergie { 
+    text-align: center; 
+    font-family: 'Courier New', monospace; 
+    color: var(--red-gossip); 
+    margin-top: 50px; 
+    font-weight: bold; 
+}
+
+/* ==========================================================================
+   PAGE PANIER
+   ========================================================================== */
+.panier-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: var(--pink-light);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid var(--pink-border);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.panier-titre {
+    color: var(--bordeaux-chic);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.panier-vide {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--bordeaux-chic);
+}
+
+.table-panier {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.table-panier th {
+    padding: 10px;
+    border-bottom: 2px solid var(--bordeaux-chic);
+    color: var(--bordeaux-chic);
+    text-align: center;
+}
+.table-panier th:first-child { text-align: left; }
+.table-panier th:nth-child(4) { text-align: right; }
+
+.table-panier td {
+    padding: 15px 10px;
+    border-bottom: 1px solid var(--pink-border);
+    text-align: center;
+}
+.table-panier td:first-child { text-align: left; }
+
+.table-panier td:nth-child(4) {
+    text-align: right;
+    color: var(--red-gossip);
+    font-weight: bold;
+}
+
+.table-panier th:last-child,
+.table-panier td:last-child {
+    text-align: center;
+}
+
+.qte-badge {
+    background: white;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--pink-border);
+    font-weight: bold;
+}
+
+.panier-total {
+    text-align: right;
+    font-size: 1.5rem;
+    color: var(--bordeaux-chic);
+    margin-bottom: 30px;
+}
+
+.btn-retirer {
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.btn-retirer:hover {
+    transform: scale(1.2);
+}
+
+.panier-actions-colonne {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+form.form-cybank {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.btn-discret {
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    background-color: transparent;
+    color: var(--bordeaux-chic);
+    border: 1px solid var(--bordeaux-chic);
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+}
+
+.btn-discret:hover {
+    background-color: var(--white);
+    box-shadow: 0 4px 8px rgba(89, 13, 34, 0.1);
 }
 
 /* ==========================================================================
@@ -857,6 +1007,7 @@ select.select-chic option {
     font-size: 1.5rem;
     color: var(--red-gossip);
 }
+.points-fidelite { font-weight: bold; color: var(--red-gossip); font-size: 1.5rem; }
 
 blockquote {
     background-color: #FFF0F5;
@@ -900,6 +1051,30 @@ blockquote {
 
 .btn-livreur:active { transform: scale(0.98); }
 
+/* Classes utilitaires pour Profil & Livraison & Commandes */
+.msg-vide { text-align: center; margin-top: 20px; }
+.client-livraison { text-align: center; font-weight: bold; color: var(--red-gossip); }
+.liste-articles-livraison { list-style-type: none; padding: 0; text-align: center; margin-bottom: 15px; }
+.separateur-livraison { margin: 50px 0; border: 0; border-top: 1px dashed var(--pink-border); }
+.section-historique { margin-top: 40px; }
+.table-historique { width: 100%; text-align: left; opacity: 0.8; }
+.statut-valide { color: green; font-weight: bold; }
+
+/* ==========================================================================
+   MESSAGES DE SUCCÈS (ex: page d'accueil après commande)
+   ========================================================================== */
+.msg-succes {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #c3e6cb;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
 /* ==========================================================================
    FOOTER
    ========================================================================== */
@@ -918,8 +1093,16 @@ footer a {
     text-decoration: underline;
 }
 
+.footer-mentions { 
+    text-align: center; 
+    padding: 20px; 
+    color: var(--pink-mid); 
+    background-color: var(--bordeaux-chic); 
+    margin: 0; 
+}
+
 /* ==========================================================================
-   RESPONSIVE GLOBALE (Tablettes & Mobiles)
+   RESPONSIVE GLOBALE (Tablettes & Mobiles) - TOUJOURS À LA FIN !
    ========================================================================== */
 @media (max-width: 1024px) {
     .menu-list { grid-template-columns: repeat(2, 1fr); }
@@ -952,190 +1135,3 @@ footer a {
     .admin-container, .profile-container, main:has(#adresse-client) { margin: 20px 10px; padding: 20px; }
     table { display: block; overflow-x: auto; white-space: nowrap; }
 }
-
-
-/* ==========================================================================
-   PAGE PANIER
-   ========================================================================== */
-   .panier-container {
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: var(--pink-light);
-    padding: 40px;
-    border-radius: 20px;
-    border: 2px solid var(--pink-border);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.panier-titre {
-    color: var(--bordeaux-chic);
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.panier-vide {
-    text-align: center;
-    font-size: 1.2rem;
-    color: var(--bordeaux-chic);
-}
-
-.table-panier {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
-}
-
-.table-panier th {
-    padding: 10px;
-    border-bottom: 2px solid var(--bordeaux-chic);
-    color: var(--bordeaux-chic);
-    text-align: center;
-}
-.table-panier th:first-child { text-align: left; }
-.table-panier th:nth-child(4) { text-align: right; }
-
-.table-panier td {
-    padding: 15px 10px;
-    border-bottom: 1px solid var(--pink-border);
-    text-align: center;
-}
-.table-panier td:first-child { text-align: left; }
-
-.table-panier td:nth-child(4) {
-    text-align: right;
-    color: var(--red-gossip);
-    font-weight: bold;
-}
-
-.table-panier th:last-child,
-.table-panier td:last-child {
-    text-align: center;
-}
-
-.qte-badge {
-    background: white;
-    padding: 5px 15px;
-    border-radius: 10px;
-    border: 1px solid var(--pink-border);
-    font-weight: bold;
-}
-
-.panier-total {
-    text-align: right;
-    font-size: 1.5rem;
-    color: var(--bordeaux-chic);
-    margin-bottom: 30px;
-}
-
-.btn-retirer {
-    text-decoration: none;
-    font-size: 1.2rem;
-    display: inline-block;
-    transition: transform 0.2s ease;
-}
-
-.btn-retirer:hover {
-    transform: scale(1.2);
-}
-
-.panier-actions-colonne {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-    margin-top: 40px;
-}
-
-form.form-cybank {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
-
-.btn-discret {
-    display: inline-block;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    padding: 8px 20px;
-    font-size: 0.9rem;
-    background-color: transparent;
-    color: var(--bordeaux-chic);
-    border: 1px solid var(--bordeaux-chic);
-    border-radius: 30px;
-    text-decoration: none;
-    font-family: 'Courier New', monospace;
-    transition: all 0.3s ease;
-}
-
-.btn-discret:hover {
-    background-color: var(--white);
-    box-shadow: 0 4px 8px rgba(89, 13, 34, 0.1);
-}
-
-
-/* ==========================================================================
-   MESSAGES DE SUCCÈS (ex: page d'accueil après commande)
-   ========================================================================== */
-.msg-succes {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 20px;
-    text-align: center;
-    font-weight: bold;
-    border-bottom: 2px solid #c3e6cb;
-    border-radius: 10px;
-    margin: 20px auto;
-    max-width: 800px;
-}
-
-/* ==========================================================================
-   CLASSES UTILITAIRES (Nettoyage des styles en ligne)
-   ========================================================================== */
-/* Pour la page Menu */
-.form-ajout-panier { margin-top: 15px; }
-.input-qte { 
-    width: 50px; 
-    text-align: center; 
-    border-radius: 10px; 
-    border: 1px solid var(--pink-border); 
-}
-.btn-ajout-panier { margin-top: 10px; width: 100%; }
-.alerte-allergie { 
-    text-align: center; 
-    font-family: 'Courier New', monospace; 
-    color: var(--red-gossip); 
-    margin-top: 50px; 
-    font-weight: bold; 
-}
-.footer-mentions { 
-    text-align: center; 
-    padding: 20px; 
-    color: var(--pink-mid); 
-    background-color: var(--bordeaux-chic); 
-    margin: 0; 
-}
-
-/* Pour la page Livraison */
-.msg-vide { text-align: center; margin-top: 20px; }
-.client-livraison { text-align: center; font-weight: bold; color: var(--red-gossip); }
-.liste-articles-livraison { list-style-type: none; padding: 0; text-align: center; margin-bottom: 15px; }
-.form-centre { text-align: center; }
-.separateur-livraison { margin: 50px 0; border: 0; border-top: 1px dashed var(--pink-border); }
-
-/* Pour la page Commandes */
-.section-historique { margin-top: 40px; }
-.table-historique { width: 100%; text-align: left; opacity: 0.8; }
-.text-center { text-align: center; }
-.statut-valide { color: green; font-weight: bold; }
-
-/* Divers */
-.form-inline { display: inline; }
-
-/*page profil, txt en gras et rouge */
-.points-fidelite { font-weight: bold; color: var(--red-gossip); font-size: 1.5rem; }
