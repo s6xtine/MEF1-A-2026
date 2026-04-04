@@ -8,22 +8,21 @@ $total_panier = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Panier - Sip & Spill</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="logo">
-            <h1 class="logo-text">Sip & Spill</h1>
-        </div>
-        <nav class="main-nav">
+    <header class="form-header">
+        <a href="index.php" class="logo-mini">Sip & Spill</a>
+    </header>
+
+    <nav class="main-nav">
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="menu.php">Notre Carte</a></li>
                 <li><a href="panier.php" style="color: var(--red-gossip); font-weight: bold;">🛒 Mon Panier</a></li>
             </ul>
         </nav>
-    </header>
 
     <main class="panier-container">
         
