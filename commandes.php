@@ -42,7 +42,7 @@ foreach ($toutes_les_commandes as $cmd) {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sip & Spill - Gestion des Commandes</title>
@@ -96,8 +96,8 @@ foreach ($toutes_les_commandes as $cmd) {
                                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                                     <input type="hidden" name="nouveau_statut" value="En livraison">
 
-                                    <select name="id_livreur" >
-                                        <option value="">-- Choisir un livreur --</option>
+                                    <select name="id_livreur" class="select-chic" required >
+                                        <option value=""> Choisir un livreur </option>
                                         <?php foreach ($liste_livreurs as $livreur): ?>
                                             <option value="<?= htmlspecialchars($livreur['prenom'] . ' ' . $livreur['nom']) ?>">
                                                 <?= htmlspecialchars($livreur['prenom'] . " " . $livreur['nom']) ?>

@@ -613,7 +613,7 @@ form:has(fieldset:nth-of-type(3)) > br { display: none; }
 .menu-list li:hover {
     transform: translateY(-8px);
     box-shadow: var(--menu-hover-shadow);
-    border-color: (--bordeaux-chic);
+    border-color: var(--bordeaux-chic);
 }
 
 .plat-image {
@@ -801,6 +801,35 @@ td button {
 }
 
 td button:hover { background-color: var(--red-gossip); }
+
+select.select-chic {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    background-color: var(--bg-cream);
+    color: var(--bordeaux-chic);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 2px solid var(--pink-border);
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+select.select-chic:hover, select.select-chic:focus {
+    background-color: var(--white);
+    border-color: var(--bordeaux-chic);
+    box-shadow: 3px 3px 0px rgba(89, 13, 34, 0.1);
+}
+
+select.select-chic option {
+    background-color: var(--white);
+    color: var(--bordeaux-chic);
+    font-weight: bold;
+}
 
 .info-item, .fidelite {
     background-color: var(--bg-cream);
