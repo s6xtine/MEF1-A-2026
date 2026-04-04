@@ -9,7 +9,7 @@
     --white: #FFFFFF;
     --shadow-soft: 0 5px 15px rgba(89, 13, 34, 0.05);
     --shadow-hover: 0 15px 30px rgba(89, 13, 34, 0.15);
-    --menu-card-bg: #FFFFFF;
+    --card-bg: #FFFFFF;
     --menu-text: #2C2C2C;
     --menu-shadow: 0 12px 28px rgba(89, 13, 34, 0.08);
     --menu-hover-shadow: 0 20px 40px rgba(89, 13, 34, 0.12);
@@ -992,7 +992,7 @@ footer a {
     text-align: center;
 }
 .table-panier th:first-child { text-align: left; }
-.table-panier th:last-child { text-align: right; }
+.table-panier th:nth-child(4) { text-align: right; }
 
 .table-panier td {
     padding: 15px 10px;
@@ -1000,10 +1000,16 @@ footer a {
     text-align: center;
 }
 .table-panier td:first-child { text-align: left; }
-.table-panier td:last-child {
+
+.table-panier td:nth-child(4) {
     text-align: right;
     color: var(--red-gossip);
     font-weight: bold;
+}
+
+.table-panier th:last-child,
+.table-panier td:last-child {
+    text-align: center;
 }
 
 .qte-badge {
@@ -1021,16 +1027,57 @@ footer a {
     margin-bottom: 30px;
 }
 
-.panier-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.btn-retirer {
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
 }
 
-.lien-continuer {
-    color: var(--bordeaux-chic);
-    text-decoration: underline;
+.btn-retirer:hover {
+    transform: scale(1.2);
 }
+
+.panier-actions-colonne {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+form.form-cybank {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.btn-discret {
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    background-color: transparent;
+    color: var(--bordeaux-chic);
+    border: 1px solid var(--bordeaux-chic);
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+}
+
+.btn-discret:hover {
+    background-color: var(--white);
+    box-shadow: 0 4px 8px rgba(89, 13, 34, 0.1);
+}
+
 
 /* ==========================================================================
    MESSAGES DE SUCCÈS (ex: page d'accueil après commande)
@@ -1046,3 +1093,49 @@ footer a {
     margin: 20px auto;
     max-width: 800px;
 }
+
+/* ==========================================================================
+   CLASSES UTILITAIRES (Nettoyage des styles en ligne)
+   ========================================================================== */
+/* Pour la page Menu */
+.form-ajout-panier { margin-top: 15px; }
+.input-qte { 
+    width: 50px; 
+    text-align: center; 
+    border-radius: 10px; 
+    border: 1px solid var(--pink-border); 
+}
+.btn-ajout-panier { margin-top: 10px; width: 100%; }
+.alerte-allergie { 
+    text-align: center; 
+    font-family: 'Courier New', monospace; 
+    color: var(--red-gossip); 
+    margin-top: 50px; 
+    font-weight: bold; 
+}
+.footer-mentions { 
+    text-align: center; 
+    padding: 20px; 
+    color: var(--pink-mid); 
+    background-color: var(--bordeaux-chic); 
+    margin: 0; 
+}
+
+/* Pour la page Livraison */
+.msg-vide { text-align: center; margin-top: 20px; }
+.client-livraison { text-align: center; font-weight: bold; color: var(--red-gossip); }
+.liste-articles-livraison { list-style-type: none; padding: 0; text-align: center; margin-bottom: 15px; }
+.form-centre { text-align: center; }
+.separateur-livraison { margin: 50px 0; border: 0; border-top: 1px dashed var(--pink-border); }
+
+/* Pour la page Commandes */
+.section-historique { margin-top: 40px; }
+.table-historique { width: 100%; text-align: left; opacity: 0.8; }
+.text-center { text-align: center; }
+.statut-valide { color: green; font-weight: bold; }
+
+/* Divers */
+.form-inline { display: inline; }
+
+/*page profil, txt en gras et rouge */
+.points-fidelite { font-weight: bold; color: var(--red-gossip); font-size: 1.5rem; }

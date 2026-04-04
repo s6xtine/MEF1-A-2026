@@ -29,9 +29,10 @@ if (file_exists($fichier_commandes)) {
         
         $mon_identite = trim($prenom . ' ' . $nom);
         
-        foreach ($toutes_les_commandes as $cmd) {
+       foreach ($toutes_les_commandes as $cmd) {
+            $client_commande = trim($cmd['client']);
             
-            if (trim($cmd['client']) === $mon_identite) {
+            if ($client_commande === $mon_identite || $client_commande === $email) {
                 $mes_commandes[] = $cmd;
             }
         }
@@ -116,15 +117,15 @@ if (file_exists($fichier_commandes)) {
 
         <section class="fidelite">
             <h3 class="sub-titre">Mon Compte Fidélité</h3>
-            <p>Vous avez actuellement : <strong><?= $points ?> points</strong></p>
+            <p>Vous avez actuellement : <span class="points-fidelité"><?= $points ?> points</span></p>
             <p><i>Statut : <?= htmlspecialchars($statut) ?></i></p>
         </section>
 
         <section class="commandes-passees">
             <h3 class="sub-titre">Historique de mes commandes</h3>
-            <table class="custom-table" border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+            <table class="table-panier">
                 <thead>
-                    <tr style="background-color: #f8f8f8;">
+                    <tr>
                         <th>Date</th>
                         <th>Détail de la commande</th>
                         <th>Total</th>
@@ -134,27 +135,25 @@ if (file_exists($fichier_commandes)) {
                 <tbody>
                     <?php if (empty($mes_commandes)): ?>
                         <tr>
-                            <td colspan="4" style="text-align: center; padding: 15px;">Vous n'avez pas encore passé de commande.</td>
+                            <td colspan="4" class="text-center">Vous n'avez pas encore passé de commande.</td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($mes_commandes as $cmd): ?>
                             <tr>
-                                <td style="padding: 10px;"><?= date('d/m/Y', strtotime($cmd['date'])) ?></td>
+                                <td><?= date('d/m/Y', strtotime($cmd['date'])) ?></td>
                                 
-                                <td style="padding: 10px;">
-                                    <ul style="margin: 0; padding-left: 20px; list-style-type: square;">
+                                <td>
+                                    <ul class="liste-articles-livraison">
                                         <?php foreach ($cmd['articles'] as $article): ?>
                                             <li><?= $article['quantite'] ?>x <?= htmlspecialchars($article['nom']) ?></li>
                                         <?php endforeach; ?>
                                     </ul>
-                                    <span style="font-size: 0.8em; color: gray; margin-left: 20px;">Réf: <?= htmlspecialchars($cmd['id_commande']) ?></span>
+                                    <span class="item-desc">Réf: <?= htmlspecialchars($cmd['id_commande']) ?></span>
                                 </td>
 
-                                <td style="padding: 10px; font-weight: bold;">
-                                    <?= number_format($cmd['total'], 2, ',', ' ') ?> €
-                                </td>
+                                <td class="prix"> <?= number_format($cmd['total'], 2, ',', ' ') ?> €</td>        
 
-                                <td style="padding: 10px; font-weight: bold; color: <?= $cmd['statut'] === 'Livrée' ? 'green' : 'var(--bordeaux-chic)' ?>;">
+                                <td class="<?= $cmd['statut'] === 'Livrée' ? 'statut-valide' : '' ?>">
                                     <?= htmlspecialchars($cmd['statut']) ?>
                                 </td>
                             </tr>

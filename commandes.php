@@ -8,7 +8,6 @@ if (file_exists($fichier_commandes)) {
     $contenu = file_get_contents($fichier_commandes);
     if (!empty($contenu)) {
         $toutes_les_commandes = json_decode($contenu, true);
-        // On inverse pour avoir les plus récentes en premier
         $toutes_les_commandes = array_reverse($toutes_les_commandes);
     }
 }
@@ -74,7 +73,7 @@ foreach ($toutes_les_commandes as $cmd) {
                 
                 <?php if (empty($commandes_a_preparer)): ?>
                     <tr>
-                        <td colspan="4" >Aucune commande à préparer.</td>
+                        <td colspan="4" class="text-center">Aucune commande à préparer.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($commandes_a_preparer as $cmd): ?>
@@ -82,7 +81,6 @@ foreach ($toutes_les_commandes as $cmd) {
                             <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
                             <td>
                                 <?php 
-                                
                                 $details_plats = [];
                                 foreach ($cmd['articles'] as $article) {
                                     $details_plats[] = $article['quantite'] . 'x ' . $article['nom'];
@@ -117,7 +115,7 @@ foreach ($toutes_les_commandes as $cmd) {
 
         <section id="en-livraison">
             <h4 class="sub-titre">Commandes en cours de livraison</h4>
-            <table border="1">
+            <table>
                 <tr>
                     <th>N° Commande</th>
                     <th>Livreur</th>
@@ -127,13 +125,14 @@ foreach ($toutes_les_commandes as $cmd) {
                 
                 <?php if (empty($commandes_en_livraison)): ?>
                     <tr>
-                        <td colspan="4" >Aucune commande en livraison.</td>
+                        <td colspan="4" class="text-center">Aucune commande en livraison.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($commandes_en_livraison as $cmd): ?>
                         <tr>
                             <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
-                            <td><?= htmlspecialchars($cmd['livreur'] ?? 'Non assigné') ?></td> <td><?= htmlspecialchars($cmd['client']) ?></td>
+                            <td><?= htmlspecialchars($cmd['livreur'] ?? 'Non assigné') ?></td> 
+                            <td><?= htmlspecialchars($cmd['client']) ?></td>
                             <td><?= htmlspecialchars($cmd['statut']) ?></td>
                         </tr>
                     <?php endforeach; ?>
@@ -141,9 +140,10 @@ foreach ($toutes_les_commandes as $cmd) {
 
             </table>
         </section>
-        <section id="terminees" style="margin-top: 40px;">
+
+        <section id="terminees" class="section-historique">
             <h4 class="sub-titre">Historique : Commandes Terminées</h4>
-            <table border="1" style="width: 100%; text-align: left; opacity: 0.8;">
+            <table class="table-historique">
                 <tr>
                     <th>N° Commande</th>
                     <th>Client</th>
@@ -153,7 +153,7 @@ foreach ($toutes_les_commandes as $cmd) {
                 
                 <?php if (empty($commandes_terminees)): ?>
                     <tr>
-                        <td colspan="4" style="text-align: center;">Aucune commande terminée.</td>
+                        <td colspan="4" class="text-center">Aucune commande terminée.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($commandes_terminees as $cmd): ?>
@@ -161,7 +161,7 @@ foreach ($toutes_les_commandes as $cmd) {
                             <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
                             <td><?= htmlspecialchars($cmd['client']) ?></td>
                             <td><?= htmlspecialchars($cmd['livreur'] ?? 'Non assigné') ?></td>
-                            <td style="color: green; font-weight: bold;">✅ <?= htmlspecialchars($cmd['statut']) ?></td>
+                            <td class="statut-valide">✅ <?= htmlspecialchars($cmd['statut']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>

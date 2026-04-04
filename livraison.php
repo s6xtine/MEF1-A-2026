@@ -40,13 +40,13 @@ if (file_exists($fichier_commandes)) {
     <main>
         <?php if (empty($commandes_en_livraison)): ?>
             <h2 class="titre-section">Aucune livraison en cours</h2>
-            <p style="text-align: center; margin-top: 20px;">Prenez une pause café ! ☕</p>
+            <p class="msg-vide">Prenez une pause café ! ☕</p>
         <?php else: ?>
 
             <?php foreach ($commandes_en_livraison as $cmd): ?>
                 
                 <h2 class="titre-section">Commande <?= htmlspecialchars($cmd['id_commande']) ?> à livrer</h2>
-                <p style="text-align: center; font-weight: bold; color: var(--red-gossip);">Client : <?= htmlspecialchars($cmd['client']) ?></p>
+                <p class="client-livraison">Client : <?= htmlspecialchars($cmd['client']) ?></p>
 
                 <section id="adresse-client">
                     <h3 class="sub-titre">Destination</h3>
@@ -66,7 +66,7 @@ if (file_exists($fichier_commandes)) {
                 <section id="instructions">
                     <h3 class="sub-titre">Contenu & Instructions</h3>
                     
-                    <ul style="list-style-type: none; padding: 0; text-align: center; margin-bottom: 15px;">
+                    <ul class="liste-articles-livraison">
                         <?php foreach ($cmd['articles'] as $article): ?>
                             <li>🛒 <?= $article['quantite'] ?>x <?= htmlspecialchars($article['nom']) ?></li>
                         <?php endforeach; ?>
@@ -77,13 +77,13 @@ if (file_exists($fichier_commandes)) {
 
                 <br><br>
 
-                <form action="update_statut.php" method="POST" style="text-align: center;">
+                <form action="update_statut.php" method="POST" class="form-centre">
                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                     <input type="hidden" name="nouveau_statut" value="Livrée">
                     <button type="submit" id="valider-livraison" class="btn-livreur">Livraison terminée ✅</button>
                 </form>
 
-                <hr style="margin: 50px 0; border: 1px dashed var(--pink-border);">
+                <hr class="separateur-livraison">
             <?php endforeach; ?>
 
         <?php endif; ?>

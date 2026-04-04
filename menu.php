@@ -43,7 +43,7 @@ if (file_exists($fichier_carte)) {
     </nav>
 
     <?php if (isset($_GET['ajout']) && $_GET['ajout'] === 'succes'): ?>
-        <div style="background-color: #d4edda; color: #155724; padding: 15px; text-align: center; font-weight: bold; border-bottom: 2px solid #c3e6cb;">
+        <div class="msg-succes">
             ✨ Ajouté au panier avec succès !
         </div>
     <?php endif; ?>
@@ -69,17 +69,16 @@ if (file_exists($fichier_carte)) {
                             <span class="item-desc"><?= htmlspecialchars($menu['description']) ?></span>
                             <span class="prix"><?= number_format($menu['prix_total'], 2, ',', ' ') ?>€</span>
                             
-                            <form action="ajoute_panier.php" method="POST" style="margin-top: 15px;">
+                            <form action="ajoute_panier.php" method="POST" class="form-ajout-panier">
                                 <input type="hidden" name="id_produit" value="<?= htmlspecialchars($menu['id']) ?>">
                                 <input type="hidden" name="nom" value="<?= htmlspecialchars($menu['nom']) ?>">
                                 <input type="hidden" name="prix" value="<?= htmlspecialchars($menu['prix_total']) ?>">
                                 
                                 <label for="quantite_<?= $menu['id'] ?>">Qté :</label>
-                                <input type="number" id="quantite_<?= $menu['id'] ?>" name="quantite" value="1" min="1" max="10" style="width: 50px; text-align: center; border-radius: 10px; border: 1px solid var(--pink-border);">
+                                <input type="number" id="quantite_<?= $menu['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
                                 
-                                <button type="submit" class="btn-order" style="margin-top: 10px; width: 100%;">Ajouter au panier</button>
+                                <button type="submit" class="btn-order btn-ajout-panier">Ajouter au panier</button>
                             </form>
-
                         </div>
                     </li>
                 <?php endforeach; ?>
@@ -98,15 +97,15 @@ if (file_exists($fichier_carte)) {
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
                                 <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
                                 
-                                <form action="ajoute_panier.php" method="POST" style="margin-top: 15px;">
+                                <form action="ajoute_panier.php" method="POST" class="form-ajout-panier">
                                     <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
                                     <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
                                     <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" style="width: 50px; text-align: center; border-radius: 10px; border: 1px solid var(--pink-border);">
+                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
                                     
-                                    <button type="submit" class="btn-order" style="margin-top: 10px; width: 100%;">Ajouter</button>
+                                    <button type="submit" class="btn-order btn-ajout-panier">Ajouter</button>
                                 </form>
                             </div>
                         </li>
@@ -127,15 +126,15 @@ if (file_exists($fichier_carte)) {
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
                                 <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
                                 
-                                <form action="ajoute_panier.php" method="POST" style="margin-top: 15px;">
+                                <form action="ajoute_panier.php" method="POST" class="form-ajout-panier">
                                     <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
                                     <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
                                     <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" style="width: 50px; text-align: center; border-radius: 10px; border: 1px solid var(--pink-border);">
+                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
                                     
-                                    <button type="submit" class="btn-order" style="margin-top: 10px; width: 100%;">Ajouter</button>
+                                    <button type="submit" class="btn-order btn-ajout-panier">Ajouter</button>
                                 </form>
                             </div>
                         </li>
@@ -156,15 +155,15 @@ if (file_exists($fichier_carte)) {
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
                                 <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
                                 
-                                <form action="ajoute_panier.php" method="POST" style="margin-top: 15px;">
+                                <form action="ajoute_panier.php" method="POST" class="form-ajout-panier">
                                     <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
                                     <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
                                     <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" style="width: 50px; text-align: center; border-radius: 10px; border: 1px solid var(--pink-border);">
+                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
                                     
-                                    <button type="submit" class="btn-order" style="margin-top: 10px; width: 100%;">Ajouter</button>
+                                    <button type="submit" class="btn-order btn-ajout-panier">Ajouter</button>
                                 </form>
                             </div>
                         </li>
@@ -173,14 +172,14 @@ if (file_exists($fichier_carte)) {
             </ul>
         </section>
         
-        <p style="text-align:center; font-family:'Courier New', monospace; color:var(--red-gossip); margin-top:50px; font-weight:bold;">
+        <p class="alerte-allergie">
             🌸 Dis-nous si t'as des allergies, on s'adapte !
         </p>
     </main>
 
     <footer>
         <div class="footer-bottom">
-            <p style="text-align:center; padding: 20px; color: var(--pink-mid); background-color: var(--bordeaux-chic); margin: 0;">&copy; 2026 Spotted: The Brunch - XOXO</p>
+            <p class="footer-mentions">&copy; 2026 Spotted: The Brunch - XOXO</p>
         </div>
     </footer>
 </body>

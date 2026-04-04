@@ -64,7 +64,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'restaurateur') {
                 <td>
                     <a href="modif_menu.php?id=<?= $plat['id'] ?>" class="btn-edit">Modifier</a>
                     
-                    <form action="submit_menu.php" method="POST" style="display:inline;">
+                    <form action="submit_menu.php" method="POST" class="form-inline">
                         <input type="hidden" name="id" value="<?= $plat['id'] ?>">
                         <button type="submit" name="action" value="supprimer" onclick="return confirm('Supprimer ce plat ?')">Supprimer</button>
                     </form>

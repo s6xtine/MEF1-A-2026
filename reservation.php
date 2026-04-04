@@ -42,15 +42,15 @@ session_start()
                 <textarea id="message" name="message" placeholder="Des demandes spéciales ?"></textarea>
             </fieldset>
 
-            <button type="submit">Réserver</button>
+            <button type="submit" class="btn-principal">Réserver</button>
             
-            <p><a href="index.php">Retour au menu principal</a></p>
+            <p class="text-center"><a href="index.php">Retour au menu principal</a></p>
         </form>
     </main>
 
     <footer>
         <div class="footer-bottom">
-            <p>&copy; 2026 Spotted: The Brunch - Réservez votre moment parfait</p>
+            <p class="footer-mentions">&copy; 2026 Spotted: The Brunch - Réservez votre moment parfait</p>
         </div>
     </footer>
 </body>

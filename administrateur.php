@@ -43,12 +43,13 @@ if (file_exists($chemin_fichier)) {
         </section>
     </main>
 
-    <table border="1">
+    <table class="table-panier">
     <tr>
         <th>Nom</th>
         <th>Prénom</th>
         <th>Email (Login)</th>
-        <th>Rôle</th> <th>Actions</th>
+        <th>Rôle</th> 
+        <th>Actions</th>
     </tr>
 
     <?php if (!empty($utilisateurs)): ?>
@@ -65,7 +66,7 @@ if (file_exists($chemin_fichier)) {
         <?php endforeach; ?>
     <?php else: ?>
         <tr>
-            <td colspan="5" align="center">Aucun utilisateur trouvé dans le fichier.</td>
+            <td colspan="5" class="text-center">Aucun utilisateur trouvé dans le fichier.</td>
         </tr>
     <?php endif; ?>
 </table>

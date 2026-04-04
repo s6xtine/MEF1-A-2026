@@ -60,5 +60,19 @@
         },
         "total": 18.4,
         "statut": "En pr\u00e9paration"
+    },
+    {
+        "id_commande": "CMD_B08B3DC9EBD2",
+        "client": "soso@gossip.com",
+        "date": "2026-04-04 15:16:29",
+        "articles": {
+            "M02": {
+                "nom": "Le Menu Healthy Queen",
+                "prix": 24,
+                "quantite": 1
+            }
+        },
+        "total": 24,
+        "statut": "En pr\u00e9paration"
     }
 ]
