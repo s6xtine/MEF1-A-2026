@@ -60,7 +60,7 @@ if (file_exists($chemin_fichier)) {
                 <td><?php echo htmlspecialchars($user['login']); ?></td>
                 <td><?php echo htmlspecialchars($user['role']); ?></td>
                 <td>
-                    <a href="profil_admin.php?id=<?php echo $user['id']; ?>">Voir le profil</a>
+                    <a href="profil_admin.php?id=<?php echo $user['id']; ?>" class="btn-edit">Voir le profil</a>
                 </td> 
             </tr>
         <?php endforeach; ?>
