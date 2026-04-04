@@ -67,9 +67,27 @@ $total_panier = 0;
 
             <div class="panier-actions">
                 <a href="menu.php" class="lien-continuer">Continuer mes achats</a>
-                
-                <form action="submit_commande.php" method="POST">
-                    <button type="submit" class="btn-geant">💳 Payer et Valider</button>
+            
+            // CYBank
+              <?php 
+                require('getapikey.php');
+
+                $vendeur = "MEF-1_A";
+                $transaction = strtoupper(bin2hex(random_bytes(6)));
+                $montant = number_format($total_panier, 2, '.', '');
+                $retour = "http://localhost/MEF1-A-2026/traitement_paiement.php";
+
+                $api_key = getAPIKey($vendeur);
+                $control = md5($api_key . "#" . $transaction . "#" . $montant . "#" . $vendeur . "#" . $retour . "#");
+                ?>
+
+                <form action='https://www.plateforme-smc.fr/cybank/index.php' method='POST'>
+                    <input type='hidden' name='transaction' value='<?= $transaction ?>'>
+                    <input type='hidden' name='montant' value='<?= $montant ?>'>
+                    <input type='hidden' name='vendeur' value='<?= $vendeur ?>'>
+                    <input type='hidden' name='retour' value='<?= $retour ?>'>
+                    <input type='hidden' name='control' value='<?= $control ?>'>
+                    <button type="submit" class="btn-geant">💳 Payer avec CYBank</button>
                 </form>
             </div>
         <?php endif; ?>

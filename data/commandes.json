@@ -16,11 +16,11 @@
             },
             "P03": {
                 "nom": "AVOCADO GIRLIES",
-                "prix": 14.9000000000000003552713678800500929355621337890625,
+                "prix": 14.9,
                 "quantite": 1
             }
         },
-        "total": 27.89999999999999857891452847979962825775146484375,
+        "total": 27.9,
         "statut": "Livr\u00e9e",
         "livreur": "Non assign\u00e9"
     },
@@ -41,5 +41,24 @@
         "total": 14.5,
         "statut": "Livr\u00e9e",
         "livreur": "Non assign\u00e9"
+    },
+    {
+        "id_commande": "CMD_13D1C2051DBB",
+        "client": "soso@gossip.com",
+        "date": "2026-04-04 14:04:49",
+        "articles": {
+            "P02": {
+                "nom": "PANCAKE BACON",
+                "prix": 13.9,
+                "quantite": 1
+            },
+            "B01": {
+                "nom": "Latte",
+                "prix": 4.5,
+                "quantite": 1
+            }
+        },
+        "total": 18.4,
+        "statut": "En pr\u00e9paration"
     }
 ]
