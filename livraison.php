@@ -85,10 +85,4 @@ if (file_exists($fichier_commandes)) {
         <?php endif; ?>
     </main>
     
-    <footer>
-        <div class="footer-bottom">
-            <p class="footer-mentions">© 2026 SIP AND SPILL · Interface Livreur</p>
-        </div>
-    </footer>
-</body>
-</html>
+    <?php include 'footer.php'; ?>

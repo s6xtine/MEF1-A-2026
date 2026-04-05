@@ -1,18 +1,5 @@
 <?php
 session_start();
-
-// pour supprimer un article du panier
-if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id'])) {
-    $id_a_supprimer = $_GET['id'];
-    
-    if (isset($_SESSION['panier'][$id_a_supprimer])) {
-        unset($_SESSION['panier'][$id_a_supprimer]);
-    }
-    
-    header('Location: panier.php');
-    exit();
-}
-
 $total_panier = 0; 
 ?>
 <!DOCTYPE html>
@@ -66,7 +53,7 @@ $total_panier = 0;
                             <td><?= number_format($sous_total, 2, ',', ' ') ?> €</td>
                             
                             <td>
-                                <a href="panier.php?action=supprimer&id=<?= htmlspecialchars($id) ?>" class="btn-retirer" title="Retirer du panier">❌</a>
+                                <a href="traitement/retirer_panier.php?id=<?= htmlspecialchars($id) ?>" class="btn-retirer" title="Retirer du panier">❌</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -80,12 +67,12 @@ $total_panier = 0;
             <div class="panier-actions-colonne">
             
                 <?php 
-                require('getapikey.php');
+                require('traitement/getapikey.php');
 
                 $vendeur = "MEF-1_A";
                 $transaction = strtoupper(bin2hex(random_bytes(6)));
                 $montant = number_format($total_panier, 2, '.', '');
-                $retour = "http://localhost/MEF1-A-2026/traitement_paiement.php";
+                $retour = "http://localhost/MEF1-A-2026/traitement/traitement_paiement.php";
 
                 $api_key = getAPIKey($vendeur);
                 $control = md5($api_key . "#" . $transaction . "#" . $montant . "#" . $vendeur . "#" . $retour . "#");

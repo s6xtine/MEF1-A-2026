@@ -86,7 +86,7 @@ foreach ($toutes_les_commandes as $cmd) {
                             </td>
                             <td><?= date('H:i', strtotime($cmd['date'])) ?></td>
                             <td>
-                                <form action="update_statut.php" method="POST">
+                                <form action="traitement/update_statut.php" method="POST">
                                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                                     <input type="hidden" name="nouveau_statut" value="En livraison">
 
@@ -166,10 +166,4 @@ foreach ($toutes_les_commandes as $cmd) {
         </section>
     </main>
 
-    <footer>
-        <div class="footer-bottom">
-            <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
-        </div>
-    </footer>
-</body>
-</html>
+    <?php include 'footer.php'; ?>

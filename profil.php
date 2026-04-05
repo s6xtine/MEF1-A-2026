@@ -54,7 +54,7 @@ if (file_exists($fichier_commandes)) {
     <main class="profile-container">
         <h2 class="titre-section text-center">Mon Profil</h2>
 
-        <form action="update_profil.php" method="POST">
+        <form action="traitement/update_profil.php" method="POST">
             <section class="infos-personnelles">
                 
                 <h3 class="sub-titre text-center">Mes Informations</h3>
@@ -160,10 +160,4 @@ if (file_exists($fichier_commandes)) {
 
     </main>
 
-    <footer>
-        <div class="footer-bottom">
-            <p class="footer-mentions">© 2026 SIP AND SPILL</p>
-        </div>
-    </footer>
-</body>
-</html>
+    <?php include 'footer.php'; ?>

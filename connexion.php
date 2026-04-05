@@ -19,7 +19,7 @@ session_start()
     <h1 class="titre-centre">Connexion</h1>
 
     <main>
-        <form action="submit_connexion.php" method="post">
+        <form action="traitement/submit_connexion.php" method="post">
             
             <fieldset>
                 <legend>Vos identifiants</legend>
@@ -40,10 +40,4 @@ session_start()
         </form>
     </main>
     
-    <footer>
-        <div class="footer-bottom">
-            <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
-        </div>
-    </footer>
-</body>
-</html>
+    <?php include 'footer.php'; ?>

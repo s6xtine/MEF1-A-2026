@@ -70,7 +70,7 @@ if (file_exists($fichier_carte)) {
                             <span class="item-desc"><?= htmlspecialchars($menu['description']) ?></span>
                             <span class="prix"><?= number_format($menu['prix_total'], 2, ',', ' ') ?>€</span>
                             
-                            <form action="ajoute_panier.php" method="POST" class="form-ajout-panier">
+                            <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
                                 <input type="hidden" name="id_produit" value="<?= htmlspecialchars($menu['id']) ?>">
                                 <input type="hidden" name="nom" value="<?= htmlspecialchars($menu['nom']) ?>">
                                 <input type="hidden" name="prix" value="<?= htmlspecialchars($menu['prix_total']) ?>">
@@ -98,7 +98,7 @@ if (file_exists($fichier_carte)) {
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
                                 <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
                                 
-                                <form action="ajoute_panier.php" method="POST" class="form-ajout-panier">
+                                <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
                                     <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
                                     <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
@@ -127,7 +127,7 @@ if (file_exists($fichier_carte)) {
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
                                 <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
                                 
-                                <form action="ajoute_panier.php" method="POST" class="form-ajout-panier">
+                                <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
                                     <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
                                     <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
@@ -156,7 +156,7 @@ if (file_exists($fichier_carte)) {
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
                                 <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
                                 
-                                <form action="ajoute_panier.php" method="POST" class="form-ajout-panier">
+                                <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
                                     <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
                                     <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
@@ -178,10 +178,4 @@ if (file_exists($fichier_carte)) {
         </p>
     </main>
 
-    <footer>
-        <div class="footer-bottom">
-            <p class="footer-mentions">&copy; 2026 Spotted: The Brunch - XOXO</p>
-        </div>
-    </footer>
-</body>
-</html>
+    <?php include 'footer.php'; ?>

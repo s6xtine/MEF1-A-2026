@@ -2,11 +2,11 @@
 session_start();
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'restaurateur' && $_SESSION['role'] !== 'admin') {
-    header('Location: connexion.php');
+    header('Location: ../connexion.php');
     exit();
 }
 
-$file = 'data/carte.json';
+$file = '../data/carte.json';
 $data = json_decode(file_get_contents($file), true);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'ajouter') {
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'ajouter') {
     
     file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     
-    header('Location: modif_menu.php');
+    header('Location: ../modif_menu.php');
     exit();
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'supprimer') {
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'supprimer') {
 
     file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     
-    header('Location: modif_menu.php');
+    header('Location: ../modif_menu.php');
     exit();
 }
 

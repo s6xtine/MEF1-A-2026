@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email_saisi = $_POST['login'];
     $mdp_saisi = $_POST['mdp'];
 
-    $chemin_fichier = 'data/utilisateur.json';
+    $chemin_fichier = '../data/utilisateur.json';
 
     if(file_exists($chemin_fichier)) {
         $contenu_json = file_get_contents($chemin_fichier);
@@ -39,21 +39,21 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             switch($utilisateur_trouve['role']) {
                 case 'admin':
-                    header('Location: administrateur.php');
+                    header('Location: ../administrateur.php');
                     break;
                 case 'livreur':
-                    header('Location: livraison.php');
+                    header('Location: ../livraison.php');
                     break;
                 case 'restaurateur':
-                    header('Location: commandes.php');
+                    header('Location: ../commandes.php');
                     break;
                 default:
-                        header('Location: index.php');
+                        header('Location: ../index.php');
                         break;
             }
             exit();
         } else {
-            header("Location: connexion.php?erreur=1");
+            header("Location: ../connexion.php?erreur=1");
             exit();
         }
     }

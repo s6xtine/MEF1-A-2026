@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $etage = $_POST['etage'];
     $commentaires = $_POST['commentaires'];
 
-    $fichier_json = 'data/utilisateur.json';
+    $fichier_json = '../data/utilisateur.json';
     $utilisateurs=[];
 
     if (file_exists($fichier_json)){
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nouveau_contenu_json = json_encode($utilisateurs, JSON_PRETTY_PRINT);
     file_put_contents($fichier_json, $nouveau_contenu_json);
 
-    header('Location: connexion.php?succes=inscription');
+    header('Location: ../connexion.php?succes=inscription');
     exit();
 }
 ?>

@@ -35,7 +35,7 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
     <main class="admin-container">
         <h2 class="sub-titre text-center">Modifier le profil de : <?= htmlspecialchars($u['prenom']) . " " . htmlspecialchars($u['nom']) ?></h2>
 
-        <form action="save_admin_changes.php" method="POST" class="form-sans-boite">
+        <form action="traitement/save_admin_change.php" method="POST" class="form-sans-boite">
             <input type="hidden" name="id" value="<?= $u['id'] ?>">
 
             <section class="admin-actions info-item">
@@ -71,10 +71,4 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
         <a href="administrateur.php" class="link-back">⬅ Retour à la liste des utilisateurs</a>
     </main>
 
-    <footer>
-        <div class="footer-bottom">
-            <p class="footer-mentions">© 2026 SIP AND SPILL</p>
-        </div>
-    </footer>
-</body>
-</html>
+    <?php include 'footer.php'; ?>

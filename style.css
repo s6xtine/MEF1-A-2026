@@ -68,7 +68,7 @@ a {
    ========================================================================== */
 .site-header {
     position: relative;
-    background-image: linear-gradient(rgba(89, 13, 34, 0.6), rgba(89, 13, 34, 0.4)), url('carrelage.jpg');
+    background-image: linear-gradient(rgba(89, 13, 34, 0.6), rgba(89, 13, 34, 0.4)), url('data/carrelage.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -79,7 +79,7 @@ a {
 }
 
 .form-header {
-    background-image: linear-gradient(rgba(89, 13, 34, 0.7), rgba(89, 13, 34, 0.5)), url('carrelage.jpg');
+    background-image: linear-gradient(rgba(89, 13, 34, 0.7), rgba(89, 13, 34, 0.5)), url('data/carrelage.jpg');
     background-size: cover;
     background-position: center;
     padding: 15px 30px;

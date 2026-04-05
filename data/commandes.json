@@ -16,11 +16,11 @@
             },
             "P03": {
                 "nom": "AVOCADO GIRLIES",
-                "prix": 14.9,
+                "prix": 14.9000000000000003552713678800500929355621337890625,
                 "quantite": 1
             }
         },
-        "total": 27.9,
+        "total": 27.89999999999999857891452847979962825775146484375,
         "statut": "Livr\u00e9e",
         "livreur": "Non assign\u00e9"
     },
@@ -49,7 +49,7 @@
         "articles": {
             "P02": {
                 "nom": "PANCAKE BACON",
-                "prix": 13.9,
+                "prix": 13.9000000000000003552713678800500929355621337890625,
                 "quantite": 1
             },
             "B01": {
@@ -58,7 +58,7 @@
                 "quantite": 1
             }
         },
-        "total": 18.4,
+        "total": 18.39999999999999857891452847979962825775146484375,
         "statut": "En pr\u00e9paration"
     },
     {
@@ -103,6 +103,7 @@
             }
         },
         "total": 5,
-        "statut": "En pr\u00e9paration"
+        "statut": "En livraison",
+        "livreur": "Jean Dupont"
     }
 ]

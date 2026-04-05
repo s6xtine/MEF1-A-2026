@@ -19,7 +19,7 @@ session_start()
     <h1 class="titre-centre">Inscription</h1>
 
     <main>
-        <form action="submit_inscription.php" method="POST">
+        <form action="traitement/submit_inscription.php" method="POST">
 
             <fieldset>
                 <legend>Informations personnelles</legend>
@@ -71,10 +71,4 @@ session_start()
         </form>
     </main>
 
-    <footer>
-        <div class="footer-bottom">
-            <p>© 2026 SIP AND SPILL · brunch de 9h à 16h</p>
-        </div>
-    </footer>
-</body>
-</html>
+    <?php include 'footer.php'; ?>

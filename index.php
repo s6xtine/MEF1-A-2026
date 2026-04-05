@@ -55,7 +55,7 @@ session_start()
             </div>
         
             <div class="search-image-wrapper">
-                <img src="cafe.jpg" alt="Ambiance" class="full-image">
+                <img src="data/cafe.jpg" alt="Ambiance" class="full-image">
             </div>
         </section>
 
@@ -88,28 +88,7 @@ session_start()
     </main>
 
     <!-- Pied de page -->
-    <footer>
-        <div class="footer-container">
-            <!-- Section Contact -->
-            <section class="footer-contact">
-                <h4 class="titre-footer">Contact the Gossip</h4>
-                <p>📍 123 Rue du vice, 95000 Cergy</p>
-                <p>📞 01 23 45 67 89</p>
-                <p>✉️ <a href="mailto:caryl.le-breton1@cyu.fr">hello@gossipbrunch.fr</a></p>
-            </section>
-
-            <!-- Section Auteurs -->
-            <section class="footer-authors">
-                <h4 class="titre-footer">Projet Creative-Yumland</h4>
-                <p>Filière : préING2 </p>
-                <p>Année : 2025-2026 </p>
-                <p>Auteurs : C.LE BRETON & R.GRIGNON </p>
-            </section>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Spotted: The Brunch - XOXO</p>
-        </div>
-    </footer>
-</body>
-
-</html>
+    <?php 
+    $is_index = true; 
+    include 'footer.php'; 
+    ?>

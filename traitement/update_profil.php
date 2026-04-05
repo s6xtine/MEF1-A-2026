@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['login'])) {
-    $chemin_fichier = 'data/utilisateur.json';
+    $chemin_fichier = '../data/utilisateur.json';
     
     
     if (file_exists($chemin_fichier)) {
@@ -35,12 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['login'])) {
             file_put_contents($chemin_fichier, json_encode($utilisateurs, JSON_PRETTY_PRINT));
             
             
-            header('Location: profil.php');
+            header('Location: ../profil.php');
             exit();
         }
     }
 }
 
 
-header('Location: profil.php?erreur=1');
+header('Location: ../profil.php?erreur=1');
 exit();

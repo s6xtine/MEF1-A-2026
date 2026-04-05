@@ -48,10 +48,4 @@ session_start()
         </form>
     </main>
 
-    <footer>
-        <div class="footer-bottom">
-            <p class="footer-mentions">&copy; 2026 Spotted: The Brunch - Réservez votre moment parfait</p>
-        </div>
-    </footer>
-</body>
-</html>
+    <?php include 'footer.php'; ?>

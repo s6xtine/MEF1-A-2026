@@ -28,7 +28,7 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'restaurateur' && $_SESS
         <section class="gestion-menu">
             <h2 class="sub-titre text-center">Gestion de la Carte</h2>
             
-            <form action="submit_menu.php" method="POST">
+            <form action="traitement/submit_menu.php" method="POST">
                 <fieldset>
                     <legend>Ajouter un nouveau plat</legend>
                 
@@ -91,7 +91,7 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'restaurateur' && $_SESS
                         <td>
                             <a href="modif_menu.php?id=<?= $plat['id'] ?>" class="btn-edit">Modifier</a>
                             
-                            <form action="submit_menu.php" method="POST" class="form-action-rapide">
+                            <form action="traitement/submit_menu.php" method="POST" class="form-action-rapide">
                                 <input type="hidden" name="id" value="<?= $plat['id'] ?>">
                                 <button type="submit" name="action" value="supprimer" class="btn-edit btn-supprimer" onclick="return confirm('Supprimer ce plat ?')">Supprimer</button>
                             </form>
@@ -103,10 +103,4 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'restaurateur' && $_SESS
         </section>
     </main>
 
-    <footer>
-        <div class="footer-bottom">
-            <p class="footer-mentions">&copy; 2026 SIP AND SPILL</p>
-        </div>
-    </footer>
-</body>
-</html>
+    <?php include 'footer.php'; ?>

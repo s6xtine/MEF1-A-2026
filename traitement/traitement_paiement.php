@@ -15,7 +15,7 @@ $control_local = md5($api_key . "#" . $transaction . "#" . $montant . "#" . $ven
 
 if ($control_local === $control_banque && $statut === 'accepted') {
     
-    $fichier_commandes = 'data/commandes.json';
+    $fichier_commandes = '../data/commandes.json';
     $toutes_les_commandes = [];
     
     if (file_exists($fichier_commandes)) {
@@ -40,10 +40,10 @@ if ($control_local === $control_banque && $statut === 'accepted') {
     // On vide le panier
     unset($_SESSION['panier']);
     
-    header('Location: index.php?succes=commande');
+    header('Location: ../index.php?succes=commande');
     exit();
 } else {
-    header('Location: panier.php?erreur=paiement_refuse');
+    header('Location: ../panier.php?erreur=paiement_refuse');
 }
 exit();
 ?>

@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_produit = $_POST['id_produit'];
     $nom = $_POST['nom'];
@@ -23,10 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
     }
 
-    header('Location: menu.php?ajout=succes');
+    // MODIFICATION ICI : On remonte d'un cran pour retourner au menu
+    header('Location: ../menu.php?ajout=succes');
     exit();
 } else {
-    header('Location: index.php');
+    // MODIFICATION ICI : On remonte d'un cran pour retourner à l'accueil
+    header('Location: ../index.php');
     exit();
 }
 ?>
