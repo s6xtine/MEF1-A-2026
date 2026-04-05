@@ -41,6 +41,7 @@ if ($control_local === $control_banque && $statut === 'accepted') {
     unset($_SESSION['panier']);
     
     header('Location: index.php?succes=commande');
+    exit();
 } else {
     header('Location: panier.php?erreur=paiement_refuse');
 }

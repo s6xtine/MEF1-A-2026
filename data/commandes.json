@@ -75,5 +75,34 @@
         "total": 24,
         "statut": "En livraison",
         "livreur": "Jean Dupont"
+    },
+    {
+        "id_commande": "CMD_1BCB222BFBCB",
+        "client": "soso@gossip.com",
+        "date": "2026-04-05 11:02:42",
+        "articles": {
+            "M02": {
+                "nom": "Le Menu Healthy Queen",
+                "prix": 24,
+                "quantite": 1
+            }
+        },
+        "total": 24,
+        "statut": "Livr\u00e9e",
+        "livreur": "Non assign\u00e9"
+    },
+    {
+        "id_commande": "CMD_405CD2239FC8",
+        "client": "serena@gossip.com",
+        "date": "2026-04-05 11:40:22",
+        "articles": {
+            "B03": {
+                "nom": "Matcha latte",
+                "prix": 5,
+                "quantite": 1
+            }
+        },
+        "total": 5,
+        "statut": "En pr\u00e9paration"
     }
 ]

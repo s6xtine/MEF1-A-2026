@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nouveau_contenu_json = json_encode($utilisateurs, JSON_PRETTY_PRINT);
     file_put_contents($fichier_json, $nouveau_contenu_json);
 
-    header('Location: connexion.php?sucess=inscription');
+    header('Location: connexion.php?succes=inscription');
     exit();
 }
 ?>

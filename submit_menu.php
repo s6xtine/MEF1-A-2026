@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'restaurateur') {
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'restaurateur' && $_SESSION['role'] !== 'admin') {
     header('Location: connexion.php');
     exit();
 }
@@ -29,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'ajouter') {
     $nouveauPlat = [
         "id" => $newId,
         "categorie" => $_POST['categorie'],
-        "nom" => mb_strtoupper(htmlspecialchars($_POST['nom'])), // Force majuscules comme tes exemples
+        "nom" => mb_strtoupper(htmlspecialchars($_POST['nom'])), // mb_strtoupper force les majuscule
         "description" => htmlspecialchars($_POST['description']),
         "prix" => (float)$_POST['prix'],
         "allergenes" => $allergenesArray,
-        "image" => filter_var($_POST['image'], FILTER_SANITIZE_URL)
+        "image" => filter_var($_POST['image'], FILTER_SANITIZE_URL) //nettoie l'url pour éviter les injections
     ];
 
     

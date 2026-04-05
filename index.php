@@ -12,7 +12,7 @@ session_start()
     <title>Sip & Spill - Accueil</title>
 </head>
 <?php if (isset($_GET['succes']) && $_GET['succes'] === 'commande'): ?>
-    <div class="msg-succès">
+    <div class="msg-succes">
         🎉 Merci pour votre commande ! Nos chefs se mettent aux fourneaux.
     </div>
 <?php endif; ?>
