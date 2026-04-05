@@ -52,11 +52,7 @@ foreach ($toutes_les_commandes as $cmd) {
         <h2 class="titre-section">Espace Restaurateur</h2>
     </header>
 
-    <nav class="main-nav">
-        <a href="index.php">Accueil</a> | 
-        <a href="modif_menu.php">Modifier la carte</a> |
-        <a href="deconnexion.php">Déconnexion</a>
-    </nav>
+    <?php include 'nav.php'; ?>
 
     <main class="admin-container">
         <h3 class="sub-titre">Gestion des commandes</h3>

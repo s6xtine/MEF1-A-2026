@@ -34,13 +34,7 @@ if (file_exists($fichier_carte)) {
         <a href="index.php" class="logo-mini">Sip & Spill</a>
     </header>
     
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="menu.php" style="color: var(--red-gossip); font-weight: bold;">Notre Carte</a></li>
-            <li><a href="panier.php">🛒 Mon Panier</a></li>
-        </ul>
-    </nav>
+    <?php include 'nav.php'; ?>
 
     <?php if (isset($_GET['ajout']) && $_GET['ajout'] === 'succes'): ?>
         <div class="msg-succes">

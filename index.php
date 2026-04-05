@@ -30,7 +30,6 @@ session_start()
                 <ul class="deroulant">
                     <li><a href="profil.php">Mon Profil</a></li>
                     <li><a href="deconnexion.php">Déconnexion</a></li>
-                    <li><a href="panier.php">Mon Panier</a></li>
                 </ul>
             <?php else: ?>
                 <button type="button" class="profile-btn">Mon Compte</button>
@@ -42,16 +41,7 @@ session_start()
         </div>
     </header>
 
-
-    <!-- Menu de navigation -->
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="menu.php">Notre Carte</a></li>
-            <li><a href="reservation.php">Réservation</a></li>
-            <li><a href="notation.php">Laissez un avis</a></li>
-        </ul>
-    </nav>
+    <?php include 'nav.php'; ?>
     
     <!-- Contenu principal -->
     <main>

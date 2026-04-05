@@ -73,6 +73,7 @@
             }
         },
         "total": 24,
-        "statut": "En pr\u00e9paration"
+        "statut": "En livraison",
+        "livreur": "Jean Dupont"
     }
 ]

@@ -1208,3 +1208,44 @@ footer a {
     .admin-container, .profile-container, main:has(#adresse-client) { margin: 20px 10px; padding: 20px; }
     table { display: block; overflow-x: auto; white-space: nowrap; }
 }
+
+/* ==========================================================================
+   PAGE MODIFICATION MENU (Restaurateur)
+   ========================================================================== */
+/* Prendre toute la largeur disponible */
+.gestion-menu { 
+    width: 100%; 
+}
+
+/* Marge pour le bouton du formulaire d'ajout */
+.gestion-menu .btn-geant { 
+    margin-top: 20px; 
+}
+
+/* Joli trait de séparation en pointillés */
+.separateur-chic { 
+    margin: 40px 0; 
+    border: 0; 
+    border-top: 1px dashed var(--pink-border); 
+}
+
+/* Style de la description dans le tableau */
+td.desc-plat { 
+    text-align: left; 
+    font-size: 0.9em; 
+    color: #666; 
+}
+
+/* Aligner les formulaires d'action (comme les boutons Supprimer) */
+.form-action-rapide { 
+    display: inline-block; 
+    margin-left: 5px; 
+}
+
+/* Variante rouge vif pour les boutons dangereux (Supprimer) */
+.btn-supprimer { 
+    background-color: var(--red-gossip); 
+}
+.btn-supprimer:hover { 
+    background-color: #720e13; 
+}

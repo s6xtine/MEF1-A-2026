@@ -29,12 +29,7 @@ $total_panier = 0;
         <a href="index.php" class="logo-mini">Sip & Spill</a>
     </header>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="menu.php">Notre Carte</a></li>
-        </ul>
-    </nav>
+    <?php include 'nav.php'; ?>
 
     <main class="panier-container">
         

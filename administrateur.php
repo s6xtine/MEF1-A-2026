@@ -28,12 +28,7 @@ if (file_exists($chemin_fichier)) {
         <h2 class="titre-section">Espace Administrateur</h2>
     </header>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="deconnexion.php">Deconnexion</a></li>
-            
-        </ul>
-    </nav>
+    <?php include 'nav.php'; ?>
 
     <main>
         <section class="admin-section">
