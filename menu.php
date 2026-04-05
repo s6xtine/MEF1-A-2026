@@ -24,7 +24,7 @@ if (file_exists($fichier_carte)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Carte · SIP AND SPILL</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?= time() ?>">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -42,14 +42,14 @@ if (file_exists($fichier_carte)) {
         </div>
     <?php endif; ?>
 
-      <section class="menu-hero">
-    <img src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2021/07/15044118/10-1024x576.png" alt="Notre Carte" class="menu-hero-img">
-    <div class="menu-hero-overlay">
-        <p class="menu-hero-label">Découvrez</p>
-        <h1 class="menu-hero-title">Notre Carte</h1>
-        <p class="menu-hero-sub">Fait maison · Avec amour · Chaque jour</p>
-    </div>
-</section>
+    <section class="menu-hero">
+        <img src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2021/07/15044118/10-1024x576.png" alt="Notre Carte" class="menu-hero-img">
+        <div class="menu-hero-overlay">
+            <p class="menu-hero-label">Découvrez</p>
+            <h1 class="menu-hero-title">Notre Carte</h1>
+            <p class="menu-hero-sub">Fait maison · Avec amour · Chaque jour</p>
+        </div>
+    </section>
 
     <main class="menu">
 
@@ -66,19 +66,22 @@ if (file_exists($fichier_carte)) {
                 <?php foreach ($menus_brunch as $menu): ?>
                     <li>
                         <div class="plat-infos">
-                            <span class="item-nom"><?= htmlspecialchars($menu['nom']) ?></span>
+                            <span class="item-nom"><?= htmlspecialchars($menu['nom']) ?></span> 
                             <span class="item-desc"><?= htmlspecialchars($menu['description']) ?></span>
-                            <span class="prix"><?= number_format($menu['prix_total'], 2, ',', ' ') ?>€</span>
                             
                             <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
                                 <input type="hidden" name="id_produit" value="<?= htmlspecialchars($menu['id']) ?>">
                                 <input type="hidden" name="nom" value="<?= htmlspecialchars($menu['nom']) ?>">
                                 <input type="hidden" name="prix" value="<?= htmlspecialchars($menu['prix_total']) ?>">
                                 
-                                <label for="quantite_<?= $menu['id'] ?>">Qté :</label>
-                                <input type="number" id="quantite_<?= $menu['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
-                                
-                                <button type="submit" class="btn-order btn-ajout-panier">Ajouter au panier</button>
+                                <div class="panier-controls">
+                                    <label for="quantite_<?= $menu['id'] ?>">Qté :</label>
+                                    <input type="number" id="quantite_<?= $menu['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                </div>
+
+                                <button type="submit" class="btn-prix-action">
+                                    <?= number_format($menu['prix_total'], 2, ',', ' ') ?> €
+                                </button>
                             </form>
                         </div>
                     </li>
@@ -96,17 +99,20 @@ if (file_exists($fichier_carte)) {
                             <div class="plat-infos">
                                 <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span> 
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
-                                <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
-                                
+
                                 <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
                                     <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
                                     <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
-                                    <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
-                                    
-                                    <button type="submit" class="btn-order btn-ajout-panier">Ajouter</button>
+                                    <div class="panier-controls">
+                                        <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
+                                        <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                    </div>
+
+                                    <button type="submit" class="btn-prix-action">
+                                        <?= number_format($plat['prix'], 2, ',', ' ') ?> €
+                                    </button>
                                 </form>
                             </div>
                         </li>
@@ -123,19 +129,22 @@ if (file_exists($fichier_carte)) {
                         <li class="plat-avec-image">
                             <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
                             <div class="plat-infos">
-                                <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span>
+                                <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span> 
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
-                                <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
                                 
                                 <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
                                     <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
                                     <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
-                                    <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
-                                    
-                                    <button type="submit" class="btn-order btn-ajout-panier">Ajouter</button>
+                                    <div class="panier-controls">
+                                        <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
+                                        <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                    </div>
+
+                                    <button type="submit" class="btn-prix-action">
+                                        <?= number_format($plat['prix'], 2, ',', ' ') ?> €
+                                    </button>
                                 </form>
                             </div>
                         </li>
@@ -154,17 +163,20 @@ if (file_exists($fichier_carte)) {
                             <div class="plat-infos">
                                 <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span>
                                 <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
-                                <span class="prix"><?= number_format($plat['prix'], 2, ',', ' ') ?>€</span>
                                 
                                 <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
                                     <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
                                     <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
-                                    <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
-                                    
-                                    <button type="submit" class="btn-order btn-ajout-panier">Ajouter</button>
+                                    <div class="panier-controls">
+                                        <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
+                                        <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                    </div>
+
+                                    <button type="submit" class="btn-prix-action">
+                                        <?= number_format($plat['prix'], 2, ',', ' ') ?> €
+                                    </button>
                                 </form>
                             </div>
                         </li>
@@ -179,3 +191,5 @@ if (file_exists($fichier_carte)) {
     </main>
 
     <?php include 'footer.php'; ?>
+</body>
+</html>

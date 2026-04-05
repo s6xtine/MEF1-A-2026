@@ -1,7 +1,7 @@
 <?php
-    session_start(); // pour regarder qui déconnecter
-    session_unset(); // pour vider les variables de session
-    session_destroy(); // pour "détruire" la session
+    session_start(); 
+    session_unset(); 
+    session_destroy(); 
     header("Location: index.php");
     exit();
 ?>

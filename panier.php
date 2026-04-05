@@ -84,6 +84,20 @@ $total_panier = 0;
                     <input type='hidden' name='vendeur' value='<?= $vendeur ?>'>
                     <input type='hidden' name='retour' value='<?= $retour ?>'>
                     <input type='hidden' name='control' value='<?= $control ?>'>
+
+                    <section class="choix-creneau">
+                        <h3 class="sub-titre">📅 Quand souhaitez-vous votre commande ?</h3>
+                        <div class="info-item">
+                            <label for="date_retrait">Date :</label>
+                            <input type="date" name="date_retrait" id="date_retrait" 
+                                min="<?= date('Y-m-d') ?>" value="<?= date('Y-m-d') ?>" required>
+                            
+                            <label for="heure_retrait">Heure :</label>
+                            <input type="time" name="heure_retrait" id="heure_retrait" required>
+                            
+                            <p><small><i>Note : Pour une préparation immédiate, choisissez l'heure actuelle.</i></small></p>
+                        </div>
+                    </section>
                     <button type="submit" class="btn-geant">💳 Payer avec CYBank</button>
                 </form>
 
@@ -93,5 +107,19 @@ $total_panier = 0;
         <?php endif; ?>
 
     </main>
+    <script>
+
+    document.querySelector('.form-cybank').addEventListener('submit', function() {
+        const dateR = document.getElementById('date_retrait').value;
+        const heureR = document.getElementById('heure_retrait').value;
+        
+        
+        fetch('traitement/sauvegarde_creneau.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'date=' + encodeURIComponent(dateR) + '&heure=' + encodeURIComponent(heureR)
+        });
+    });
+</script>
 </body>
 </html>

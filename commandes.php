@@ -59,12 +59,10 @@ foreach ($toutes_les_commandes as $cmd) {
 
         <section id="a-preparer">
             <h4 class="sub-titre">Commandes à préparer</h4>
-            <table>
-                <tr>
+            <table class="custom-table"> <tr>
                     <th>N° Commande</th>
                     <th>Détails des plats</th>
-                    <th>Heure de commande</th>
-                    <th>Action</th>
+                    <th>Prévu pour</th> <th>Action</th>
                 </tr>
                 
                 <?php if (empty($commandes_a_preparer)): ?>
@@ -73,25 +71,40 @@ foreach ($toutes_les_commandes as $cmd) {
                     </tr>
                 <?php else: ?>
                     <?php foreach ($commandes_a_preparer as $cmd): ?>
-                        <tr>
+                        <?php 
+                           
+                            $date_voulue = $cmd['date_souhaitee'] ?? date('Y-m-d');
+                            $heure_voulue = $cmd['heure_souhaitee'] ?? date('H:i');
+                            
+                            $timestamp_voulu = strtotime("$date_voulue $heure_voulue");
+                            $maintenant = time();
+                            
+                            
+                            $est_urgent = ($timestamp_voulu - $maintenant) < 3600;
+                        ?>
+                        <tr class="<?= $est_urgent ? 'statut-urgent' : 'statut-differe' ?>">
                             <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
-                            <td>
+                            <td class="text-left">
                                 <?php 
                                 $details_plats = [];
                                 foreach ($cmd['articles'] as $article) {
-                                    $details_plats[] = $article['quantite'] . 'x ' . $article['nom'];
+                                    $details_plats[] = '<strong>' . $article['quantite'] . 'x</strong> ' . htmlspecialchars($article['nom']);
                                 }
-                                echo htmlspecialchars(implode(', ', $details_plats));
+                                echo implode('<br>', $details_plats);
                                 ?>
                             </td>
-                            <td><?= date('H:i', strtotime($cmd['date'])) ?></td>
                             <td>
-                                <form action="traitement/update_statut.php" method="POST">
+                                <strong><?= date('d/m', strtotime($date_voulue)) ?> à <?= $heure_voulue ?></strong>
+                                <br>
+                                <small><?= $est_urgent ? '🔥 PRIORITAIRE' : '⏳ À PRÉPARER PLUS TARD' ?></small>
+                            </td>
+                            <td>
+                                <form action="traitement/update_statut.php" method="POST" class="form-discret">
                                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                                     <input type="hidden" name="nouveau_statut" value="En livraison">
 
-                                    <select name="id_livreur" class="select-chic" required >
-                                        <option value=""> Choisir un livreur </option>
+                                    <select name="id_livreur" class="select-chic" required>
+                                        <option value="">Choisir un livreur</option>
                                         <?php foreach ($liste_livreurs as $livreur): ?>
                                             <option value="<?= htmlspecialchars($livreur['prenom'] . ' ' . $livreur['nom']) ?>">
                                                 <?= htmlspecialchars($livreur['prenom'] . " " . $livreur['nom']) ?>
@@ -99,13 +112,12 @@ foreach ($toutes_les_commandes as $cmd) {
                                         <?php endforeach; ?>
                                     </select>
 
-                                    <button type="submit">Passer en livraison</button> 
+                                    <button type="submit" class="btn-edit">Lancer la livraison</button> 
                                 </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>
-                
             </table>
         </section>
 

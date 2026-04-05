@@ -59,7 +59,8 @@
             }
         },
         "total": 18.39999999999999857891452847979962825775146484375,
-        "statut": "En pr\u00e9paration"
+        "statut": "En livraison",
+        "livreur": "Sophie Durand"
     },
     {
         "id_commande": "CMD_B08B3DC9EBD2",
@@ -105,5 +106,21 @@
         "total": 5,
         "statut": "En livraison",
         "livreur": "Jean Dupont"
+    },
+    {
+        "id_commande": "CMD_7EAE3E9E8EE1",
+        "client": "Client Anonyme",
+        "date": "2026-04-05 17:20:12",
+        "date_souhaitee": "2026-04-05",
+        "heure_souhaitee": "18:22",
+        "articles": {
+            "M02": {
+                "nom": "Le Menu Healthy Queen",
+                "prix": 24,
+                "quantite": 1
+            }
+        },
+        "total": 24,
+        "statut": "En pr\u00e9paration"
     }
 ]

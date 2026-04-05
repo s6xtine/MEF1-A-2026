@@ -16,7 +16,7 @@ $adresse = $_SESSION['adresse'] ?? 'Non renseignée';
 $points = $_SESSION['points'] ?? 0;
 $statut = $_SESSION['statut'] ?? 'Regular';
 
-//lecture anciennes commandes du client 
+ 
 $mes_commandes = [];
 $fichier_commandes = 'data/commandes.json';
 
@@ -35,6 +35,7 @@ if (file_exists($fichier_commandes)) {
             }
         }
     }
+
 }
 ?>
 <!DOCTYPE html>
@@ -54,7 +55,7 @@ if (file_exists($fichier_commandes)) {
     <main class="profile-container">
         <h2 class="titre-section text-center">Mon Profil</h2>
 
-        <form action="traitement/update_profil.php" method="POST">
+        <form action="traitement/update_profil.php" method="POST" class="form-discret">
             <section class="infos-personnelles">
                 
                 <h3 class="sub-titre text-center">Mes Informations</h3>
@@ -117,7 +118,7 @@ if (file_exists($fichier_commandes)) {
 
             <section class="commandes-passees">
                 <h3 class="sub-titre text-center">Historique de mes commandes</h3>
-                <table class="table-panier">
+                <table class="custom-table">
                     <thead>
                         <tr>
                             <th>Date</th>
@@ -136,7 +137,7 @@ if (file_exists($fichier_commandes)) {
                                 <tr>
                                     <td><?= date('d/m/Y', strtotime($cmd['date'])) ?></td>
                                     
-                                    <td>
+                                    <td class="col-detail">
                                         <ul class="liste-articles-livraison">
                                             <?php foreach ($cmd['articles'] as $article): ?>
                                                 <li><?= $article['quantite'] ?>x <?= htmlspecialchars($article['nom']) ?></li>
@@ -145,10 +146,17 @@ if (file_exists($fichier_commandes)) {
                                         <span class="item-desc">Réf: <?= htmlspecialchars($cmd['id_commande']) ?></span>
                                     </td>
 
-                                    <td class="prix"> <?= number_format($cmd['total'], 2, ',', ' ') ?> €</td>        
+                                    <td class="prix-table"> 
+                                        <?= number_format($cmd['total'], 2, ',', ' ') ?> € 
+                                    </td>        
 
                                     <td class="<?= $cmd['statut'] === 'Livrée' ? 'statut-valide' : '' ?>">
-                                        <?= htmlspecialchars($cmd['statut']) ?>
+                                        <span><?= htmlspecialchars($cmd['statut']) ?></span>
+                                        
+                                        <?php if ($cmd['statut'] === 'Livrée'): ?>
+                                            <br>
+                                            <a href="notation.php?id=<?= $cmd['id_commande'] ?>" class="btn-avis">Donner mon avis ⭐</a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

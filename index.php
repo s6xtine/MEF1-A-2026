@@ -18,7 +18,7 @@ session_start()
 <?php endif; ?>
 
 <body>
-    <!-- En-tête du site -->
+    
     <header class="site-header">
         <h1 class="titre-page">Sip & Spill</h1>
         <p>Vous savez que vous nous adorez, alors installez-vous et laissez-vous séduire.</p>
@@ -43,7 +43,7 @@ session_start()
 
     <?php include 'nav.php'; ?>
     
-    <!-- Contenu principal -->
+    
     <main>
         <section class="search-area">
             <div class="search-content">
@@ -59,20 +59,20 @@ session_start()
             </div>
         </section>
 
-        <!-- Section Présentation -->
+        
         <section class="presentation-section">
             <h2 class="titre-section">Présentation</h2>
             <p>Le repaire confidentiel où la gourmandise flirte avec l'interdit. Chez Sip & Spill, nous croyons que chaque cocktail mérite sa confession et que chaque dessert doit être aussi croustillant que les dernières rumeurs. Installez-vous, le spectacle est dans la salle, mais le plaisir est définitivement dans l'assiette.
             </p>
         </section>
 
-        <!-- Section Plat Du Jour -->
+        
         <section class="daily-special">
             <h2 class="titre-section">Plat Du Jour</h2>
             <p>Découvrez notre plat du jour, concocté avec amour et une pincée de mystère.</p>
         </section>
 
-        <!-- Section Les Adorés -->
+        
         <section class="favorites-section">
             <h2 class="titre-section">Les Favoris de l'Upper East Side</h2>
             <div class="dish-card">
@@ -87,7 +87,7 @@ session_start()
         </section>
     </main>
 
-    <!-- Pied de page -->
+    
     <?php 
     $is_index = true; 
     include 'footer.php'; 
