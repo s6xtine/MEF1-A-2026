@@ -59,8 +59,8 @@
             }
         },
         "total": 18.39999999999999857891452847979962825775146484375,
-        "statut": "En livraison",
-        "livreur": "Sophie Durand"
+        "statut": "Livr\u00e9e",
+        "livreur": "Non assign\u00e9"
     },
     {
         "id_commande": "CMD_B08B3DC9EBD2",
@@ -74,8 +74,8 @@
             }
         },
         "total": 24,
-        "statut": "En livraison",
-        "livreur": "Jean Dupont"
+        "statut": "Livr\u00e9e",
+        "livreur": "Non assign\u00e9"
     },
     {
         "id_commande": "CMD_1BCB222BFBCB",
@@ -104,8 +104,8 @@
             }
         },
         "total": 5,
-        "statut": "En livraison",
-        "livreur": "Jean Dupont"
+        "statut": "Livr\u00e9e",
+        "livreur": "Non assign\u00e9"
     },
     {
         "id_commande": "CMD_7EAE3E9E8EE1",
@@ -122,5 +122,47 @@
         },
         "total": 24,
         "statut": "En pr\u00e9paration"
+    },
+    {
+        "id_commande": "CMD_FA5D006A2531",
+        "client": "soso@gossip.com",
+        "date": "2026-04-05 18:57:34",
+        "date_souhaitee": "2026-04-05",
+        "heure_souhaitee": "18:57",
+        "articles": {
+            "B01": {
+                "nom": "Latte",
+                "prix": 4.5,
+                "quantite": 1
+            },
+            "D05": {
+                "nom": "GRANOLA BOWL",
+                "prix": 8.5,
+                "quantite": 1
+            }
+        },
+        "total": 13,
+        "statut": "En livraison",
+        "livreur": "Jean Dupont"
+    },
+    {
+        "id_commande": "CMD_9F81B47567EF",
+        "client": "Lucie Maxou",
+        "login_client": "lulu@cyu.fr",
+        "telephone": "0601020305",
+        "adresse": "3 avenue du Parc, Cergy",
+        "date": "2026-04-05 19:05:11",
+        "date_souhaitee": "2026-04-05",
+        "heure_souhaitee": "20:00",
+        "articles": {
+            "B01": {
+                "nom": "Latte",
+                "prix": 4.5,
+                "quantite": 1
+            }
+        },
+        "total": 4.5,
+        "statut": "En livraison",
+        "livreur": "Sophie Durand"
     }
 ]

@@ -27,8 +27,13 @@ if ($control_local === $control_banque && $statut === 'accepted') {
 
     $nouvelle_commande = [
         "id_commande" => "CMD_" . $transaction,
-        "client" => $_SESSION['login'] ?? 'Client Anonyme',
+        "client" => $_SESSION['prenom'] . " " . $_SESSION['nom'],
+        "login_client" => $_SESSION['login'], // Utile pour retrouver le compte
+        "telephone" => $_SESSION['telephone'] ?? 'Non renseigné', // 📞 IMPORTANT
+        "adresse" => $_SESSION['adresse'] ?? 'À récupérer sur place', // 📍 IMPORTANT
         "date" => date('Y-m-d H:i:s'),
+        "date_souhaitee" => $_SESSION['date_retrait'] ?? date('Y-m-d'), 
+        "heure_souhaitee" => $_SESSION['heure_retrait'] ?? date('H:i'),
         "articles" => $_SESSION['panier'],
         "total" => (float)$montant,
         "statut" => "En préparation"

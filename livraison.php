@@ -4,13 +4,19 @@ session_start();
 $fichier_commandes = 'data/commandes.json';
 $commandes_en_livraison = [];
 
+
+$mon_nom_livreur = $_SESSION['prenom'] . " " . $_SESSION['nom'];
+
 if (file_exists($fichier_commandes)) {
     $contenu = file_get_contents($fichier_commandes);
     if (!empty($contenu)) {
         $toutes_les_commandes = json_decode($contenu, true);
         
         foreach ($toutes_les_commandes as $cmd) {
-            if ($cmd['statut'] === 'En livraison' || $cmd['statut'] === 'En route') {
+            
+            $est_pour_moi = isset($cmd['livreur']) && $cmd['livreur'] === $mon_nom_livreur;
+            
+            if (($cmd['statut'] === 'En livraison' || $cmd['statut'] === 'En route') && $est_pour_moi) {
                 $commandes_en_livraison[] = $cmd;
             }
         }
@@ -73,7 +79,7 @@ if (file_exists($fichier_commandes)) {
                     <blockquote>"<?= htmlspecialchars($cmd['instructions'] ?? 'Aucune instruction particulière') ?>"</blockquote> 
                 </section>
 
-                <form action="update_statut.php" method="POST" class="form-sans-boite">
+                <form action="traitement/update_statut.php" method="POST" class="form-sans-boite">
                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                     <input type="hidden" name="nouveau_statut" value="Livrée">
                     <button type="submit" id="valider-livraison" class="btn-livreur">Livraison terminée ✅</button>
