@@ -21,7 +21,7 @@ $total_panier = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Panier - Sip & Spill</title>
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=<?= time() ?>">
 </head>
 <body>
 
@@ -33,7 +33,6 @@ $total_panier = 0;
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="menu.php">Notre Carte</a></li>
-            <li><a href="panier.php" style="color: var(--red-gossip); font-weight: bold;">🛒 Mon Panier</a></li>
         </ul>
     </nav>
 
@@ -44,7 +43,7 @@ $total_panier = 0;
         <?php if (!isset($_SESSION['panier']) || empty($_SESSION['panier'])): ?>
             <div class="panier-vide">
                 <p>Votre panier est vide pour le moment. </p>
-                <a href="menu.php" class="btn-order" style="display: inline-block; margin-top: 20px;">Voir la carte</a>
+                <a href="menu.php" class="btn-promo">Voir la carte</a>
             </div>
 
         <?php else: ?>
@@ -103,7 +102,7 @@ $total_panier = 0;
                     <input type='hidden' name='vendeur' value='<?= $vendeur ?>'>
                     <input type='hidden' name='retour' value='<?= $retour ?>'>
                     <input type='hidden' name='control' value='<?= $control ?>'>
-                    <button type="submit" class="btn-geant" style="width: 100%;">💳 Payer avec CYBank</button>
+                    <button type="submit" class="btn-geant">💳 Payer avec CYBank</button>
                 </form>
 
                 <a href="menu.php" class="btn-discret">⬅ Continuer mes achats</a>
