@@ -22,26 +22,6 @@ session_start()
     <header class="site-header">
         <h1 class="titre-page">Sip & Spill</h1>
         <p>Vous savez que vous nous adorez, alors installez-vous et laissez-vous séduire.</p>
-        
-
-        <div class="user-menu">
-            <?php if (isset($_SESSION['nom'])): ?>
-                <button type="button" class="btn-gossip btn-small">*</button>
-                <ul class="deroulant">
-                    <li><a href="profil.php">Mon Profil</a></li>
-                    <li><a href="deconnexion.php">Déconnexion</a></li>
-                </ul>
-            <?php else: ?>
-                <button type="button" class="btn-gossip btn-small">Mon Compte</button>
-                <ul class="deroulant">
-                    <li><a href="connexion.php">Connexion</a></li>
-                    <li><a href="inscription.php">S'inscrire</a></li>
-                <li>
-                    <button id="theme-toggle" class="btn-discret"></button>
-                </li>
-                </ul>
-            <?php endif; ?>
-        </div>
     </header>
 
     <?php include 'nav.php'; ?>
@@ -96,5 +76,4 @@ session_start()
     include 'footer.php'; 
     ?>
 
-    <!-- On charge le script JavaScript pour qu'il soit sur toutes les pages -->
-    <script src="js/theme.js"></script>
+    
