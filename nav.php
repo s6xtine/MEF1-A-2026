@@ -27,7 +27,6 @@ $page_actuelle = basename($_SERVER['PHP_SELF']);
 
             <?php if ($role_nav === 'livreur'): ?>
                 <li><a href="livraison.php">Livraisons</a></li>
-                <li><a href="deconnexion.php">Déconnexion</a></li>
             <?php endif; ?>
 
             <?php if ($role_nav === 'admin'): ?>
@@ -41,5 +40,13 @@ $page_actuelle = basename($_SERVER['PHP_SELF']);
                 <li><a href="deconnexion.php">Déconnexion</a></li>
             <?php endif; ?>
 
+            <!-- Bouton mode sombre -->
+             <li>
+                <button id="theme-toggle" class="btn-discret"></button>
+             </li>
+
         </ul>
     </nav>
+
+    <!-- On charge le script JavaScript pour qu'il soit sur toutes les pages -->
+    <script src="js/theme.js"></script>

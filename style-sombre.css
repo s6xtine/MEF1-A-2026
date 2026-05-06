@@ -1,0 +1,26 @@
+/* ==========================================================================
+   MODE SOMBRE - THE DARK SIDE OF GOSSIP (VERSION PROPRE)
+   ========================================================================== */
+:root {
+    /* Couleurs globales inversées */
+    --bg-cream: #1A0A10; 
+    --white: #2D141C; 
+    --pink-light: #3D1C24;
+    --pink-mid: #59202E;
+    --pink-border: #8B2C42;
+    --bordeaux-chic: #FFF5F6; 
+    --red-gossip: #FF8FA3; 
+    --shadow-soft: 0 5px 15px rgba(0, 0, 0, 0.6);
+    --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.8);
+    --menu-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+
+    /* 🌟 LES NOUVELLES VARIABLES DES FORMULAIRES 🌟 */
+    --form-bg-image: none; /* On enlève l'image claire ! */
+    --fieldset-bg: #1A0A10; /* Fond noir pour les cadres */
+    --input-focus-bg: #3D1C24; /* Fond un peu plus gris quand on clique */
+}
+
+/* Le seul ajustement spécifique qui reste */
+.search-content {
+    background-image: none;
+}
