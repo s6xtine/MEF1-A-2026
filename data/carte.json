@@ -6,10 +6,11 @@
             "nom": "Latte",
             "description": "Café espresso doux et mousse de lait",
             "prix": 4.5,
-            "allergenes": [
-                "lactose"
-            ],
-            "image": "https:\/\/smallcakesbakery.com\/wp-content\/uploads\/2024\/01\/capuccino.png"
+            "allergenes": ["lactose"],
+            "image": "https://smallcakesbakery.com/wp-content/uploads/2024/01/capuccino.png",
+            "tags": ["vegetarien"],
+            "gout": "sucre",
+            "nb_commandes": 142
         },
         {
             "id": "B02",
@@ -17,10 +18,11 @@
             "nom": "Chocolat chaud",
             "description": "Chocolat fondu onctueux, façon grand-mère",
             "prix": 5,
-            "allergenes": [
-                "lactose"
-            ],
-            "image": "https:\/\/img.fourchette-et-bikini.fr\/660x495\/2025\/06\/24\/i228227-chocolat-chaud-light-fait-maison.png"
+            "allergenes": ["lactose"],
+            "image": "https://img.fourchette-et-bikini.fr/660x495/2025/06/24/i228227-chocolat-chaud-light-fait-maison.png",
+            "tags": ["vegetarien"],
+            "gout": "sucre",
+            "nb_commandes": 98
         },
         {
             "id": "B03",
@@ -29,7 +31,10 @@
             "description": "Matcha de cérémonie, lait végétal au choix",
             "prix": 5,
             "allergenes": [],
-            "image": "https:\/\/www.caterermiddleeast.com\/cloud\/2025\/08\/20\/Brunch-Cake-Matcha-Latte.jpg"
+            "image": "https://www.caterermiddleeast.com/cloud/2025/08/20/Brunch-Cake-Matcha-Latte.jpg",
+            "tags": ["vegetarien", "vegan", "sans_lactose"],
+            "gout": "sucre",
+            "nb_commandes": 110
         },
         {
             "id": "B04",
@@ -38,7 +43,10 @@
             "description": "Infusion signature aux fleurs séchées",
             "prix": 4.5,
             "allergenes": [],
-            "image": "https:\/\/cdn.pratico-pratiques.com\/app\/uploads\/sites\/7\/2018\/09\/11132336\/le-the-une-infusion-sante.jpeg"
+            "image": "https://cdn.pratico-pratiques.com/app/uploads/sites/7/2018/09/11132336/le-the-une-infusion-sante.jpeg",
+            "tags": ["vegetarien", "vegan", "sans_gluten", "sans_lactose"],
+            "gout": "sucre",
+            "nb_commandes": 75
         },
         {
             "id": "S01",
@@ -46,11 +54,11 @@
             "nom": "Oreo shake",
             "description": "Milkshake glacé aux brisures d'Oreo",
             "prix": 5,
-            "allergenes": [
-                "lactose",
-                "gluten"
-            ],
-            "image": "https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcR1bDK2oaEb1Q-v7BGR5IBrTSHrt9gOCna8pw&s"
+            "allergenes": ["lactose", "gluten"],
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1bDK2oaEb1Q-v7BGR5IBrTSHrt9gOCna8pw&s",
+            "tags": ["vegetarien"],
+            "gout": "sucre",
+            "nb_commandes": 130
         },
         {
             "id": "S02",
@@ -59,7 +67,10 @@
             "description": "Limonade maison passion et citron vert",
             "prix": 4.5,
             "allergenes": [],
-            "image": "https:\/\/cdn-ikphhgl.nitrocdn.com\/MDXiwuZNYFhpWkyKZnkUxOYMelioZPnB\/assets\/images\/optimized\/rev-5957e1a\/www.destinationcocktails.fr\/wp-content\/uploads\/2026\/01\/cocktail-chuflay-1-225x300.jpg"
+            "image": "https://cdn-ikphhgl.nitrocdn.com/MDXiwuZNYFhpWkyKZnkUxOYMelioZPnB/assets/images/optimized/rev-5957e1a/www.destinationcocktails.fr/wp-content/uploads/2026/01/cocktail-chuflay-1-225x300.jpg",
+            "tags": ["vegetarien", "vegan", "sans_gluten", "sans_lactose"],
+            "gout": "sucre",
+            "nb_commandes": 88
         },
         {
             "id": "S03",
@@ -68,7 +79,10 @@
             "description": "100% pur jus d'oranges fraîches",
             "prix": 4,
             "allergenes": [],
-            "image": "https:\/\/thumbs.dreamstime.com\/b\/recette-de-cocktail-mimosa-jus-d-orange-frais-et-champagne-brunch-concept-boisson-un-rafraîchissant-parfait-pour-ou-des-387517754.jpg"
+            "image": "https://thumbs.dreamstime.com/b/recette-de-cocktail-mimosa-jus-d-orange-frais-et-champagne-brunch-concept-boisson-un-rafraîchissant-parfait-pour-ou-des-387517754.jpg",
+            "tags": ["vegetarien", "vegan", "sans_gluten", "sans_lactose"],
+            "gout": "sucre",
+            "nb_commandes": 95
         },
         {
             "id": "P01",
@@ -76,12 +90,11 @@
             "nom": "SALMON SPILL TOAST",
             "description": "Avocat, saumon fumé, œuf poché bio, grenade",
             "prix": 14.5,
-            "allergenes": [
-                "poisson",
-                "gluten",
-                "oeuf"
-            ],
-            "image": "https:\/\/img.cuisineaz.com\/1280x720\/2016\/04\/28\/i17079-oeufs-mollets-au-saumon-fume.webp"
+            "allergenes": ["poisson", "gluten", "oeuf"],
+            "image": "https://img.cuisineaz.com/1280x720/2016/04/28/i17079-oeufs-mollets-au-saumon-fume.webp",
+            "tags": ["sans_lactose"],
+            "gout": "sale",
+            "nb_commandes": 167
         },
         {
             "id": "P02",
@@ -89,12 +102,11 @@
             "nom": "PANCAKE BACON",
             "description": "Bacon croustillant, 3 pancakes, œuf poché bio, sirop d'érable",
             "prix": 13.9,
-            "allergenes": [
-                "gluten",
-                "oeuf",
-                "lactose"
-            ],
-            "image": "https:\/\/lestresorsderable.com\/img\/cms\/recette\/bacon-sirop-erable-260x180_1.jpeg"
+            "allergenes": ["gluten", "oeuf", "lactose"],
+            "image": "https://lestresorsderable.com/img/cms/recette/bacon-sirop-erable-260x180_1.jpeg",
+            "tags": [],
+            "gout": "sale",
+            "nb_commandes": 145
         },
         {
             "id": "P03",
@@ -102,13 +114,11 @@
             "nom": "AVOCADO GIRLIES",
             "description": "Crème de chèvre, avocat, épinards, œuf poché bio, tomates confites, noix",
             "prix": 14.9,
-            "allergenes": [
-                "gluten",
-                "oeuf",
-                "lactose",
-                "fruits à coque"
-            ],
-            "image": "https:\/\/www.buffalo-grill.fr\/sites\/default\/files\/styles\/product_full_fallback\/public\/images\/avocado_toast_oct2024.png?itok=nk225Dmm"
+            "allergenes": ["gluten", "oeuf", "lactose", "fruits à coque"],
+            "image": "https://www.buffalo-grill.fr/sites/default/files/styles/product_full_fallback/public/images/avocado_toast_oct2024.png?itok=nk225Dmm",
+            "tags": ["vegetarien"],
+            "gout": "sale",
+            "nb_commandes": 210
         },
         {
             "id": "P04",
@@ -116,13 +126,11 @@
             "nom": "OEUF NORVEGIEN",
             "description": "Muffin, saumon fumé, œuf poché bio, sauce hollandaise",
             "prix": 15,
-            "allergenes": [
-                "gluten",
-                "oeuf",
-                "lactose",
-                "poisson"
-            ],
-            "image": "https:\/\/images.pexels.com\/photos\/699953\/pexels-photo-699953.jpeg"
+            "allergenes": ["gluten", "oeuf", "lactose", "poisson"],
+            "image": "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg",
+            "tags": [],
+            "gout": "sale",
+            "nb_commandes": 120
         },
         {
             "id": "P05",
@@ -130,24 +138,23 @@
             "nom": "LADY BOWL",
             "description": "Quinoa, légumes rôtis, feta, pickles, grenade",
             "prix": 14.5,
-            "allergenes": [
-                "lactose"
-            ],
-            "image": "https:\/\/images.pexels.com\/photos\/1213710\/pexels-photo-1213710.jpeg"
+            "allergenes": ["lactose"],
+            "image": "https://images.pexels.com/photos/1213710/pexels-photo-1213710.jpeg",
+            "tags": ["vegetarien", "sans_gluten"],
+            "gout": "sale",
+            "nb_commandes": 134
         },
         {
             "id": "D01",
             "categorie": "sucre",
             "nom": "CINNAMON ROLLS PANCAKES",
-            "description": "3 pancakes, vanille, noix de pécan caramélisées, cannelle, sirop d’érable",
+            "description": "3 pancakes, vanille, noix de pécan caramélisées, cannelle, sirop d'érable",
             "prix": 13.9,
-            "allergenes": [
-                "gluten",
-                "oeuf",
-                "lactose",
-                "fruits à coque"
-            ],
-            "image": "https:\/\/www.halfbakedharvest.com\/wp-content\/uploads\/2012\/11\/IMG_9304.jpg"
+            "allergenes": ["gluten", "oeuf", "lactose", "fruits à coque"],
+            "image": "https://www.halfbakedharvest.com/wp-content/uploads/2012/11/IMG_9304.jpg",
+            "tags": ["vegetarien"],
+            "gout": "sucre",
+            "nb_commandes": 180
         },
         {
             "id": "D02",
@@ -155,13 +162,11 @@
             "nom": "CHOCO BERRY PANCAKES",
             "description": "Fruits rouges, amandes effilées caramélisées, pépites de chocolat au lait",
             "prix": 14.5,
-            "allergenes": [
-                "gluten",
-                "oeuf",
-                "lactose",
-                "fruits à coque"
-            ],
-            "image": "https:\/\/www.frugalmomeh.com\/wp-content\/uploads\/2022\/01\/Chocolate-chip-pancakes-14-1200x800.jpg"
+            "allergenes": ["gluten", "oeuf", "lactose", "fruits à coque"],
+            "image": "https://www.frugalmomeh.com/wp-content/uploads/2022/01/Chocolate-chip-pancakes-14-1200x800.jpg",
+            "tags": ["vegetarien"],
+            "gout": "sucre",
+            "nb_commandes": 155
         },
         {
             "id": "D03",
@@ -169,12 +174,11 @@
             "nom": "FRENCH TOAST CHOCO BERRIES",
             "description": "3 pains perdus moelleux, fruits rouges, caramel, pépites de chocolat au lait",
             "prix": 14.9,
-            "allergenes": [
-                "gluten",
-                "oeuf",
-                "lactose"
-            ],
-            "image": "https:\/\/freshberries.com.au\/wp-content\/uploads\/2022\/01\/french.jpg"
+            "allergenes": ["gluten", "oeuf", "lactose"],
+            "image": "https://freshberries.com.au/wp-content/uploads/2022/01/french.jpg",
+            "tags": ["vegetarien"],
+            "gout": "sucre",
+            "nb_commandes": 140
         },
         {
             "id": "D04",
@@ -182,12 +186,11 @@
             "nom": "WAFFLE CHOCO BERRIES",
             "description": "2 gauffres caramélisées, fruits rouges, crème, pépites de chocolat au lait",
             "prix": 15,
-            "allergenes": [
-                "gluten",
-                "oeuf",
-                "lactose"
-            ],
-            "image": "https:\/\/freshberries.com.au\/wp-content\/uploads\/2021\/04\/waffles-1.png"
+            "allergenes": ["gluten", "oeuf", "lactose"],
+            "image": "https://freshberries.com.au/wp-content/uploads/2021/04/waffles-1.png",
+            "tags": ["vegetarien"],
+            "gout": "sucre",
+            "nb_commandes": 160
         },
         {
             "id": "D05",
@@ -195,12 +198,11 @@
             "nom": "GRANOLA BOWL",
             "description": "Granola croustillant, fruits frais, miel, fromage blanc",
             "prix": 8.5,
-            "allergenes": [
-                "lactose",
-                "gluten",
-                "fruits à coque"
-            ],
-            "image": "https:\/\/d36fw6y2wq3bat.cloudfront.net\/recipes\/bowl-de-granola-con-fresas-y-kiwi\/900\/bowl-de-granola-con-fresas-y-kiwi_version_1683710203.jpg"
+            "allergenes": ["lactose", "gluten", "fruits à coque"],
+            "image": "https://d36fw6y2wq3bat.cloudfront.net/recipes/bowl-de-granola-con-fresas-y-kiwi/900/bowl-de-granola-con-fresas-y-kiwi_version_1683710203.jpg",
+            "tags": ["vegetarien"],
+            "gout": "sucre",
+            "nb_commandes": 115
         },
         {
             "id": "D06",
@@ -208,10 +210,11 @@
             "nom": "PUDDING LOVERS",
             "description": "Pudding de chia lait de coco, fruits rouges, granola, sirop d'érable",
             "prix": 7.9,
-            "allergenes": [
-                "fruits à coque"
-            ],
-            "image": "https:\/\/i-sam.unimedias.fr\/2021\/08\/30\/pudding-chia-fruits-rouges.jpg?auto=format,compress&cs=tinysrgb&ixlib=php-4.1.0"
+            "allergenes": ["fruits à coque"],
+            "image": "https://i-sam.unimedias.fr/2021/08/30/pudding-chia-fruits-rouges.jpg?auto=format,compress&cs=tinysrgb&ixlib=php-4.1.0",
+            "tags": ["vegetarien", "vegan", "sans_gluten", "sans_lactose"],
+            "gout": "sucre",
+            "nb_commandes": 90
         }
     ],
     "menus": [

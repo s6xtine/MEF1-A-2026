@@ -8,16 +8,10 @@ $menus_brunch = [];
 if (file_exists($fichier_carte)) {
     $contenu = file_get_contents($fichier_carte);
     $donnees = json_decode($contenu, true);
-    
-    if (isset($donnees['plats'])) {
-        $plats = $donnees['plats'];
-    }
-    if (isset($donnees['menus'])) {
-        $menus_brunch = $donnees['menus'];
-    }
+    if (isset($donnees['plats']))  $plats = $donnees['plats'];
+    if (isset($donnees['menus']))  $menus_brunch = $donnees['menus'];
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,28 +24,81 @@ if (file_exists($fichier_carte)) {
 </head>
 <body>
 
-    <header class="form-header">
-        <a href="index.php" class="logo-mini">Sip & Spill</a>
-    </header>
-    
-    <?php include 'nav.php'; ?>
+<header class="form-header">
+    <a href="index.php" class="logo-mini">Sip & Spill</a>
+</header>
 
-    <?php if (isset($_GET['ajout']) && $_GET['ajout'] === 'succes'): ?>
-        <div class="msg-succes">
-            ✨ Ajouté au panier avec succès !
+<?php include 'nav.php'; ?>
+
+<?php if (isset($_GET['ajout']) && $_GET['ajout'] === 'succes'): ?>
+    <div class="msg-succes">✨ Ajouté au panier avec succès !</div>
+<?php endif; ?>
+
+<section class="menu-hero">
+    <img src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2021/07/15044118/10-1024x576.png" alt="Notre Carte" class="menu-hero-img">
+    <div class="menu-hero-overlay">
+        <p class="menu-hero-label">Découvrez</p>
+        <h1 class="menu-hero-title">Notre Carte</h1>
+        <p class="menu-hero-sub">Fait maison · Avec amour · Chaque jour</p>
+    </div>
+</section>
+
+<main class="menu">
+
+    <!-- BARRE FILTRES + TRIS -->
+    <div class="filtres-bar">
+
+        <div class="filtres-groupe">
+            <span class="filtres-label">Catégorie</span>
+            <div class="filtres-btns">
+                <button class="filtre-btn actif" data-type="categorie" data-val="">Tout</button>
+                <button class="filtre-btn" data-type="categorie" data-val="boissons">☕ Boissons</button>
+                <button class="filtre-btn" data-type="categorie" data-val="sale">🥑 Salé</button>
+                <button class="filtre-btn" data-type="categorie" data-val="sucre">🧁 Sucré</button>
+            </div>
         </div>
-    <?php endif; ?>
 
-    <section class="menu-hero">
-        <img src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2021/07/15044118/10-1024x576.png" alt="Notre Carte" class="menu-hero-img">
-        <div class="menu-hero-overlay">
-            <p class="menu-hero-label">Découvrez</p>
-            <h1 class="menu-hero-title">Notre Carte</h1>
-            <p class="menu-hero-sub">Fait maison · Avec amour · Chaque jour</p>
+        <div class="filtres-groupe">
+            <span class="filtres-label">Régime</span>
+            <div class="filtres-btns">
+                <button class="filtre-btn tag-btn" data-type="tag" data-val="vegetarien">🌿 Végétarien</button>
+                <button class="filtre-btn tag-btn" data-type="tag" data-val="vegan">🌱 Vegan</button>
+                <button class="filtre-btn tag-btn" data-type="tag" data-val="halal">Halal</button>
+                <button class="filtre-btn tag-btn" data-type="tag" data-val="sans_gluten">Sans gluten</button>
+                <button class="filtre-btn tag-btn" data-type="tag" data-val="sans_lactose">Sans lactose</button>
+            </div>
         </div>
-    </section>
 
-    <main class="menu">
+        <div class="filtres-groupe">
+            <span class="filtres-label">Goût</span>
+            <div class="filtres-btns">
+                <button class="filtre-btn actif" data-type="gout" data-val="">Tous</button>
+                <button class="filtre-btn" data-type="gout" data-val="sale">🧂 Salé</button>
+                <button class="filtre-btn" data-type="gout" data-val="sucre">🍬 Sucré</button>
+                <button class="filtre-btn" data-type="gout" data-val="epice">🌶️ Épicé</button>
+            </div>
+        </div>
+
+        <div class="filtres-groupe">
+            <span class="filtres-label">Trier par</span>
+            <div class="filtres-btns">
+                <button class="tri-btn actif" data-tri="defaut">Par défaut</button>
+                <button class="tri-btn" data-tri="prix_asc">Prix ↑</button>
+                <button class="tri-btn" data-tri="prix_desc">Prix ↓</button>
+                <button class="tri-btn" data-tri="populaire">⭐ Populaires</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RÉSULTATS FILTRÉS (caché par défaut) -->
+    <div id="resultats-filtres" class="menu-section" style="display:none;">
+        <h2 id="resultats-titre">Résultats</h2>
+        <ul class="menu-list" id="liste-resultats"></ul>
+    </div>
+
+    <!-- SECTIONS NORMALES -->
+    <div id="sections-normales">
 
         <div class="menu-nav">
             <a href="#menus">✨ Menus</a>
@@ -64,27 +111,24 @@ if (file_exists($fichier_carte)) {
             <h2>✨ Les Formules</h2>
             <ul class="menu-list">
                 <?php foreach ($menus_brunch as $menu): ?>
-                    <li>
-                        <div class="plat-infos">
-                            <span class="item-nom"><?= htmlspecialchars($menu['nom']) ?></span> 
-                            <span class="item-desc"><?= htmlspecialchars($menu['description']) ?></span>
-                            
-                            <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
-                                <input type="hidden" name="id_produit" value="<?= htmlspecialchars($menu['id']) ?>">
-                                <input type="hidden" name="nom" value="<?= htmlspecialchars($menu['nom']) ?>">
-                                <input type="hidden" name="prix" value="<?= htmlspecialchars($menu['prix_total']) ?>">
-                                
-                                <div class="panier-controls">
-                                    <label for="quantite_<?= $menu['id'] ?>">Qté :</label>
-                                    <input type="number" id="quantite_<?= $menu['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
-                                </div>
-
-                                <button type="submit" class="btn-prix-action">
-                                    <?= number_format($menu['prix_total'], 2, ',', ' ') ?> €
-                                </button>
-                            </form>
-                        </div>
-                    </li>
+                <li>
+                    <div class="plat-infos">
+                        <span class="item-nom"><?= htmlspecialchars($menu['nom']) ?></span>
+                        <span class="item-desc"><?= htmlspecialchars($menu['description']) ?></span>
+                        <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
+                            <input type="hidden" name="id_produit" value="<?= htmlspecialchars($menu['id']) ?>">
+                            <input type="hidden" name="nom" value="<?= htmlspecialchars($menu['nom']) ?>">
+                            <input type="hidden" name="prix" value="<?= htmlspecialchars($menu['prix_total']) ?>">
+                            <div class="panier-controls">
+                                <label for="quantite_<?= $menu['id'] ?>">Qté :</label>
+                                <input type="number" id="quantite_<?= $menu['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                            </div>
+                            <button type="submit" class="btn-prix-action">
+                                <?= number_format($menu['prix_total'], 2, ',', ' ') ?> €
+                            </button>
+                        </form>
+                    </div>
+                </li>
                 <?php endforeach; ?>
             </ul>
         </section>
@@ -94,28 +138,27 @@ if (file_exists($fichier_carte)) {
             <ul class="menu-list">
                 <?php foreach ($plats as $plat): ?>
                     <?php if ($plat['categorie'] === 'boissons'): ?>
-                        <li class="plat-avec-image">
-                            <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
-                            <div class="plat-infos">
-                                <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span> 
-                                <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
-
-                                <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
-                                    <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
-                                    <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
-                                    <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
-                                    
-                                    <div class="panier-controls">
-                                        <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                        <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
-                                    </div>
-
-                                    <button type="submit" class="btn-prix-action">
-                                        <?= number_format($plat['prix'], 2, ',', ' ') ?> €
-                                    </button>
-                                </form>
-                            </div>
-                        </li>
+                    <li class="plat-avec-image"
+                        data-prix="<?= $plat['prix'] ?>"
+                        data-nb="<?= $plat['nb_commandes'] ?? 0 ?>">
+                        <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
+                        <div class="plat-infos">
+                            <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span>
+                            <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
+                            <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
+                                <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
+                                <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
+                                <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
+                                <div class="panier-controls">
+                                    <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
+                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                </div>
+                                <button type="submit" class="btn-prix-action">
+                                    <?= number_format($plat['prix'], 2, ',', ' ') ?> €
+                                </button>
+                            </form>
+                        </div>
+                    </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
@@ -126,28 +169,27 @@ if (file_exists($fichier_carte)) {
             <ul class="menu-list">
                 <?php foreach ($plats as $plat): ?>
                     <?php if ($plat['categorie'] === 'sale'): ?>
-                        <li class="plat-avec-image">
-                            <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
-                            <div class="plat-infos">
-                                <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span> 
-                                <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
-                                
-                                <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
-                                    <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
-                                    <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
-                                    <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
-                                    
-                                    <div class="panier-controls">
-                                        <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                        <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
-                                    </div>
-
-                                    <button type="submit" class="btn-prix-action">
-                                        <?= number_format($plat['prix'], 2, ',', ' ') ?> €
-                                    </button>
-                                </form>
-                            </div>
-                        </li>
+                    <li class="plat-avec-image"
+                        data-prix="<?= $plat['prix'] ?>"
+                        data-nb="<?= $plat['nb_commandes'] ?? 0 ?>">
+                        <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
+                        <div class="plat-infos">
+                            <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span>
+                            <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
+                            <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
+                                <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
+                                <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
+                                <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
+                                <div class="panier-controls">
+                                    <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
+                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                </div>
+                                <button type="submit" class="btn-prix-action">
+                                    <?= number_format($plat['prix'], 2, ',', ' ') ?> €
+                                </button>
+                            </form>
+                        </div>
+                    </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
@@ -158,38 +200,38 @@ if (file_exists($fichier_carte)) {
             <ul class="menu-list">
                 <?php foreach ($plats as $plat): ?>
                     <?php if ($plat['categorie'] === 'sucre'): ?>
-                        <li class="plat-avec-image">
-                            <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
-                            <div class="plat-infos">
-                                <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span>
-                                <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
-                                
-                                <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
-                                    <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
-                                    <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
-                                    <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
-                                    
-                                    <div class="panier-controls">
-                                        <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                        <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
-                                    </div>
-
-                                    <button type="submit" class="btn-prix-action">
-                                        <?= number_format($plat['prix'], 2, ',', ' ') ?> €
-                                    </button>
-                                </form>
-                            </div>
-                        </li>
+                    <li class="plat-avec-image"
+                        data-prix="<?= $plat['prix'] ?>"
+                        data-nb="<?= $plat['nb_commandes'] ?? 0 ?>">
+                        <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
+                        <div class="plat-infos">
+                            <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span>
+                            <span class="item-desc"><?= htmlspecialchars($plat['description']) ?></span>
+                            <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
+                                <input type="hidden" name="id_produit" value="<?= htmlspecialchars($plat['id']) ?>">
+                                <input type="hidden" name="nom" value="<?= htmlspecialchars($plat['nom']) ?>">
+                                <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
+                                <div class="panier-controls">
+                                    <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
+                                    <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                </div>
+                                <button type="submit" class="btn-prix-action">
+                                    <?= number_format($plat['prix'], 2, ',', ' ') ?> €
+                                </button>
+                            </form>
+                        </div>
+                    </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
         </section>
-        
-        <p class="alerte-allergie">
-            🌸 Dis-nous si t'as des allergies, on s'adapte !
-        </p>
-    </main>
 
-    <?php include 'footer.php'; ?>
+    </div><!-- fin #sections-normales -->
+
+    <p class="alerte-allergie">🌸 Dis-nous si t'as des allergies, on s'adapte !</p>
+</main>
+
+<?php include 'footer.php'; ?>
+<script src="js/menu.js"></script>
 </body>
 </html>
