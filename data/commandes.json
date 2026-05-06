@@ -121,7 +121,8 @@
             }
         },
         "total": 24,
-        "statut": "En pr\u00e9paration"
+        "statut": "En livraison",
+        "livreur": "Sophie Durand"
     },
     {
         "id_commande": "CMD_FA5D006A2531",
@@ -162,7 +163,51 @@
             }
         },
         "total": 4.5,
-        "statut": "En livraison",
-        "livreur": "Sophie Durand"
+        "statut": "Livr\u00e9e",
+        "livreur": "Non assign\u00e9"
+    },
+    {
+        "id_commande": "CMD_FCBDD76926DC",
+        "client": " ",
+        "login_client": null,
+        "telephone": "Non renseign\u00e9",
+        "adresse": "\u00c0 r\u00e9cup\u00e9rer sur place",
+        "date": "2026-04-07 14:52:59",
+        "date_souhaitee": "2026-04-10",
+        "heure_souhaitee": "10:00",
+        "articles": {
+            "D05": {
+                "nom": "GRANOLA BOWL",
+                "prix": 8.5,
+                "quantite": 1
+            }
+        },
+        "total": 8.5,
+        "statut": "En pr\u00e9paration"
+    },
+    {
+        "id_commande": "CMD_CDC63D89F0DD",
+        "client": "Lucie Maxou",
+        "login_client": "lulu@cyu.fr",
+        "telephone": "0601020305",
+        "adresse": "3 avenue du Parc, Cergy",
+        "date": "2026-04-23 13:15:57",
+        "date_souhaitee": "2026-04-23",
+        "heure_souhaitee": "13:30",
+        "articles": {
+            "B02": {
+                "nom": "Chocolat chaud",
+                "prix": 5,
+                "quantite": 1
+            },
+            "P02": {
+                "nom": "PANCAKE BACON",
+                "prix": 13.9000000000000003552713678800500929355621337890625,
+                "quantite": 1
+            }
+        },
+        "total": 18.89999999999999857891452847979962825775146484375,
+        "statut": "Livr\u00e9e",
+        "livreur": "Non assign\u00e9"
     }
 ]
