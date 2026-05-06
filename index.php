@@ -36,6 +36,9 @@ session_start()
                 <ul class="deroulant">
                     <li><a href="connexion.php">Connexion</a></li>
                     <li><a href="inscription.php">S'inscrire</a></li>
+                <li>
+                    <button id="theme-toggle" class="btn-discret"></button>
+                </li>
                 </ul>
             <?php endif; ?>
         </div>
@@ -92,3 +95,6 @@ session_start()
     $is_index = true; 
     include 'footer.php'; 
     ?>
+
+    <!-- On charge le script JavaScript pour qu'il soit sur toutes les pages -->
+    <script src="js/theme.js"></script>
