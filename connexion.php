@@ -40,4 +40,7 @@ session_start()
         </form>
     </main>
     
-    <?php include 'footer.php'; ?>
+    <?php
+        $load_validation = true; 
+        include 'footer.php'; 
+    ?>

@@ -71,4 +71,7 @@ session_start()
         </form>
     </main>
 
-    <?php include 'footer.php'; ?>
+    <?php
+        $load_validation = true; // Pour activer le compteur de caractères sur l'avis
+        include 'footer.php'; 
+    ?>

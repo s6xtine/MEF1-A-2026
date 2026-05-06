@@ -25,5 +25,11 @@
             </div>
         <?php endif; ?>
     </footer>
+    <?php if (isset($load_validation) && $load_validation === true): ?>
+        <script src="./js/validation.js"></script>
+    <?php endif; ?>
+
+
+    <script src="./js/theme.js"></script>
 </body>
 </html>

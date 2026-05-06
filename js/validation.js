@@ -1,64 +1,53 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- 1. VALIDATION INSCRIPTION ---
-    const formInscription = document.querySelector('form[action*="submit_inscription"]');
-    
-    if (formInscription) {
-        formInscription.addEventListener('submit', function(e) {
-            let erreurs = [];
-            const email = formInscription.querySelector('input[type="email"]').value;
-            const password = formInscription.querySelector('input[type="password"]').value;
+    const passwordInput = document.getElementById('password');
+    const passwordCounter = document.getElementById('password-counter');
+    const minLength = 8; 
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                erreurs.push("L'adresse e-mail n'est pas valide.");
-            }
+    if (passwordInput && passwordCounter) {
+        
+        passwordCounter.textContent = `Minimum ${minLength} caractères requis.`;
 
-            if (password.length < 8) {
-                erreurs.push("Le mot de passe doit contenir au moins 8 caractères.");
-            }
+        
+        passwordInput.addEventListener('input', function() {
+            const currentLength = passwordInput.value.length;
+            const remaining = minLength - currentLength;
 
-            if (erreurs.length > 0) {
-                e.preventDefault(); 
-                alert("⚠️ Erreurs détectées :\n- " + erreurs.join("\n- "));
+            if (remaining > 0) {
+                passwordCounter.textContent = `${remaining} caractère(s) manquant(s).`;
+                passwordCounter.classList.add('texte-alerte');
+                passwordCounter.classList.remove('valide');
+            } else {
+                passwordCounter.textContent = "Longueur suffisante ";
+                passwordCounter.classList.remove('texte-alerte');
+                passwordCounter.classList.add('valide');
             }
         });
     }
 
-    // --- 2. COMPTEUR DE CARACTÈRES (Avis / Instructions) ---
-    const textAreas = document.querySelectorAll('textarea');
-    
-    textAreas.forEach(area => {
-        const compteur = document.createElement('small');
-        
-        compteur.classList.add('compteur-caracteres');
-        area.parentNode.insertBefore(compteur, area.nextSibling);
+  
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            const email = document.querySelector('input[type="email"]').value;
+            const password = passwordInput.value;
+            let errors = [];
 
-        area.addEventListener('input', function() {
-            const reste = 200 - this.value.length;
-            compteur.textContent = reste + " caractères restants";
             
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errors.push("L'adresse email n'est pas valide.");
+            }
+
+           
+            if (password.length < minLength) {
+                errors.push(`Le mot de passe doit faire au moins ${minLength} caractères.`);
+            }
+
             
-            if (reste < 0) {
-                compteur.classList.add('texte-alerte');
-                area.classList.add('bordure-erreur');
-            } else {
-                compteur.classList.remove('texte-alerte');
-                area.classList.remove('bordure-erreur');
+            if (errors.length > 0) {
+                e.preventDefault();
+                alert("Erreurs :\n" + errors.join("\n"));
             }
         });
-    });
-
-    // --- 3. AFFICHER/MASQUER LE MOT DE PASSE ---
-    const passInputs = document.querySelectorAll('input[type="password"]');
-    passInputs.forEach(input => {
-        const toggleBtn = document.createElement('span');
-        toggleBtn.innerHTML = " 👀";
-        toggleBtn.classList.add('toggle-password'); 
-        input.parentNode.insertBefore(toggleBtn, input.nextSibling);
-
-        toggleBtn.addEventListener('click', function() {
-            input.type = (input.type === "password") ? "text" : "password";
-        });
-    });
+    }
 });
