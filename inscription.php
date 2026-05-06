@@ -60,7 +60,7 @@ session_start()
                 <textarea id="commentaires" name="commentaires" rows="5" placeholder="Ex: Bâtiment au fond de la cour..."></textarea>
             </fieldset>
 
-            <button type="submit">S'inscrire</button>
+            <button type="submit" class="btn-gossip">S'inscrire</button>
 
             <p>Déjà membre ? <a href="connexion.php">Connectez-vous ici</a></p>
 

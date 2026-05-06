@@ -26,13 +26,13 @@ session_start()
 
         <div class="user-menu">
             <?php if (isset($_SESSION['nom'])): ?>
-                <button type="button" class="profile-btn">*</button>
+                <button type="button" class="btn-gossip btn-small">*</button>
                 <ul class="deroulant">
                     <li><a href="profil.php">Mon Profil</a></li>
                     <li><a href="deconnexion.php">Déconnexion</a></li>
                 </ul>
             <?php else: ?>
-                <button type="button" class="profile-btn">Mon Compte</button>
+                <button type="button" class="btn-gossip btn-small">Mon Compte</button>
                 <ul class="deroulant">
                     <li><a href="connexion.php">Connexion</a></li>
                     <li><a href="inscription.php">S'inscrire</a></li>
@@ -50,7 +50,7 @@ session_start()
                 <h2 class="titre-section">Spotted: Un plat en vue ?</h2>
                 <form class="search-form">
                     <input type="text" placeholder="Rechercher un ragot... ou un pancake">
-                    <button type="submit" class="btn-principal">Chercher</button>
+                    <button type="submit" class="btn-gossip">Chercher</button>
                 </form>
             </div>
         
@@ -83,7 +83,7 @@ session_start()
 
         <section class="cta-reservation">
             <h2 class="titre-section">Envie de nous rejoindre ?</h2>
-            <a href="reservation.php" class="btn-geant">Réservez Maintenant</a>
+            <a href="reservation.php" class="btn-gossip btn-geant">Réservez Maintenant</a>
         </section>
     </main>
 

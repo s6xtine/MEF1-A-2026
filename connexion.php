@@ -32,7 +32,7 @@ session_start()
             </fieldset>
             
             
-            <button type="submit">Se connecter</button>
+            <button type="submit" classe="btn-gossip">Se connecter</button>
 
             <p>Nouveau chez Sip & Spill ? <a href="inscription.php">Créez un compte ici</a></p>
             <p><a href="index.php">Retour au menu principal</a></p>

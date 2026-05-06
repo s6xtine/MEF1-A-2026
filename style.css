@@ -430,154 +430,55 @@ main > section { width: 100%; }
 /* ==========================================================================
    BOUTONS & LIENS D'ACTION
    ========================================================================== */
-.profile-btn {
-    background-color: var(--bg-cream);
-    color: var(--bordeaux-chic);
-    border: 2px solid var(--bordeaux-chic);
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
-}
-
-.profile-btn:hover {
-    background-color: var(--pink-mid);
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
-}
-
-.btn-geant {
+/* Style esthétique de base pour TOUS les boutons */
+.btn-gossip {
     display: inline-block;
     background-color: var(--bordeaux-chic);
     color: var(--white);
-    font-family: 'Didot', serif;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
+    font-family: 'Didot', serif; /* Style élégant du btn-geant */
     text-transform: uppercase;
-    padding: 15px 50px;
+    letter-spacing: 2px;
     text-decoration: none;
     border-radius: 50px;
-    transition: background-color 0.3s ease;
+    border: none;
+    transition: all 0.3s ease;
     text-align: center;
-    margin: 0 auto;
+    cursor: pointer;
 }
 
-.btn-geant:hover {
+.btn-gossip:hover {
     background-color: var(--pink-mid);
     color: var(--bordeaux-chic);
 }
 
-.btn-order {
-    display: inline-block;
-    background: var(--red-gossip);
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 12px 0;
-    margin: 0 20px 20px;
-    border-radius: 40px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.1s;
-    text-align: center;
-    cursor: pointer;
-}
-
-.btn-order:hover {
-    background: #8B1A1F;
-    transform: scale(1.02);
-}
-
-.btn-promo {
-    background: var(--bordeaux-chic);
-    color: white;
-    padding: 12px 30px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s;
-}
-
-.btn-promo:hover {
-    background: var(--red-gossip);
-}
-
-.btn-discret {
-    display: inline-block;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    padding: 8px 20px;
+/* Version Standard (ex: Profil) */
+.btn-small {
+    padding: 10px 25px;
     font-size: 0.9rem;
+}
+
+/* Version Géante (ex: Accueil / Inscription) */
+.btn-large {
+    padding: 15px 50px;
+    font-size: 1.2rem;
+}
+
+/* Spécificité LIVREUR : Très gros pour l'usage avec gants */
+.btn-xl-livreur {
+    display: block; /* Prend toute la largeur */
+    width: 100%;
+    padding: 30px; /* Très haut pour une zone de clic maximale */
+    font-size: 1.5rem;
+    background-color: var(--red-gossip); /* Distinction visuelle pour le livreur */
+    border: 4px solid #720e13; /* Effet de relief pour le tactile */
+}
+
+/* Spécificité RETIRER / DISCRET */
+.btn-outline {
     background-color: transparent;
     color: var(--bordeaux-chic);
-    border: 1px solid var(--bordeaux-chic);
-    border-radius: 30px;
-    text-decoration: none;
-    font-family: 'Courier New', monospace;
-    transition: all 0.3s ease;
+    border: 2px solid var(--bordeaux-chic);
 }
-
-.btn-discret:hover {
-    background-color: var(--white);
-    box-shadow: 0 4px 8px rgba(89, 13, 34, 0.1);
-}
-
-.btn-retirer {
-    text-decoration: none;
-    font-size: 1.2rem;
-    display: inline-block;
-    transition: transform 0.2s ease;
-}
-
-.btn-retirer:hover {
-    transform: scale(1.2);
-}
-
-.bouton-nav, .bouton-appel, .btn-livreur {
-    display: block;
-    width: 100%;
-    padding: 20px;
-    margin: 15px 0 10px 0;
-    text-align: center;
-    font-size: 1.2rem;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 15px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.bouton-nav { background-color: var(--bordeaux-chic); color: var(--white); }
-.bouton-appel { background-color: var(--pink-mid); color: var(--bordeaux-chic); }
-
-.btn-livreur {
-    background-color: var(--red-gossip);
-    color: var(--white);
-    padding: 25px;
-    font-size: 1.4rem;
-    margin-top: 40px;
-    border: 4px solid #720e13;
-}
-
-.btn-livreur:active { transform: scale(0.98); }
-
-.link-back {
-    display: block;
-    text-align: center;
-    margin-top: 30px;
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    color: var(--bordeaux-chic);
-}
-
 /* ==========================================================================
    FORMULAIRES (Global & Exceptions)
    ========================================================================== */
@@ -652,43 +553,6 @@ input:focus, textarea:focus {
     border-color: var(--pink-border);
     outline: 2px dashed var(--red-gossip);
     outline-offset: -5px;
-}
-
-input[type="submit"], button[type="submit"], .btn-principal {
-    width: 100%;
-    padding: 15px;
-    background-color: var(--bordeaux-chic);
-    color: var(--pink-mid);
-    font-family: 'Arial', sans-serif;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 2px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-top: 4px solid var(--pink-light);
-    border-left: 4px solid var(--pink-light);
-    border-bottom: 4px solid #330000;
-    border-right: 4px solid #330000;
-}
-
-.btn-principal {
-    background-color: var(--red-gossip);
-    color: var(--white);
-    border-top-color: #FF8FA3;
-    border-left-color: #FF8FA3;
-    border-bottom-color: #590D22;
-    border-right-color: #590D22;
-}
-
-input[type="submit"]:active, button[type="submit"]:active, .btn-principal:active {
-    border-top-color: #330000;
-    border-bottom-color: var(--pink-light);
-    transform: translate(2px, 2px);
-}
-
-.btn-principal:active {
-    border-top-color: #590D22;
-    border-bottom-color: #FF8FA3;
 }
 
 form p {
@@ -781,14 +645,13 @@ form.form-sans-boite .sub-titre {
     text-align: center;
 }
 
-.form-ajout-panier { margin-top: 15px; }
+
 .input-qte { 
     width: 50px; 
     text-align: center; 
     border-radius: 10px; 
     border: 1px solid var(--pink-border); 
 }
-.btn-ajout-panier { margin-top: 10px; width: 100%; }
 
 /* ==========================================================================
    PAGE MENU (LA CARTE)
@@ -1080,23 +943,6 @@ td {
 
 tr:hover td { background-color: #FFF0F5; }
 
-td button, .btn-edit {
-    background-color: var(--bordeaux-chic);
-    color: var(--white);
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
-    transition: 0.2s;
-    text-decoration: none;
-    display: inline-block;
-}
-
-td button:hover, .btn-edit:hover {
-    background-color: var(--red-gossip);
-}
 
 .table-panier {
     width: 100%;
@@ -1135,13 +981,6 @@ td button:hover, .btn-edit:hover {
 
 .table-historique { width: 100%; text-align: left; opacity: 0.8; }
 
-.panier-vide .btn-geant {
-    margin-top: 20px;
-}
-
-.form-cybank .btn-geant {
-    width: 100%;
-}
 
 /* ==========================================================================
    PAGES INTERNES : PROFIL, COMMANDES, LIVRAISON
@@ -1294,40 +1133,31 @@ footer a {
 /* ==========================================================================
    PAGE MODIFICATION MENU (Restaurateur)
    ========================================================================== */
-/* Prendre toute la largeur disponible */
+
 .gestion-menu { 
     width: 100%; 
 }
 
-/* Marge pour le bouton du formulaire d'ajout */
-.gestion-menu .btn-geant { 
-    margin-top: 20px; 
-}
 
-/* Joli trait de séparation en pointillés */
+
+
 .separateur-chic { 
     margin: 40px 0; 
     border: 0; 
     border-top: 1px dashed var(--pink-border); 
 }
 
-/* Style de la description dans le tableau */
+
 td.desc-plat { 
     text-align: left; 
     font-size: 0.9em; 
     color: #666; 
 }
 
-/* Aligner les formulaires d'action (comme les boutons Supprimer) */
+
 .form-action-rapide { 
     display: inline-block; 
     margin-left: 5px; 
 }
 
-/* Variante rouge vif pour les boutons dangereux (Supprimer) */
-.btn-supprimer { 
-    background-color: var(--red-gossip); 
-}
-.btn-supprimer:hover { 
-    background-color: #720e13; 
-}
+

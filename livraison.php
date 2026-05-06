@@ -56,7 +56,7 @@ if (file_exists($fichier_commandes)) {
                     <h3 class="sub-titre">Destination</h3>
                     <p><?= htmlspecialchars($cmd['adresse'] ?? 'Adresse non renseignée') ?></p>
                     
-                    <a href="https://maps.google.com/?q=<?= urlencode($cmd['adresse'] ?? '') ?>" target="_blank" class="bouton-nav">
+                    <a href="https://maps.google.com/?q=<?= urlencode($cmd['adresse'] ?? '') ?>" target="_blank" class="bouton-xl-livreur">
                         Itinéraire (Maps)
                     </a> 
                 </section>
@@ -64,7 +64,7 @@ if (file_exists($fichier_commandes)) {
                 <section id="contact" class="info-item text-center">
                     <h3 class="sub-titre">Contact Client</h3>
                     <p>Téléphone : <?= htmlspecialchars($cmd['telephone'] ?? 'Non renseigné') ?></p> 
-                    <a href="tel:<?= htmlspecialchars($cmd['telephone'] ?? '') ?>" class="bouton-appel">Appeler le client</a>
+                    <a href="tel:<?= htmlspecialchars($cmd['telephone'] ?? '') ?>" class="btn-xl-livreur">Appeler le client</a>
                 </section>
 
                 <section id="instructions" class="info-item text-center">
@@ -82,7 +82,7 @@ if (file_exists($fichier_commandes)) {
                 <form action="traitement/update_statut.php" method="POST" class="form-sans-boite">
                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                     <input type="hidden" name="nouveau_statut" value="Livrée">
-                    <button type="submit" id="valider-livraison" class="btn-livreur">Livraison terminée ✅</button>
+                    <button type="submit" id="valider-livraison" class="btn-xl-livreur">Livraison terminée ✅</button>
                 </form>
 
                 <hr class="separateur-chic">
