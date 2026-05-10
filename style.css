@@ -26,13 +26,13 @@ body {
     padding: 0;
     background-color: var(--bg-cream);
     color: var(--bordeaux-chic);
-    font-family: 'Didot', 'Times New Roman', serif;
+    font-family: 'Didot';
     line-height: 1.6;
     font-size: 16px;
 }
 
 h1, h2, h3 {
-    font-family: 'Snell Roundhand', 'Brush Script MT', cursive;
+    font-family: 'Snell Roundhand';
     font-weight: normal;
     margin: 0 0 20px 0;
 }
@@ -75,7 +75,7 @@ a {
     padding: 100px 20px;
     text-align: center;
     color: var(--white);
-    border-bottom: 5px double var(--white);
+    
 }
 
 .form-header {
@@ -156,7 +156,6 @@ a {
     padding: 10px;
     min-width: 150px;
     margin-top: 10px;
-    box-shadow: 5px 5px 0px var(--bordeaux-chic);
     z-index: 101;
 }
 
@@ -246,46 +245,44 @@ a {
     color: var(--red-gossip);
 }
 
-.main-nav {
-    background: linear-gradient(135deg, #FFEFF5 0%, var(--pink-light) 40%, #FFEFF5 50%, var(--pink-light) 60%, #FFEFF5 100%);
-    text-align: center;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(89, 13, 34, 0.1);
-    border-bottom: 2px solid var(--white);
-}
-
-.main-nav ul { padding: 0; margin: 0; list-style: none; }
-.main-nav li { display: inline-block; }
-
-.main-nav a {
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--bordeaux-chic);
-    padding: 10px 20px;
-    
-}
+/* Le conteneur principal : simple et efficace */
 .menu-nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 246, 248, 0.96);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid #F5BDD0;
-    text-align: center;
-    padding: 14px 20px;
-    margin-bottom: 70px;
+    background-color: #FFFAFA; /* Un blanc cassé/rose très pâle */
+    border-bottom: 1px solid var(--pink-mid);
+    padding: 100px 50px;
     width: 100%;
-    box-sizing: border-box;
+    text-align: center;
 }
 
+/* Liste de navigation */
+.main-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espace entre les liens sans utiliser de padding complexe */
+}
+
+/* Les liens : base neutre pour tes futures innovations */
+.main-nav a {
+    text-decoration: none;
+    font-family: 'Didot', serif; /* On utilise Didot pour le côté chic */
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--bordeaux-chic);
+    
+}
+
+/* Zone de test pour tes innovations (Hover) */
 .main-nav a:hover {
-    color: var(--white);
-    text-shadow: 1px 1px 0px var(--bordeaux-chic);
+    color: var(--red-gossip);
+    /* Ici tu pourras ajouter un soulignement animé ou un changement de taille */
 }
-
 /* ==========================================================================
    LAYOUT PRINCIPAL & SECTIONS ACCUEIL
    ========================================================================== */
@@ -459,8 +456,9 @@ main > section { width: 100%; }
 
 /* Version Géante (ex: Accueil / Inscription) */
 .btn-large {
-    padding: 15px 50px;
-    font-size: 1.2rem;
+    padding: 20px 70px; /* On augmente la largeur et la hauteur */
+    font-size: 1.5rem;    /* Texte plus imposant */
+    min-width: 300px;
 }
 
 /* Spécificité LIVREUR : Très gros pour l'usage avec gants */
@@ -482,177 +480,83 @@ main > section { width: 100%; }
 /* ==========================================================================
    FORMULAIRES (Global & Exceptions)
    ========================================================================== */
-body:has(form:not(.search-form)) {
-    background-image: url('https://images.unsplash.com/photo-1526887593587-a307c1d474dd?q=80&w=2000&auto=format&fit=crop');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
+/* --- STRUCTURE DES FORMULAIRES --- */
+/* --- 1. LE CONTENEUR (Le bloc principal) --- */
 form {
     max-width: 600px;
     margin: 40px auto;
     padding: 40px;
     background-color: var(--white);
-    border: 4px double var(--bordeaux-chic);
-    box-shadow: 10px 10px 0px rgba(89, 13, 34, 0.1);
+    border: 2px solid var(--bordeaux-chic);
+    
 }
 
+/* --- 2. STRUCTURE INTERNE (Champs et Sections) --- */
 fieldset {
-    border: 2px solid var(--pink-mid);
+    border: 1px solid var(--bordeaux-chic);
     margin-bottom: 25px;
     padding: 20px;
-    background-color: #FFFAFA;
+    background-color: var(--bg-cream);
 }
 
 legend {
-    background-color: var(--pink-mid);
+    background-color: var(--bg-cream);
     color: var(--bordeaux-chic);
+    border: 1px solid var(--bordeaux-chic);
     padding: 5px 15px;
-    font-family: 'Courier New', monospace;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 1px solid var(--pink-border);
 }
 
 label {
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: var(--bordeaux-chic);
-    margin-bottom: 5px;
     display: block;
+    margin-bottom: 8px;
+    color: var(--bordeaux-chic);
+    font-weight: bold;
 }
 
-.search-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="date"], input[type="time"], input[type="number"], textarea {
+/* --- 3. LES INPUTS (Style minimaliste) --- */
+input, textarea {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #CCC;
     background-color: var(--white);
-    font-family: 'Courier New', monospace;
     font-size: 1rem;
     color: var(--bordeaux-chic);
-    outline: none;
-    border-top: 3px solid #CCC;
-    border-left: 3px solid #CCC;
-    border-bottom: 3px solid #FFF;
-    border-right: 3px solid #FFF;
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
 }
 
-input:focus, textarea:focus {
-    background-color: #FFF0F5;
-    border-color: var(--pink-border);
-    outline: 2px dashed var(--red-gossip);
-    outline-offset: -5px;
-}
 
-form p {
-    text-align: center;
-    font-family: 'Didot', serif;
-    margin-top: 20px;
-    font-size: 0.9rem;
-}
 
-form a {
-    color: var(--red-gossip);
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-form a:hover {
-    background-color: var(--pink-mid);
-    text-decoration: none;
-}
-
+/* --- 4. LA GRILLE SPÉCIFIQUE (Pour Inscription) --- */
 form:has(fieldset:nth-of-type(3)) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
-    max-width: 900px;
+    max-width: 900px; /* Plus large pour accueillir les deux colonnes */
     align-items: start;
 }
 
-form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(1) { grid-column: 1; grid-row: 1; margin-bottom: 0; }
-form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(2) { grid-column: 1; grid-row: 2; margin-bottom: 0; }
-form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(3) { grid-column: 2; grid-row: 1 / span 2; height: 100%; margin-bottom: 0; }
+/* Placement intelligent des blocs */
+form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(1) { grid-column: 1; grid-row: 1; }
+form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(2) { grid-column: 1; grid-row: 2; }
+form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(3) { grid-column: 2; grid-row: 1 / span 2; height: 100%; }
 
-form:has(fieldset:nth-of-type(3)) input[type="submit"],
-form:has(fieldset:nth-of-type(3)) button[type="submit"],
-form:has(fieldset:nth-of-type(3)) p,
-form:has(fieldset:nth-of-type(3)) hr {
+/* Éléments de fin (Boutons et textes) qui s'étendent sur toute la largeur */
+form:has(fieldset:nth-of-type(3)) .btn-gossip,
+form:has(fieldset:nth-of-type(3)) p {
     grid-column: 1 / -1;
-    width: 100%;
+    text-align: center;
 }
 
-form:has(fieldset:nth-of-type(3)) > br { display: none; }
-
-form.form-cybank {
+/* --- 5. VARIANTE TRANSPARENTE (Sans boîte) --- */
+form.form-sans-boite, form.form-cybank {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     padding: 0 !important;
-    margin: 0 !important;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+    margin: 0 auto !important;
 }
-
-.admin-container h2.sub-titre {
-    text-align: center;
-    width: 100%;
-}
-
-form.form-sans-boite {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    width: 100%;
-    padding: 0;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-form.form-sans-boite .info-item {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 30px auto;
-    text-align: center;
-}
-
-form.form-sans-boite p, 
-form.form-sans-boite strong, 
-form.form-sans-boite .sub-titre {
-    text-align: center;
-    display: block;
-    width: 100%;
-}
-
-.center-input {
-    max-width: 300px;
-    margin: 10px auto 20px auto;
-    display: block;
-    text-align: center;
-}
-
-
-.input-qte { 
-    width: 50px; 
-    text-align: center; 
-    border-radius: 10px; 
-    border: 1px solid var(--pink-border); 
-}
-
 /* ==========================================================================
    PAGE MENU (LA CARTE)
    ========================================================================== */

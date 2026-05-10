@@ -233,6 +233,31 @@
             }
         },
         "total": 12.5,
+        "statut": "En livraison",
+        "livreur": "Jean Dupont"
+    },
+    {
+        "id_commande": "CMD_342701DA3C72",
+        "client": " ",
+        "login_client": null,
+        "telephone": "Non renseign\u00e9",
+        "adresse": "\u00c0 r\u00e9cup\u00e9rer sur place",
+        "date": "2026-05-10 18:11:35",
+        "date_souhaitee": "2026-05-15",
+        "heure_souhaitee": "20:00",
+        "articles": {
+            "B02": {
+                "nom": "Chocolat chaud",
+                "prix": 5,
+                "quantite": 1
+            },
+            "P05": {
+                "nom": "LADY BOWL",
+                "prix": 14.5,
+                "quantite": 1
+            }
+        },
+        "total": 19.5,
         "statut": "En pr\u00e9paration"
     }
 ]
