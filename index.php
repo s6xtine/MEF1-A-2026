@@ -33,7 +33,7 @@ session_start()
                 <h2 class="titre-section">Spotted: Un plat en vue ?</h2>
                 <form class="search-form">
                     <input type="text" placeholder="Rechercher un ragot... ou un pancake">
-                    <button type="submit" class="btn-gossip">Chercher</button>
+                    <button type="submit" class="btn-gossip btn-small">Chercher</button>
                 </form>
             </div>
         
@@ -66,7 +66,7 @@ session_start()
 
         <section class="cta-reservation">
             <h2 class="titre-section">Envie de nous rejoindre ?</h2>
-            <a href="reservation.php" class="btn-gossip btn-geant">Réservez Maintenant</a>
+            <a href="reservation.php" class="btn-gossip btn-large">Réservez Maintenant</a>
         </section>
     </main>
 

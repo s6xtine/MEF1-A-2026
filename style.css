@@ -21,26 +21,57 @@
     box-sizing: border-box;
 }
 
+/* --- RÉGLAGES DE BASE --- */
 body {
     margin: 0;
     padding: 0;
     background-color: var(--bg-cream);
     color: var(--bordeaux-chic);
-    font-family: 'Didot';
+    font-family: 'Didot', serif; /* Ta police par défaut pour le texte */
     line-height: 1.6;
     font-size: 16px;
+    -webkit-font-smoothing: antialiased; /* Rend la police plus fine/propre */
 }
 
-h1, h2, h3 {
-    font-family: 'Snell Roundhand';
+/* --- TITRES (L'identité Sip & Spill) --- */
+h1, h2 {
+    font-family: 'Snell Roundhand', cursive;
     font-weight: normal;
     margin: 0 0 20px 0;
+    line-height: 1.2;
 }
 
+h3 {
+    font-family: 'Didot', serif;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+
+h1 { font-size: 3.5rem; } /* Très grand pour les titres de page */
+h2 { font-size: 2.8rem; } /* Pour les sections du menu */
+h3 { font-size: 2rem; }   /* Pour les noms de plats ou petits titres */
+
+/* --- TEXTES ET PARAGRAPHES --- */
+p {
+    margin-bottom: 15px;
+    font-family: 'Didot', serif;
+}
+
+span {
+    font-family: inherit; /* Suit le parent par défaut */
+}
+
+/* --- LIENS  --- */
 a {
     text-decoration: none;
     color: inherit;
-    transition: 0.3s;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--red-gossip);
 }
 
 .text-center { text-align: center; }
@@ -138,150 +169,122 @@ a {
 /* ==========================================================================
    MENU UTILISATEUR & NAVIGATION
    ========================================================================== */
+
+/* --- LE CONTENEUR PARENT --- */
 .user-menu {
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 100;
+    z-index: 1000;
+    display: inline-block;
 }
 
+/* bouton profil déroulant  */
 .deroulant {
     display: none;
     position: absolute;
     top: 100%;
     right: 0;
+    width: 200px;
+    margin: 10px 0 0 0;
+    padding: 0;           
+    list-style: none;     
     background: var(--white);
-    border: 2px solid var(--bordeaux-chic);
-    list-style: none;
-    padding: 10px;
-    min-width: 150px;
-    margin-top: 10px;
-    z-index: 101;
+    border: 1px solid var(--bordeaux-chic);
+    box-shadow: 3px 3px 0px var(--bordeaux-chic);
 }
 
-.menu-hero {
-    position: relative;
+/* la on affiche le block */
+.user-menu:hover .deroulant {
+    display: block;
+}
+
+/* Le pont invisible pour garder le menu ouvert quand on descend la souris */
+.user-menu::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
-    height: 80vh;               /* hauteur pleine fenêtre */
-    overflow: hidden;
+    height: 20px;
+}
+
+/* comment on affiche la liste */
+.deroulant li {
+    width: 100%;
     margin: 0;
     padding: 0;
+    display: block;
 }
 
-.menu-hero-img {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* et la le contenue donc interieur  */
+.deroulant a, 
+.deroulant button {
+    /* On force le comportement de bloc centré */
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;   /* centrage parfait */
-    display: block;
-}
-.menu-hero-img {
-    max-height: none;
-}
-.menu-hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(89, 13, 34, 0.10) 0%,
-        rgba(89, 13, 34, 0.40) 100%   /* moins opaque pour mieux voir l’image */
-    );
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    z-index: 2;
-}
-.menu-hero-label {
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: white;
-    margin-bottom: 16px;
-}
-
-.menu-hero-title {
-    font-family: 'Snell Roundhand', 'Brush Script MT', cursive;
-    font-size: clamp(80px, 12vw, 140px);
-    font-weight: normal;
-    color: white;
-    line-height: 1;
-    margin-bottom: 16px;
-    text-shadow: 0 4px 30px rgba(89, 13, 34, 0.6);
-}
-
-.menu-hero-sub {
+    box-sizing: border-box;
+    padding: 12px 15px;
+    
+    /* Typographie */
     font-family: 'Didot', serif;
-    font-size: 18px;
-    font-style: italic;
-    color: white;
-    letter-spacing: 2px;
-}
-
-.user-menu:hover .deroulant { display: block; }
-.user-menu::after { content: ''; display: block; position: absolute; top: 100%; left: 0; width: 100%; height: 15px; }
-.deroulant li { margin-bottom: 5px; }
-
-.deroulant a {
-    display: block;
-    padding: 8px 10px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
     color: var(--bordeaux-chic);
-    font-weight: bold;
-    border-radius: 5px;
+    text-align: center;    
+    text-decoration: none;
+    
+    /* Reset des boutons */
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
-.deroulant a:hover {
-    background-color: var(--bg-cream);
+/* et le survol */
+.deroulant a:hover, 
+.deroulant button:hover {
+    background-color: var(--pink-light);
     color: var(--red-gossip);
 }
 
-/* Le conteneur principal : simple et efficace */
+/* navigation principale , la barre */
 .menu-nav {
     position: sticky;
     top: 0;
-    z-index: 100;
-    background-color: #FFFAFA; /* Un blanc cassé/rose très pâle */
-    border-bottom: 1px solid var(--pink-mid);
-    padding: 100px 50px;
+    z-index: 100; 
+    background-color: #FFFAFA; 
+    border-bottom: 2px solid var(--pink-mid);
+    padding: 30px 20px; 
     width: 100%;
+    box-sizing: border-box;
     text-align: center;
 }
 
-/* Liste de navigation */
+/* la liste des liens de la nav */
 .main-nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 30px; /* Espace entre les liens sans utiliser de padding complexe */
+    gap: 40px; 
 }
 
-/* Les liens : base neutre pour tes futures innovations */
+/* et enfin les liens en eux-mêmes */
 .main-nav a {
     text-decoration: none;
-    font-family: 'Didot', serif; /* On utilise Didot pour le côté chic */
-    font-size: 1.1rem;
+    font-family: 'Didot', serif; 
+    font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     color: var(--bordeaux-chic);
-    
+    transition: all 0.3s ease;
+    font-weight: bold;
 }
 
-/* Zone de test pour tes innovations (Hover) */
+/* quand on survole */
 .main-nav a:hover {
     color: var(--red-gossip);
-    /* Ici tu pourras ajouter un soulignement animé ou un changement de taille */
+    transform: translateY(-2px); 
 }
 /* ==========================================================================
    LAYOUT PRINCIPAL & SECTIONS ACCUEIL
@@ -427,12 +430,12 @@ main > section { width: 100%; }
 /* ==========================================================================
    BOUTONS & LIENS D'ACTION
    ========================================================================== */
-/* Style esthétique de base pour TOUS les boutons */
+
 .btn-gossip {
     display: inline-block;
     background-color: var(--bordeaux-chic);
     color: var(--white);
-    font-family: 'Didot', serif; /* Style élégant du btn-geant */
+    font-family: 'Didot', serif; 
     text-transform: uppercase;
     letter-spacing: 2px;
     text-decoration: none;
@@ -448,10 +451,15 @@ main > section { width: 100%; }
     color: var(--bordeaux-chic);
 }
 
-/* Version Standard (ex: Profil) */
+
 .btn-small {
-    padding: 10px 25px;
+    padding: 5px 20px;
     font-size: 0.9rem;
+}
+
+.btn-xs {
+    padding: 3px 12px;
+    font-size: 0.8rem;
 }
 
 /* Version Géante (ex: Accueil / Inscription) */
@@ -467,8 +475,8 @@ main > section { width: 100%; }
     width: 100%;
     padding: 30px; /* Très haut pour une zone de clic maximale */
     font-size: 1.5rem;
-    background-color: var(--red-gossip); /* Distinction visuelle pour le livreur */
-    border: 4px solid #720e13; /* Effet de relief pour le tactile */
+    background-color: var(--red-gossip); 
+    border: 4px solid #720e13; 
 }
 
 /* Spécificité RETIRER / DISCRET */
@@ -560,208 +568,136 @@ form.form-sans-boite, form.form-cybank {
 /* ==========================================================================
    PAGE MENU (LA CARTE)
    ========================================================================== */
+
 .menu {
     padding: 40px 5%;
-    background-color: #FFEFF5;   
+    background-color: #FFFAFA;
+    text-align: center; /* Centre tout le contenu par défaut */
 }
 
-.menu-nav {
-    position: sticky;
-    top: 20px;
-    z-index: 100;
-    background: rgba(255, 245, 246, 0.92);
-    backdrop-filter: blur(8px);
-    border-radius: 60px;
-    border: 1px solid var(--pink-light);
-    box-shadow: var(--menu-shadow);
-    text-align: center;
-    padding: 10px 20px;
-    margin-bottom: 50px;
-    border: 2px solid var(--pink-mid);
-}
-
-.menu-nav a {
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    color: var(--bordeaux-chic);
-    margin: 0 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.menu-nav a:hover {
-    color: var(--red-gossip);
-    text-decoration: underline;
-}
-
-.menu-section {
-    margin-bottom: 60px;
-    padding-bottom: 60px;
-    border-bottom: 1px solid var(--pink-border);
-    display: block;
-    text-align: center;
-}
-
-.menu-section:last-of-type { border-bottom: none; }
-
-.menu-section h2 {
-    font-size: 5rem;
-    color: var(--bordeaux-chic);
-    background: transparent;
-    margin: 20px auto 40px auto;
-    text-shadow: 4px 4px 0px var(--bg-cream), 6px 6px 0px var(--pink-mid);
-}
-
-.menu-section h3 {
-    font-family: 'Didot', serif;
-    font-size: 1.6rem;
-    font-style: italic;
-    color: var(--red-gossip);
-    margin: 60px auto 40px auto;
+/* --- BARRE DE FILTRES (Haut du menu) --- */
+.filtres-bar {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; 
+    align-items: center;    
     gap: 20px;
+    margin-bottom: 40px;
+    background: var(--white);
+    padding: 30px;
+    border: 1px solid var(--pink-mid);
+    border-radius: 20px;
 }
 
-.menu-section h3::before, .menu-section h3::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 1px;
-    background-color: var(--pink-border);
+.filtres-groupe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
+.filtres-label {
+    font-family: 'Didot', serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--bordeaux-chic);
+    text-transform: uppercase;
+}
+
+/* affichage de l'image en haut  */
+.menu-hero {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;    
+    justify-content: center; 
+}
+
+/* same*/
+.menu-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* la on pose le texte au dessus de l'image */
+.menu-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background: rgba(0, 0, 0, 0.3); /* Voile pour voir le texte */
+    text-align: center;
+}
+
+/* On ajuste juste les couleurs et les marges pour le Hero */
+.menu-hero-overlay h1, 
+.menu-hero-overlay p {
+    color: white; 
+    margin: 5px 0;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.menu-hero-overlay h1 {
+    font-size: clamp(60px, 10vw, 110px); 
+}
+/* affichage des plats */
 .menu-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); 
     gap: 30px;
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
+/* --- LES CARTES DES PLATS --- */
 .menu-list li {
     background-color: var(--white);
-    border: 3px solid var(--pink-mid);
+    border: 1px solid var(--pink-mid);
     border-radius: 20px;
-    padding: 25px;
+    padding: 0; 
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 4px 4px 0px rgba(89, 13, 34, 0.05);
-}
-
-.menu-list li:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--menu-hover-shadow);
-    border-color: var(--bordeaux-chic);
-}
-
-.menu-list li:not(.plat-avec-image) {
-    border: 2px dashed var(--pink-border);
-    justify-content: center;
-}
-
-.menu-list li:not(.plat-avec-image) span:first-child {
-    font-family: 'Didot', serif;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: var(--bordeaux-chic);
-    text-transform: uppercase;
+    transition: transform 0.3s ease;
 }
 
 .plat-image {
     width: 100%;
-    height: 260px;
+    height: 250px;
     object-fit: cover;
-    border-radius: 28px 28px 0 0;
-    margin-bottom: 0;
-    border: none;
-    box-shadow: none;
 }
 
 .plat-infos {
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-}
+    align-items: center; 
 
-.item-nom {
-    font-family: 'Didot', serif;
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: var(--bordeaux-chic);
-    text-transform: uppercase;
-    margin-bottom: 10px;
 }
+/* juste pour le cadre des quantité */
+.input-qte{
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid var(--bordeaux-chic);
+    border-radius: 10px;
 
-.item-desc {
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 20px;
 }
-
-.item-prix, .prix {
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--red-gossip);
-    background-color: var(--pink-light);
-    padding: 8px 20px;
-    border-radius: 30px;
-    display: inline-block;
-    margin-top: auto;
-    border: 1px solid var(--pink-border);
-}
-
-.promo-banner {
-    background: var(--pink-light);
-    border-radius: 40px;
-    padding: 30px 40px;
-    margin-bottom: 60px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    box-shadow: var(--menu-shadow);
-}
-
-.promo-banner h2 {
-    font-family: 'Snell Roundhand', cursive;
-    font-size: 2.2rem;
-    color: var(--bordeaux-chic);
-    margin: 0;
-}
-
-.promo-banner p {
-    font-family: 'Poppins', sans-serif;
-    color: var(--bordeaux-chic);
-    margin: 5px 0 0;
-}
-
-.promo-badge {
-    background: var(--red-gossip);
-    color: white;
-    padding: 8px 24px;
-    border-radius: 60px;
-    font-weight: 700;
-    font-size: 1.2rem;
-}
-
-.alerte-allergie { 
-    text-align: center; 
-    font-family: 'Courier New', monospace; 
-    color: var(--red-gossip); 
-    margin-top: 50px; 
-    font-weight: bold; 
-}
-
 /* ==========================================================================
    PAGE PANIER
    ========================================================================== */
@@ -769,193 +705,113 @@ form.form-sans-boite, form.form-cybank {
     display: flex;
     flex-direction: column;
     max-width: 800px;
+    text-align: center;
+    align-items: center;
     margin: 50px auto;
-    background-color: var(--pink-light);
+    background-color: var(--white);
     padding: 40px;
     border-radius: 20px;
-    border: 2px solid var(--pink-border);
+    border: 2px solid var(--bordeaux-chic);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.panier-titre {
-    width: 100%;
-    color: var(--bordeaux-chic);
-    text-align: center;
-    margin-bottom: 30px;
-}
 
-.panier-vide {
-    text-align: center;
-    font-size: 1.3rem;
-    color: var(--bordeaux-chic);
-    font-family: 'Courier New', monospace;
-    margin: 30px 0;
-}
-
-.panier-total {
-    text-align: right;
-    font-size: 1.5rem;
-    color: var(--bordeaux-chic);
-    margin-bottom: 30px;
-}
-
-.panier-actions-colonne {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-    margin-top: 40px;
-}
-
-.qte-badge {
-    background: white;
-    padding: 5px 15px;
-    border-radius: 10px;
-    border: 1px solid var(--pink-border);
-    font-weight: bold;
-}
 
 /* ==========================================================================
    TABLEAUX (Panier, Commandes, etc.)
    ========================================================================== */
+/* --- STYLE GLOBAL DES TABLEAUX (Profil, Historique, etc.) --- */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 30px;
     background-color: var(--white);
-    font-family: 'Arial', sans-serif;
+    font-family: 'Didot', serif; 
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 th {
     background-color: var(--pink-mid);
     color: var(--bordeaux-chic);
     padding: 15px;
-    text-align: left;
+    text-align: center; /* Centré par défaut, c'est plus propre */
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 1px;
+    border-bottom: 2px solid var(--pink-border);
 }
 
 td {
     padding: 15px;
     border-bottom: 1px solid var(--pink-light);
-    color: #444;
-}
-
-tr:hover td { background-color: #FFF0F5; }
-
-
-.table-panier {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
-}
-
-.table-panier th {
-    padding: 10px;
-    border-bottom: 2px solid var(--bordeaux-chic);
     color: var(--bordeaux-chic);
     text-align: center;
 }
 
-.table-panier th:first-child { text-align: left; }
-.table-panier th:nth-child(4) { text-align: right; }
-
-.table-panier td {
-    padding: 15px 10px;
-    border-bottom: 1px solid var(--pink-border);
-    text-align: center;
+tr:hover td { 
+    background-color: #FFF9FA; 
 }
 
-.table-panier td:first-child { text-align: left; }
 
+/* On aligne juste à gauche la première colonne (le nom du plat) */
+.table-panier th:first-child, 
+.table-panier td:first-child { 
+    text-align: left; 
+}
+
+/* On met le sous-total en gras et en rouge Gossip */
 .table-panier td:nth-child(4) {
-    text-align: right;
     color: var(--red-gossip);
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif; 
 }
 
-.table-panier th:last-child,
-.table-panier td:last-child {
-    text-align: center;
+/* Historique-chicplus discret */
+.table-historique { 
+    font-size: 0.9rem;
+    opacity: 0.9; 
 }
-
-.table-historique { width: 100%; text-align: left; opacity: 0.8; }
-
-
 /* ==========================================================================
    PAGES INTERNES : PROFIL, COMMANDES, LIVRAISON
    ========================================================================== */
-.admin-container, .profile-container, main:has(#adresse-client) {
+
+.admin-container, .profile-container, .panier-container {
     max-width: 900px;
     margin: 40px auto;
     padding: 40px;
     background-color: var(--white);
     border-radius: 20px;
-    box-shadow: var(--shadow-soft);
-    border: 3px solid var(--pink-light);
+    /* On utilise ton ombre chic décalée plutôt qu'un shadow classique */
+    border: 1px solid var(--bordeaux-chic);
+    
 }
 
-select.select-chic {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    background-color: var(--bg-cream);
-    color: var(--bordeaux-chic);
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    font-size: 0.9rem;
-    border: 2px solid var(--pink-border);
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-select.select-chic:hover, select.select-chic:focus {
-    background-color: var(--white);
-    border-color: var(--bordeaux-chic);
-    box-shadow: 3px 3px 0px rgba(89, 13, 34, 0.1);
-}
-
-select.select-chic option {
-    background-color: var(--white);
-    color: var(--bordeaux-chic);
-    font-weight: bold;
-}
-
+/* --- LES BLOCS D'INFO (Cartes intérieures) --- */
 .info-item, .fidelite {
     background-color: var(--bg-cream);
     padding: 20px;
     border-radius: 15px;
-    border: 1px dashed var(--pink-border);
+    border: 1px solid var(--bordeaux-chic);
     margin-bottom: 20px;
 }
 
-.info-item p, .fidelite p {
-    margin: 10px 0;
-    font-family: 'Courier New', monospace;
-    color: var(--bordeaux-chic);
+/* On remplace le float par du Flexbox pour que tout soit aligné parfaitement */
+.info-item p {
+    display: flex;
+    
+    align-items: center;
+    margin: 15px 0;
+    font-family: 'Didot', serif;
 }
 
+/* Tes petits boutons d'édition ou icônes à droite */
 .info-item span {
-    float: right;
-    cursor: pointer;
-    opacity: 0.5;
-}
-
-.info-item span:hover { opacity: 1; }
-
-.fidelite strong {
-    font-size: 1.5rem;
+    font-size: 0.9rem;
     color: var(--red-gossip);
+    transition: 0.3s;
 }
-
-.points-fidelite { font-weight: bold; color: var(--red-gossip); font-size: 1.5rem; }
 
 blockquote {
     background-color: #FFF0F5;

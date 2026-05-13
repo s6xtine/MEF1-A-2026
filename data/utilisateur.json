@@ -8,7 +8,10 @@
         "role": "admin",
         "telephone": "0601020304",
         "adresse": "1 avenue du Parc, Cergy",
-        "date_inscription": "2026-03-16"
+        "date_inscription": "2026-03-16",
+        "statut": "VIP",
+        "points": 3,
+        "bon_achat": ""
     },
     {
         "id": 2,

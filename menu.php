@@ -37,9 +37,9 @@ if (file_exists($fichier_carte)) {
 <section class="menu-hero">
     <img src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2021/07/15044118/10-1024x576.png" alt="Notre Carte" class="menu-hero-img">
     <div class="menu-hero-overlay">
-        <p class="menu-hero-label">Découvrez</p>
-        <h1 class="menu-hero-title">Notre Carte</h1>
-        <p class="menu-hero-sub">Fait maison · Avec amour · Chaque jour</p>
+        <p>Découvrez</p>
+        <h1>Notre Carte</h1>
+        <p>Fait maison · Avec amour · Chaque jour</p>
     </div>
 </section>
 
@@ -49,43 +49,43 @@ if (file_exists($fichier_carte)) {
     <div class="filtres-bar">
 
         <div class="filtres-groupe">
-            <span class="filtres-label">Catégorie</span>
+            <span >Catégorie</span>
             <div class="filtres-btns">
-                <button class="filtre-btn actif" data-type="categorie" data-val="">Tout</button>
-                <button class="filtre-btn" data-type="categorie" data-val="boissons">☕ Boissons</button>
-                <button class="filtre-btn" data-type="categorie" data-val="sale">🥑 Salé</button>
-                <button class="filtre-btn" data-type="categorie" data-val="sucre">🧁 Sucré</button>
+                <button class="btn-gossip btn-xs" data-type="categorie" data-val="">Tout</button>
+                <button class="btn-gossip btn-xs" data-type="categorie" data-val="boissons">☕ Boissons</button>
+                <button class="btn-gossip btn-xs" data-type="categorie" data-val="sale">🥑 Salé</button>
+                <button class="btn-gossip btn-xs" data-type="categorie" data-val="sucre">🧁 Sucré</button>
             </div>
         </div>
 
         <div class="filtres-groupe">
-            <span class="filtres-label">Régime</span>
+            <span>Régime</span>
             <div class="filtres-btns">
-                <button class="filtre-btn tag-btn" data-type="tag" data-val="vegetarien">🌿 Végétarien</button>
-                <button class="filtre-btn tag-btn" data-type="tag" data-val="vegan">🌱 Vegan</button>
-                <button class="filtre-btn tag-btn" data-type="tag" data-val="halal">Halal</button>
-                <button class="filtre-btn tag-btn" data-type="tag" data-val="sans_gluten">Sans gluten</button>
-                <button class="filtre-btn tag-btn" data-type="tag" data-val="sans_lactose">Sans lactose</button>
+                <button class="btn-gossip btn-xs" data-type="tag" data-val="vegetarien">🌿 Végétarien</button>
+                <button class="btn-gossip btn-xs" data-type="tag" data-val="vegan">🌱 Vegan</button>
+                <button class="btn-gossip btn-xs" data-type="tag" data-val="halal">Halal</button>
+                <button class="btn-gossip btn-xs" data-type="tag" data-val="sans_gluten">Sans gluten</button>
+                <button class="btn-gossip btn-xs" data-type="tag" data-val="sans_lactose">Sans lactose</button>
             </div>
         </div>
 
         <div class="filtres-groupe">
-            <span class="filtres-label">Goût</span>
+            <span>Goût</span>
             <div class="filtres-btns">
-                <button class="filtre-btn actif" data-type="gout" data-val="">Tous</button>
-                <button class="filtre-btn" data-type="gout" data-val="sale">🧂 Salé</button>
-                <button class="filtre-btn" data-type="gout" data-val="sucre">🍬 Sucré</button>
-                <button class="filtre-btn" data-type="gout" data-val="epice">🌶️ Épicé</button>
+                <button class="btn-gossip btn-xs" data-type="gout" data-val="">Tous</button>
+                <button class="btn-gossip btn-xs" data-type="gout" data-val="sale">🧂 Salé</button>
+                <button class="btn-gossip btn-xs" data-type="gout" data-val="sucre">🍬 Sucré</button>
+                <button class="btn-gossip btn-xs" data-type="gout" data-val="epice">🌶️ Épicé</button>
             </div>
         </div>
 
         <div class="filtres-groupe">
-            <span class="filtres-label">Trier par</span>
+            <span>Trier par</span>
             <div class="filtres-btns">
-                <button class="tri-btn actif" data-tri="defaut">Par défaut</button>
-                <button class="tri-btn" data-tri="prix_asc">Prix ↑</button>
-                <button class="tri-btn" data-tri="prix_desc">Prix ↓</button>
-                <button class="tri-btn" data-tri="populaire">⭐ Populaires</button>
+                <button class="btn-gossip btn-xs" data-tri="defaut">Par défaut</button>
+                <button class="btn-gossip btn-xs" data-tri="prix_asc">Prix ↑</button>
+                <button class="btn-gossip btn-xs" data-tri="prix_desc">Prix ↓</button>
+                <button class="btn-gossip btn-xs" data-tri="populaire">⭐ Populaires</button>
             </div>
         </div>
 
@@ -100,13 +100,7 @@ if (file_exists($fichier_carte)) {
     <!-- SECTIONS NORMALES -->
     <div id="sections-normales">
 
-        <div class="menu-nav">
-            <a href="#menus">✨ Menus</a>
-            <a href="#boissons">☕ Boissons</a>
-            <a href="#sale">🥑 Salé</a>
-            <a href="#sucre">🧁 Sucré</a>
-        </div>
-
+     
         <section id="menus" class="menu-section">
             <h2>✨ Les Formules</h2>
             <ul class="menu-list">
@@ -122,11 +116,11 @@ if (file_exists($fichier_carte)) {
                                 <input type="hidden" name="prix" value="<?= htmlspecialchars($menu['prix_total']) ?>">
                                 
                                 <div class="panier-controls">
-                                    <label for="quantite_<?= $menu['id'] ?>">Qté :</label>
-                                    <input type="number" id="quantite_<?= $menu['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                    
+                                    <input type="number" name="quantite" value="1" min="1" max="10" class="input-qte">
                                 </div>
 
-                                <button type="submit" class="btn-prix-action">
+                                <button type="submit" class="btn-gossip btn-xs">
                                     <?= number_format($menu['prix_total'], 2, ',', ' ') ?> €
                                 </button>
                             </form>
@@ -153,11 +147,11 @@ if (file_exists($fichier_carte)) {
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
                                     <div class="panier-controls">
-                                        <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                        <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                        
+                                        <input type="number" name="quantite" value="1" min="1" max="10" class="input-qte">
                                     </div>
 
-                                    <button type="submit" class="btn-prix-action">
+                                    <button type="submit" class="btn-gossip btn-xs">
                                         <?= number_format($plat['prix'], 2, ',', ' ') ?> €
                                     </button>
                                 </form>
@@ -185,11 +179,10 @@ if (file_exists($fichier_carte)) {
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
                                     <div class="panier-controls">
-                                        <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                        <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                        <input type="number" name="quantite" value="1" min="1" max="10" class="input-qte">
                                     </div>
 
-                                    <button type="submit" class="btn-prix-action">
+                                    <button type="submit" class="btn-gossip btn-xs">
                                         <?= number_format($plat['prix'], 2, ',', ' ') ?> €
                                     </button>
                                 </form>
@@ -217,11 +210,11 @@ if (file_exists($fichier_carte)) {
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
                                     <div class="panier-controls">
-                                        <label for="quantite_<?= $plat['id'] ?>">Qté :</label>
-                                        <input type="number" id="quantite_<?= $plat['id'] ?>" name="quantite" value="1" min="1" max="10" class="input-qte">
+                                        <input type="number" name="quantite" value="1" min="1" max="10" class="input-qte">
                                     </div>
+                                    
 
-                                    <button type="submit" class="btn-prix-action">
+                                    <button type="submit" class="btn-gossip btn-xs">
                                         <?= number_format($plat['prix'], 2, ',', ' ') ?> €
                                     </button>
                                 </form>

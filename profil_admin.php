@@ -33,16 +33,16 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
     </header>
 
     <main class="admin-container">
-        <h2 class="sub-titre text-center">Modifier le profil de : <?= htmlspecialchars($u['prenom']) . " " . htmlspecialchars($u['nom']) ?></h2>
+        <h2>Modifier le profil de : <?= htmlspecialchars($u['prenom']) . " " . htmlspecialchars($u['nom']) ?></h2>
 
         <form action="traitement/save_admin_change.php" method="POST" class="form-sans-boite">
             <input type="hidden" name="id" value="<?= $u['id'] ?>">
 
             <section class="admin-actions info-item">
-                <h3 class="sub-titre">Pouvoirs Administrateur ⚡</h3>
+                <h3 >Pouvoirs Administrateur ⚡</h3>
                 
                 <p><strong>Changer le Statut :</strong>
-                    <select name="statut" class="select-chic center-input">
+                    <select name="statut" class="input-qte">
                         <option value="Regular" <?= ($u['statut'] ?? '') == 'Regular' ? 'selected' : '' ?>>Regular</option>
                         <option value="Premium" <?= ($u['statut'] ?? '') == 'Premium' ? 'selected' : '' ?>>Premium</option>
                         <option value="VIP" <?= ($u['statut'] ?? '') == 'VIP' ? 'selected' : '' ?>>VIP</option>
@@ -51,20 +51,20 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
                 </p>
 
                 <p><strong>Points de Fidélité :</strong>
-                    <input type="number" name="points" value="<?= $u['points'] ?? 0 ?>" class="center-input">
+                    <input type="number" name="points" value="<?= $u['points'] ?? 0 ?>" class="input-qte">
                 </p>
 
                 <p><strong>Bon d'achat :</strong>
-                    <input type="text" name="bon_achat" value="<?= htmlspecialchars($u['bon_achat'] ?? '') ?>" placeholder="Ex: CADEAU5" class="center-input">
+                    <input type="text" name="bon_achat" value="<?= htmlspecialchars($u['bon_achat'] ?? '') ?>" placeholder="Ex: CADEAU5" class="input-qte">
                 </p>
             </section>
 
             <section class="infos-base info-item">
-                <h3 class="sub-titre">Informations du compte </h3>
+                <h3>Informations du compte </h3>
                 <p><strong>Email / Login :</strong> <?= htmlspecialchars($u['login']) ?></p>
                 <p><strong>Date d'inscription :</strong> <?= htmlspecialchars($u['date_inscription'] ?? 'Inconnue') ?></p>
                 
-                <button type="submit" class="btn-geant" style="margin-top: 20px;">Enregistrer les modifications</button>
+                <button type="submit" class="btn-gossip btn-small" style="margin-top: 20px;">Enregistrer les modifications</button>
             </section>
         </form>
         

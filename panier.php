@@ -20,12 +20,12 @@ $total_panier = 0;
 
     <main class="panier-container">
         
-        <h2 class="panier-titre">🛍️ Mon Panier</h2>
+        <h2>🛍️ Mon Panier</h2>
 
         <?php if (!isset($_SESSION['panier']) || empty($_SESSION['panier'])): ?>
             <div class="panier-vide">
                 <p>Votre panier est vide pour le moment. </p>
-                <a href="menu.php" class="btn-promo">Voir la carte</a>
+                <a href="menu.php" class="btn-gossip btn-xs">Voir la carte</a>
             </div>
 
         <?php else: ?>
@@ -86,7 +86,7 @@ $total_panier = 0;
                     <input type='hidden' name='control' value='<?= $control ?>'>
 
                     <section class="choix-creneau">
-                        <h3 class="sub-titre">📅 Quand souhaitez-vous votre commande ?</h3>
+                        <h3> Quand souhaitez-vous votre commande ?</h3>
                         <div class="info-item">
                             <label for="date_retrait">Date :</label>
                             <input type="date" name="date_retrait" id="date_retrait" 
