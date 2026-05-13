@@ -42,6 +42,7 @@ session_start()
 
                 <label for="password">Mot de passe :</label>
                 <input type="password" id="password" name="mdp" autocomplete="new-password" required>
+                <button type="button" id="btn-oeil">👁️</button>
             </fieldset>
 
             <fieldset>

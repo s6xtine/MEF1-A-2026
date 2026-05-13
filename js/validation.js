@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordCounter = document.getElementById('password-counter');
     const minLength = 8; 
 
+    //Compteur de caractères pour le mot de passe
     if (passwordInput && passwordCounter) {
         
         passwordCounter.textContent = `Minimum ${minLength} caractères requis.`;
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-  
+    // Validation du formulaire à la soumission
     const form = document.querySelector('form');
     if (form) {
         form.addEventListener('submit', function(e) {
@@ -43,11 +44,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 errors.push(`Le mot de passe doit faire au moins ${minLength} caractères.`);
             }
 
-            
+            // S'il y a des erreurs, on bloque l'envoi et on affiche l'alerte
             if (errors.length > 0) {
                 e.preventDefault();
                 alert("Erreurs :\n" + errors.join("\n"));
             }
         });
+    }
+
+    //Code pour le bouton "Afficher/Masquer le mot de passe"
+    var champMdp = document.getElementById("password");
+    var boutonOeil = document.getElementById("btn-oeil");
+
+    //Sécurité : on vérifie qu'on est bien sur une page avec un mot de passe
+    if (boutonOeil && champMdp) { 
+        
+        boutonOeil.onclick = function() {
+            
+            // Si c'est un mot de passe caché
+            if (champMdp.type == "password") {
+                champMdp.type = "text";
+                boutonOeil.innerHTML = "🙈"; 
+            } 
+            else {
+                champMdp.type = "password";
+                boutonOeil.innerHTML = "👁️";
+            }
+        };
     }
 });

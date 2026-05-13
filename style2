@@ -1351,3 +1351,42 @@ td.desc-plat {
 .btn-supprimer:hover { 
     background-color: var(--btn-danger-hover); 
 }
+
+
+
+
+/* ==========================================================================
+   CLASSES UTILITAIRES (Pour le JavaScript)
+   ========================================================================== */
+
+/* Permet de cacher n'importe quel élément */
+.cache {
+    display: none !important;
+}
+
+/* Couleurs pour les messages de retour (AJAX) */
+.texte-succes {
+    color: var(--success-text);
+    font-weight: bold;
+}
+
+.texte-erreur {
+    color: var(--red-gossip);
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   BOUTON MOT DE PASSE (oeil pour afficher/cacher le mot de passe)
+   ========================================================================== */
+#btn-oeil {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    
+    /* L'astuce pour le placer dans le champ sans rien casser d'autre : */
+    float: right;
+    position: relative;
+    margin-top: -55px; /* Remonte le bouton par dessus l'input */
+    margin-right: 15px; /* L'écarte un peu du bord droit */
+}
