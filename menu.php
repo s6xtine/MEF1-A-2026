@@ -35,7 +35,7 @@ if (file_exists($fichier_carte)) {
 <?php endif; ?>
 
 <section class="menu-hero">
-    <img src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2021/07/15044118/10-1024x576.png" alt="Notre Carte" class="menu-hero-img">
+    <img src="images/menu_hero.png" alt="Notre Carte" class="menu-hero-img">
     <div class="menu-hero-overlay">
         <p>Découvrez</p>
         <h1>Notre Carte</h1>
