@@ -16,7 +16,7 @@ if (file_exists($fichier_commandes)) {
             
             $est_pour_moi = isset($cmd['livreur']) && $cmd['livreur'] === $mon_nom_livreur;
             
-            if (($cmd['statut'] === 'En livraison' || $cmd['statut'] === 'En route') && $est_pour_moi) {
+            if ($cmd['statut'] === 'En livraison'  && $est_pour_moi) {
                 $commandes_en_livraison[] = $cmd;
             }
         }
@@ -82,7 +82,7 @@ if (file_exists($fichier_commandes)) {
                 <form action="traitement/update_statut.php" method="POST" class="form-sans-boite">
                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                     <input type="hidden" name="nouveau_statut" value="Livrée">
-                    <button type="submit" id="valider-livraison" class="btn-xl-livreur">Livraison terminée ✅</button>
+                    <button type="submit" id="valider-livraison" class="btn-gossip btn-xl-livreur ">Livraison terminée ✅</button>
                 </form>
 
                 <hr class="separateur-chic">

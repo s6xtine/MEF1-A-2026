@@ -1,6 +1,14 @@
 <?php
 session_start();
 $total_panier = 0; 
+$mode_modification = isset($_SESSION['modif_id_commande']);
+$deja_paye = 0;
+$difference = 0;
+$reste_a_payer = 0;
+
+if ($mode_modification) {
+    $deja_paye = (float)$_SESSION['modif_montant_initial'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -53,25 +61,45 @@ $total_panier = 0;
                             <td><?= number_format($sous_total, 2, ',', ' ') ?> €</td>
                             
                             <td>
-                                <a href="traitement/retirer_panier.php?id=<?= htmlspecialchars($id) ?>" class="btn-retirer" title="Retirer du panier">❌</a>
+                                <a href="traitement/retirer_panier.php?id=<?= htmlspecialchars($id) ?>"  title="Retirer du panier">❌</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
 
-            <div class="panier-total">
-                Total à régler : <strong><?= number_format($total_panier, 2, ',', ' ') ?> €</strong>
+            <div>
+                <?php if ($mode_modification): ?>
+                    <?php 
+                        $difference = $total_panier - $deja_paye;
+                        $reste_a_payer = $difference > 0 ? $difference : 0;
+                    ?>
+                    <p>Déjà réglé initialement : <?= number_format($deja_paye, 2, ',', ' ') ?> €</p>
+                    <p>Nouveau total du panier : <?= number_format($total_panier, 2, ',', ' ') ?> €</p>
+                    
+                    <?php if ($difference > 0): ?>
+                        <p>Reste à payer (différence) : <strong><?= number_format($reste_a_payer, 2, ',', ' ') ?> €</strong></p>
+                    <?php elseif ($difference < 0): ?>
+                        <p>✨ Commande moins chère ! Un bon d'achat de <strong><?= number_format(abs($difference), 2, ',', ' ') ?> €</strong> vous sera offert.</p>
+                    <?php else: ?>
+                        <p>Le montant est identique. Validez pour enregistrer.</p>
+                    <?php endif; ?>
+
+                <?php else: ?>
+                    Total à régler : <strong><?= number_format($total_panier, 2, ',', ' ') ?> €</strong>
+                <?php endif; ?>
             </div>
 
-            <div class="panier-actions-colonne">
+            <div>
             
                 <?php 
                 require('traitement/getapikey.php');
 
                 $vendeur = "MEF-1_A";
                 $transaction = strtoupper(bin2hex(random_bytes(6)));
-                $montant = number_format($total_panier, 2, '.', '');
+                $montant = $mode_modification ? number_format($reste_a_payer, 2, '.', '') : number_format($total_panier, 2, '.', '');
+                
+                
                 $retour = "http://localhost/MEF1-A-2026/traitement/traitement_paiement.php";
 
                 $api_key = getAPIKey($vendeur);
@@ -85,7 +113,7 @@ $total_panier = 0;
                     <input type='hidden' name='retour' value='<?= $retour ?>'>
                     <input type='hidden' name='control' value='<?= $control ?>'>
 
-                    <section class="choix-creneau">
+                    <section>
                         <h3> Quand souhaitez-vous votre commande ?</h3>
                         <div class="info-item">
                             <label for="date_retrait">Date :</label>
@@ -95,10 +123,17 @@ $total_panier = 0;
                             <label for="heure_retrait">Heure :</label>
                             <input type="time" name="heure_retrait" id="heure_retrait" required>
                             
-                            <p><small><i>Note : Pour une préparation immédiate, choisissez l'heure actuelle.</i></small></p>
+                            <p>Note : Pour une préparation immédiate, choisissez l'heure actuelle.</p>
                         </div>
                     </section>
-                    <button type="submit" class="btn-geant">💳 Payer avec CYBank</button>
+                    <?php if ($mode_modification && $reste_a_payer == 0): ?>
+                        <a href="traitement/valide_modif.php" class="btn-gossip btn-large">
+                            💾 Enregistrer les modifications
+                        </a>
+                    <?php else: ?>
+                        <button type="submit" class="btn-gossip btn-large">💳 Payer la différence avec CYBank</button>
+                    <?php endif; ?>
+
                 </form>
 
                 <a href="menu.php" class="btn-discret">⬅ Continuer mes achats</a>
@@ -107,19 +142,29 @@ $total_panier = 0;
         <?php endif; ?>
 
     </main>
-    <script>
 
-    document.querySelector('.form-cybank').addEventListener('submit', function() {
-        const dateR = document.getElementById('date_retrait').value;
-        const heureR = document.getElementById('heure_retrait').value;
-        
-        
-        fetch('traitement/sauvegarde_creneau.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'date=' + encodeURIComponent(dateR) + '&heure=' + encodeURIComponent(heureR)
+    <script>
+        document.querySelector('.form-cybank').addEventListener('submit', function(e) {
+            // 1. On bloque temporairement l'envoi vers CYBank
+            e.preventDefault();
+            
+            const dateR = document.getElementById('date_retrait').value;
+            const heureR = document.getElementById('heure_retrait').value;
+            const form = this;
+
+            // 2. On sauvegarde en arrière-plan proprement dans ta session
+            fetch('traitement/sauvegarde_creneau.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'date=' + encodeURIComponent(dateR) + '&heure=' + encodeURIComponent(heureR)
+            }).then(() => {
+                // 3. Une fois la session enregistrée à coup sûr, on envoie le formulaire à CYBank
+                form.submit();
+            }).catch(() => {
+                // Au cas où le réseau bugue, on l'envoie quand même
+                form.submit();
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>

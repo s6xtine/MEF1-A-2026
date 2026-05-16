@@ -2,38 +2,36 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_commande = trim($_POST['id_commande'] ?? '');
-    $nouveau_statut = trim($_POST['nouveau_statut'] ?? '');
-    $nom_livreur = trim($_POST['id_livreur'] ?? 'Non assigné');
+    $id_commande = $_POST['id_commande'] ?? '';
+    $nouveau_statut = $_POST['nouveau_statut'] ?? '';
+    // On récupère le nom du livreur choisi dans le select
+    $nom_livreur = $_POST['id_livreur'] ?? ''; 
 
-    if (!empty($id_commande) && !empty($nouveau_statut)) {
-        
-        // Le bon chemin grâce au ../
+    if (!empty($id_commande)) {
         $fichier_commandes = '../data/commandes.json';
 
         if (file_exists($fichier_commandes)) {
             $commandes = json_decode(file_get_contents($fichier_commandes), true);
 
-            if (is_array($commandes)) {
-                
-                foreach ($commandes as $index => $cmd) {
-                    if (trim($cmd['id_commande']) === $id_commande) {
-                        // On modifie les infos
+            foreach ($commandes as $index => $cmd) {
+                if ($cmd['id_commande'] === $id_commande) {
+                    
+                    // On change le statut pour faire avancer la commande
+                    if (!empty($nouveau_statut)) {
                         $commandes[$index]['statut'] = $nouveau_statut;
-                        $commandes[$index]['livreur'] = $nom_livreur;
-                        break; 
                     }
+                    
+                    
+                    if (!empty($nom_livreur)) {
+                        $commandes[$index]['livreur'] = $nom_livreur;
+                    }
+                    break; 
                 }
-
-                // On sauvegarde (et cette fois, le Mac sera d'accord !)
-                file_put_contents($fichier_commandes, json_encode($commandes, JSON_PRETTY_PRINT));
             }
+            file_put_contents($fichier_commandes, json_encode($commandes, JSON_PRETTY_PRINT));
         }
     }
 }
 
-// On renvoie sagement le restaurateur ou le livreur vers sa page
-$page_precedente = $_SERVER['HTTP_REFERER'] ?? '../index.php';
-header('Location: ' . $page_precedente);
+header('Location: ' . ($_SERVER['HTTP_REFERER'] ?? '../index.php'));
 exit();
-?>
