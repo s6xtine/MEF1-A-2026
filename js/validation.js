@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (remaining > 0) {
                 passwordCounter.textContent = `${remaining} caractère(s) manquant(s).`;
-                passwordCounter.classList.add('texte-alerte');
-                passwordCounter.classList.remove('valide');
+                passwordCounter.classList.add('texte-erreur');
+                passwordCounter.classList.remove('texte-succes');
             } else {
                 passwordCounter.textContent = "Longueur suffisante ";
-                passwordCounter.classList.remove('texte-alerte');
-                passwordCounter.classList.add('valide');
+                passwordCounter.classList.remove('texte-erreur');
+                passwordCounter.classList.add('texte-succes');
             }
         });
     }

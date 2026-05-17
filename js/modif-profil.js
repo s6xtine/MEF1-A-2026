@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // On capture toutes les données tapées dans le formulaire
             const formData = new FormData(formProfil);
 
-            // 🚀 ON LANCE LA REQUÊTE ASYNCHRONE (AJAX/FETCH)
+            //ON LANCE LA REQUÊTE ASYNCHRONE (AJAX/FETCH)
             fetch('traitement/update_profil.php', {
                 method: 'POST',
                 body: formData

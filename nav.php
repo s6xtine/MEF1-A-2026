@@ -1,6 +1,29 @@
 <?php
 $role_nav = $_SESSION['role'] ?? 'visiteur'; 
 $page_actuelle = basename($_SERVER['PHP_SELF']); 
+
+// --- DEBUT DU VIDEUR DE SESSION ---
+if (isset($_SESSION['login']) && $role_nav !== 'admin') { // On évite de bloquer un admin par erreur !
+    $chemin_fichier_users = 'data/utilisateur.json'; 
+    
+    if (file_exists($chemin_fichier_users)) {
+        $utilisateurs = json_decode(file_get_contents($chemin_fichier_users), true);
+        
+        foreach ($utilisateurs as $user) {
+            if ($user['login'] === $_SESSION['login']) {
+                if (isset($user['bloque']) && $user['bloque'] === true) {
+                    // C'est fini pour lui : on détruit la session
+                    session_unset();
+                    session_destroy();
+                    header("Location: connexion.php"); // On le renvoie à la porte
+                    exit();
+                }
+                break;
+            }
+        }
+    }
+}
+// --- FIN DU VIDEUR ---
 ?>
 
 <nav class="main-nav">

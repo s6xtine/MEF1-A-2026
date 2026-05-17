@@ -33,8 +33,6 @@ if (file_exists($chemin_fichier)) {
     <main>
         <section class="admin-section">
             <h3 class="sub-titre">Gestion des utilisateurs</h3>
-
-   
         </section>
     </main>
 
@@ -56,6 +54,9 @@ if (file_exists($chemin_fichier)) {
                 <td><?php echo htmlspecialchars($user['role']); ?></td>
                 <td>
                     <a href="profil_admin.php?id=<?php echo $user['id']; ?>" class="btn-edit">Voir le profil</a>
+                    <button type="button" class="btn-gossip btn-xs btn-statut" data-login="<?php echo htmlspecialchars($user['login']); ?>">
+                        <?php echo (isset($user['bloque']) && $user['bloque']) ? 'Débloquer 🟢' : 'Bloquer 🔴'; ?>
+                    </button>
                 </td> 
             </tr>
         <?php endforeach; ?>
@@ -64,7 +65,9 @@ if (file_exists($chemin_fichier)) {
             <td colspan="5" class="text-center">Aucun utilisateur trouvé dans le fichier.</td>
         </tr>
     <?php endif; ?>
-</table>
-    
+    </table>
 
-<?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
+    <script src="js/admin.js"></script>  
+</body>
+</html>
