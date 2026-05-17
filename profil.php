@@ -96,13 +96,13 @@ if (file_exists($fichier_commandes)) {
 
                 <div class="text-center">
                     <br>
-                    <?php if (!$edit_mode): ?>
-                        <a href="profil.php?edit=1" class="btn-promo" id="btn-modifier">Modifier mes informations ✏️</a>
-                    <?php else: ?>
-                        <button type="submit" class="btn-geant" id="btn-sauvegarder">Enregistrer ✅</button>
-                        <br><br>
-                        <a href="profil.php" class="btn-discret">Annuler ❌</a>
-                    <?php endif; ?>
+    
+                    <p id="msg-retour"></p>
+
+                    <button type="button" class="btn-promo" id="btn-modifier">Modifier mes informations ✏️</button>
+    
+                    <button type="submit" class="btn-geant cache" id="btn-sauvegarder">Enregistrer ✅</button>
+    
                 </div>
 
             </section>
