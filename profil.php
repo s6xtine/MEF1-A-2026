@@ -6,8 +6,6 @@ if (!isset($_SESSION['role'])) {
     exit();
 }
 
-$edit_mode = isset($_GET['edit']) && $_GET['edit'] == 1;
-
 $nom = $_SESSION['nom'] ?? '';
 $prenom = $_SESSION['prenom'] ?? '';
 $email = $_SESSION['login'] ?? '';
@@ -39,9 +37,17 @@ if (file_exists($fichier_commandes)) {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=9">
     <meta charset="UTF-8">
     <title>Sip & Spill - Mon Profil</title>
+    <style>
+        /* Un petit style pour que les cases readonly n'aient pas l'air de vraies cases au départ */
+        input[readonly], textarea[readonly] {
+            background-color: transparent;
+            border: 1px dashed #ccc;
+            color: inherit;
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -53,56 +59,35 @@ if (file_exists($fichier_commandes)) {
 
     <main class="profile-container">
         
-
         <form action="traitement/update_profil.php" method="POST" class="form-discret" id="form-profil">
             <section>
                 
                 <h3 class="sub-titre text-center">Mes Informations</h3>
 
                 <div class="info-item text-center">
-                    <p><strong>Nom :</strong> 
-                        <?php if ($edit_mode): ?>
-                            <input type="text" name="nom" value="<?= htmlspecialchars($nom) ?> ">
-                        <?php else: ?>
-                            <?= htmlspecialchars($nom) ?>
-                        <?php endif; ?>
+                    <p><label for="nom"><strong>Nom :</strong></label> 
+                        <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($nom) ?>" class="input-qte" readonly>
                     </p>
 
-                    <p><strong>Prénom :</strong> 
-                        <?php if ($edit_mode): ?>
-                            <input type="text" name="prenom" value="<?= htmlspecialchars($prenom) ?>">
-                        <?php else: ?>
-                            <?= htmlspecialchars($prenom) ?>
-                        <?php endif; ?>
+                    <p><label for="prenom"><strong>Prénom :</strong></label> 
+                        <input type="text" id="prenom" name="prenom" value="<?= htmlspecialchars($prenom) ?>" class="input-qte" readonly>
                     </p>
 
-                    <p><strong>Téléphone :</strong> 
-                        <?php if ($edit_mode): ?>
-                            <input type="text" name="tel" value="<?= htmlspecialchars($tel) ?>">
-                        <?php else: ?>
-                            <?= htmlspecialchars($tel) ?>
-                        <?php endif; ?>
+                    <p><label for="tel"><strong>Téléphone :</strong></label> 
+                        <input type="text" id="tel" name="tel" value="<?= htmlspecialchars($tel) ?>" class="input-qte" readonly>
                     </p>
                 </div>
             
                 <h3 class="sub-titre text-center">Adresse de livraison</h3>
                 <div class="info-item text-center">
-                    <?php if ($edit_mode): ?>
-                        <textarea name="adresse" rows="3" ><?= htmlspecialchars($adresse) ?></textarea>
-                    <?php else: ?>
-                        <p><?= nl2br(htmlspecialchars($adresse)) ?></p>
-                    <?php endif; ?>
+                    <textarea name="adresse" id="adresse" rows="3" class="input-qte" readonly><?= htmlspecialchars($adresse) ?></textarea>
                 </div>
 
                 <div class="text-center">
                     <br>
-    
                     <p id="msg-retour"></p>
-
                     <button type="button" class="btn-promo" id="btn-modifier">Modifier mes informations ✏️</button>
-    
                     <button type="submit" class="btn-geant cache" id="btn-sauvegarder">Enregistrer ✅</button>
-    
                 </div>
 
             </section>

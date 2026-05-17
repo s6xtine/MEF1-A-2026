@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // 1. Quand on clique sur "Modifier"
         btnModifier.addEventListener('click', function() {
             // On trouve tous les <input> du formulaire
-            const inputs = formProfil.querySelectorAll('input');
+            const inputs = formProfil.querySelectorAll('input, textarea');
             
             // On enlève l'attribut "readonly" pour pouvoir écrire dedans
             inputs.forEach(input => input.removeAttribute('readonly'));
