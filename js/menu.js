@@ -6,52 +6,61 @@ const filtresActifs = {
 };
 let triActif = 'defaut';
 
-// --- Boutons catégorie et goût (sélection unique) ---
-document.querySelectorAll('.filtre-btn:not(.tag-btn)').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const type = this.dataset.type;
-        document.querySelectorAll(`.filtre-btn[data-type="${type}"]`).forEach(b => b.classList.remove('actif'));
-        this.classList.add('actif');
-        filtresActifs[type] = this.dataset.val;
-        appliquerFiltres();
-    });
-});
+document.addEventListener("DOMContentLoaded", function() {
 
-// --- Boutons tags (sélection multiple) ---
-document.querySelectorAll('.tag-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const tag = this.dataset.val;
-        if (this.classList.contains('actif')) {
-            this.classList.remove('actif');
-            filtresActifs.tags = filtresActifs.tags.filter(t => t !== tag);
-        } else {
+    // 1. Catégories et Goûts (Sélection unique via .js-filtre)
+    document.querySelectorAll('.js-filtre').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const type = this.dataset.type;
+            // On enlève le style actif uniquement sur les boutons du même type
+            document.querySelectorAll(`.js-filtre[data-type="${type}"]`).forEach(b => b.classList.remove('actif'));
             this.classList.add('actif');
-            filtresActifs.tags.push(tag);
-        }
-        appliquerFiltres();
-    });
-});
-
-// --- Boutons de tri (côté client) ---
-document.querySelectorAll('.tri-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        document.querySelectorAll('.tri-btn').forEach(b => b.classList.remove('actif'));
-        this.classList.add('actif');
-        triActif = this.dataset.tri;
-
-        const aucunFiltre = filtresActifs.categorie === ''
-                         && filtresActifs.tags.length === 0
-                         && filtresActifs.gout === '';
-
-        if (aucunFiltre) {
-            trierSectionsNormales();
-        } else {
+            
+            filtresActifs[type] = this.dataset.val;
             appliquerFiltres();
-        }
+        });
+    });
+
+    // 2. Régimes / Tags (Sélection multiple via .js-tag)
+    document.querySelectorAll('.js-tag').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tag = this.dataset.val;
+            if (this.classList.contains('actif')) {
+                this.classList.remove('actif');
+                filtresActifs.tags = filtresActifs.tags.filter(t => t !== tag);
+            } else {
+                this.classList.add('actif');
+                filtresActifs.tags.push(tag);
+            }
+            appliquerFiltres();
+        });
+    });
+
+    // 3. Tri (Sélection unique via .js-tri)
+    document.querySelectorAll('.js-tri').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.js-tri').forEach(b => b.classList.remove('actif'));
+            this.classList.add('actif');
+            triActif = this.dataset.tri;
+
+            const aucunFiltre = filtresActifs.categorie === ''
+                             && filtresActifs.tags.length === 0
+                             && filtresActifs.gout === '';
+
+            if (aucunFiltre) {
+                trierSectionsNormales();
+            } else {
+                appliquerFiltres();
+            }
+        });
     });
 });
 
 // --- Fonction principale : envoie la requête fetch ---
+function aplicarFiltres() { // Nom gardé identique à ton appel initial pour éviter les cassures
+    appliquerFiltres();
+}
+
 function appliquerFiltres() {
     const aucunFiltre = filtresActifs.categorie === ''
                      && filtresActifs.tags.length === 0
@@ -59,18 +68,17 @@ function appliquerFiltres() {
 
     if (aucunFiltre) {
         document.getElementById('resultats-filtres').style.display = 'none';
-        document.getElementById('sections-normales').style.display = 'block';
+        const sectionsNormales = document.getElementById('sections-normales');
+        if (sectionsNormales) sectionsNormales.style.display = 'block';
         trierSectionsNormales();
         return;
     }
 
-    // Construire l'URL avec les paramètres
     const params = new URLSearchParams();
     if (filtresActifs.categorie) params.set('categorie', filtresActifs.categorie);
     if (filtresActifs.gout)      params.set('gout', filtresActifs.gout);
     if (filtresActifs.tags.length > 0) params.set('tags', filtresActifs.tags.join(','));
 
-    // Requête asynchrone vers get_produits.php
     fetch('traitement/get_produits.php?' + params.toString())
         .then(response => response.json())
         .then(plats => {
@@ -82,7 +90,7 @@ function appliquerFiltres() {
         });
 }
 
-// --- Tri d'un tableau de plats (résultats filtrés) ---
+// --- Tri d'un tableau de plats ---
 function trierTableau(plats) {
     if (triActif === 'prix_asc')  return [...plats].sort((a, b) => a.prix - b.prix);
     if (triActif === 'prix_desc') return [...plats].sort((a, b) => b.prix - a.prix);
@@ -90,23 +98,20 @@ function trierTableau(plats) {
     return plats;
 }
 
-// --- Tri dans les sections normales (sans filtre actif) ---
+// --- Tri dans les sections normales ---
 function trierSectionsNormales() {
     ['boissons', 'sale', 'sucre'].forEach(sectionId => {
         const section = document.getElementById(sectionId);
         if (!section) return;
         const liste = section.querySelector('.menu-list');
+        if (!liste) return;
         const items = Array.from(liste.querySelectorAll('li'));
 
         items.sort((a, b) => {
             const prixA = parseFloat(a.dataset.prix || 0);
             const prixB = parseFloat(b.dataset.prix || 0);
-            const nbA   = parseInt(a.dataset.nb || 0);
-            const nbB   = parseInt(b.dataset.nb || 0);
-
             if (triActif === 'prix_asc')  return prixA - prixB;
             if (triActif === 'prix_desc') return prixB - prixA;
-            if (triActif === 'populaire') return nbB - nbA;
             return 0;
         });
 
@@ -120,7 +125,9 @@ function afficherResultats(plats) {
     const titre   = document.getElementById('resultats-titre');
     const liste   = document.getElementById('liste-resultats');
 
-    document.getElementById('sections-normales').style.display = 'none';
+    const sectionsNormales = document.getElementById('sections-normales');
+    if (sectionsNormales) sectionsNormales.style.display = 'none';
+    
     section.style.display = 'block';
     titre.textContent = `${plats.length} résultat${plats.length > 1 ? 's' : ''}`;
     liste.innerHTML = '';
@@ -139,7 +146,7 @@ function afficherResultats(plats) {
                 <span class="item-nom">${plat.nom}</span>
                 <span class="item-desc">${plat.description}</span>
                 <div class="plat-tags">
-                    ${plat.tags.map(t => `<span class="tag-badge">${t.replace('_', ' ')}</span>`).join('')}
+                    ${plat.tags ? plat.tags.map(t => `<span class="tag-badge">${t.replace('_', ' ')}</span>`).join('') : ''}
                 </div>
                 <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
                     <input type="hidden" name="id_produit" value="${plat.id}">
@@ -150,7 +157,7 @@ function afficherResultats(plats) {
                         <input type="number" name="quantite" value="1" min="1" max="10" class="input-qte">
                     </div>
                     <button type="submit" class="btn-prix-action">
-                        ${plat.prix.toFixed(2).replace('.', ',')} €
+                        ${parseFloat(plat.prix).toFixed(2).replace('.', ',')} €
                     </button>
                 </form>
             </div>

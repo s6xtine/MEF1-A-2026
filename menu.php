@@ -45,67 +45,63 @@ if (file_exists($fichier_carte)) {
 
 <main class="menu">
 
-    <!-- BARRE FILTRES + TRIS -->
     <div class="filtres-bar">
 
         <div class="filtres-groupe">
-            <span >Catégorie</span>
+            <span>Catégorie</span>
             <div class="filtres-btns">
-                <button class="btn-gossip btn-xs" data-type="categorie" data-val="">Tout</button>
-                <button class="btn-gossip btn-xs" data-type="categorie" data-val="boissons">☕ Boissons</button>
-                <button class="btn-gossip btn-xs" data-type="categorie" data-val="sale">🥑 Salé</button>
-                <button class="btn-gossip btn-xs" data-type="categorie" data-val="sucre">🧁 Sucré</button>
+                <button class="btn-gossip btn-xs js-filtre actif" data-type="categorie" data-val="">Tout</button>
+                <button class="btn-gossip btn-xs js-filtre" data-type="categorie" data-val="boissons">☕ Boissons</button>
+                <button class="btn-gossip btn-xs js-filtre" data-type="categorie" data-val="sale">🥑 Salé</button>
+                <button class="btn-gossip btn-xs js-filtre" data-type="categorie" data-val="sucre">🧁 Sucré</button>
             </div>
         </div>
 
         <div class="filtres-groupe">
             <span>Régime</span>
             <div class="filtres-btns">
-                <button class="btn-gossip btn-xs" data-type="tag" data-val="vegetarien">🌿 Végétarien</button>
-                <button class="btn-gossip btn-xs" data-type="tag" data-val="vegan">🌱 Vegan</button>
-                <button class="btn-gossip btn-xs" data-type="tag" data-val="halal">Halal</button>
-                <button class="btn-gossip btn-xs" data-type="tag" data-val="sans_gluten">Sans gluten</button>
-                <button class="btn-gossip btn-xs" data-type="tag" data-val="sans_lactose">Sans lactose</button>
+                <button class="btn-gossip btn-xs js-tag" data-type="tag" data-val="vegetarien">🌿 Végétarien</button>
+                <button class="btn-gossip btn-xs js-tag" data-type="tag" data-val="vegan">🌱 Vegan</button>
+                <button class="btn-gossip btn-xs js-tag" data-type="tag" data-val="halal">Halal</button>
+                <button class="btn-gossip btn-xs js-tag" data-type="tag" data-val="sans_gluten">Sans gluten</button>
+                <button class="btn-gossip btn-xs js-tag" data-type="tag" data-val="sans_lactose">Sans lactose</button>
             </div>
         </div>
 
         <div class="filtres-groupe">
             <span>Goût</span>
             <div class="filtres-btns">
-                <button class="btn-gossip btn-xs" data-type="gout" data-val="">Tous</button>
-                <button class="btn-gossip btn-xs" data-type="gout" data-val="sale">🧂 Salé</button>
-                <button class="btn-gossip btn-xs" data-type="gout" data-val="sucre">🍬 Sucré</button>
-                <button class="btn-gossip btn-xs" data-type="gout" data-val="epice">🌶️ Épicé</button>
+                <button class="btn-gossip btn-xs js-filtre actif" data-type="gout" data-val="">Tous</button>
+                <button class="btn-gossip btn-xs js-filtre" data-type="gout" data-val="sale">🧂 Salé</button>
+                <button class="btn-gossip btn-xs js-filtre" data-type="gout" data-val="sucre">🍬 Sucré</button>
+                <button class="btn-gossip btn-xs js-filtre" data-type="gout" data-val="epice">🌶️ Épicé</button>
             </div>
         </div>
 
         <div class="filtres-groupe">
             <span>Trier par</span>
             <div class="filtres-btns">
-                <button class="btn-gossip btn-xs" data-tri="defaut">Par défaut</button>
-                <button class="btn-gossip btn-xs" data-tri="prix_asc">Prix ↑</button>
-                <button class="btn-gossip btn-xs" data-tri="prix_desc">Prix ↓</button>
-                <button class="btn-gossip btn-xs" data-tri="populaire">⭐ Populaires</button>
+                <button class="btn-gossip btn-xs js-tri actif" data-tri="defaut">Par défaut</button>
+                <button class="btn-gossip btn-xs js-tri" data-tri="prix_asc">Prix ↑</button>
+                <button class="btn-gossip btn-xs js-tri" data-tri="prix_desc">Prix ↓</button>
+                <button class="btn-gossip btn-xs js-tri" data-tri="populaire">⭐ Populaires</button>
             </div>
         </div>
 
     </div>
 
-    <!-- RÉSULTATS FILTRÉS (caché par défaut) -->
     <div id="resultats-filtres" class="menu-section" style="display:none;">
         <h2 id="resultats-titre">Résultats</h2>
         <ul class="menu-list" id="liste-resultats"></ul>
     </div>
 
-    <!-- SECTIONS NORMALES -->
     <div id="sections-normales">
-
      
         <section id="menus" class="menu-section">
             <h2>✨ Les Formules</h2>
             <ul class="menu-list">
                 <?php foreach ($menus_brunch as $menu): ?>
-                    <li>
+                    <li data-prix="<?= (float)$menu['prix_total'] ?>" data-nb="<?= (int)($menu['nb_commandes'] ?? 0) ?>">
                         <div class="plat-infos">
                             <span class="item-nom"><?= htmlspecialchars($menu['nom']) ?></span> 
                             <span class="item-desc"><?= htmlspecialchars($menu['description']) ?></span>
@@ -116,7 +112,6 @@ if (file_exists($fichier_carte)) {
                                 <input type="hidden" name="prix" value="<?= htmlspecialchars($menu['prix_total']) ?>">
                                 
                                 <div class="panier-controls">
-                                    
                                     <input type="number" name="quantite" value="1" min="1" max="10" class="input-qte">
                                 </div>
 
@@ -135,7 +130,7 @@ if (file_exists($fichier_carte)) {
             <ul class="menu-list">
                 <?php foreach ($plats as $plat): ?>
                     <?php if ($plat['categorie'] === 'boissons'): ?>
-                        <li class="plat-avec-image">
+                        <li class="plat-avec-image" data-prix="<?= (float)$plat['prix'] ?>" data-nb="<?= (int)($plat['nb_commandes'] ?? 0) ?>">
                             <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
                             <div class="plat-infos">
                                 <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span> 
@@ -147,7 +142,6 @@ if (file_exists($fichier_carte)) {
                                     <input type="hidden" name="prix" value="<?= htmlspecialchars($plat['prix']) ?>">
                                     
                                     <div class="panier-controls">
-                                        
                                         <input type="number" name="quantite" value="1" min="1" max="10" class="input-qte">
                                     </div>
 
@@ -167,7 +161,7 @@ if (file_exists($fichier_carte)) {
             <ul class="menu-list">
                 <?php foreach ($plats as $plat): ?>
                     <?php if ($plat['categorie'] === 'sale'): ?>
-                        <li class="plat-avec-image">
+                        <li class="plat-avec-image" data-prix="<?= (float)$plat['prix'] ?>" data-nb="<?= (int)($plat['nb_commandes'] ?? 0) ?>">
                             <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
                             <div class="plat-infos">
                                 <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span> 
@@ -198,7 +192,7 @@ if (file_exists($fichier_carte)) {
             <ul class="menu-list">
                 <?php foreach ($plats as $plat): ?>
                     <?php if ($plat['categorie'] === 'sucre'): ?>
-                        <li class="plat-avec-image">
+                        <li class="plat-avec-image" data-prix="<?= (float)$plat['prix'] ?>" data-nb="<?= (int)($plat['nb_commandes'] ?? 0) ?>">
                             <img src="<?= htmlspecialchars($plat['image']) ?>" alt="<?= htmlspecialchars($plat['nom']) ?>" class="plat-image">
                             <div class="plat-infos">
                                 <span class="item-nom"><?= htmlspecialchars($plat['nom']) ?></span>
@@ -213,7 +207,6 @@ if (file_exists($fichier_carte)) {
                                         <input type="number" name="quantite" value="1" min="1" max="10" class="input-qte">
                                     </div>
                                     
-
                                     <button type="submit" class="btn-gossip btn-xs">
                                         <?= number_format($plat['prix'], 2, ',', ' ') ?> €
                                     </button>
@@ -225,12 +218,10 @@ if (file_exists($fichier_carte)) {
             </ul>
         </section>
 
-    </div><!-- fin #sections-normales -->
-
-    <p class="alerte-allergie">🌸 Dis-nous si t'as des allergies, on s'adapte !</p>
+    </div><p class="alerte-allergie">🌸 Dis-nous si t'as des allergies, on s'adapte !</p>
 </main>
 
 <?php include 'footer.php'; ?>
-<script src="js/menu.js"></script>
+<script src="js/menu.js?v=<?= time() ?>"></script>
 </body>
 </html>
