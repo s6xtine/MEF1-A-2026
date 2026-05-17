@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+header('Content-Type: application/json');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['login'])) {
     $chemin_fichier = '../data/utilisateur.json';
     
@@ -31,16 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['login'])) {
         }
 
         if ($success) {
-          
             file_put_contents($chemin_fichier, json_encode($utilisateurs, JSON_PRETTY_PRINT));
-            
-            
-            header('Location: ../profil.php');
+            echo json_encode(['success' => true]);
             exit();
         }
     }
 }
 
-
-header('Location: ../profil.php?erreur=1');
+echo json_encode(['success' => false, 'message' => 'Impossible de mettre à jour le profil.']);
 exit();
+?>

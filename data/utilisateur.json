@@ -11,7 +11,8 @@
         "date_inscription": "2026-03-16",
         "statut": "VIP",
         "points": 3,
-        "bon_achat": ""
+        "bon_achat": "",
+        "bloque": false
     },
     {
         "id": 2,
@@ -22,7 +23,8 @@
         "role": "admin",
         "telephone": "0605060709",
         "adresse": "2 avenue du Parc, Cergy",
-        "date_inscription": "2026-03-16"
+        "date_inscription": "2026-03-16",
+        "bloque": false
     },
     {
         "id": 3,
@@ -46,7 +48,8 @@
         "telephone": "0601020305",
         "adresse": "3 avenue du Parc, Cergy",
         "date_inscription": "2026-03-16",
-        "statut": "Premium"
+        "statut": "Premium",
+        "bloque": false
     },
     {
         "id": 5,
@@ -63,7 +66,7 @@
     },
     {
         "id": 6,
-        "nom": "Ahoudia",
+        "nom": "Ahoudia   ",
         "prenom": "Soso",
         "login": "soso@gossip.com",
         "mdp": "girlInRed",

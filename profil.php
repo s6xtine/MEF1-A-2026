@@ -54,7 +54,7 @@ if (file_exists($fichier_commandes)) {
     <main class="profile-container">
         
 
-        <form action="traitement/update_profil.php" method="POST" class="form-discret">
+        <form action="traitement/update_profil.php" method="POST" class="form-discret" id="form-profil">
             <section>
                 
                 <h3 class="sub-titre text-center">Mes Informations</h3>
@@ -97,9 +97,9 @@ if (file_exists($fichier_commandes)) {
                 <div class="text-center">
                     <br>
                     <?php if (!$edit_mode): ?>
-                        <a href="profil.php?edit=1" class="btn-promo">Modifier mes informations ✏️</a>
+                        <a href="profil.php?edit=1" class="btn-promo" id="btn-modifier">Modifier mes informations ✏️</a>
                     <?php else: ?>
-                        <button type="submit" class="btn-geant">Enregistrer ✅</button>
+                        <button type="submit" class="btn-geant" id="btn-sauvegarder">Enregistrer ✅</button>
                         <br><br>
                         <a href="profil.php" class="btn-discret">Annuler ❌</a>
                     <?php endif; ?>
@@ -173,7 +173,8 @@ if (file_exists($fichier_commandes)) {
         <?php endif; ?>
 
     </main>
-
     <?php include 'footer.php'; ?>
+
+    <script src="js/modif-profil.js"></script>
 </body>
 </html>
