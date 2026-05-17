@@ -1,4 +1,3 @@
-//gère si un utilisateur est bloqué ou pas, et met à jour le fichier json en conséquence
 <?php
 session_start();
 header('Content-Type: application/json');
@@ -36,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_cible'])) {
         }
     }
 }
+//gère si un utilisateur est bloqué ou pas, et met à jour le fichier json en conséquence
 
 //Si il y a un problème
 echo json_encode(['success' => false]);

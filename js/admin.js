@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('login_cible', loginCible);
 
             // On envoie en asynchrone
-            fetch('traitement/update_statut.php', {
+            fetch('traitement/update_user_statut.php', {
                 method: 'POST',
                 body: formData
             })
