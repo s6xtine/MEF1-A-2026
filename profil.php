@@ -46,22 +46,23 @@ if (file_exists($fichier_commandes)) {
 <body>
     <header class="site-header">
         <h1 class="titre-page">Sip & Spill</h1>
+        <h2 class="titre-section">Mon Profil</h2>
     </header>
 
     <?php include 'nav.php'; ?>
 
     <main class="profile-container">
-        <h2 class="titre-section text-center">Mon Profil</h2>
+        
 
         <form action="traitement/update_profil.php" method="POST" class="form-discret">
-            <section class="infos-personnelles">
+            <section>
                 
                 <h3 class="sub-titre text-center">Mes Informations</h3>
 
                 <div class="info-item text-center">
                     <p><strong>Nom :</strong> 
                         <?php if ($edit_mode): ?>
-                            <input type="text" name="nom" value="<?= htmlspecialchars($nom) ?>" class="center-input">
+                            <input type="text" name="nom" value="<?= htmlspecialchars($nom) ?> ">
                         <?php else: ?>
                             <?= htmlspecialchars($nom) ?>
                         <?php endif; ?>
@@ -69,7 +70,7 @@ if (file_exists($fichier_commandes)) {
 
                     <p><strong>Prénom :</strong> 
                         <?php if ($edit_mode): ?>
-                            <input type="text" name="prenom" value="<?= htmlspecialchars($prenom) ?>" class="center-input">
+                            <input type="text" name="prenom" value="<?= htmlspecialchars($prenom) ?>">
                         <?php else: ?>
                             <?= htmlspecialchars($prenom) ?>
                         <?php endif; ?>
@@ -77,7 +78,7 @@ if (file_exists($fichier_commandes)) {
 
                     <p><strong>Téléphone :</strong> 
                         <?php if ($edit_mode): ?>
-                            <input type="text" name="tel" value="<?= htmlspecialchars($tel) ?>" class="center-input">
+                            <input type="text" name="tel" value="<?= htmlspecialchars($tel) ?>">
                         <?php else: ?>
                             <?= htmlspecialchars($tel) ?>
                         <?php endif; ?>
@@ -87,7 +88,7 @@ if (file_exists($fichier_commandes)) {
                 <h3 class="sub-titre text-center">Adresse de livraison</h3>
                 <div class="info-item text-center">
                     <?php if ($edit_mode): ?>
-                        <textarea name="adresse" rows="3" class="center-input"><?= htmlspecialchars($adresse) ?></textarea>
+                        <textarea name="adresse" rows="3" ><?= htmlspecialchars($adresse) ?></textarea>
                     <?php else: ?>
                         <p><?= nl2br(htmlspecialchars($adresse)) ?></p>
                     <?php endif; ?>

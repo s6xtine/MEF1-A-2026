@@ -70,7 +70,7 @@ if (isset($_SESSION['login']) && $role_nav !== 'admin') { // On évite de bloque
                 <li><a href="profil.php">Mon Profil</a></li>
                 <li><a href="deconnexion.php">Déconnexion</a></li>
                 <li>
-                    <button id="theme-toggle" class="btn-gossip btn-xs">Changer de thème</button>
+                    <button id="theme-toggle" >Changer de thème</button>
                 </li>
             </ul>
         <?php else: ?>

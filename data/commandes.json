@@ -122,5 +122,24 @@
         "total": 5,
         "statut": "pay\u00e9",
         "date_modification": "2026-05-16 15:30:08"
+    },
+    {
+        "id_commande": "CMD_943B7782EE81",
+        "client": "Cam Deleche",
+        "login_client": "camcam@cyu.fr",
+        "telephone": "0605060708",
+        "adresse": "4 avenue du Parc, Cergy",
+        "date": "2026-05-16 15:49:24",
+        "date_souhaitee": "2026-05-16",
+        "heure_souhaitee": "17:00",
+        "articles": {
+            "B02": {
+                "nom": "Chocolat chaud",
+                "prix": 5,
+                "quantite": 1
+            }
+        },
+        "total": 5,
+        "statut": "pay\u00e9"
     }
 ]
