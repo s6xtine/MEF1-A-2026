@@ -58,7 +58,8 @@
         "telephone": "0605060708",
         "adresse": "4 avenue du Parc, Cergy",
         "date_inscription": "2026-03-16",
-        "statut": "Premium"
+        "statut": "Premium",
+        "bloque": false
     },
     {
         "id": 6,
@@ -70,7 +71,10 @@
         "telephone": "0708091011",
         "adresse": "1 parv. marie, NY",
         "date_inscription": "2026-03-16",
-        "statut": "VIP"
+        "statut": "bloque",
+        "bloque": false,
+        "points": 0,
+        "bon_achat": ""
     },
     {
         "id": 7,

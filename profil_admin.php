@@ -46,7 +46,6 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
                         <option value="Regular" <?= ($u['statut'] ?? '') == 'Regular' ? 'selected' : '' ?>>Regular</option>
                         <option value="Premium" <?= ($u['statut'] ?? '') == 'Premium' ? 'selected' : '' ?>>Premium</option>
                         <option value="VIP" <?= ($u['statut'] ?? '') == 'VIP' ? 'selected' : '' ?>>VIP</option>
-                        <option value="bloque" <?= ($u['statut'] ?? '') == 'bloque' ? 'selected' : '' ?>>🚫 BLOQUÉ</option>
                     </select>
                 </p>
 
