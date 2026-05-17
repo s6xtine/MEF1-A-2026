@@ -170,80 +170,54 @@ a:hover {
    MENU UTILISATEUR & NAVIGATION
    ========================================================================== */
 
-/* --- LE CONTENEUR PARENT --- */
+/* ok la c'est l'affichage du profils */
 .user-menu {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    display: inline-block;
+    top: 10px;       /* Ajuste l'espace avec le haut de l'écran */
+    right: 10px;     /* Ajuste l'espace avec le bord droit de l'écran */
+    z-index: 2000;   /* Pour être sûr qu'il passe au-dessus de tout le reste */
 }
 
-/* bouton profil déroulant  */
-.deroulant {
+/* 2. La liste masquée par défaut qui flotte sous le bouton */
+.user-menu .deroulant {
     display: none;
     position: absolute;
-    top: 100%;
-    right: 0;
-    width: 200px;
-    margin: 10px 0 0 0;
-    padding: 0;           
-    list-style: none;     
-    background: var(--white);
-    border: 1px solid var(--bordeaux-chic);
-    box-shadow: 3px 3px 0px var(--bordeaux-chic);
+    right: 0;        /* Aligné sur le bord droit du bouton */
+    top: 100%;       /* S'ouvre juste en dessous */
+    background: #fff;
+    min-width: 140px;
+    padding: 5px 0;
+    margin: 1px 0 0 0;
+    list-style: none;
+    border-radius: 4px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
 }
 
-/* la on affiche le block */
-.user-menu:hover .deroulant {
+/* 3. Style uniforme pour les liens ET le bouton de thème */
+.user-menu .deroulant li a,
+.user-menu .deroulant li button#theme-toggle {
     display: block;
-}
-
-/* Le pont invisible pour garder le menu ouvert quand on descend la souris */
-.user-menu::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 20px;
-}
-
-/* comment on affiche la liste */
-.deroulant li {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: block;
-}
-
-/* et la le contenue donc interieur  */
-.deroulant a, 
-.deroulant button {
-    /* On force le comportement de bloc centré */
-    display: block;
+    padding: 6px 12px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-align: left;
     width: 100%;
     box-sizing: border-box;
-    padding: 12px 15px;
-    
-    /* Typographie */
-    font-family: 'Didot', serif;
-    color: var(--bordeaux-chic);
-    text-align: center;    
-    text-decoration: none;
-    
-    /* Reset des boutons */
-    background: none;
-    border: none;
+    background: none; /* Enlève le fond du bouton */
+    border: none;     /* Enlève la bordure du bouton */
     cursor: pointer;
-    transition: background 0.2s ease;
 }
 
-/* et le survol */
-.deroulant a:hover, 
-.deroulant button:hover {
-    background-color: var(--pink-light);
-    color: var(--red-gossip);
+
+.user-menu .deroulant li a:hover,
+.user-menu .deroulant li button#theme-toggle:hover {
+    background-color: #f5f5f5;
+}
+
+
+.user-menu:hover .deroulant {
+    display: block;
 }
 
 /* navigation principale , la barre */
