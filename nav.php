@@ -65,21 +65,21 @@ if (isset($_SESSION['login']) && $role_nav !== 'admin') { // On évite de bloque
 
         <div class="user-menu">
         <?php if (isset($_SESSION['nom'])): ?>
-            <button type="button" class="btn-gossip btn-small">*</button>
+            <button type="button" class="btn-gossip btn-xs">*</button>
             <ul class="deroulant">
                 <li><a href="profil.php">Mon Profil</a></li>
                 <li><a href="deconnexion.php">Déconnexion</a></li>
                 <li>
-                    <button id="theme-toggle" class="btn-gossip btn-small">Changer de thème</button>
+                    <button id="theme-toggle" class="btn-gossip btn-xs">Changer de thème</button>
                 </li>
             </ul>
         <?php else: ?>
-            <button type="button" class="btn-gossip btn-small">Mon Compte</button>
+            <button type="button" class="btn-gossip btn-xs">Mon Compte</button>
             <ul class="deroulant">
                 <li><a href="connexion.php">Connexion</a></li>
                 <li><a href="inscription.php">S'inscrire</a></li>
             <li>
-                <button id="theme-toggle" class="btn-gossip btn-small">Changer de thème</button>
+                <button id="theme-toggle" class="btn-gossip btn-xs">Changer de thème</button>
             </li>
             </ul>
         <?php endif; ?>

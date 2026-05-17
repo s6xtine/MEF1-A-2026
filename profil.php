@@ -16,7 +16,6 @@ $adresse = $_SESSION['adresse'] ?? 'Non renseignée';
 $points = $_SESSION['points'] ?? 0;
 $statut = $_SESSION['statut'] ?? 'Regular';
 
- 
 $mes_commandes = [];
 $fichier_commandes = 'data/commandes.json';
 
@@ -35,7 +34,6 @@ if (file_exists($fichier_commandes)) {
             }
         }
     }
-
 }
 ?>
 <!DOCTYPE html>
@@ -151,11 +149,18 @@ if (file_exists($fichier_commandes)) {
                                     </td>        
 
                                     <td class="<?= $cmd['statut'] === 'Livrée' ? 'statut-valide' : '' ?>">
-                                        <span><?= htmlspecialchars($cmd['statut']) ?></span>
+                                        <strong><?= htmlspecialchars($cmd['statut']) ?></strong>
                                         
                                         <?php if ($cmd['statut'] === 'Livrée'): ?>
                                             <br>
                                             <a href="notation.php?id=<?= $cmd['id_commande'] ?>" class="btn-avis">Donner mon avis ⭐</a>
+                                        <?php endif; ?>
+
+                                        <?php if ($cmd['statut'] === 'payé'): ?>
+                                            <br><br>
+                                            <a href="traitement/update_commande.php?id=<?= $cmd['id_commande'] ?>" >
+                                                ✏️ Modifier
+                                            </a>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -169,3 +174,5 @@ if (file_exists($fichier_commandes)) {
     </main>
 
     <?php include 'footer.php'; ?>
+</body>
+</html>

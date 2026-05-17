@@ -1,203 +1,56 @@
 [
     {
-        "id_commande": "CMD_69d0163cf0095",
-        "client": "Cam Deleche",
-        "date": "2026-04-03 21:34:20",
-        "articles": {
-            "B01": {
-                "nom": "Latte",
-                "prix": 4.5,
-                "quantite": 2
-            },
-            "S03": {
-                "nom": "Jus d'orange press\u00e9",
-                "prix": 4,
-                "quantite": 1
-            },
-            "P03": {
-                "nom": "AVOCADO GIRLIES",
-                "prix": 14.9000000000000003552713678800500929355621337890625,
-                "quantite": 1
-            }
-        },
-        "total": 27.89999999999999857891452847979962825775146484375,
-        "statut": "Livr\u00e9e",
-        "livreur": "Non assign\u00e9"
-    },
-    {
-        "id_commande": "CMD_69d017d4593a7",
-        "client": "Jean Dupont",
+        "id_commande": "CMD_8A551ED43E2C",
+        "client": "Morgan Lechevallier",
+        "login_client": "admin1@cyu.fr",
         "telephone": "0601020304",
-        "adresse": "5 avenue du Parc, Cergy",
-        "instructions": "\u00c0 remettre en main propre",
-        "date": "2026-04-03 21:41:08",
+        "adresse": "1 avenue du Parc, Cergy",
+        "date": "2026-05-16 14:26:29",
+        "date_souhaitee": "2026-05-16",
+        "heure_souhaitee": "14:26",
         "articles": {
-            "P01": {
-                "nom": "SALMON SPILL TOAST",
-                "prix": 14.5,
-                "quantite": 1
-            }
-        },
-        "total": 14.5,
-        "statut": "Livr\u00e9e",
-        "livreur": "Non assign\u00e9"
-    },
-    {
-        "id_commande": "CMD_13D1C2051DBB",
-        "client": "soso@gossip.com",
-        "date": "2026-04-04 14:04:49",
-        "articles": {
-            "P02": {
-                "nom": "PANCAKE BACON",
-                "prix": 13.9000000000000003552713678800500929355621337890625,
-                "quantite": 1
-            },
-            "B01": {
-                "nom": "Latte",
-                "prix": 4.5,
-                "quantite": 1
-            }
-        },
-        "total": 18.39999999999999857891452847979962825775146484375,
-        "statut": "Livr\u00e9e",
-        "livreur": "Non assign\u00e9"
-    },
-    {
-        "id_commande": "CMD_B08B3DC9EBD2",
-        "client": "soso@gossip.com",
-        "date": "2026-04-04 15:16:29",
-        "articles": {
-            "M02": {
-                "nom": "Le Menu Healthy Queen",
-                "prix": 24,
-                "quantite": 1
-            }
-        },
-        "total": 24,
-        "statut": "Livr\u00e9e",
-        "livreur": "Non assign\u00e9"
-    },
-    {
-        "id_commande": "CMD_1BCB222BFBCB",
-        "client": "soso@gossip.com",
-        "date": "2026-04-05 11:02:42",
-        "articles": {
-            "M02": {
-                "nom": "Le Menu Healthy Queen",
-                "prix": 24,
-                "quantite": 1
-            }
-        },
-        "total": 24,
-        "statut": "Livr\u00e9e",
-        "livreur": "Non assign\u00e9"
-    },
-    {
-        "id_commande": "CMD_405CD2239FC8",
-        "client": "serena@gossip.com",
-        "date": "2026-04-05 11:40:22",
-        "articles": {
-            "B03": {
-                "nom": "Matcha latte",
+            "B02": {
+                "nom": "Chocolat chaud",
                 "prix": 5,
                 "quantite": 1
             }
         },
         "total": 5,
-        "statut": "Livr\u00e9e",
-        "livreur": "Non assign\u00e9"
-    },
-    {
-        "id_commande": "CMD_7EAE3E9E8EE1",
-        "client": "Client Anonyme",
-        "date": "2026-04-05 17:20:12",
-        "date_souhaitee": "2026-04-05",
-        "heure_souhaitee": "18:22",
-        "articles": {
-            "M02": {
-                "nom": "Le Menu Healthy Queen",
-                "prix": 24,
-                "quantite": 1
-            }
-        },
-        "total": 24,
-        "statut": "Livr\u00e9e",
-        "livreur": "Non assign\u00e9"
-    },
-    {
-        "id_commande": "CMD_FA5D006A2531",
-        "client": "soso@gossip.com",
-        "date": "2026-04-05 18:57:34",
-        "date_souhaitee": "2026-04-05",
-        "heure_souhaitee": "18:57",
-        "articles": {
-            "B01": {
-                "nom": "Latte",
-                "prix": 4.5,
-                "quantite": 1
-            },
-            "D05": {
-                "nom": "GRANOLA BOWL",
-                "prix": 8.5,
-                "quantite": 1
-            }
-        },
-        "total": 13,
-        "statut": "En livraison",
+        "statut": "livr\u00e9",
         "livreur": "Jean Dupont"
     },
     {
-        "id_commande": "CMD_9F81B47567EF",
-        "client": "Lucie Maxou",
-        "login_client": "lulu@cyu.fr",
-        "telephone": "0601020305",
-        "adresse": "3 avenue du Parc, Cergy",
-        "date": "2026-04-05 19:05:11",
-        "date_souhaitee": "2026-04-05",
-        "heure_souhaitee": "20:00",
+        "id_commande": "CMD_42E233E71170",
+        "client": "Morgan Lechevallier",
+        "login_client": "admin1@cyu.fr",
+        "telephone": "0601020304",
+        "adresse": "1 avenue du Parc, Cergy",
+        "date": "2026-05-16 14:28:54",
+        "date_souhaitee": "2026-05-16",
+        "heure_souhaitee": "14:28",
         "articles": {
-            "B01": {
-                "nom": "Latte",
+            "S02": {
+                "nom": "Lemonade bio",
                 "prix": 4.5,
                 "quantite": 1
             }
         },
         "total": 4.5,
-        "statut": "Livr\u00e9e",
-        "livreur": "Non assign\u00e9"
-    },
-    {
-        "id_commande": "CMD_FCBDD76926DC",
-        "client": " ",
-        "login_client": null,
-        "telephone": "Non renseign\u00e9",
-        "adresse": "\u00c0 r\u00e9cup\u00e9rer sur place",
-        "date": "2026-04-07 14:52:59",
-        "date_souhaitee": "2026-04-10",
-        "heure_souhaitee": "10:00",
-        "articles": {
-            "D05": {
-                "nom": "GRANOLA BOWL",
-                "prix": 8.5,
-                "quantite": 1
-            }
-        },
-        "total": 8.5,
-        "statut": "En livraison",
+        "statut": "livr\u00e9",
         "livreur": "Sophie Durand"
     },
     {
-        "id_commande": "CMD_CDC63D89F0DD",
-        "client": "Lucie Maxou",
-        "login_client": "lulu@cyu.fr",
-        "telephone": "0601020305",
-        "adresse": "3 avenue du Parc, Cergy",
-        "date": "2026-04-23 13:15:57",
-        "date_souhaitee": "2026-04-23",
-        "heure_souhaitee": "13:30",
+        "id_commande": "CMD_CC99C40C32B8",
+        "client": "Morgan Lechevallier",
+        "login_client": "admin1@cyu.fr",
+        "telephone": "0601020304",
+        "adresse": "1 avenue du Parc, Cergy",
+        "date": "2026-05-16 14:37:55",
+        "date_souhaitee": "2026-05-16",
+        "heure_souhaitee": "14:37",
         "articles": {
-            "B02": {
-                "nom": "Chocolat chaud",
+            "S01": {
+                "nom": "Oreo shake",
                 "prix": 5,
                 "quantite": 1
             },
@@ -208,56 +61,66 @@
             }
         },
         "total": 18.89999999999999857891452847979962825775146484375,
-        "statut": "Livr\u00e9e",
-        "livreur": "Non assign\u00e9"
+        "statut": "livr\u00e9",
+        "livreur": "Sophie Durand"
     },
     {
-        "id_commande": "CMD_52C32BBD0586",
-        "client": " ",
-        "login_client": null,
-        "telephone": "Non renseign\u00e9",
-        "adresse": "\u00c0 r\u00e9cup\u00e9rer sur place",
-        "date": "2026-05-06 09:52:47",
-        "date_souhaitee": "2026-05-06",
-        "heure_souhaitee": "10:00",
-        "articles": {
-            "D05": {
-                "nom": "GRANOLA BOWL",
-                "prix": 8.5,
-                "quantite": 1
-            },
-            "S03": {
-                "nom": "Jus d'orange press\u00e9",
-                "prix": 4,
-                "quantite": 1
-            }
-        },
-        "total": 12.5,
-        "statut": "En livraison",
-        "livreur": "Jean Dupont"
-    },
-    {
-        "id_commande": "CMD_342701DA3C72",
-        "client": " ",
-        "login_client": null,
-        "telephone": "Non renseign\u00e9",
-        "adresse": "\u00c0 r\u00e9cup\u00e9rer sur place",
-        "date": "2026-05-10 18:11:35",
-        "date_souhaitee": "2026-05-15",
-        "heure_souhaitee": "20:00",
+        "id_commande": "CMD_088CFEE28061",
+        "client": "Morgan Lechevallier",
+        "login_client": "admin1@cyu.fr",
+        "telephone": "0601020304",
+        "adresse": "1 avenue du Parc, Cergy",
+        "date": "2026-05-16 14:43:08",
+        "date_souhaitee": "2026-05-16",
+        "heure_souhaitee": "14:43",
         "articles": {
             "B02": {
                 "nom": "Chocolat chaud",
                 "prix": 5,
                 "quantite": 1
-            },
-            "P05": {
-                "nom": "LADY BOWL",
-                "prix": 14.5,
+            }
+        },
+        "total": 5,
+        "statut": "En livraison",
+        "livreur": "Sophie Durand"
+    },
+    {
+        "id_commande": "CMD_73AFCCC81EE0",
+        "client": "Cam Deleche",
+        "login_client": "camcam@cyu.fr",
+        "telephone": "0605060708",
+        "adresse": "4 avenue du Parc, Cergy",
+        "date": "2026-05-16 15:06:49",
+        "date_souhaitee": "2026-05-16",
+        "heure_souhaitee": "15:06",
+        "articles": {
+            "P04": {
+                "nom": "OEUF NORVEGIEN",
+                "prix": 15,
                 "quantite": 1
             }
         },
-        "total": 19.5,
-        "statut": "En pr\u00e9paration"
+        "total": 15,
+        "statut": "en pr\u00e9paration"
+    },
+    {
+        "id_commande": "CMD_FDEAFBED2ECF",
+        "client": "Cam Deleche",
+        "login_client": "camcam@cyu.fr",
+        "telephone": "0605060708",
+        "adresse": "4 avenue du Parc, Cergy",
+        "date": "2026-05-16 15:08:47",
+        "date_souhaitee": "2026-05-16",
+        "heure_souhaitee": "15:08",
+        "articles": {
+            "B02": {
+                "nom": "Chocolat chaud",
+                "prix": 5,
+                "quantite": 1
+            }
+        },
+        "total": 5,
+        "statut": "pay\u00e9",
+        "date_modification": "2026-05-16 15:30:08"
     }
 ]
