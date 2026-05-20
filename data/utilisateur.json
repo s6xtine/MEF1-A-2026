@@ -71,12 +71,12 @@
         "login": "soso@gossip.com",
         "mdp": "girlInRed",
         "role": "client",
-        "telephone": null,
-        "adresse": null,
+        "telephone": "0708091011",
+        "adresse": "Non renseign\u00e9e",
         "date_inscription": "2026-03-16",
         "statut": "bloque",
         "bloque": false,
-        "points": 0,
+        "points": 2.1500000000000004,
         "bon_achat": ""
     },
     {

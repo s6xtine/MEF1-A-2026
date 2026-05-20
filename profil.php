@@ -97,7 +97,6 @@ if (file_exists($fichier_commandes)) {
             <section class="fidelite text-center">
                 <h3 class="sub-titre">Mon Compte Fidélité</h3>
                 <p>Vous avez actuellement : <span class="points-fidelite"><?= $points ?> points</span></p>
-                <p><i>Statut : <?= htmlspecialchars($statut) ?></i></p>
             </section>
 
             <section class="commandes-passees">

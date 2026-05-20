@@ -1,10 +1,10 @@
 <?php
 session_start();
-$total_panier = 0; 
+$total_panier = 0.0; 
 $mode_modification = isset($_SESSION['modif_id_commande']);
-$deja_paye = 0;
-$difference = 0;
-$reste_a_payer = 0;
+$deja_paye = 0.0;
+$difference = 0.0;
+$reste_a_payer = 0.0;
 
 if ($mode_modification) {
     $deja_paye = (float)$_SESSION['modif_montant_initial'];
@@ -50,15 +50,15 @@ if ($mode_modification) {
                 <tbody>
                     <?php foreach ($_SESSION['panier'] as $id => $article): ?>
                         <?php 
-                            $sous_total = $article['prix'] * $article['quantite'];
+                            $sous_total = (float)$article['prix'] * $article['quantite'];
                             $total_panier += $sous_total; 
                         ?>
                         <tr>
                             <td><strong><?= htmlspecialchars($article['nom']) ?></strong></td>
-                            <td><?= number_format($article['prix'], 2, ',', ' ') ?> €</td>
+                            <td><?= number_format((float)$article['prix'], 2, ',', ' ') ?> €</td>
                             <td><span class="qte-badge"><?= $article['quantite'] ?></span></td>
                             
-                            <td><?= number_format($sous_total, 2, ',', ' ') ?> €</td>
+                            <td><?= number_format((float)$sous_total, 2, ',', ' ') ?> €</td>
                             
                             <td>
                                 <a href="traitement/retirer_panier.php?id=<?= htmlspecialchars($id) ?>"  title="Retirer du panier">❌</a>
@@ -68,37 +68,76 @@ if ($mode_modification) {
                 </tbody>
             </table>
 
+            <?php
+            // Calcul du paiement si application des points de fidélité
+            $points_disponibles = isset($_SESSION['points']) ? (float)$_SESSION['points'] : 0.0;
+            $points_utilises = isset($_SESSION['points_utilises']) ? (float)$_SESSION['points_utilises'] : 0.0;
+
+            //Calcul du montant de base avant application des points
+            $montant_base = $mode_modification ? (float)($total_panier - $deja_paye) : (float)$total_panier;
+
+            // Sécurité : on limite les points aux capacités du client et au prix de la commande
+            if ($montant_base > 0) {
+                $points_utilises = (float)min($points_utilises, $points_disponibles, $montant_base);
+            } else {
+                $points_utilises = 0.0;
+            }
+
+            // Calcul du montant final envoyé à la banque
+            $montant_final = (float)$montant_base - $points_utilises;
+            if ($montant_final < 0){
+                    $montant_final = 0.0;
+            }
+            ?>
+
+
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'client' && $montant_base > 0 && $points_disponibles > 0): ?>
+                <div>
+                    <h3>✨ Utiliser mes points de fidélité</h3>
+                    <p>Vous avez <strong><?= number_format((float)$points_disponibles, 2, ',', ' ') ?></strong> points en réserve (1 point = 1 €).</p>
+                    
+                    <form action="traitement/appliquer_points.php" method="POST">
+                        <label for="pts">Points à déduire :</label>
+                        <input type="number" id="pts" name="points_a_utiliser" min="0" step="0.01" max="<?= min((float)$points_disponibles, (float)$montant_base) ?>" value="<?= (float)$points_utilises ?>">
+                        <button type="submit" class="btn-gossip btn-xs">Appliquer</button>
+                        <?php if ($points_utilises > 0): ?>
+                            <a href="traitement/appliquer_points.php?annuler=1">❌ Retirer</a>
+                        <?php endif; ?>
+                    </form>
+                </div>
+            <?php endif; ?>
+
             <div>
                 <?php if ($mode_modification): ?>
-                    <?php 
-                        $difference = $total_panier - $deja_paye;
-                        $reste_a_payer = $difference > 0 ? $difference : 0;
-                    ?>
-                    <p>Déjà réglé initialement : <?= number_format($deja_paye, 2, ',', ' ') ?> €</p>
-                    <p>Nouveau total du panier : <?= number_format($total_panier, 2, ',', ' ') ?> €</p>
+                    <p>Déjà réglé initialement : <?= number_format((float)$deja_paye, 2, ',', ' ') ?> €</p>
+                    <p>Nouveau total du panier : <?= number_format((float)$total_panier, 2, ',', ' ') ?> €</p>
+                    <p>Différence brute : <?= number_format((float)$montant_base, 2, ',', ' ') ?> €</p>
+                    <?php if ($points_utilises > 0): ?>
+                        <p>Remise Fidélité : -<?= number_format((float)$points_utilises, 2, ',', ' ') ?> €</p>
+                    <?php endif; ?>
                     
-                    <?php if ($difference > 0): ?>
-                        <p>Reste à payer (différence) : <strong><?= number_format($reste_a_payer, 2, ',', ' ') ?> €</strong></p>
-                    <?php elseif ($difference < 0): ?>
-                        <p>✨ Commande moins chère ! Un bon d'achat de <strong><?= number_format(abs($difference), 2, ',', ' ') ?> €</strong> vous sera offert.</p>
+                    <?php if ($montant_base < 0): ?>
+                        <p>✨ Commande moins chère ! Votre compte fidelité est crédité de <strong><?= number_format((float)abs($montant_base), 2, ',', ' ') ?> points</strong></p>
                     <?php else: ?>
-                        <p>Le montant est identique. Validez pour enregistrer.</p>
+                        <p><strong>Reste à payer net : <span><?= number_format((float)$montant_final, 2, ',', ' ') ?> €</span></strong></p>
                     <?php endif; ?>
 
                 <?php else: ?>
-                    Total à régler : <strong><?= number_format($total_panier, 2, ',', ' ') ?> €</strong>
+                    <p>Total du panier : <?= number_format((float)$total_panier, 2, ',', ' ') ?> €</p>
+                    <?php if ($points_utilises > 0): ?>
+                        <p>Remise Fidélité : -<?= number_format((float)$points_utilises, 2, ',', ' ') ?> €</p>
+                    <?php endif; ?>
+                    <p><strong>Total à régler net : <span><?= number_format((float)$montant_final, 2, ',', ' ') ?> €</span></strong></p>
                 <?php endif; ?>
             </div>
-
-            <div>
             
+            <div>
                 <?php 
                 require('traitement/getapikey.php');
 
                 $vendeur = "MEF-1_A";
                 $transaction = strtoupper(bin2hex(random_bytes(6)));
-                $montant = $mode_modification ? number_format($reste_a_payer, 2, '.', '') : number_format($total_panier, 2, '.', '');
-                
+                $montant = number_format((float)$montant_final, 2, '.', '');
                 
                 $retour = "http://localhost/MEF1-A-2026/traitement/traitement_paiement.php";
 
@@ -126,19 +165,26 @@ if ($mode_modification) {
                             <p>Note : Pour une préparation immédiate, choisissez l'heure actuelle.</p>
                         </div>
                     </section>
-                    <?php if ($mode_modification && $reste_a_payer == 0): ?>
-                        <a href="traitement/valide_modif.php" class="btn-gossip btn-large">
-                            💾 Enregistrer les modifications
-                        </a>
-                    <?php else: ?>
-                        <button type="submit" class="btn-gossip btn-large">💳 Payer la différence avec CYBank</button>
-                    <?php endif; ?>
+
+                    <div>
+                        <button type="submit" class="btn-gossip btn-large">
+                            <?php if ($montant_final == 0): ?>
+                                ✅ Valider via CYBank (Gratuit - 0,00 €)
+                            <?php elseif (!$mode_modification): ?>
+                                💳 Payer avec CYBank (<?= number_format((float)$montant_final, 2, ',', ' ') ?> €)
+                            <?php else: ?>
+                                💳 Payer la différence (<?= number_format((float)$montant_final, 2, ',', ' ') ?> €)
+                            <?php endif; ?>
+                        </button>
+                    </div>
 
                 </form>
-
-                <a href="menu.php" class="btn-discret">⬅ Continuer mes achats</a>
-                
             </div>
+
+            <div>
+                <a href="menu.php" class="btn-discret">⬅ Continuer mes achats</a>   
+            </div>
+
         <?php endif; ?>
 
     </main>

@@ -31,7 +31,39 @@ if (is_array($toutes_les_commandes)) {
                 $nouveau_total += $article['prix'] * $article['quantite'];
             }
             $toutes_les_commandes[$index]['total'] = (float)$nouveau_total;
-            
+
+            //gestion du remboursement en point fidelité si la commande est moins chère que l'originale
+            $montant_initial = (float)$_SESSION['modif_montant_initial'];
+
+            if ($nouveau_total < $montant_initial) {
+                $remboursement = $montant_initial - $nouveau_total;
+                $points_gagnes = $remboursement; // 1 euro = 1 point
+
+                // On ajoute les points gagnés au client
+                $fichier_users = '../data/utilisateur.json';
+                if (file_exists($fichier_users)) {
+                    $utilisateurs = json_decode(file_get_contents($fichier_users), true);
+                    
+                    if (is_array($utilisateurs)) {
+                        foreach ($utilisateurs as &$user) {
+                            if ($user['login'] === $_SESSION['login']) {
+                                // On initialise les points s'ils n'existent pas encore
+                                if (!isset($user['points'])) {
+                                    $user['points'] = 0;
+                                }
+                                $user['points'] += $points_gagnes;
+                                
+                                // On met à jour la session en direct pour l'affichage sur profil.php
+                                $_SESSION['points'] = $user['points']; 
+                                break;
+                            }
+                        }
+                        // Sauvegarde du fichier utilisateur mis à jour
+                        file_put_contents($fichier_users, json_encode($utilisateurs, JSON_PRETTY_PRINT));
+                    }
+                }
+            }
+
             // On ajoute une trace de la date de modification
             $toutes_les_commandes[$index]['date_modification'] = date('Y-m-d H:i:s');
             

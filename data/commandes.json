@@ -120,7 +120,7 @@
             }
         },
         "total": 5,
-        "statut": "pay\u00e9",
+        "statut": "en pr\u00e9paration",
         "date_modification": "2026-05-16 15:30:08"
     },
     {
@@ -159,6 +159,72 @@
             }
         },
         "total": 4.5,
-        "statut": "pay\u00e9"
+        "statut": "En livraison",
+        "livreur": "Jean Dupont"
+    },
+    {
+        "id_commande": "CMD_2C88C5E07131",
+        "client": "Sofia Aoudia",
+        "login_client": "soso@gossip.com",
+        "telephone": "Non renseign\u00e9",
+        "adresse": "Non renseign\u00e9e",
+        "date": "2026-05-20 10:49:04",
+        "date_souhaitee": "2026-05-20",
+        "heure_souhaitee": "11:00",
+        "articles": {
+            "S03": {
+                "nom": "Jus d'orange press\u00e9",
+                "prix": 4,
+                "quantite": 1
+            }
+        },
+        "total": 4,
+        "statut": "pay\u00e9",
+        "date_modification": "2026-05-20 11:12:10"
+    },
+    {
+        "id_commande": "CMD_0511BC341BFB",
+        "client": "Sofia Aoudia",
+        "login_client": "soso@gossip.com",
+        "telephone": "Non renseign\u00e9",
+        "adresse": "Non renseign\u00e9e",
+        "date": "2026-05-20 11:12:48",
+        "date_souhaitee": "2026-05-20",
+        "heure_souhaitee": "11:30",
+        "articles": {
+            "B02": {
+                "nom": "Chocolat chaud",
+                "prix": 5,
+                "quantite": 2
+            }
+        },
+        "total": 7,
+        "statut": "pay\u00e9",
+        "date_modification": "2026-05-20 12:35:09"
+    },
+    {
+        "id_commande": "CMD_8DAB164E52C3",
+        "client": "Sofia Aoudia",
+        "login_client": "soso@gossip.com",
+        "telephone": "Non renseign\u00e9",
+        "adresse": "Non renseign\u00e9e",
+        "date": "2026-05-20 12:20:20",
+        "date_souhaitee": "2026-05-20",
+        "heure_souhaitee": "12:30",
+        "articles": {
+            "P01": {
+                "nom": "SALMON SPILL TOAST",
+                "prix": 14.5,
+                "quantite": 1
+            },
+            "D04": {
+                "nom": "WAFFLE CHOCO BERRIES",
+                "prix": 15,
+                "quantite": 1
+            }
+        },
+        "total": 24.65,
+        "statut": "pay\u00e9",
+        "date_modification": "2026-05-20 12:36:45"
     }
 ]

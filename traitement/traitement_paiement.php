@@ -73,6 +73,27 @@ if (($control_local === $control_banque && $statut === 'accepted') || ($est_modi
     
     // On sauvegarde le fichier JSON
     file_put_contents($fichier_commandes, json_encode($toutes_les_commandes, JSON_PRETTY_PRINT));
+
+    // on debite les points de fidélité utilisés par le client pour cette commande
+    $points_utilises = isset($_SESSION['points_utilises']) ? (float)$_SESSION['points_utilises'] : 0.0;
+    if ($points_utilises > 0) {
+        $fichier_users = '../data/utilisateur.json';
+        if (file_exists($fichier_users)) {
+            $utilisateurs = json_decode(file_get_contents($fichier_users), true);
+            if (is_array($utilisateurs)) {
+                foreach ($utilisateurs as &$user) {
+                    if ($user['login'] === $_SESSION['login']) {
+                        $user['points'] = max(0, ($user['points'] ?? 0) - $points_utilises);
+                        $_SESSION['points'] = $user['points']; // Mise à jour en direct
+                        break;
+                    }
+                }
+                file_put_contents($fichier_users, json_encode($utilisateurs, JSON_PRETTY_PRINT));
+            }
+        }
+    }
+    // On réinitialise les points utilisés pour la prochaine commande
+    unset($_SESSION['points_utilises']); 
     
     // On vide le panier
     unset($_SESSION['panier']);
