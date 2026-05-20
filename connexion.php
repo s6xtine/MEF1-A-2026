@@ -41,7 +41,7 @@ session_start()
             </fieldset>
             
             
-            <button type="submit" class="btn-large">Se connecter</button>
+            <button type="submit" class=" btn-gossip btn-small">Se connecter</button>
 
             <p>Nouveau chez Sip & Spill ? <a href="inscription.php">Créez un compte ici</a></p>
             <p><a href="index.php">Retour au menu principal</a></p>

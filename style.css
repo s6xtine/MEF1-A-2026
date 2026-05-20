@@ -457,6 +457,7 @@ main > section { width: 100%; }
 .btn-small {
     padding: 5px 20px;
     font-size: 0.9rem;
+    min-width: 300px;
 }
 
 .btn-xs {

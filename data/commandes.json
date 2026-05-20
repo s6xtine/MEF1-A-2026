@@ -56,11 +56,11 @@
             },
             "P02": {
                 "nom": "PANCAKE BACON",
-                "prix": 13.9000000000000003552713678800500929355621337890625,
+                "prix": 13.9,
                 "quantite": 1
             }
         },
-        "total": 18.89999999999999857891452847979962825775146484375,
+        "total": 18.9,
         "statut": "livr\u00e9",
         "livreur": "Sophie Durand"
     },
@@ -140,6 +140,25 @@
             }
         },
         "total": 5,
+        "statut": "pay\u00e9"
+    },
+    {
+        "id_commande": "CMD_2435F079AC9B",
+        "client": "Sofia Aoudia",
+        "login_client": "soso@gossip.com",
+        "telephone": "Non renseign\u00e9",
+        "adresse": "Non renseign\u00e9e",
+        "date": "2026-05-20 09:58:51",
+        "date_souhaitee": "2026-05-20",
+        "heure_souhaitee": "10:00",
+        "articles": {
+            "B01": {
+                "nom": "Latte",
+                "prix": 4.5,
+                "quantite": 1
+            }
+        },
+        "total": 4.5,
         "statut": "pay\u00e9"
     }
 ]
