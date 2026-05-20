@@ -1,14 +1,18 @@
 {
-     "plats": [
+    "plats": [
         {
             "id": "B01",
             "categorie": "boissons",
             "nom": "Latte",
             "description": "Café espresso doux et mousse de lait",
             "prix": 4.5,
-            "allergenes": ["lactose"],
-            "image": "images/latte.png",
-            "tags": ["vegetarien"],
+            "allergenes": [
+                "lactose"
+            ],
+            "image": "images\/latte.png",
+            "tags": [
+                "vegetarien"
+            ],
             "gout": "sucre",
             "nb_commandes": 142
         },
@@ -18,9 +22,13 @@
             "nom": "Chocolat chaud",
             "description": "Chocolat fondu onctueux, façon grand-mère",
             "prix": 5,
-            "allergenes": ["lactose"],
-            "image": "images/chocolat_chaud.jpg",
-            "tags": ["vegetarien"],
+            "allergenes": [
+                "lactose"
+            ],
+            "image": "images\/chocolat_chaud.jpg",
+            "tags": [
+                "vegetarien"
+            ],
             "gout": "sucre",
             "nb_commandes": 98
         },
@@ -31,8 +39,12 @@
             "description": "Matcha de cérémonie, lait végétal au choix",
             "prix": 5,
             "allergenes": [],
-            "image": "images/matcha_latte.jpeg",
-            "tags": ["vegetarien", "vegan", "sans_lactose"],
+            "image": "images\/matcha_latte.jpeg",
+            "tags": [
+                "vegetarien",
+                "vegan",
+                "sans_lactose"
+            ],
             "gout": "sucre",
             "nb_commandes": 110
         },
@@ -43,8 +55,13 @@
             "description": "Infusion signature aux fleurs séchées",
             "prix": 4.5,
             "allergenes": [],
-            "image": "images/the_special.jpeg",
-            "tags": ["vegetarien", "vegan", "sans_gluten", "sans_lactose"],
+            "image": "images\/the_special.jpeg",
+            "tags": [
+                "vegetarien",
+                "vegan",
+                "sans_gluten",
+                "sans_lactose"
+            ],
             "gout": "sucre",
             "nb_commandes": 75
         },
@@ -54,9 +71,14 @@
             "nom": "Oreo shake",
             "description": "Milkshake glacé aux brisures d'Oreo",
             "prix": 5,
-            "allergenes": ["lactose", "gluten"],
-            "image": "images/oreo_shake.jpg",
-            "tags": ["vegetarien"],
+            "allergenes": [
+                "lactose",
+                "gluten"
+            ],
+            "image": "images\/oreo_shake.jpg",
+            "tags": [
+                "vegetarien"
+            ],
             "gout": "sucre",
             "nb_commandes": 130
         },
@@ -67,8 +89,13 @@
             "description": "Limonade maison passion et citron vert",
             "prix": 4.5,
             "allergenes": [],
-            "image": "images/lemonade_bio.webp",
-            "tags": ["vegetarien", "vegan", "sans_gluten", "sans_lactose"],
+            "image": "images\/lemonade_bio.webp",
+            "tags": [
+                "vegetarien",
+                "vegan",
+                "sans_gluten",
+                "sans_lactose"
+            ],
             "gout": "sucre",
             "nb_commandes": 88
         },
@@ -79,8 +106,13 @@
             "description": "100% pur jus d'oranges fraîches",
             "prix": 4,
             "allergenes": [],
-            "image": "images/jus_orange.jpg",
-            "tags": ["vegetarien", "vegan", "sans_gluten", "sans_lactose"],
+            "image": "images\/jus_orange.jpg",
+            "tags": [
+                "vegetarien",
+                "vegan",
+                "sans_gluten",
+                "sans_lactose"
+            ],
             "gout": "sucre",
             "nb_commandes": 95
         },
@@ -90,9 +122,15 @@
             "nom": "SALMON SPILL TOAST",
             "description": "Avocat, saumon fumé, œuf poché bio, grenade",
             "prix": 14.5,
-            "allergenes": ["poisson", "gluten", "oeuf"],
-            "image": "images/salmon_toast.webp",
-            "tags": ["sans_lactose"],
+            "allergenes": [
+                "poisson",
+                "gluten",
+                "oeuf"
+            ],
+            "image": "images\/salmon_toast.webp",
+            "tags": [
+                "sans_lactose"
+            ],
             "gout": "sale",
             "nb_commandes": 167
         },
@@ -101,9 +139,13 @@
             "categorie": "sale",
             "nom": "PANCAKE BACON",
             "description": "Bacon croustillant, 3 pancakes, œuf poché bio, sirop d'érable",
-            "prix": 13.9,
-            "allergenes": ["gluten", "oeuf", "lactose"],
-            "image": "images/pancake_bacon.jpeg",
+            "prix": 13.9000000000000003552713678800500929355621337890625,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose"
+            ],
+            "image": "images\/pancake_bacon.jpeg",
             "tags": [],
             "gout": "sale",
             "nb_commandes": 145
@@ -113,10 +155,17 @@
             "categorie": "sale",
             "nom": "AVOCADO GIRLIES",
             "description": "Crème de chèvre, avocat, épinards, œuf poché bio, tomates confites, noix",
-            "prix": 14.9,
-            "allergenes": ["gluten", "oeuf", "lactose", "fruits à coque"],
-            "image": "images/avocado_girlies.png",
-            "tags": ["vegetarien"],
+            "prix": 14.9000000000000003552713678800500929355621337890625,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose",
+                "fruits à coque"
+            ],
+            "image": "images\/avocado_girlies.png",
+            "tags": [
+                "vegetarien"
+            ],
             "gout": "sale",
             "nb_commandes": 210
         },
@@ -126,8 +175,13 @@
             "nom": "OEUF NORVEGIEN",
             "description": "Muffin, saumon fumé, œuf poché bio, sauce hollandaise",
             "prix": 15,
-            "allergenes": ["gluten", "oeuf", "lactose", "poisson"],
-            "image": "images/oeuf_norvegien.jpeg",
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose",
+                "poisson"
+            ],
+            "image": "images\/oeuf_norvegien.jpeg",
             "tags": [],
             "gout": "sale",
             "nb_commandes": 120
@@ -138,9 +192,14 @@
             "nom": "LADY BOWL",
             "description": "Quinoa, légumes rôtis, feta, pickles, grenade",
             "prix": 14.5,
-            "allergenes": ["lactose"],
-            "image": "images/lady_bowl.jpeg",
-            "tags": ["vegetarien", "sans_gluten"],
+            "allergenes": [
+                "lactose"
+            ],
+            "image": "images\/lady_bowl.jpeg",
+            "tags": [
+                "vegetarien",
+                "sans_gluten"
+            ],
             "gout": "sale",
             "nb_commandes": 134
         },
@@ -149,10 +208,17 @@
             "categorie": "sucre",
             "nom": "CINNAMON ROLLS PANCAKES",
             "description": "3 pancakes, vanille, noix de pécan caramélisées, cannelle, sirop d'érable",
-            "prix": 13.9,
-            "allergenes": ["gluten", "oeuf", "lactose", "fruits à coque"],
-            "image": "images/cinnamon_pancakes.jpg",
-            "tags": ["vegetarien"],
+            "prix": 13.9000000000000003552713678800500929355621337890625,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose",
+                "fruits à coque"
+            ],
+            "image": "images\/cinnamon_pancakes.jpg",
+            "tags": [
+                "vegetarien"
+            ],
             "gout": "sucre",
             "nb_commandes": 180
         },
@@ -162,9 +228,16 @@
             "nom": "CHOCO BERRY PANCAKES",
             "description": "Fruits rouges, amandes effilées caramélisées, pépites de chocolat au lait",
             "prix": 14.5,
-            "allergenes": ["gluten", "oeuf", "lactose", "fruits à coque"],
-            "image": "images/choco_berry_pancakes.jpg",
-            "tags": ["vegetarien"],
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose",
+                "fruits à coque"
+            ],
+            "image": "images\/choco_berry_pancakes.jpg",
+            "tags": [
+                "vegetarien"
+            ],
             "gout": "sucre",
             "nb_commandes": 155
         },
@@ -173,10 +246,16 @@
             "categorie": "sucre",
             "nom": "FRENCH TOAST CHOCO BERRIES",
             "description": "3 pains perdus moelleux, fruits rouges, caramel, pépites de chocolat au lait",
-            "prix": 14.9,
-            "allergenes": ["gluten", "oeuf", "lactose"],
-            "image": "images/french_toast.jpg",
-            "tags": ["vegetarien"],
+            "prix": 14.9000000000000003552713678800500929355621337890625,
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose"
+            ],
+            "image": "images\/french_toast.jpg",
+            "tags": [
+                "vegetarien"
+            ],
             "gout": "sucre",
             "nb_commandes": 140
         },
@@ -186,9 +265,15 @@
             "nom": "WAFFLE CHOCO BERRIES",
             "description": "2 gauffres caramélisées, fruits rouges, crème, pépites de chocolat au lait",
             "prix": 15,
-            "allergenes": ["gluten", "oeuf", "lactose"],
-            "image": "images/waffle_choco.png",
-            "tags": ["vegetarien"],
+            "allergenes": [
+                "gluten",
+                "oeuf",
+                "lactose"
+            ],
+            "image": "images\/waffle_choco.png",
+            "tags": [
+                "vegetarien"
+            ],
             "gout": "sucre",
             "nb_commandes": 160
         },
@@ -198,9 +283,15 @@
             "nom": "GRANOLA BOWL",
             "description": "Granola croustillant, fruits frais, miel, fromage blanc",
             "prix": 8.5,
-            "allergenes": ["lactose", "gluten", "fruits à coque"],
-            "image": "images/granola_bowl.jpg",
-            "tags": ["vegetarien"],
+            "allergenes": [
+                "lactose",
+                "gluten",
+                "fruits à coque"
+            ],
+            "image": "images\/granola_bowl.jpg",
+            "tags": [
+                "vegetarien"
+            ],
             "gout": "sucre",
             "nb_commandes": 115
         },
@@ -209,12 +300,30 @@
             "categorie": "sucre",
             "nom": "PUDDING LOVERS",
             "description": "Pudding de chia lait de coco, fruits rouges, granola, sirop d'érable",
-            "prix": 7.9,
-            "allergenes": ["fruits à coque"],
-            "image": "images/pudding_lovers.jpg",
-            "tags": ["vegetarien", "vegan", "sans_gluten", "sans_lactose"],
+            "prix": 7.9000000000000003552713678800500929355621337890625,
+            "allergenes": [
+                "fruits à coque"
+            ],
+            "image": "images\/pudding_lovers.jpg",
+            "tags": [
+                "vegetarien",
+                "vegan",
+                "sans_gluten",
+                "sans_lactose"
+            ],
             "gout": "sucre",
             "nb_commandes": 90
+        },
+        {
+            "id": "D07",
+            "categorie": "sucre",
+            "nom": "MOMO LE PAIN",
+            "description": "une momo croustillante",
+            "prix": 2,
+            "allergenes": [
+                "lactose"
+            ],
+            "image": "https:\/\/logo-marque.com\/captain-morgan-logo\/"
         }
     ],
     "menus": [
