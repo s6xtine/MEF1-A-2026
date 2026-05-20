@@ -92,6 +92,18 @@ a:hover {
     max-width: 800px;
 }
 
+.msg-defaut {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #c3e6cb;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
 .statut-valide { color: green; font-weight: bold; }
 
 /* Permet de cacher n'importe quel élément */

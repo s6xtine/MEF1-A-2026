@@ -20,7 +20,7 @@ session_start()
 
     <main>
         <?php if (isset($_GET['erreur']) && $_GET['erreur'] === 'bloque'): ?>
-            <p class="texte-erreur text-center">
+            <p class="msg-defaut">
                 🚫 Votre compte a été suspendu par un administrateur.
             </p>
         <?php endif; ?>

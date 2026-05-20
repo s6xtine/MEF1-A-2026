@@ -62,7 +62,7 @@
         "adresse": "4 avenue du Parc, Cergy",
         "date_inscription": "2026-03-16",
         "statut": "Premium",
-        "bloque": true
+        "bloque": false
     },
     {
         "id": 6,
@@ -75,7 +75,7 @@
         "adresse": null,
         "date_inscription": "2026-03-16",
         "statut": "bloque",
-        "bloque": false,
+        "bloque": true,
         "points": 0,
         "bon_achat": ""
     },
