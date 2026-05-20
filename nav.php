@@ -15,7 +15,7 @@ if (isset($_SESSION['login']) && $role_nav !== 'admin') { // On évite de bloque
                     // C'est fini pour lui : on détruit la session
                     session_unset();
                     session_destroy();
-                    header("Location: connexion.php"); // On le renvoie à la porte
+                    header("Location: connexion.php?erreur=bloque"); // On le renvoie à la porte
                     exit();
                 }
                 break;

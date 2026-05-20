@@ -27,6 +27,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if($utilisateur_trouve) {
+            // Vérification du statut de blocage
+            if (isset($utilisateur_trouve['bloque']) && $utilisateur_trouve['bloque'] === true) {
+                header('Location: ../connexion.php?erreur=bloque');
+                exit();
+            }
+
             $_SESSION['id'] = $utilisateur_trouve['id'];
             $_SESSION['nom'] = $utilisateur_trouve['nom'];
             $_SESSION['prenom'] = $utilisateur_trouve['prenom'];

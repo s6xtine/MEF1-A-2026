@@ -19,6 +19,12 @@ session_start()
     <h1 class="titre-centre">Connexion</h1>
 
     <main>
+        <?php if (isset($_GET['erreur']) && $_GET['erreur'] === 'bloque'): ?>
+            <p class="texte-erreur text-center">
+                🚫 Votre compte a été suspendu par un administrateur.
+            </p>
+        <?php endif; ?>
+
         <form action="traitement/submit_connexion.php" method="post">
             
             <fieldset>

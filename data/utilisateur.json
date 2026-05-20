@@ -62,12 +62,12 @@
         "adresse": "4 avenue du Parc, Cergy",
         "date_inscription": "2026-03-16",
         "statut": "Premium",
-        "bloque": false
+        "bloque": true
     },
     {
         "id": 6,
-        "nom": null,
-        "prenom": null,
+        "nom": "Aoudia",
+        "prenom": "Sofia",
         "login": "soso@gossip.com",
         "mdp": "girlInRed",
         "role": "client",
