@@ -5,7 +5,7 @@ session_start()
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="style.css?v=12">
+    <link rel="stylesheet" href="style.css?v=13">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sip & Spill - Connexion</title>
@@ -19,13 +19,14 @@ session_start()
     <h1 class="titre-centre">Connexion</h1>
 
     <main>
-        <?php if (isset($_GET['erreur']) && $_GET['erreur'] === 'bloque'): ?>
-            <div class="msg-defaut">
-                🚫 Votre compte a été suspendu par un administrateur.
-            </div>
-        <?php endif; ?>
 
         <form action="traitement/submit_connexion.php" method="post">
+
+            <?php if (isset($_GET['erreur']) && $_GET['erreur'] === 'bloque'): ?>
+                <div class="msg-defaut">
+                    🚫 Votre compte a été suspendu par un administrateur.
+                </div>
+            <?php endif; ?>
             
             <fieldset>
                 <legend>Vos identifiants</legend>
@@ -40,7 +41,7 @@ session_start()
             </fieldset>
             
             
-            <button type="submit" classe="btn-large">Se connecter</button>
+            <button type="submit" class="btn-large">Se connecter</button>
 
             <p>Nouveau chez Sip & Spill ? <a href="inscription.php">Créez un compte ici</a></p>
             <p><a href="index.php">Retour au menu principal</a></p>
