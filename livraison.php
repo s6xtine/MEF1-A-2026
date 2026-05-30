@@ -4,7 +4,6 @@ session_start();
 $fichier_commandes = 'data/commandes.json';
 $commandes_en_livraison = [];
 
-
 $mon_nom_livreur = $_SESSION['prenom'] . " " . $_SESSION['nom'];
 
 if (file_exists($fichier_commandes)) {
@@ -13,7 +12,6 @@ if (file_exists($fichier_commandes)) {
         $toutes_les_commandes = json_decode($contenu, true);
         
         foreach ($toutes_les_commandes as $cmd) {
-            
             $est_pour_moi = isset($cmd['livreur']) && $cmd['livreur'] === $mon_nom_livreur;
             
             if ($cmd['statut'] === 'En livraison'  && $est_pour_moi) {
@@ -41,54 +39,53 @@ if (file_exists($fichier_commandes)) {
 
     <?php include 'nav.php'; ?>
 
-    <main class="admin-container">
+    <main class="main-livreur">
         <?php if (empty($commandes_en_livraison)): ?>
-            <h2 class="sub-titre text-center">Aucune livraison en cours</h2>
-            <p class="msg-vide text-center">Prenez une pause café ! ☕</p>
+            <h2 class="sub-titre">Aucune livraison en cours</h2>
+            <p class="msg-vide">Prenez une pause café ! ☕</p>
         <?php else: ?>
 
             <?php foreach ($commandes_en_livraison as $cmd): ?>
+                <div class="commande-livraison">
                 
-                <h2 class="sub-titre text-center">Commande <?= htmlspecialchars($cmd['id_commande']) ?> à livrer</h2>
-                <p class="client-livraison text-center">Client : <?= htmlspecialchars($cmd['client']) ?></p>
+                    <h2 class="sub-titre">Commande <?= htmlspecialchars($cmd['id_commande']) ?></h2>
+                    <h2 ><?= htmlspecialchars($cmd['client']) ?></h2>
 
-                <section id="adresse-client" class="info-item text-center">
-                    <h3 class="sub-titre">Destination</h3>
-                    <p><?= htmlspecialchars($cmd['adresse'] ?? 'Adresse non renseignée') ?></p>
-                    
-                    <a href="https://maps.google.com/?q=<?= urlencode($cmd['adresse'] ?? '') ?>" target="_blank" class="bouton-xl-livreur">
-                        Itinéraire (Maps)
-                    </a> 
-                </section>
+                    <section class="info-item">
+                        
+                        <p class="gros"><?= htmlspecialchars($cmd['adresse'] ?? 'Adresse non renseignée') ?></p>
+                        <a href="https://maps.google.com/?q=<?= urlencode($cmd['adresse'] ?? '') ?>" target="_blank" class="btn-gossip btn-small">
+                            Itinéraire (Maps)
+                        </a> 
+                    </section>
 
-                <section id="contact" class="info-item text-center">
-                    <h3 class="sub-titre">Contact Client</h3>
-                    <p>Téléphone : <?= htmlspecialchars($cmd['telephone'] ?? 'Non renseigné') ?></p> 
-                    <a href="tel:<?= htmlspecialchars($cmd['telephone'] ?? '') ?>" class="btn-xl-livreur">Appeler le client</a>
-                </section>
+                    <section class="info-item">
+                        
+                        <p class="gros">Téléphone : <?= htmlspecialchars($cmd['telephone'] ?? 'Non renseigné') ?></p> 
+                        <a href="tel:<?= htmlspecialchars($cmd['telephone'] ?? '') ?>" class="btn-gossip btm-small">Appeler le client</a>
+                    </section>
 
-                <section id="instructions" class="info-item text-center">
-                    <h3 class="sub-titre">Contenu & Instructions</h3>
-                    
-                    <ul class="liste-articles-livraison">
-                        <?php foreach ($cmd['articles'] as $article): ?>
-                            <li>🛒 <?= $article['quantite'] ?>x <?= htmlspecialchars($article['nom']) ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+                    <section id="instructions" class="info-item">
+                        
+                        <ul>
+                            <?php foreach ($cmd['articles'] as $article): ?>
+                                <li><?= $article['quantite'] ?>x <?= htmlspecialchars($article['nom']) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <blockquote>"<?= htmlspecialchars($cmd['instructions'] ?? 'Aucune instruction particulière') ?>"</blockquote> 
+                    </section>
 
-                    <blockquote>"<?= htmlspecialchars($cmd['instructions'] ?? 'Aucune instruction particulière') ?>"</blockquote> 
-                </section>
-
-                <form action="traitement/update_statut.php" method="POST" class="form-sans-boite">
-                    <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
-                    <input type="hidden" name="nouveau_statut" value="Livrée">
-                    <button type="submit" id="valider-livraison" class="btn-gossip btn-xl-livreur ">Livraison terminée ✅</button>
-                </form>
-
-                <hr class="separateur-chic">
+                    <form action="traitement/update_statut.php" method="POST" class="form-sans-boite">
+                        <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
+                        <input type="hidden" name="nouveau_statut" value="Livrée">
+                        <button type="submit" id="valider-livraison" class="btn-gossip btn-large">Livraison terminée ✅</button>
+                    </form>
+                </div>
             <?php endforeach; ?>
 
         <?php endif; ?>
     </main>
     
     <?php include 'footer.php'; ?>
+</body>
+</html>

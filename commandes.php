@@ -82,10 +82,10 @@ foreach ($toutes_les_commandes as $cmd) {
                             </td>
                             <td><strong><?= $cmd['heure_souhaitee'] ?? '' ?></strong></td>
                             <td>
-                                <form action="traitement/update_statut.php" method="POST">
+                                <form class="form-sans-boite" action="traitement/update_statut.php" method="POST">
                                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                                     <input type="hidden" name="nouveau_statut" value="en préparation">
-                                    <button type="submit" class="btn-gossip btn-small">👨‍🍳 Lancer en cuisine</button>
+                                    <button type="submit" class="btn-gossip btn-xs">👨‍🍳 Lancer en cuisine</button>
                                 </form>
                             </td>
                         </tr>
@@ -112,7 +112,7 @@ foreach ($toutes_les_commandes as $cmd) {
                                 <?php foreach ($cmd['articles'] as $article) echo '<strong>' . $article['quantite'] . 'x</strong> ' . htmlspecialchars($article['nom']) . '<br>'; ?>
                             </td>
                             <td>
-                                <form action="traitement/update_statut.php" method="POST">
+                                <form class="form-sans-boite" action="traitement/update_statut.php" method="POST">
                                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                                     <input type="hidden" name="nouveau_statut" value="prêt">
                                     <button type="submit" class="btn-gossip btn-small">🛎️ Prêt ! Appeler livreur</button>
@@ -142,7 +142,7 @@ foreach ($toutes_les_commandes as $cmd) {
                                 <?php foreach ($cmd['articles'] as $article) echo '<strong>' . $article['quantite'] . 'x</strong> ' . htmlspecialchars($article['nom']) . '<br>'; ?>
                             </td>
                             <td>
-                                <form action="traitement/update_statut.php" method="POST" class="form-discret">
+                                <form action="traitement/update_statut.php" method="POST" class="form-sans-boite">
                                     <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                                     <input type="hidden" name="nouveau_statut" value="En livraison"> <select name="id_livreur" class="select-chic" required>
                                         <option value="">Choisir un livreur</option>
@@ -152,7 +152,7 @@ foreach ($toutes_les_commandes as $cmd) {
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
-                                    <button type="submit" class="btn-edit">🚀 Confier et Expédier</button> 
+                                    <button type="submit" class="btn-gossip btn-xs">🚀 Confier et Expédier</button> 
                                 </form>
                             </td>
                         </tr>

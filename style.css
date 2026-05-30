@@ -189,7 +189,7 @@ a:hover {
     color: var(--bordeaux-chic);
     font-family: 'Courier New', monospace;
     text-transform: uppercase;
-    border-bottom: 2px solid var(--pink-mid);
+    
     padding-bottom: 10px;
     margin: 30px 0 20px 0;
 }
@@ -795,7 +795,7 @@ tr:hover td {
    PAGES INTERNES : PROFIL, COMMANDES, LIVRAISON
    ========================================================================== */
 
-.admin-container, .profile-container, .panier-container {
+.panier-container {
     max-width: 900px;
     margin: 40px auto;
     padding: 40px;
@@ -842,11 +842,55 @@ blockquote {
     color: var(--bordeaux-chic);
 }
 
-.client-livraison { text-align: center; font-weight: bold; color: var(--red-gossip); }
+
 .liste-articles-livraison { list-style-type: none; padding: 0; text-align: center; margin-bottom: 15px; }
 .separateur-livraison { margin: 50px 0; border: 0; border-top: 1px dashed var(--pink-border); }
 .section-historique { margin-top: 40px; }
 
+.main-livreur {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes de cubes côte à côte */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 2. Le gros rectangle (le cube) de chaque commande */
+.commande-livraison {
+    background-color: var(--white);
+    border: 3px solid var(--bordeaux-chic);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: var(--shadow-soft);
+    
+    /* Grille interne pour organiser le contenu de chaque commande */
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px;
+}
+
+/* 3. Ajustements des blocs à l'intérieur du cube */
+.commande-livraison h2, 
+.commande-livraison #instructions,
+.commande-livraison form {
+    grid-column: span 2; /* Prennent toute la largeur de leur cube */
+}
+
+/* 4. Style de tes textes importants (Adresse & Tel) */
+.gros {
+    font-size: 1.4rem !important;
+    font-weight: bold;
+    color: var(--bordeaux-chic);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* 5. Taille normale pour les articles et instructions */
+.commande-livraison #instructions li {
+    font-size: 1rem;
+    font-weight: normal;
+}
 /* ==========================================================================
    FOOTER
    ========================================================================== */
