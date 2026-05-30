@@ -46,6 +46,12 @@ if (file_exists($fichier_carte)) {
 <main class="menu">
 
     <div class="filtres-bar">
+        <div class="bloc-reset-filtres">
+            <button class="btn-gossip btn-xs" id="btn-reset-filtres">
+                🔄 Réinitialiser tous les filtres
+            </button>
+        </div>
+        
 
         <div class="filtres-groupe">
             <span>Catégorie</span>
