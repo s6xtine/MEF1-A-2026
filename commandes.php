@@ -82,7 +82,7 @@ foreach ($toutes_les_commandes as $cmd) {
                         <tr>
                             <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
                             <td class="text-left">
-                                <?php foreach ($cmd['articles'] as $article) echo '<strong>' . $article['quantite'] . 'x</strong> ' . htmlspecialchars($article['nom']) . '<br>'; ?>
+                                <?php foreach ($cmd['articles'] as $article) echo '<strong>' . (int)$article['quantite'] . 'x</strong> ' . htmlspecialchars($article['nom']) . '<br>'; ?>
                             </td>
                             <td><strong><?= $cmd['heure_souhaitee'] ?? '' ?></strong></td>
                             <td>
@@ -113,7 +113,7 @@ foreach ($toutes_les_commandes as $cmd) {
                         <tr>
                             <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
                             <td class="text-left">
-                                <?php foreach ($cmd['articles'] as $article) echo '<strong>' . $article['quantite'] . 'x</strong> ' . htmlspecialchars($article['nom']) . '<br>'; ?>
+                                <?php foreach ($cmd['articles'] as $article) echo '<strong>' . (int)$article['quantite'] . 'x</strong> ' . htmlspecialchars($article['nom']) . '<br>'; ?>
                             </td>
                             <td>
                                 <form class="form-sans-boite" action="traitement/update_statut.php" method="POST">
@@ -143,7 +143,7 @@ foreach ($toutes_les_commandes as $cmd) {
                         <tr>
                             <td><?= htmlspecialchars($cmd['id_commande']) ?></td>
                             <td class="text-left">
-                                <?php foreach ($cmd['articles'] as $article) echo '<strong>' . $article['quantite'] . 'x</strong> ' . htmlspecialchars($article['nom']) . '<br>'; ?>
+                                <?php foreach ($cmd['articles'] as $article) echo '<strong>' . (int)$article['quantite'] . 'x</strong> ' . htmlspecialchars($article['nom']) . '<br>'; ?>
                             </td>
                             <td>
                                 <form action="traitement/update_statut.php" method="POST" class="form-sans-boite">

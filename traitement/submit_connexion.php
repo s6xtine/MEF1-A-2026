@@ -19,7 +19,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $utilisateur_trouve = null;
 
             foreach($utilisateurs as $user) {
-                if($user['login'] === $email_saisi && $user['mdp'] === $mdp_saisi) {
+                // Sécurité : Vérification du mdp haché
+                if($user['login'] === $email_saisi && password_verify($mdp_saisi, $user['mdp'])) {
                     $utilisateur_trouve = $user;
                     break;
                 }

@@ -1,0 +1,6 @@
+# Sécurité du site web
+# Ce fichier bloque l'accès direct aux fichiers JSON depuis le navigateur
+# pour éviter le vol de données (mots de passe, emails, etc.).
+# Le code PHP du serveur peut toujours les lire avec file_get_contents().
+
+Require all denied

@@ -53,7 +53,7 @@ if (file_exists($chemin_fichier)) {
                 <td><?php echo htmlspecialchars($user['login']); ?></td>
                 <td><?php echo htmlspecialchars($user['role']); ?></td>
                 <td>
-                    <a href="profil_admin.php?id=<?php echo $user['id']; ?>" class="btn-edit">Voir le profil</a>
+                    <a href="profil_admin.php?id=<?php echo htmlspecialchars($user['id']); ?>" class="btn-edit">Voir le profil</a>
                     <button type="button" class="btn-gossip btn-xs btn-statut" data-login="<?php echo htmlspecialchars($user['login']); ?>">
                         <?php echo (isset($user['bloque']) && $user['bloque']) ? 'Débloquer 🟢' : 'Bloquer 🔴'; ?>
                     </button>

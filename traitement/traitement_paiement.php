@@ -14,8 +14,34 @@ $control_local = md5($api_key . "#" . $transaction . "#" . $montant . "#" . $ven
 
 $est_modification = isset($_SESSION['modif_id_commande']);
 
+// Sécurité : on recalcule le montant total du panier côté serveur pour éviter toute manipulation côté client
+$vrai_total_panier = 0.0;
+if (isset($_SESSION['panier'])) {
+    foreach ($_SESSION['panier'] as $article) {
+        // On recalcule le vrai prix depuis la session côté serveur
+        $vrai_total_panier += (float)$article['prix'] * (int)$article['quantite'];
+    }
+}
 
-if (($control_local === $control_banque && $statut === 'accepted') || ($est_modification && $statut === 'gratuit')) {
+// On retire ce qui a déjà été payé (si c'est une modification) et les remises de fidélité
+$deja_paye = $est_modification ? (float)$_SESSION['modif_montant_initial'] : 0.0;
+$points_utilises = isset($_SESSION['points_utilises']) ? (float)$_SESSION['points_utilises'] : 0.0;
+
+// On calcule ce que le client aurait dû payer (max évite un result négatif)
+$montant_attendu = max(0.0, $vrai_total_panier - $deja_paye - $points_utilises);
+
+// On formate les prix à 2 décimales pour les comparer au centime près
+$montant_attendu_str = number_format($montant_attendu, 2, '.', '');
+$montant_paye_str = number_format((float)$montant, 2, '.', '');
+
+// Paiement classique valide que si le prix payé est strictement égal au prix attendu
+$paiement_valide = ($control_local === $control_banque && $statut === 'accepted' && $montant_paye_str === $montant_attendu_str);
+
+// Mode gratuit valide que si le montant attendu est réellement de 0.00€
+$gratuit_valide = ($est_modification && $statut === 'gratuit' && $montant_attendu_str === '0.00');
+// fin de la sécu
+
+if ($paiement_valide || $gratuit_valide) {
     
     $fichier_commandes = '../data/commandes.json';
     $toutes_les_commandes = [];
