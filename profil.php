@@ -40,14 +40,6 @@ if (file_exists($fichier_commandes)) {
     <link rel="stylesheet" href="style.css?v=9">
     <meta charset="UTF-8">
     <title>Sip & Spill - Mon Profil</title>
-    <style>
-        /* Un petit style pour que les cases readonly n'aient pas l'air de vraies cases au départ */
-        input[readonly], textarea[readonly] {
-            background-color: transparent;
-            border: 1px dashed #ccc;
-            color: inherit;
-        }
-    </style>
 </head>
 <body>
     <header class="site-header">

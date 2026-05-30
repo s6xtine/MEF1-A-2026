@@ -36,7 +36,9 @@
         "telephone": "0708091011",
         "adresse": "Upper East Side, NY",
         "date_inscription": "2026-03-16",
-        "statut": "Regular"
+        "statut": "Regular",
+        "naissance": "2004-05-30",
+        "dernier_anniv_offert": ""
     },
     {
         "id": 4,
@@ -49,7 +51,9 @@
         "adresse": "3 avenue du Parc, Cergy",
         "date_inscription": "2026-03-16",
         "statut": "Premium",
-        "bloque": false
+        "bloque": false,
+        "naissance": "2004-01-16",
+        "dernier_anniv_offert": ""
     },
     {
         "id": 5,
@@ -62,7 +66,9 @@
         "adresse": "4 avenue du Parc, Cergy",
         "date_inscription": "2026-03-16",
         "statut": "Premium",
-        "bloque": false
+        "bloque": false,
+        "naissance": "2000-03-30",
+        "dernier_anniv_offert": ""
     },
     {
         "id": 6,
@@ -77,7 +83,9 @@
         "statut": "bloque",
         "bloque": false,
         "points": 2.1500000000000004,
-        "bon_achat": ""
+        "bon_achat": "",
+        "naissance": "2003-08-15",
+        "dernier_anniv_offert": ""
     },
     {
         "id": 7,
@@ -91,7 +99,9 @@
         "date_inscription": "2026-03-16",
         "statut": "VIP",
         "points": 0,
-        "bon_achat": ""
+        "bon_achat": "",
+        "naissance": "2004-05-30",
+        "dernier_anniv_offert": ""
     },
     {
         "id": 8,
@@ -125,5 +135,38 @@
         "telephone": "0601020304",
         "adresse": "7 avenue du Parc, Cergy",
         "date_inscription": "2015-04-01"
+    },
+    {
+        "id": 11,
+        "nom": "Ayrault",
+        "prenom": "Jacques",
+        "login": "jacques.ayrault@gmail.com",
+        "mdp": "jacques13",
+        "numero_telephone": "0255687964",
+        "adresse": "20 rue des lauriers, 56230 questembert",
+        "interphone": "",
+        "etage": "",
+        "commentaires": "",
+        "role": "client",
+        "naissance": "2013-05-30",
+        "dernier_anniv_offert": "2026",
+        "points": 30,
+        "telephone": "0566339988"
+    },
+    {
+        "id": 12,
+        "nom": "Debard",
+        "prenom": "Nico",
+        "login": "nico@gmail.com",
+        "mdp": "niconico",
+        "numero_telephone": "0255687964",
+        "adresse": "13e,Paris",
+        "interphone": "",
+        "etage": "",
+        "commentaires": "",
+        "role": "client",
+        "naissance": "1976-05-30",
+        "dernier_anniv_offert": "2026",
+        "points": 30
     }
 ]

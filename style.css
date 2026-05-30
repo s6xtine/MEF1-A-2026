@@ -715,6 +715,10 @@ form.form-sans-boite, form.form-cybank {
     border-radius: 10px;
 
 }
+.profile-container input, .profile-container textarea {
+    width: 100%;
+    max-width: 200px;
+}
 /* ==========================================================================
    PAGE PANIER
    ========================================================================== */

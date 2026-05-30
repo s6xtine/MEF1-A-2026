@@ -33,6 +33,39 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit();
             }
 
+            // Vérification de l'anniversaire pour les clients
+            if ($utilisateur_trouve['role'] === 'client' && !empty($utilisateur_trouve['naissance'])) {
+                $aujourdhui = date('m-d');
+                $annee_actuelle = date('Y');
+                
+                // On extrait le mois et le jour de la date de naissance de l'utilisateur
+                $anniv_user = date('m-d', strtotime($utilisateur_trouve['naissance']));
+
+                // Si c'est son anniversaire ET qu'on ne lui a pas encore offert son cadeau cette année
+                if ($anniv_user === $aujourdhui && (!isset($utilisateur_trouve['dernier_anniv_offert']) || $utilisateur_trouve['dernier_anniv_offert'] !== $annee_actuelle)) {
+                    
+                    $points_menu_gratuit = 30;
+                    
+                    // 1. On lui crédite les points
+                    $utilisateur_trouve['points'] = ($utilisateur_trouve['points'] ?? 0) + $points_menu_gratuit;
+                    
+                    // 2. On marque que le cadeau de cette année est donné
+                    $utilisateur_trouve['dernier_anniv_offert'] = $annee_actuelle;
+                    
+                    // 3. On active le message pop-up
+                    $_SESSION['anniv_bonus'] = true; 
+
+                    // 4. On met à jour le tableau des utilisateurs et on sauvegarde le fichier JSON
+                    foreach ($utilisateurs as $key => $u) {
+                        if ($u['login'] === $utilisateur_trouve['login']) {
+                            $utilisateurs[$key] = $utilisateur_trouve;
+                            break;
+                        }
+                    }
+                    file_put_contents($chemin_fichier, json_encode($utilisateurs, JSON_PRETTY_PRINT));
+                }
+            }
+
             $_SESSION['id'] = $utilisateur_trouve['id'];
             $_SESSION['nom'] = $utilisateur_trouve['nom'];
             $_SESSION['prenom'] = $utilisateur_trouve['prenom'];

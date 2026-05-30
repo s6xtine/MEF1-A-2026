@@ -28,6 +28,13 @@ session_start()
     
     
     <main>
+        <?php if (isset($_SESSION['anniv_bonus']) && $_SESSION['anniv_bonus'] === true): ?>
+            <div class="msg-succes">
+            🎂 Joyeux Anniversaire ! Sip & Spill vous offre 30 points de fidélité pour commander un menu gratuit ! 🎉
+            </div>
+            <?php unset($_SESSION['anniv_bonus']); // On supprime la variable pour que le message disparaisse au prochain rechargement ?>  
+        <?php endif; ?>
+
         <section class="search-area">
             <div class="search-content">
                 <h2 class="titre-section">Spotted: Un plat en vue ?</h2>

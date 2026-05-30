@@ -44,6 +44,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 errors.push(`Le mot de passe doit faire au moins ${minLength} caractères.`);
             }
 
+            const naissanceInput = document.getElementById('naissance');
+            if (naissanceInput && naissanceInput.value) {
+                const dateSaisie = new Date(naissanceInput.value);
+                const dateAujourdhui = new Date();
+                
+                // On vérifie que la date n'est pas dans le futur
+                if (dateSaisie >= dateAujourdhui) {
+                    errors.push("La date de naissance doit être dans le passé.");
+                }
+            } else if (naissanceInput && !naissanceInput.value) {
+                errors.push("Veuillez renseigner votre date de naissance.");
+            }
+
             // S'il y a des erreurs, on bloque l'envoi et on affiche l'alerte
             if (errors.length > 0) {
                 e.preventDefault();

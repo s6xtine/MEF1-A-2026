@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['login'];
     $mot_de_passe = $_POST['mdp'];
     $numero_telephone = $_POST['telephone'];
+    $naissance = $_POST['naissance'];
     $adresse = $_POST['adresse'];
     $interphone = $_POST['interphone'];
     $etage = $_POST['etage'];
@@ -31,7 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'interphone' => $interphone,
         'etage' => $etage,
         'commentaires' => $commentaires,
-        'role' => 'client'
+        'role' => 'client',
+        "naissance" => $naissance,
+        "dernier_anniv_offert" => ""
     ];
     $utilisateurs[] = $nouvel_utilisateur;
     $nouveau_contenu_json = json_encode($utilisateurs, JSON_PRETTY_PRINT);

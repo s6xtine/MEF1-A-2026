@@ -32,6 +32,9 @@ session_start()
 
                 <label for="telephone">Numéro de téléphone :</label>
                 <input type="tel" id="telephone" name="telephone" autocomplete="tel" required>
+
+                <label for="naissance">Date de naissance :</label>
+                <input type="date" id="naissance" name="naissance" autocomplete="0000-00-00" required>
             </fieldset>
 
             <fieldset>
