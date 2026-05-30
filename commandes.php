@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'restaurateur') {
+    header('Location: connexion.php');
+    exit();
+}
 $fichier_commandes = 'data/commandes.json';
 $toutes_les_commandes = [];
 
