@@ -482,13 +482,6 @@ main > section { width: 100%; }
     border: 4px solid #720e13; 
 }
 
-/* Spécificité RETIRER / DISCRET */
-.btn-outline {
-    background-color: transparent;
-    color: var(--bordeaux-chic);
-    border: 2px solid var(--bordeaux-chic);
-}
-
 #btn-oeil {
     background: transparent;
     border: none;
@@ -502,6 +495,12 @@ main > section { width: 100%; }
     margin-right: 15px; /* L'écarte un peu du bord droit */
 }
 
+.filtres-btns button.actif {
+    background-color: var(--bg-cream) !important;
+    color: var(--bordeaux-chic) !important;
+    border: 3px solid var(--bordeaux-chic) !important;
+    font-weight: 600;
+}
 /* ==========================================================================
    FORMULAIRES (Global & Exceptions)
    ========================================================================== */

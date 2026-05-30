@@ -5,7 +5,7 @@ $fichier_commandes = 'data/commandes.json';
 $commandes_en_livraison = [];
 
 $mon_nom_livreur = $_SESSION['prenom'] . " " . $_SESSION['nom'];
-
+$est_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 if (file_exists($fichier_commandes)) {
     $contenu = file_get_contents($fichier_commandes);
     if (!empty($contenu)) {
@@ -14,7 +14,7 @@ if (file_exists($fichier_commandes)) {
         foreach ($toutes_les_commandes as $cmd) {
             $est_pour_moi = isset($cmd['livreur']) && $cmd['livreur'] === $mon_nom_livreur;
             
-            if ($cmd['statut'] === 'En livraison'  && $est_pour_moi) {
+            if ($cmd['statut'] === 'En livraison' && ($est_pour_moi || $est_admin)) {
                 $commandes_en_livraison[] = $cmd;
             }
         }

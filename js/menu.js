@@ -1,18 +1,35 @@
 // --- État des filtres actifs ---
 const filtresActifs = {
     categorie: '',
-    tags: [],
+    tag: '',       
     gout: ''
 };
 let triActif = 'defaut';
 
 document.addEventListener("DOMContentLoaded", function() {
 
+    // ==========================================
+    // 🛠️ ACTION DU BOUTON DE REMISE À ZÉRO
+    // ==========================================
+    const btnReset = document.getElementById('btn-reset-filtres');
+    if (btnReset) {
+        btnReset.addEventListener('click', function() {
+            filtresActifs.categorie = '';
+            filtresActifs.tag = '';
+            filtresActifs.gout = '';
+            triActif = 'defaut';
+
+            document.querySelectorAll('.filtres-btns button').forEach(btn => btn.classList.remove('actif'));
+            document.querySelectorAll('[data-val=""], [data-tri="defaut"]').forEach(btn => btn.classList.add('actif'));
+
+            appliquerFiltres();
+        });
+    }
+
     // 1. Catégories et Goûts (Sélection unique via .js-filtre)
     document.querySelectorAll('.js-filtre').forEach(btn => {
         btn.addEventListener('click', function() {
             const type = this.dataset.type;
-            // On enlève le style actif uniquement sur les boutons du même type
             document.querySelectorAll(`.js-filtre[data-type="${type}"]`).forEach(b => b.classList.remove('actif'));
             this.classList.add('actif');
             
@@ -21,16 +38,18 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // 2. Régimes / Tags (Sélection multiple via .js-tag)
+    // 2. Régimes / Tags (Comportement de sélection unique)
     document.querySelectorAll('.js-tag').forEach(btn => {
         btn.addEventListener('click', function() {
-            const tag = this.dataset.val;
+            const type = this.dataset.type; 
             if (this.classList.contains('actif')) {
                 this.classList.remove('actif');
-                filtresActifs.tags = filtresActifs.tags.filter(t => t !== tag);
+                filtresActifs[type] = '';
+                // Si on désactive, on remet le bouton "Tout" par défaut s'il existe
             } else {
+                document.querySelectorAll('.js-tag').forEach(b => b.classList.remove('actif'));
                 this.classList.add('actif');
-                filtresActifs.tags.push(tag);
+                filtresActifs[type] = this.dataset.val;
             }
             appliquerFiltres();
         });
@@ -44,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
             triActif = this.dataset.tri;
 
             const aucunFiltre = filtresActifs.categorie === ''
-                             && filtresActifs.tags.length === 0
+                             && filtresActifs.tag === ''
                              && filtresActifs.gout === '';
 
             if (aucunFiltre) {
@@ -57,13 +76,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // --- Fonction principale : envoie la requête fetch ---
-function aplicarFiltres() { // Nom gardé identique à ton appel initial pour éviter les cassures
-    appliquerFiltres();
-}
-
 function appliquerFiltres() {
     const aucunFiltre = filtresActifs.categorie === ''
-                     && filtresActifs.tags.length === 0
+                     && filtresActifs.tag === ''
                      && filtresActifs.gout === '';
 
     if (aucunFiltre) {
@@ -77,7 +92,7 @@ function appliquerFiltres() {
     const params = new URLSearchParams();
     if (filtresActifs.categorie) params.set('categorie', filtresActifs.categorie);
     if (filtresActifs.gout)      params.set('gout', filtresActifs.gout);
-    if (filtresActifs.tags.length > 0) params.set('tags', filtresActifs.tags.join(','));
+    if (filtresActifs.tag)       params.set('tag', filtresActifs.tag);
 
     fetch('traitement/get_produits.php?' + params.toString())
         .then(response => response.json())
@@ -145,18 +160,14 @@ function afficherResultats(plats) {
             <div class="plat-infos">
                 <span class="item-nom">${plat.nom}</span>
                 <span class="item-desc">${plat.description}</span>
-                <div class="plat-tags">
-                    ${plat.tags ? plat.tags.map(t => `<span class="tag-badge">${t.replace('_', ' ')}</span>`).join('') : ''}
-                </div>
-                <form action="traitement/ajoute_panier.php" method="POST" class="form-ajout-panier">
+                <form action="traitement/ajoute_panier.php" method="POST" class="form-sans-boite">
                     <input type="hidden" name="id_produit" value="${plat.id}">
                     <input type="hidden" name="nom" value="${plat.nom}">
                     <input type="hidden" name="prix" value="${plat.prix}">
                     <div class="panier-controls">
-                        <label>Qté :</label>
                         <input type="number" name="quantite" value="1" min="1" max="10" class="input-qte">
                     </div>
-                    <button type="submit" class="btn-prix-action">
+                    <button type="submit" class="btn-gossip btn-xs">
                         ${parseFloat(plat.prix).toFixed(2).replace('.', ',')} €
                     </button>
                 </form>

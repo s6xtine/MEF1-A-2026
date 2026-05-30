@@ -38,7 +38,7 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
         <form action="traitement/save_admin_change.php" method="POST" class="form-sans-boite">
             <input type="hidden" name="id" value="<?= $u['id'] ?>">
 
-            <section class="admin-actions info-item">
+            <section class=" info-item">
                 <h3 >Pouvoirs Administrateur ⚡</h3>
                 
                 <p><strong>Changer le Statut :</strong>
@@ -58,7 +58,7 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
                 </p>
             </section>
 
-            <section class="infos-base info-item">
+            <section class=" info-item">
                 <h3>Informations du compte </h3>
                 <p><strong>Email / Login :</strong> <?= htmlspecialchars($u['login']) ?></p>
                 <p><strong>Date d'inscription :</strong> <?= htmlspecialchars($u['date_inscription'] ?? 'Inconnue') ?></p>
