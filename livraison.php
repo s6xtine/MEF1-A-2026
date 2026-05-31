@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'livreur') {
+// On autorise le livreur ET l'admin
+if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'livreur' && $_SESSION['role'] !== 'admin')) {
     header('Location: connexion.php');
     exit();
 }
@@ -9,7 +10,10 @@ $fichier_commandes = 'data/commandes.json';
 $commandes_en_livraison = [];
 
 $mon_nom_livreur = $_SESSION['prenom'] . " " . $_SESSION['nom'];
+
+// On définit $est_admin AVANT de s'en servir dans la boucle
 $est_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
+
 if (file_exists($fichier_commandes)) {
     $contenu = file_get_contents($fichier_commandes);
     if (!empty($contenu)) {
@@ -25,7 +29,6 @@ if (file_exists($fichier_commandes)) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -82,7 +85,8 @@ if (file_exists($fichier_commandes)) {
                     <form action="traitement/update_statut.php" method="POST" class="form-sans-boite">
                         <input type="hidden" name="id_commande" value="<?= $cmd['id_commande'] ?>">
                         <input type="hidden" name="nouveau_statut" value="Livrée">
-                        <button type="submit" id="valider-livraison" class="btn-gossip btn-large">Livraison terminée ✅</button>
+                        <button type="submit" id="valider-livraison" class="btn-gossip btn-large">Livraison terminée </button>
+                        <button type="submit" id="abandon-livraison" class="btn-gossip btn-large">Abandon </button>
                     </form>
                 </div>
             <?php endforeach; ?>

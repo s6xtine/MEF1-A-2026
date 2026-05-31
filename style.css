@@ -482,6 +482,10 @@ main > section { width: 100%; }
     border: 4px solid #720e13; 
 }
 
+.main-livreur .btn-large {
+    margin: 10px 8px !important; /* 10px d'espace en haut/bas, 8px à gauche/droite */
+}
+
 #btn-oeil {
     background: transparent;
     border: none;
@@ -986,3 +990,60 @@ td.desc-plat {
 }
 
 
+/* ==========================================================================
+   PANNEAU ADMIN ET GESTION DES COMMANDES - FIX LARGEUR
+   ========================================================================== */
+
+/* 1. On redonne une grande largeur par défaut à l'admin-container */
+.admin-container {
+    margin: 40px auto !important; 
+    max-width: 1200px; /* Augmenté à 1200px pour que les tableaux respirent ! */
+    width: 95%;
+    padding: 20px;
+}
+
+/* 2. Le titre Nom Prénom reste bien au centre */
+.admin-container h2 {
+    text-align: center !important;
+    margin-bottom: 40px !important;
+}
+
+/* 3. C'est UNIQUEMENT le formulaire de modification de compte qu'on restreint à 600px */
+.admin-container form.form-sans-boite {
+    max-width: 600px;
+    margin: 0 auto !important; /* Centre le formulaire au milieu des 1200px */
+    width: 100% !important;
+}
+
+/* 4. Style et espacement des deux blocs d'infos (Formulaire Admin) */
+.admin-container .info-item {
+    background-color: var(--white);
+    border: 3px solid var(--bordeaux-chic);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 5. Alignement des lignes à l'intérieur du formulaire */
+.admin-container .info-item p {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+/* 6. Pour la page commandes.php : on force les tableaux à prendre 100% de la largeur disponible */
+.admin-container table {
+    width: 100% !important;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+}
+
+/* 7. Centrage du bouton enregistrer et du lien de retour */
+.admin-container .btn-small,
+.admin-container .link-back {
+    display: block !important;
+    margin: 20px auto !important;
+    text-align: center !important;
+}

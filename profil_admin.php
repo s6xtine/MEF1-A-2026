@@ -33,7 +33,7 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
     </header>
 
     <main class="admin-container">
-        <h2>Modifier le profil de : <?= htmlspecialchars($u['prenom']) . " " . htmlspecialchars($u['nom']) ?></h2>
+        <h2 class="text-center"> <?= htmlspecialchars($u['prenom']) . " " . htmlspecialchars($u['nom']) ?></h2>
 
         <form action="traitement/save_admin_change.php" method="POST" class="form-sans-boite">
             <input type="hidden" name="id" value="<?= $u['id'] ?>">

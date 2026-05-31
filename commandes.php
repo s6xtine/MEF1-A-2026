@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'restaurateur') {
+// 1. SECURITÉ : On autorise le restaurateur ET l'admin
+if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'restaurateur' && $_SESSION['role'] !== 'admin')) {
     header('Location: connexion.php');
     exit();
 }
@@ -27,21 +28,22 @@ if (file_exists($fichier_users)) {
     }
 }
 
+$commandes_payees = [];       
+$commandes_en_prepa = [];     
+$commandes_pretes = [];       
+$commandes_livrees = [];      
 
-$commandes_payees = [];       // Modifiables par le client
-$commandes_en_prepa = [];     // En cuisine (Bloquées pour le client)
-$commandes_pretes = [];       // ici qu'on choisit le livreur
-$commandes_livrees = [];      //quand le livreur lui a validé la livraison
-
-// donc la juste le tri
+// 2. FILTRAGE SÉCURISÉ (On passe en minuscules pour ne rater aucune commande à cause des majuscules)
 foreach ($toutes_les_commandes as $cmd) {
-    if ($cmd['statut'] === 'payé' || $cmd['statut'] === 'En préparation') {
+    $statut_lowercase = strtolower($cmd['statut']);
+    
+    if ($statut_lowercase === 'payé') {
         $commandes_payees[] = $cmd;
-    } elseif ($cmd['statut'] === 'en préparation') {
+    } elseif ($statut_lowercase === 'en préparation') {
         $commandes_en_prepa[] = $cmd;
-    } elseif ($cmd['statut'] === 'prêt') {
+    } elseif ($statut_lowercase === 'prêt') {
         $commandes_pretes[] = $cmd;
-    } elseif ($cmd['statut'] === 'livré') {
+    } elseif ($statut_lowercase === 'livré' || $statut_lowercase === 'livrée') {
         $commandes_livrees[] = $cmd; 
     }
 }
