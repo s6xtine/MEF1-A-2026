@@ -66,7 +66,7 @@ if ($est_connecte) {
             </section>
 
         <?php else: ?>
-            <form action="submit_notation.php" method="POST">
+            <form action="traitement/submit_notation.php" method="POST">
                 
                 <fieldset>
                     <legend>Notez votre expérience</legend>

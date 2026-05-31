@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['login'])) {
 
     if (!empty($id_commande) && !empty($nom) && !empty($commentaire)) {
         
-        $fichier_avis = 'data/avis.json';
+        $fichier_avis = '../data/avis.json';
         $liste_avis = [];
         if (file_exists($fichier_avis)) {
             $liste_avis = json_decode(file_get_contents($fichier_avis), true) ?? [];
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['login'])) {
         ];
         file_put_contents($fichier_avis, json_encode($liste_avis, JSON_PRETTY_PRINT));
 
-        $fichier_commandes = 'data/commandes.json';
+        $fichier_commandes = '../data/commandes.json';
         if (file_exists($fichier_commandes)) {
             $commandes = json_decode(file_get_contents($fichier_commandes), true) ?? [];
             foreach ($commandes as &$cmd) {
@@ -36,10 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['login'])) {
             file_put_contents($fichier_commandes, json_encode($commandes, JSON_PRETTY_PRINT));
         }
 
-        header('Location: index.php?succes=avis');
+        header('Location: ../index.php?succes=avis');
         exit();
     }
 }
 
-header('Location: index.php');
+header('Location: ../index.php');
 exit();
+?>

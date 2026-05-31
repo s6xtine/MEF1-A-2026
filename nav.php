@@ -39,6 +39,7 @@ if (isset($_SESSION['login']) && $role_nav !== 'admin') { // On évite de bloque
                 <li><a href="reservation.php">Réservation</a></li>
                 <li><a href="notation.php">Laissez un avis</a></li>
                 <li><a href="panier.php" class="active">🛒 Mon Panier</a></li>
+                <li><a href="avis.php">✨Avis</a></li>
             <?php endif; ?>
 
             <?php if ($role_nav === 'restaurateur'): ?>

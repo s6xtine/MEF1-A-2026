@@ -56,11 +56,11 @@
             },
             "P02": {
                 "nom": "PANCAKE BACON",
-                "prix": 13.9000000000000003552713678800500929355621337890625,
+                "prix": 13.9,
                 "quantite": 1
             }
         },
-        "total": 18.89999999999999857891452847979962825775146484375,
+        "total": 18.9,
         "statut": "livr\u00e9",
         "livreur": "Sophie Durand"
     },
@@ -224,8 +224,34 @@
                 "quantite": 1
             }
         },
-        "total": 24.64999999999999857891452847979962825775146484375,
+        "total": 24.65,
         "statut": "pay\u00e9",
         "date_modification": "2026-05-20 12:36:45"
+    },
+    {
+        "id_commande": "CMD_B28708E0DC10",
+        "client": "Nico Debard",
+        "login_client": "nico@gmail.com",
+        "telephone": "Non renseign\u00e9",
+        "adresse": "13e,Paris",
+        "date": "2026-05-31 20:05:46",
+        "date_souhaitee": "2026-05-31",
+        "heure_souhaitee": "20:05",
+        "articles": {
+            "B03": {
+                "nom": "Matcha latte",
+                "prix": 5,
+                "quantite": 1
+            },
+            "P05": {
+                "nom": "LADY BOWL",
+                "prix": 14.5,
+                "quantite": 1
+            }
+        },
+        "total": 4.5,
+        "statut": "Livr\u00e9e",
+        "livreur": "Jean Dupont",
+        "notee": true
     }
 ]
