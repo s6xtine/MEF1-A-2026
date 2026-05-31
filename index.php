@@ -45,7 +45,7 @@ session_start()
             </div>
         
             <div class="search-image-wrapper">
-                <img src="data/cafe.jpg" alt="Ambiance" class="full-image">
+                <img src="images/cafe.jpg" alt="Ambiance" class="full-image">
             </div>
         </section>
 

@@ -127,7 +127,7 @@ a:hover {
    ========================================================================== */
 .site-header {
     position: relative;
-    background-image: linear-gradient(rgba(89, 13, 34, 0.6), rgba(89, 13, 34, 0.4)), url('data/carrelage.jpg');
+    background-image: linear-gradient(rgba(89, 13, 34, 0.6), rgba(89, 13, 34, 0.4)), url('images/carrelage.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -138,7 +138,7 @@ a:hover {
 }
 
 .form-header {
-    background-image: linear-gradient(rgba(89, 13, 34, 0.7), rgba(89, 13, 34, 0.5)), url('data/carrelage.jpg');
+    background-image: linear-gradient(rgba(89, 13, 34, 0.7), rgba(89, 13, 34, 0.5)), url('images/carrelage.jpg');
     background-size: cover;
     background-position: center;
     padding: 15px 30px;
