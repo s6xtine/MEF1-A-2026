@@ -101,7 +101,7 @@
             }
         },
         "total": 15,
-        "statut": "En livraison",
+        "statut": "Livr\u00e9e",
         "livreur": "Sophie Durand"
     },
     {
@@ -121,8 +121,9 @@
             }
         },
         "total": 5,
-        "statut": "en pr\u00e9paration",
-        "date_modification": "2026-05-16 15:30:08"
+        "statut": "Livr\u00e9e",
+        "date_modification": "2026-05-16 15:30:08",
+        "livreur": "Sophie Durand"
     },
     {
         "id_commande": "CMD_943B7782EE81",
@@ -160,7 +161,7 @@
             }
         },
         "total": 4.5,
-        "statut": "En livraison",
+        "statut": "Livr\u00e9e",
         "livreur": "Jean Dupont"
     },
     {
