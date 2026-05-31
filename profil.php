@@ -128,7 +128,10 @@ if (file_exists($fichier_commandes)) {
                                     <td class="<?= $cmd['statut'] === 'Livrée' ? 'statut-valide' : '' ?>">
                                         <strong><?= htmlspecialchars($cmd['statut']) ?></strong>
                                         
-                                        <?php if ($cmd['statut'] === 'Livrée'): ?>
+                                        <?php if (isset($cmd['notee']) && $cmd['notee'] === true): ?>
+                                            <br>
+                                            <a href="avis.php" class="btn-avis" >Voir mon avis 💬</a>
+                                        <?php elseif ($cmd['statut'] === 'Livrée'): ?>
                                             <br>
                                             <a href="notation.php?id=<?= $cmd['id_commande'] ?>" class="btn-avis">Donner mon avis ⭐</a>
                                         <?php endif; ?>
