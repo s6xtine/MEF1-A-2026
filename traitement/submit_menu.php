@@ -9,16 +9,16 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'restaurateur' && $_SESSI
 $file = '../data/carte.json';
 $data = json_decode(file_get_contents($file), true);
 
-// ==========================================
-// ACTION : AJOUTER UN PLAT 
-// ==========================================
+// Ajouter un nouveau plat
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'ajouter') {
     
+    // On transforme la chaîne d'allergènes en tableau propre
     $allergenesArray = [];
     if (!empty($_POST['allergenes'])) {
         $allergenesArray = array_map('trim', explode(',', $_POST['allergenes']));
     }
 
+    //on parcourt les plats existants pour trouver le nombre de plats déjà présents avec le même préfixe d'ID (B, S, D, etc.) et on incrémente ce nombre pour créer un nouvel ID unique
     $prefixe = $_POST['prefixe_id'];
     $compteur = 1;
     foreach ($data['plats'] as $p) {
@@ -38,14 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'ajouter') {
 
     $data['plats'][] = $nouveauPlat;
 
+    // Sauvegarde dans le fichier JSON
     file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     header('Location: ../modif_menu.php');
     exit();
 }
 
-// ==========================================
-// 🛠️ NOUVELLE ACTION : MODIFIER UN PLAT
-// ==========================================
+// Modifier un plat existant
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'modifier') {
     $idAModifier = $_POST['id'];
 
@@ -79,22 +78,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'modifier') {
     exit();
 }
 
-// ==========================================
-// ACTION : SUPPRIMER UN PLAT (Inchangé)
-// ==========================================
+// Supprimer un plat existant
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'supprimer') {
     $idASupprimer = $_POST['id'];
 
     foreach ($data['plats'] as $index => $plat) {
         if ($plat['id'] === $idASupprimer) {
+            // On supprime le plat du tableau
             unset($data['plats'][$index]);
             break;
         }
     }
 
+    //array_values pour réindexer le tableau des plats après suppression (pour éviter les trous dans les index et préserver la stucture de liste JSON)
     $data['plats'] = array_values($data['plats']);
 
     file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     header('Location: ../modif_menu.php');
     exit();
 }
+// Ce fichier gère les soumissions du formulaire de modification de la carte (espace restaurateur)
+?>

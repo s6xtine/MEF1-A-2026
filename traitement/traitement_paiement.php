@@ -2,12 +2,14 @@
 session_start();
 require('getapikey.php');
 
+// Récupération des paramètres de retour envoyés par l'API CYBank (via GET)
 $transaction = $_GET['transaction'] ?? '';
 $montant = $_GET['montant'] ?? '';
 $vendeur = $_GET['vendeur'] ?? '';
 $statut = $_GET['status'] ?? '';
 $control_banque = $_GET['control'] ?? '';
 
+//Sécurité d'intégrité. On recalcule la clé MD5 localement avec notre clé secrète pour vérifier que la requête provient bien de CYBank et n'a pas été falsifiée en route.
 $api_key = getAPIKey($vendeur);
 $control_local = md5($api_key . "#" . $transaction . "#" . $montant . "#" . $vendeur . "#" . $statut . "#");
 
@@ -18,7 +20,6 @@ $est_modification = isset($_SESSION['modif_id_commande']);
 $vrai_total_panier = 0.0;
 if (isset($_SESSION['panier'])) {
     foreach ($_SESSION['panier'] as $article) {
-        // On recalcule le vrai prix depuis la session côté serveur
         $vrai_total_panier += (float)$article['prix'] * (int)$article['quantite'];
     }
 }
@@ -62,9 +63,9 @@ if ($paiement_valide || $gratuit_valide) {
                 // met à jour les articles, le nouveau total et la date de modif
                 $toutes_les_commandes[$index]['articles'] = $_SESSION['panier'];
                 
-                // Si c'est gratuit/moins cher, le total ne bouge pas 
+                // Si c'est gratuit/moins cher, on met a jour le total à ce qui reste à payer (ou 0 si c'est gratuit). Si c'est plus cher, on rajoute la différence à ce qui a déjà été payé
                 if ($statut === 'gratuit') {
-                    $toutes_les_commandes[$index]['total'] = (float)$_SESSION['modif_montant_initial']; 
+                    $toutes_les_commandes[$index]['total'] = $vrai_total_panier;
                 } else {
                     // Si on a payé une différence, le nouveau total c'est l'ancien + la différence payée
                     $toutes_les_commandes[$index]['total'] = (float)$_SESSION['modif_montant_initial'] + (float)$montant;
@@ -75,9 +76,6 @@ if ($paiement_valide || $gratuit_valide) {
             }
         }
         
-        
-        unset($_SESSION['modif_id_commande']);
-        unset($_SESSION['modif_montant_initial']);
 
     } else {
         // cas d'une nouvelle commande 
@@ -100,27 +98,49 @@ if ($paiement_valide || $gratuit_valide) {
     // On sauvegarde le fichier JSON
     file_put_contents($fichier_commandes, json_encode($toutes_les_commandes, JSON_PRETTY_PRINT));
 
-    // on debite les points de fidélité utilisés par le client pour cette commande
-    $points_utilises = isset($_SESSION['points_utilises']) ? (float)$_SESSION['points_utilises'] : 0.0;
-    if ($points_utilises > 0) {
-        $fichier_users = '../data/utilisateur.json';
-        if (file_exists($fichier_users)) {
-            $utilisateurs = json_decode(file_get_contents($fichier_users), true);
-            if (is_array($utilisateurs)) {
-                foreach ($utilisateurs as &$user) {
-                    if ($user['login'] === $_SESSION['login']) {
-                        $user['points'] = max(0, ($user['points'] ?? 0) - $points_utilises);
-                        $_SESSION['points'] = $user['points']; // Mise à jour en direct
-                        break;
+    if (isset($_SESSION['login'])) {
+        // On va chercher l'utilisateur dans le JSON pour mettre à jour ses points de fidélité
+        $variation_points = 0;
+
+        // Déduction des points s'ils ont été utilisés pour payer
+        $pts_utilises_actuel = isset($_SESSION['points_utilises']) ? (float)$_SESSION['points_utilises'] : 0.0;
+        if ($pts_utilises_actuel > 0) {
+            $variation_points -= $pts_utilises_actuel;
+        }
+
+        // Mise à jour dans le JSON et la session si les points ont changé
+        if ($variation_points != 0) {
+            $fichier_users = '../data/utilisateur.json';
+            if (file_exists($fichier_users)) {
+                $utilisateurs = json_decode(file_get_contents($fichier_users), true);
+                if (is_array($utilisateurs)) {
+                    foreach ($utilisateurs as &$user) {
+                        if ($user['login'] === $_SESSION['login']) {
+                            // On applique la variation (en + ou en -)
+                            $user['points'] = ($user['points'] ?? 0) + $variation_points;
+                            
+                            // Sécurité : on empêche d'avoir un solde négatif
+                            if ($user['points'] < 0) {
+                                $user['points'] = 0;
+                            }
+                            
+                            // Mise à jour en direct de la session pour la page profil
+                            $_SESSION['points'] = $user['points']; 
+                            break;
+                        }
                     }
+                    file_put_contents($fichier_users, json_encode($utilisateurs, JSON_PRETTY_PRINT));
                 }
-                file_put_contents($fichier_users, json_encode($utilisateurs, JSON_PRETTY_PRINT));
             }
         }
     }
     // On réinitialise les points utilisés pour la prochaine commande
-    unset($_SESSION['points_utilises']); 
-    
+    unset($_SESSION['points_utilises']);
+    if ($est_modification) {       
+        unset($_SESSION['modif_id_commande']);
+        unset($_SESSION['modif_montant_initial']);
+    }
+
     // On vide le panier
     unset($_SESSION['panier']);
     
@@ -130,3 +150,5 @@ if ($paiement_valide || $gratuit_valide) {
     header('Location: ../panier.php?erreur=paiement_refuse');
 }
 exit();
+// Ce fichier reçoit la requête de retour de CYBank après le paiement. Il vérifie l'intégrité de la requête, valide le paiement, met à jour les commandes et les points de fidélité, puis redirige l'utilisateur avec un message de succès ou d'erreur.
+?>

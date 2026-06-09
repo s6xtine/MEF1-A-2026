@@ -117,7 +117,9 @@ if ($mode_modification) {
                     <?php endif; ?>
                     
                     <?php if ($montant_base < 0): ?>
-                        <p>✨ Commande moins chère ! Votre compte fidelité est crédité de <strong><?= number_format((float)abs($montant_base), 2, ',', ' ') ?> points</strong></p>
+                        <p>✨ Commande moins chère !</p>
+                        <p><strong>Reste à payer net : <span>0,00 €</span></strong></p>
+                        <p><small>(Conformément à nos CGV, la différence n'est pas remboursée)</small></p>
                     <?php else: ?>
                         <p><strong>Reste à payer net : <span><?= number_format((float)$montant_final, 2, ',', ' ') ?> €</span></strong></p>
                     <?php endif; ?>
@@ -144,13 +146,19 @@ if ($mode_modification) {
                 $api_key = getAPIKey($vendeur);
                 $control = md5($api_key . "#" . $transaction . "#" . $montant . "#" . $vendeur . "#" . $retour . "#");
                 ?>
-
-                <form action='https://www.plateforme-smc.fr/cybank/index.php' method='POST' class="form-cybank">
-                    <input type='hidden' name='transaction' value='<?= $transaction ?>'>
-                    <input type='hidden' name='montant' value='<?= $montant ?>'>
-                    <input type='hidden' name='vendeur' value='<?= $vendeur ?>'>
-                    <input type='hidden' name='retour' value='<?= $retour ?>'>
-                    <input type='hidden' name='control' value='<?= $control ?>'>
+                
+                <?php if ($montant_final == 0): ?>
+                    <form action='traitement/traitement_paiement.php' method='GET' class="form-cybank">
+                        <input type='hidden' name='status' value='gratuit'>
+                        <input type='hidden' name='montant' value='0.00'>
+                <?php else: ?>
+                    <form action='https://www.plateforme-smc.fr/cybank/index.php' method='POST' class="form-cybank">
+                        <input type='hidden' name='transaction' value='<?= $transaction ?>'>
+                        <input type='hidden' name='montant' value='<?= $montant ?>'>
+                        <input type='hidden' name='vendeur' value='<?= $vendeur ?>'>
+                        <input type='hidden' name='retour' value='<?= $retour ?>'>
+                        <input type='hidden' name='control' value='<?= $control ?>'>
+                <?php endif; ?>
 
                     <section>
                         <h3> Quand souhaitez-vous votre commande ?</h3>

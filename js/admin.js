@@ -1,14 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // On récupère tous les boutons "Bloquer/Débloquer" de la page
+    // !! querySelectorAll récupère tous les boutons "Bloquer/Débloquer" de la page
     const boutonsStatut = document.querySelectorAll('.btn-statut');
 
+    // On parcourt chaque bouton pour lui attacher une action au clic
     boutonsStatut.forEach(bouton => {
         bouton.onclick = function() {
             // On récupère l'email/login caché dans le bouton
             const loginCible = this.getAttribute('data-login');
             
-            // On prépare le colis pour le PHP
+            // On prépare un objet invisible pour transporter l'email vers le PHP
             let formData = new FormData();
             formData.append('login_cible', loginCible);
 
@@ -20,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // On met à jour le texte du bouton instantanément !
+                    // !! "this" fait référence au bouton exact sur lequel on vient de cliquer.
+                    // On met à jour le texte du bouton instantanément
                     if (data.est_bloque) {
                         this.textContent = "Débloquer 🟢";
                     } else {
@@ -29,7 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     alert("Erreur lors de la modification du statut.");
                 }
+            })
+            .catch(error => {
+                // S'il y a un problème de connexion avec le serveur
+                alert("Impossible de joindre le serveur. Veuillez réessayer.");
             });
         };
     });
+    // Ce fichier gère la page d'administration, les boutons de blocage/déblocage des utilisateurs. Lorsqu'on clique sur un bouton, une requête asynchrone est envoyée au serveur
 });

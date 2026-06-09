@@ -142,7 +142,7 @@
             }
         },
         "total": 5,
-        "statut": "pay\u00e9"
+        "statut": "pr\u00eat"
     },
     {
         "id_commande": "CMD_2435F079AC9B",
@@ -201,7 +201,7 @@
             }
         },
         "total": 7,
-        "statut": "pay\u00e9",
+        "statut": "en pr\u00e9paration",
         "date_modification": "2026-05-20 12:35:09"
     },
     {
@@ -226,7 +226,7 @@
             }
         },
         "total": 24.65,
-        "statut": "pay\u00e9",
+        "statut": "en pr\u00e9paration",
         "date_modification": "2026-05-20 12:36:45"
     },
     {
@@ -254,5 +254,45 @@
         "statut": "Livr\u00e9e",
         "livreur": "Jean Dupont",
         "notee": true
+    },
+    {
+        "id_commande": "CMD_B0EB866181C7",
+        "client": "Nico Debard",
+        "login_client": "nico@gmail.com",
+        "telephone": "Non renseign\u00e9",
+        "adresse": "13e,Paris",
+        "date": "2026-06-09 15:31:44",
+        "date_souhaitee": "2026-06-09",
+        "heure_souhaitee": "15:32",
+        "articles": {
+            "S03": {
+                "nom": "Jus d'orange press\u00e9",
+                "prix": 4,
+                "quantite": 1
+            }
+        },
+        "total": 4,
+        "statut": "pay\u00e9",
+        "date_modification": "2026-06-09 16:27:07"
+    },
+    {
+        "id_commande": "CMD_325E6C523852",
+        "client": "Nico Debard",
+        "login_client": "nico@gmail.com",
+        "telephone": "Non renseign\u00e9",
+        "adresse": "13e,Paris",
+        "date": "2026-06-09 16:43:46",
+        "date_souhaitee": "2026-06-09",
+        "heure_souhaitee": "17:00",
+        "articles": {
+            "B03": {
+                "nom": "Matcha latte",
+                "prix": 5,
+                "quantite": 1
+            }
+        },
+        "total": 5,
+        "statut": "pay\u00e9",
+        "date_modification": "2026-06-09 16:44:43"
     }
 ]

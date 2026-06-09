@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email_saisi = $_POST['login'];
     $mdp_saisi = $_POST['mdp'];
@@ -20,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             foreach($utilisateurs as $user) {
                 // Sécurité : Vérification du mdp haché
-                if($user['login'] === $email_saisi && password_verify($mdp_saisi, $user['mdp'])) {
+                if($user['login'] === $email_saisi && password_verify($mdp_saisi, $user['mdp'])) { // password_verify pour comparer le mdp saisi avec le mdp haché dans le JSON
                     $utilisateur_trouve = $user;
                     break;
                 }
@@ -67,6 +63,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
 
+            // Stockage des informations de l'utilisateur dans la session
             $_SESSION['id'] = $utilisateur_trouve['id'];
             $_SESSION['nom'] = $utilisateur_trouve['nom'];
             $_SESSION['prenom'] = $utilisateur_trouve['prenom'];
@@ -77,6 +74,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['adresse'] = $utilisateur_trouve['adresse'] ?? 'Non renseignée';
             $_SESSION['points'] = $utilisateur_trouve['points'] ?? 0;
             
+            // Redirection en fonction du rôle de l'utilisateur
             switch($utilisateur_trouve['role']) {
                 case 'admin':
                     header('Location: ../administrateur.php');
@@ -92,10 +90,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                         break;
             }
             exit();
-        } else {
+        }else {
             header("Location: ../connexion.php?erreur=1");
             exit();
         }
     }
 }
+//Ce fichier lit les identifiants, fouille le fichier JSON et utilise password_verify pour vérifier l'empreinte du mot de passe + gestion du blocage et du bonus d'anniversaire
 ?>

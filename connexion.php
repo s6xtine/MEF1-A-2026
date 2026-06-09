@@ -53,3 +53,6 @@ session_start()
         $load_validation = true; 
         include 'footer.php'; 
     ?>
+    <!-- Formulaire de connexion -->
+</body>
+</html>

@@ -80,3 +80,6 @@ session_start()
         $load_validation = true; // Pour activer le compteur de caractères sur l'avis
         include 'footer.php'; 
     ?>
+    <!-- Formulaire d'inscrition : balises sémantiques (email, date, tel), attributs d'autocomplétation -->
+</body>
+</html>

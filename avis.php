@@ -6,9 +6,10 @@ $les_avis = [];
 if (file_exists($fichier_avis)) {
     $contenu = file_get_contents($fichier_avis);
     if (!empty($contenu)) {
+        //On transforme la chaîne JSON en un tableau PHP associatif (grâce au paramètre 'true')
         $les_avis = json_decode($contenu, true);
         if (is_array($les_avis)) {
-            $les_avis = array_reverse($les_avis); // Les plus récents en premier
+            $les_avis = array_reverse($les_avis); // array_reverse replace les derniers éléments du tableau en premier
         }
     }
 }
@@ -16,39 +17,39 @@ if (file_exists($fichier_avis)) {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> <!-- encodage des caractères -->
     <title>Sip & Spill - Vos avis</title>
     <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
+
+    <header class="form-header">
+        <a href="index.php" class="logo-mini">Sip & Spill</a>
+    </header>
     <?php include 'nav.php'; ?>
 
+    <h1 class="titre-centre">Vos avis</h1>
+
     <main class="admin-container">
-        
-        <header class="site-header" style="text-align: center; margin-bottom: 40px;">
-            <h1 class="titre-page">Vos avis ✨</h1>
-        </header>
 
         <?php if (empty($les_avis)): ?>
-            <p style="text-align: center;">Aucun avis n'a encore été laissé.</p>
+            <p class="text-center">Aucun avis n'a encore été laissé.</p>
         <?php else: ?>
             
             <?php foreach ($les_avis as $av): ?>
-                <div style="border-bottom: 1px solid var(--pink-border); padding-bottom: 20px; margin-bottom: 30px;">
+                <div class="info-item">
                     
                     <h3>
                         <?= htmlspecialchars($av['nom'] ?? 'Client Anonyme') ?>
-                        <span style="float: right; font-size: 1.2rem;">
-                            <?= str_repeat('⭐', (int)($av['note'] ?? 5)) ?>
-                        </span>
+                        <?= str_repeat('⭐', (int)($av['note'] ?? 5)) ?>
                     </h3>
                     
-                    <p style="font-style: italic; font-size: 1.1rem; color: #444;">
+                    <blockquote>
                         "<?= htmlspecialchars($av['commentaire'] ?? '') ?>"
-                    </p>
+                    </blockquote>
                     
-                    <p style="text-align: right; margin: 0;">
-                        <small style="color: #888;">Publié le <?= htmlspecialchars($av['date'] ?? date('d/m/Y')) ?></small>
+                    <p>
+                        <small>Publié le <?= htmlspecialchars($av['date'] ?? date('d/m/Y')) ?></small>
                     </p>
                     
                 </div>

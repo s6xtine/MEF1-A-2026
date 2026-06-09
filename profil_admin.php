@@ -5,11 +5,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     exit(); 
 }
 
+// Récupérer l'ID de l'utilisateur ciblé depuis l'URL
 $id_cible = $_GET['id'] ?? null;
 $chemin_json = 'data/utilisateur.json';
 $utilisateurs = json_decode(file_get_contents($chemin_json), true);
 $u = null;
 
+// Trouver l'utilisateur ciblé dans le JSON
 foreach ($utilisateurs as $user) {
     if ($user['id'] == $id_cible) { 
         $u = $user; 
@@ -17,6 +19,7 @@ foreach ($utilisateurs as $user) {
     }
 }
 
+// Si l'utilisateur n'est pas trouvé, rediriger ou afficher un message d'erreur
 if (!$u) { echo "Utilisateur introuvable"; exit(); }
 ?>
 <!DOCTYPE html>
@@ -52,10 +55,6 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
                 <p><strong>Points de Fidélité :</strong>
                     <input type="number" name="points" value="<?= $u['points'] ?? 0 ?>" class="input-qte">
                 </p>
-
-                <p><strong>Bon d'achat :</strong>
-                    <input type="text" name="bon_achat" value="<?= htmlspecialchars($u['bon_achat'] ?? '') ?>" placeholder="Ex: CADEAU5" class="input-qte">
-                </p>
             </section>
 
             <section class=" info-item">
@@ -71,3 +70,6 @@ if (!$u) { echo "Utilisateur introuvable"; exit(); }
     </main>
 
     <?php include 'footer.php'; ?>
+    <!-- Page de profil administrateur pour changer le statut, pts fidelité et modifier les informations (email,date inscription) d'un utilisateur -->
+</body>
+</html>

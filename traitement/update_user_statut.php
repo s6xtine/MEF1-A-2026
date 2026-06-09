@@ -1,6 +1,12 @@
 <?php
 session_start();
+// On indique que la réponse sera au format JSON
 header('Content-Type: application/json');
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    echo json_encode(['success' => false, 'message' => 'Accès refusé']);
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_cible'])) {
     
@@ -14,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_cible'])) {
 
         foreach ($utilisateurs as &$user) {
             if ($user['login'] === $login_cible) {
-                // Si la clé n'existe pas, on la crée
+                // Si la clé n'existe pas, on la crée (vieil utilisateur sans cette clé)
                 if (!isset($user['bloque'])) {
                     $user['bloque'] = false;
                 }
@@ -40,4 +46,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_cible'])) {
 //Si il y a un problème
 echo json_encode(['success' => false]);
 exit();
+//Ce fichier permet de mettre à jour le statut d'un utilisateur (bloquer/débloquer)
 ?>

@@ -6,12 +6,12 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'restaurateur' && $_SESS
     exit();
 }
 
-// 1. ON CHARGE LA CARTE EXISTANTE
+// On charge la carte existante
 $fichier_carte = 'data/carte.json';
 $data = json_decode(file_get_contents($fichier_carte), true);
 $plats = $data['plats'] ?? [];
 
-// 2. ON CHERCHE SI ON A CLIQUÉ SUR "MODIFIER" (si un ID est dans l'URL)
+// On cherche si on a cliqué sur "MODIFIER" (si un ID est dans l'URL)
 $plat_a_modifier = null;
 if (isset($_GET['id'])) {
     foreach ($plats as $p) {
@@ -86,10 +86,10 @@ if (isset($_GET['id'])) {
                     <input type="url" name="image" placeholder="URL de l'image (https://...)" value="<?= $plat_a_modifier ? htmlspecialchars($plat_a_modifier['image']) : '' ?>">
 
                     <?php if ($plat_a_modifier): ?>
-                        <button type="submit" name="action" value="modifier" class="btn-geant">Enregistrer les modifications</button>
+                        <button type="submit" name="action" value="modifier" class="btn-gossip">Enregistrer les modifications</button>
                         <a href="modif_menu.php" class="btn-gossip text-center" style="display:block; margin-top:10px; text-decoration:none;">Annuler la modification</a>
                     <?php else: ?>
-                        <button type="submit" name="action" value="ajouter" class="btn-geant">Ajouter à la carte</button>
+                        <button type="submit" name="action" value="ajouter" class="btn-gossip">Ajouter à la carte</button>
                     <?php endif; ?>
                 </fieldset>
             </form>
@@ -128,5 +128,6 @@ if (isset($_GET['id'])) {
     </main>
 
     <?php include 'footer.php'; ?>
+    <!-- Le code sert à modifier la carte du restaurant : il permet de modifier les informations d'un plat existant ou d'en ajouter un nouveau ou de supprimer des plats existants -->
 </body>
 </html>

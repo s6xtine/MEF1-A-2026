@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'prenom' => $prenom,
         'login' => $email,
         'mdp' => $mot_de_passe,
-        'numero_telephone' => $numero_telephone,
+        'telephone' => $numero_telephone,
         'adresse' => $adresse,
         'interphone' => $interphone,
         'etage' => $etage,
@@ -77,8 +77,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: ../connexion.php?succes=inscription');
     exit();
 }
+// On refait une validation côté serveur et on transforme les mdp en hachage pour la sécurité
 ?>
-
-
-
-

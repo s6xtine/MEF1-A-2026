@@ -80,9 +80,9 @@
         "telephone": "0708091011",
         "adresse": "Non renseign\u00e9e",
         "date_inscription": "2026-03-16",
-        "statut": "bloque",
+        "statut": "Regular",
         "bloque": false,
-        "points": 2.1500000000000004,
+        "points": 20,
         "bon_achat": "",
         "naissance": "2003-08-15",
         "dernier_anniv_offert": ""
@@ -142,7 +142,7 @@
         "prenom": "Jacques",
         "login": "jacques.ayrault@gmail.com",
         "mdp": "$2y$10$opw9hqNnwzB\/fR.enzjNluTGNzgkWDyumCp8WOq06T8eYVvrRL4\/6",
-        "numero_telephone": "0255687964",
+        "telephone": "0255687964",
         "adresse": "20 rue des lauriers, 56230 questembert",
         "interphone": "",
         "etage": "",
@@ -150,8 +150,7 @@
         "role": "client",
         "naissance": "2013-05-30",
         "dernier_anniv_offert": "2026",
-        "points": 30,
-        "telephone": "0566339988"
+        "points": 30
     },
     {
         "id": 12,
@@ -159,7 +158,7 @@
         "prenom": "Nico",
         "login": "nico@gmail.com",
         "mdp": "$2y$10$19hzOBSV11rYarkipfsky.IxzkVKI9WVLnPyfPQXdrngjEKV4kHH.",
-        "numero_telephone": "0255687964",
+        "telephone": "0255687964",
         "adresse": "13e,Paris",
         "interphone": "",
         "etage": "",

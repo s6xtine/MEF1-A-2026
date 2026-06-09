@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ session_start()
     <h1 class="titre-centre">Réservez votre table</h1>
 
     <main>
-        <form action="submit_reservation.php" method="POST">
+        <form action="submit_reservation.php" method="POST"> <!-- Ce fichier n'existe pas, la réservation n'est pas utilisable sur le site -->
             
             <fieldset>
                 <legend>Formulaire de Réservation</legend>
@@ -49,3 +49,6 @@ session_start()
     </main>
 
     <?php include 'footer.php'; ?>
+    <!-- formulaire de réservation de table pour les clients -->
+</body>
+</html>
