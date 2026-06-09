@@ -6,6 +6,8 @@ const filtresActifs = {
 };
 let triActif = 'defaut';
 
+// DOMContentLoaded = attend que toute la page HTML soit chargée
+// Sans ça le JS chercherait des boutons qui n'existent pas encore et ça planterait
 document.addEventListener("DOMContentLoaded", function() {
 
     // ==========================================
@@ -14,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const btnReset = document.getElementById('btn-reset-filtres');
     if (btnReset) {
         btnReset.addEventListener('click', function() {
+            // Remet toutes les variables de filtres à vide
             filtresActifs.categorie = '';
             filtresActifs.tag = '';
             filtresActifs.gout = '';
@@ -29,23 +32,29 @@ document.addEventListener("DOMContentLoaded", function() {
     // 1. Catégories et Goûts (Sélection unique via .js-filtre)
     document.querySelectorAll('.js-filtre').forEach(btn => {
         btn.addEventListener('click', function() {
-            const type = this.dataset.type;
+            const type = this.dataset.type; // Récupère "categorie" ou "gout"
+            
+            // Enlève "actif" de tous les boutons du même groupe (même data-type)
             document.querySelectorAll(`.js-filtre[data-type="${type}"]`).forEach(b => b.classList.remove('actif'));
-            this.classList.add('actif');
+            this.classList.add('actif'); // Met "actif" sur le bouton cliqué
             
             filtresActifs[type] = this.dataset.val;
-            appliquerFiltres();
+            appliquerFiltres(); // Envoie la requête au serveur
         });
     });
 
-    // 2. Régimes / Tags (Comportement de sélection unique)
+    // 2. Régimes (js-tag)
+    // Peut être désactivé en recliquant dessus
     document.querySelectorAll('.js-tag').forEach(btn => {
         btn.addEventListener('click', function() {
-            const type = this.dataset.type; 
+            const type = this.dataset.type; // Récupère "tag"
             if (this.classList.contains('actif')) {
+                // Le bouton est déjà actif → on le désactive
                 this.classList.remove('actif');
-                filtresActifs[type] = '';
+                filtresActifs[type] = ''; // Remet le filtre à vide
+
                 // Si on désactive, on remet le bouton "Tout" par défaut s'il existe
+                // Le bouton n'est pas actif → on désactive tous les autres et on active celui-ci
             } else {
                 document.querySelectorAll('.js-tag').forEach(b => b.classList.remove('actif'));
                 this.classList.add('actif');
@@ -58,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // 3. Tri (Sélection unique via .js-tri)
     document.querySelectorAll('.js-tri').forEach(btn => {
         btn.addEventListener('click', function() {
-            document.querySelectorAll('.js-tri').forEach(b => b.classList.remove('actif'));
-            this.classList.add('actif');
+            document.querySelectorAll('.js-tri').forEach(b => b.classList.remove('actif')); // Enlève "actif" de tous les boutons de tri
+            this.classList.add('actif'); // Met "actif" sur le bouton cliqué
             triActif = this.dataset.tri;
 
             const aucunFiltre = filtresActifs.categorie === ''
@@ -81,7 +90,7 @@ function appliquerFiltres() {
                      && filtresActifs.tag === ''
                      && filtresActifs.gout === '';
 
-    if (aucunFiltre) {
+    if (aucunFiltre) { // Pas de filtre actif : affiche les sections normales
         document.getElementById('resultats-filtres').style.display = 'none';
         const sectionsNormales = document.getElementById('sections-normales');
         if (sectionsNormales) sectionsNormales.style.display = 'block';
@@ -94,10 +103,13 @@ function appliquerFiltres() {
     if (filtresActifs.gout)      params.set('gout', filtresActifs.gout);
     if (filtresActifs.tag)       params.set('tag', filtresActifs.tag);
 
+    // fetch = requête asynchrone vers get_produits.php SANS recharger la page
+    // C'est la connexion asynchrone obligatoire demandée dans les consignes
+
     fetch('traitement/get_produits.php?' + params.toString())
-        .then(response => response.json())
+        .then(response => response.json()) // Convertit la réponse en tableau JavaScript
         .then(plats => {
-            plats = trierTableau(plats);
+            plats = trierTableau(plats); // Trie les résultats reçus
             afficherResultats(plats);
         })
         .catch(err => {
@@ -107,6 +119,8 @@ function appliquerFiltres() {
 
 // --- Tri d'un tableau de plats ---
 function trierTableau(plats) {
+    // [...plats] = copie le tableau pour ne pas modifier l'original
+    // .sort((a, b) => ...) = compare deux plats entre eux
     if (triActif === 'prix_asc')  return [...plats].sort((a, b) => a.prix - b.prix);
     if (triActif === 'prix_desc') return [...plats].sort((a, b) => b.prix - a.prix);
     if (triActif === 'populaire') return [...plats].sort((a, b) => b.nb_commandes - a.nb_commandes);
@@ -114,13 +128,14 @@ function trierTableau(plats) {
 }
 
 // --- Tri dans les sections normales ---
+// Trie les éléments HTML déjà présents SANS requête serveur = plus rapide
 function trierSectionsNormales() {
     ['boissons', 'sale', 'sucre'].forEach(sectionId => {
         const section = document.getElementById(sectionId);
-        if (!section) return;
+        if (!section) return; // Sécurité : si la section n'existe pas on arrête
         const liste = section.querySelector('.menu-list');
-        if (!liste) return;
-        const items = Array.from(liste.querySelectorAll('li'));
+        if (!liste) return; 
+        const items = Array.from(liste.querySelectorAll('li')); // Convertit en vrai tableau pour pouvoir trier
 
         items.sort((a, b) => {
             const prixA = parseFloat(a.dataset.prix || 0);
@@ -135,6 +150,7 @@ function trierSectionsNormales() {
 }
 
 // --- Afficher les résultats filtrés ---
+// Crée les cartes produits et les injecte dans le HTML
 function afficherResultats(plats) {
     const section = document.getElementById('resultats-filtres');
     const titre   = document.getElementById('resultats-titre');
@@ -152,6 +168,7 @@ function afficherResultats(plats) {
         return;
     }
 
+     // Pour chaque plat reçu, crée une carte HTML et l'ajoute dans la liste
     plats.forEach(plat => {
         const li = document.createElement('li');
         li.className = 'plat-avec-image';
@@ -173,6 +190,6 @@ function afficherResultats(plats) {
                 </form>
             </div>
         `;
-        liste.appendChild(li);
+        liste.appendChild(li); // Ajoute la carte dans la liste
     });
 }

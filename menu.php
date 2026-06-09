@@ -2,13 +2,13 @@
 session_start();
 
 $fichier_carte = 'data/carte.json';
-$plats = [];
+$plats = [];  // Tableau vide qui va stocker les plats
 $menus_brunch = [];
 
 if (file_exists($fichier_carte)) {
-    $contenu = file_get_contents($fichier_carte);
-    $donnees = json_decode($contenu, true);
-    if (isset($donnees['plats']))  $plats = $donnees['plats'];
+    $contenu = file_get_contents($fichier_carte);  // Lit tout le contenu du fichier JSON
+    $donnees = json_decode($contenu, true);   // Convertit le JSON en tableau PHP (true = tableau, pas objet)
+    if (isset($donnees['plats']))  $plats = $donnees['plats'];   // Récupère la liste des plats
     if (isset($donnees['menus']))  $menus_brunch = $donnees['menus'];
 }
 ?>
@@ -52,6 +52,11 @@ if (file_exists($fichier_carte)) {
             </button>
         </div>
         
+         <!-- FILTRE CATÉGORIE : sélection unique -->
+        <!-- data-type="categorie" = dit au JS quel filtre modifier -->
+            <!-- data-val="boissons" = valeur à envoyer au serveur pour filtrer -->
+            <!-- classe "actif" = indique quel bouton est sélectionné (pour le style) -->
+             <!-- js-filtre = classe ciblée par le JavaScript -->
 
         <div class="filtres-groupe">
             <span>Catégorie</span>
@@ -62,6 +67,9 @@ if (file_exists($fichier_carte)) {
                 <button class="btn-gossip btn-xs js-filtre" data-type="categorie" data-val="sucre">🧁 Sucré</button>
             </div>
         </div>
+
+         <!-- FILTRE RÉGIME : sélection unique, peut être désactivé en recliquant -->
+        <!-- js-tag = classe différente car comportement différent dans le JS -->
 
         <div class="filtres-groupe">
             <span>Régime</span>
@@ -74,6 +82,8 @@ if (file_exists($fichier_carte)) {
             </div>
         </div>
 
+        <!-- FILTRE GOÛT : sélection unique -->
+
         <div class="filtres-groupe">
             <span>Goût</span>
             <div class="filtres-btns">
@@ -83,6 +93,10 @@ if (file_exists($fichier_carte)) {
                 <button class="btn-gossip btn-xs js-filtre" data-type="gout" data-val="epice">🌶️ Épicé</button>
             </div>
         </div>
+
+          <!-- TRIS : effectués côté client sans requête serveur -->
+        <!-- js-tri = classe ciblée par le JS pour les tris -->
+        <!-- data-tri = valeur du tri utilisée dans menu.js -->
 
         <div class="filtres-groupe">
             <span>Trier par</span>
@@ -227,7 +241,10 @@ if (file_exists($fichier_carte)) {
     </div><p class="alerte-allergie">🌸 Dis-nous si t'as des allergies, on s'adapte !</p>
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include 'footer.php'; ?> 
+
+<!-- Charge le JS en dernier pour que le HTML soit déjà chargé -->
+<!-- ?v=time() force le rechargement du JS sans cache -->
 <script src="js/menu.js?v=<?= time() ?>"></script>
 </body>
 </html>
