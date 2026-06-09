@@ -75,7 +75,6 @@ a:hover {
 }
 
 .text-center { text-align: center; }
-.form-centre { text-align: center; }
 .form-inline { display: inline; }
 
 .msg-vide { text-align: center; margin-top: 20px; }
@@ -916,13 +915,6 @@ footer a {
     text-decoration: underline;
 }
 
-.footer-mentions { 
-    text-align: center; 
-    padding: 20px; 
-    color: var(--pink-mid); 
-    background-color: var(--bordeaux-chic); 
-    margin: 0; 
-}
 
 /* ==========================================================================
    RESPONSIVE GLOBALE (Tablettes & Mobiles) - TOUJOURS À LA FIN !

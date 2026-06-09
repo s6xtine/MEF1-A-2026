@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// 1. ON VÉRIFIE SI LE CLIENT EST CONNECTÉ
+// la sécurité de voir si client est connecté 
 $est_connecte = isset($_SESSION['login']);
 $commandes_a_noter = [];
 
