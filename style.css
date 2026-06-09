@@ -1,4 +1,8 @@
-:root {
+/* ==========================================================================
+   VARIABLES GLOBALES (Charte Graphique Sip & Spill)
+   Modifie ces valeurs pour changer les couleurs ou ombres sur tout le site
+   ========================================================================== */
+   :root {
     --bg-cream: #FFF5F6;
     --pink-light: #FFD1DC;
     --pink-mid: #FFC2D1;
@@ -17,23 +21,25 @@
 /* ==========================================================================
    RESET, BASES & UTILITAIRES GÉNERAUX
    ========================================================================== */
+
+/* Applique le box-sizing à tous les éléments pour éviter les débordements de padding */
 * {
     box-sizing: border-box;
 }
 
-/* --- RÉGLAGES DE BASE --- */
+/* --- RÉGLAGES DE BASE DU DOCUMENT --- */
 body {
     margin: 0;
     padding: 0;
     background-color: var(--bg-cream);
     color: var(--bordeaux-chic);
-    font-family: 'Didot', serif; /* Ta police par défaut pour le texte */
+    font-family: 'Didot', serif;
     line-height: 1.6;
     font-size: 16px;
-    -webkit-font-smoothing: antialiased; /* Rend la police plus fine/propre */
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- TITRES (L'identité Sip & Spill) --- */
+/* --- TYPOGRAPHIE : TITRES --- */
 h1, h2 {
     font-family: 'Snell Roundhand', cursive;
     font-weight: normal;
@@ -48,21 +54,21 @@ h3 {
     line-height: 1.3;
 }
 
-h1 { font-size: 3.5rem; } /* Très grand pour les titres de page */
-h2 { font-size: 2.8rem; } /* Pour les sections du menu */
-h3 { font-size: 2rem; }   /* Pour les noms de plats ou petits titres */
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.8rem; }
+h3 { font-size: 2rem; }
 
-/* --- TEXTES ET PARAGRAPHES --- */
+/* --- TYPOGRAPHIE : TEXTES --- */
 p {
     margin-bottom: 15px;
     font-family: 'Didot', serif;
 }
 
 span {
-    font-family: inherit; /* Suit le parent par défaut */
+    font-family: inherit;
 }
 
-/* --- LIENS  --- */
+/* --- LIENS GLOBAUX --- */
 a {
     text-decoration: none;
     color: inherit;
@@ -74,9 +80,11 @@ a:hover {
     color: var(--red-gossip);
 }
 
+/* --- CLASSES UTILITAIRES (Alignements et masquage) --- */
 .text-center { text-align: center; }
 .form-inline { display: inline; }
 
+/* --- SYSTÈME D'ALERTES ET MESSAGES (PHP/AJAX) --- */
 .msg-vide { text-align: center; margin-top: 20px; }
 
 .msg-succes {
@@ -105,25 +113,25 @@ a:hover {
 
 .statut-valide { color: green; font-weight: bold; }
 
-/* Permet de cacher n'importe quel élément */
 .cache {
     display: none !important;
 }
 
-/* Couleurs pour les messages de retour (AJAX) */
 .texte-succes {
-    color: var(--success-text);
+    color: var(--success-text); 
     font-weight: bold;
 }
 
 .texte-erreur {
-    color: var(--red-gossip);
+    color: green;
     font-weight: bold;
 }
 
 /* ==========================================================================
-   HEADERS & TITRES
+   HEADERS & TITRES DE PAGES (Bannières)
    ========================================================================== */
+
+/* Grand header (ex: Accueil, Livraison) */
 .site-header {
     position: relative;
     background-image: linear-gradient(rgba(89, 13, 34, 0.6), rgba(89, 13, 34, 0.4)), url('images/carrelage.jpg');
@@ -133,9 +141,9 @@ a:hover {
     padding: 100px 20px;
     text-align: center;
     color: var(--white);
-    
 }
 
+/* Petit header (ex: Formulaires, Panier) */
 .form-header {
     background-image: linear-gradient(rgba(89, 13, 34, 0.7), rgba(89, 13, 34, 0.5)), url('images/carrelage.jpg');
     background-size: cover;
@@ -146,6 +154,7 @@ a:hover {
     width: 100%;
 }
 
+/* Style des textes dans les headers */
 .titre-page {
     font-size: 5rem;
     color: var(--white);
@@ -162,6 +171,7 @@ a:hover {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
+/* Logo cliquable (retour accueil) */
 .logo-mini {
     font-family: 'Snell Roundhand', cursive;
     font-size: 2.5rem;
@@ -175,6 +185,7 @@ a:hover {
     color: var(--pink-mid);
 }
 
+/* Titres isolés dans les pages */
 .titre-centre {
     font-family: 'Snell Roundhand', cursive;
     font-size: 5rem;
@@ -188,29 +199,27 @@ a:hover {
     color: var(--bordeaux-chic);
     font-family: 'Courier New', monospace;
     text-transform: uppercase;
-    
     padding-bottom: 10px;
     margin: 30px 0 20px 0;
 }
 
 /* ==========================================================================
-   MENU UTILISATEUR & NAVIGATION
+   BARRE DE NAVIGATION & MENU UTILISATEUR
    ========================================================================== */
 
-/* ok la c'est l'affichage du profils */
+/* --- MENU DÉROULANT DU PROFIL (Top Right) --- */
 .user-menu {
     position: absolute;
-    top: 10px;       /* Ajuste l'espace avec le haut de l'écran */
-    right: 10px;     /* Ajuste l'espace avec le bord droit de l'écran */
-    z-index: 2000;   /* Pour être sûr qu'il passe au-dessus de tout le reste */
+    top: 10px;
+    right: 10px;
+    z-index: 2000;
 }
 
-/* 2. La liste masquée par défaut qui flotte sous le bouton */
 .user-menu .deroulant {
     display: none;
     position: absolute;
-    right: 0;        /* Aligné sur le bord droit du bouton */
-    top: 100%;       /* S'ouvre juste en dessous */
+    right: 0;
+    top: 100%;
     background: #fff;
     min-width: 140px;
     padding: 5px 0;
@@ -220,7 +229,7 @@ a:hover {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
 }
 
-/* 3. Style uniforme pour les liens ET le bouton de thème */
+/* Liens internes du sous-menu profil */
 .user-menu .deroulant li a,
 .user-menu .deroulant li button#theme-toggle {
     display: block;
@@ -231,23 +240,22 @@ a:hover {
     text-align: left;
     width: 100%;
     box-sizing: border-box;
-    background: none; /* Enlève le fond du bouton */
-    border: none;     /* Enlève la bordure du bouton */
+    background: none;
+    border: none;
     cursor: pointer;
 }
-
 
 .user-menu .deroulant li a:hover,
 .user-menu .deroulant li button#theme-toggle:hover {
     background-color: #f5f5f5;
 }
 
-
+/* Affichage au survol */
 .user-menu:hover .deroulant {
     display: block;
 }
 
-/* navigation principale , la barre */
+/* --- NAVIGATION PRINCIPALE --- */
 .menu-nav {
     position: sticky;
     top: 0;
@@ -260,7 +268,6 @@ a:hover {
     text-align: center;
 }
 
-/* la liste des liens de la nav */
 .main-nav ul {
     margin: 0;
     padding: 0;
@@ -270,7 +277,6 @@ a:hover {
     gap: 40px; 
 }
 
-/* et enfin les liens en eux-mêmes */
 .main-nav a {
     text-decoration: none;
     font-family: 'Didot', serif; 
@@ -282,14 +288,15 @@ a:hover {
     font-weight: bold;
 }
 
-/* quand on survole */
 .main-nav a:hover {
     color: var(--red-gossip);
     transform: translateY(-2px); 
 }
+
 /* ==========================================================================
-   LAYOUT PRINCIPAL & SECTIONS ACCUEIL
+   LAYOUT PRINCIPAL & SECTIONS ACCUEIL (index.php)
    ========================================================================== */
+
 main {
     display: flex;
     flex-wrap: wrap;
@@ -299,6 +306,7 @@ main {
 
 main > section { width: 100%; }
 
+/* Bloc de recherche / héro avec bruit SVG de fond */
 .search-area {
     display: flex;
     min-height: 500px;
@@ -335,6 +343,7 @@ main > section { width: 100%; }
     display: block;
 }
 
+/* Bandeau de présentation "A propos" */
 .presentation-section {
     background-color: var(--bordeaux-chic);
     color: var(--bg-cream);
@@ -364,6 +373,7 @@ main > section { width: 100%; }
     padding-left: 30px;
 }
 
+/* Cartes "Spécialité" et "Coups de coeur" */
 .daily-special, .favorites-section {
     width: calc(50% - 40px);
     margin: 20px;
@@ -398,6 +408,7 @@ main > section { width: 100%; }
 
 .favorites-section .titre-section { font-size: 2.5rem; }
 
+/* Micro-typographie des cartes plats (Accueil) */
 .dish-card h3 {
     font-family: 'Didot', serif;
     font-weight: bold;
@@ -411,6 +422,7 @@ main > section { width: 100%; }
     color: #888;
 }
 
+/* Appel à l'action final (Accueil) */
 .cta-reservation {
     display: flex;
     flex-direction: column;
@@ -432,6 +444,7 @@ main > section { width: 100%; }
    BOUTONS & LIENS D'ACTION
    ========================================================================== */
 
+/* Bouton principal du site */
 .btn-gossip {
     display: inline-block;
     background-color: var(--bordeaux-chic);
@@ -452,7 +465,7 @@ main > section { width: 100%; }
     color: var(--bordeaux-chic);
 }
 
-
+/* Déclinaisons de tailles pour les boutons */
 .btn-small {
     padding: 5px 20px;
     font-size: 0.9rem;
@@ -464,61 +477,60 @@ main > section { width: 100%; }
     font-size: 0.8rem;
 }
 
-/* Version Géante (ex: Accueil / Inscription) */
 .btn-large {
-    padding: 20px 70px; /* On augmente la largeur et la hauteur */
-    font-size: 1.5rem;    /* Texte plus imposant */
+    padding: 20px 70px;
+    font-size: 1.5rem;
     min-width: 300px;
 }
 
-/* Spécificité LIVREUR : Très gros pour l'usage avec gants */
+/* Bouton spécifique pour l'interface Livreur (Usage tactile facilité) */
 .btn-xl-livreur {
-    display: block; /* Prend toute la largeur */
+    display: block;
     width: 100%;
-    padding: 30px; /* Très haut pour une zone de clic maximale */
+    padding: 30px;
     font-size: 1.5rem;
     background-color: var(--red-gossip); 
     border: 4px solid #720e13; 
 }
 
 .main-livreur .btn-large {
-    margin: 10px 8px !important; /* 10px d'espace en haut/bas, 8px à gauche/droite */
+    margin: 10px 8px !important;
 }
 
+/* Bouton d'affichage du mot de passe (Formulaires) */
 #btn-oeil {
     background: transparent;
     border: none;
     font-size: 1.2rem;
     cursor: pointer;
-    
-    /* L'astuce pour le placer dans le champ sans rien casser d'autre : */
     float: right;
     position: relative;
-    margin-top: -55px; /* Remonte le bouton par dessus l'input */
-    margin-right: 15px; /* L'écarte un peu du bord droit */
+    margin-top: -55px; 
+    margin-right: 15px; 
 }
 
+/* État actif pour les boutons de filtrage de carte */
 .filtres-btns button.actif {
     background-color: var(--bg-cream) !important;
     color: var(--bordeaux-chic) !important;
     border: 3px solid var(--bordeaux-chic) !important;
     font-weight: 600;
 }
+
 /* ==========================================================================
-   FORMULAIRES (Global & Exceptions)
+   FORMULAIRES (Inscription, Connexion, Modification)
    ========================================================================== */
-/* --- STRUCTURE DES FORMULAIRES --- */
-/* --- 1. LE CONTENEUR (Le bloc principal) --- */
+
+/* Conteneur principal par défaut */
 form {
     max-width: 600px;
     margin: 40px auto;
     padding: 40px;
     background-color: var(--white);
     border: 2px solid var(--bordeaux-chic);
-    
 }
 
-/* --- 2. STRUCTURE INTERNE (Champs et Sections) --- */
+/* Regroupement de champs (ex: Coordonnées, Sécurité) */
 fieldset {
     border: 1px solid var(--bordeaux-chic);
     margin-bottom: 25px;
@@ -542,7 +554,7 @@ label {
     font-weight: bold;
 }
 
-/* --- 3. LES INPUTS (Style minimaliste) --- */
+/* Champs de saisie texte et zones de texte */
 input, textarea {
     width: 100%;
     padding: 12px;
@@ -553,30 +565,26 @@ input, textarea {
     color: var(--bordeaux-chic);
 }
 
-
-
-/* --- 4. LA GRILLE SPÉCIFIQUE (Pour Inscription) --- */
+/* Mode Grille dynamique pour formulaire complexe (Inscription) */
 form:has(fieldset:nth-of-type(3)) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
-    max-width: 900px; /* Plus large pour accueillir les deux colonnes */
+    max-width: 900px;
     align-items: start;
 }
 
-/* Placement intelligent des blocs */
 form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(1) { grid-column: 1; grid-row: 1; }
 form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(2) { grid-column: 1; grid-row: 2; }
 form:has(fieldset:nth-of-type(3)) fieldset:nth-of-type(3) { grid-column: 2; grid-row: 1 / span 2; height: 100%; }
 
-/* Éléments de fin (Boutons et textes) qui s'étendent sur toute la largeur */
 form:has(fieldset:nth-of-type(3)) .btn-gossip,
 form:has(fieldset:nth-of-type(3)) p {
     grid-column: 1 / -1;
     text-align: center;
 }
 
-/* --- 5. VARIANTE TRANSPARENTE (Sans boîte) --- */
+/* Exceptions: Formulaires transparents (CYBank ou Actions internes) */
 form.form-sans-boite, form.form-cybank {
     background: transparent !important;
     border: none !important;
@@ -584,17 +592,18 @@ form.form-sans-boite, form.form-cybank {
     padding: 0 !important;
     margin: 0 auto !important;
 }
+
 /* ==========================================================================
-   PAGE MENU (LA CARTE)
+   PAGE MENU / NOTRE CARTE (Affichage des plats)
    ========================================================================== */
 
 .menu {
     padding: 40px 5%;
     background-color: #FFFAFA;
-    text-align: center; /* Centre tout le contenu par défaut */
+    text-align: center;
 }
 
-/* --- BARRE DE FILTRES (Haut du menu) --- */
+/* Barre des boutons de catégories (Salé, Sucré, Boissons...) */
 .filtres-bar {
     display: flex;
     flex-direction: column; 
@@ -623,7 +632,7 @@ form.form-sans-boite, form.form-cybank {
     text-transform: uppercase;
 }
 
-/* affichage de l'image en haut  */
+/* Bannière image (Hero) de la carte */
 .menu-hero {
     position: relative;
     width: 100%;
@@ -634,7 +643,6 @@ form.form-sans-boite, form.form-cybank {
     justify-content: center; 
 }
 
-/* same*/
 .menu-hero-img {
     position: absolute;
     top: 0;
@@ -645,7 +653,6 @@ form.form-sans-boite, form.form-cybank {
     z-index: 1;
 }
 
-/* la on pose le texte au dessus de l'image */
 .menu-hero-overlay {
     position: absolute;
     top: 0;
@@ -653,17 +660,14 @@ form.form-sans-boite, form.form-cybank {
     width: 100%;
     height: 100%;
     z-index: 10; 
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    background: rgba(0, 0, 0, 0.3); /* Voile pour voir le texte */
+    background: rgba(0, 0, 0, 0.3);
     text-align: center;
 }
 
-/* On ajuste juste les couleurs et les marges pour le Hero */
 .menu-hero-overlay h1, 
 .menu-hero-overlay p {
     color: white; 
@@ -674,7 +678,8 @@ form.form-sans-boite, form.form-cybank {
 .menu-hero-overlay h1 {
     font-size: clamp(60px, 10vw, 110px); 
 }
-/* affichage des plats */
+
+/* Grille d'affichage des cartes produits */
 .menu-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
@@ -684,7 +689,7 @@ form.form-sans-boite, form.form-cybank {
     list-style: none;
 }
 
-/* --- LES CARTES DES PLATS --- */
+/* Structure individuelle d'un plat */
 .menu-list li {
     background-color: var(--white);
     border: 1px solid var(--pink-mid);
@@ -707,24 +712,27 @@ form.form-sans-boite, form.form-cybank {
     display: flex;
     flex-direction: column;
     align-items: center; 
-
 }
-/* juste pour le cadre des quantité */
+
+/* Saisie de la quantité (Bouton Ajout Panier) */
 .input-qte{
     width: 60px;
     padding: 5px;
     text-align: center;
     border: 1px solid var(--bordeaux-chic);
     border-radius: 10px;
-
 }
+
 .profile-container input, .profile-container textarea {
     width: 100%;
     max-width: 200px;
 }
+
 /* ==========================================================================
-   PAGE PANIER
+   PAGE PANIER & TABLEAUX
    ========================================================================== */
+
+/* Conteneur global du panier */
 .panier-container {
     display: flex;
     flex-direction: column;
@@ -739,12 +747,7 @@ form.form-sans-boite, form.form-cybank {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-
-
-/* ==========================================================================
-   TABLEAUX (Panier, Commandes, etc.)
-   ========================================================================== */
-/* --- STYLE GLOBAL DES TABLEAUX (Profil, Historique, etc.) --- */
+/* Structure globale des tableaux (Panier, Historique, Gestion) */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -760,7 +763,7 @@ th {
     background-color: var(--pink-mid);
     color: var(--bordeaux-chic);
     padding: 15px;
-    text-align: center; /* Centré par défaut, c'est plus propre */
+    text-align: center;
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 1px;
@@ -778,41 +781,38 @@ tr:hover td {
     background-color: #FFF9FA; 
 }
 
-
-/* On aligne juste à gauche la première colonne (le nom du plat) */
+/* Ajustements spécifiques Tableau Panier */
 .table-panier th:first-child, 
 .table-panier td:first-child { 
     text-align: left; 
 }
 
-/* On met le sous-total en gras et en rouge Gossip */
 .table-panier td:nth-child(4) {
     color: var(--red-gossip);
     font-weight: bold;
     font-family: 'Montserrat', sans-serif; 
 }
 
-/* Historique-chicplus discret */
 .table-historique { 
     font-size: 0.9rem;
     opacity: 0.9; 
 }
+
 /* ==========================================================================
-   PAGES INTERNES : PROFIL, COMMANDES, LIVRAISON
+   PAGES INTERNES : PROFIL CLIENT & ESPACE LIVREUR
    ========================================================================== */
 
+/* Redéfinition contextuelle du Panier/Profil */
 .panier-container {
     max-width: 900px;
     margin: 40px auto;
     padding: 40px;
     background-color: var(--white);
     border-radius: 20px;
-    /* On utilise ton ombre chic décalée plutôt qu'un shadow classique */
     border: 1px solid var(--bordeaux-chic);
-    
 }
 
-/* --- LES BLOCS D'INFO (Cartes intérieures) --- */
+/* Blocs d'informations (Coordonnées du Profil, Points de fidélité) */
 .info-item, .fidelite {
     background-color: var(--bg-cream);
     padding: 20px;
@@ -821,22 +821,20 @@ tr:hover td {
     margin-bottom: 20px;
 }
 
-/* On remplace le float par du Flexbox pour que tout soit aligné parfaitement */
 .info-item p {
     display: flex;
-    
     align-items: center;
     margin: 15px 0;
     font-family: 'Didot', serif;
 }
 
-/* petits boutons d'édition ou icônes à droite */
 .info-item span {
     font-size: 0.9rem;
     color: var(--red-gossip);
     transition: 0.3s;
 }
 
+/* Style citation (Utilisé pour les instructions de livraison) */
 blockquote {
     background-color: #FFF0F5;
     border-left: 5px solid var(--red-gossip);
@@ -848,42 +846,38 @@ blockquote {
     color: var(--bordeaux-chic);
 }
 
-
 .liste-articles-livraison { list-style-type: none; padding: 0; text-align: center; margin-bottom: 15px; }
 .separateur-livraison { margin: 50px 0; border: 0; border-top: 1px dashed var(--pink-border); }
 .section-historique { margin-top: 40px; }
 
+/* --- INTERFACE LIVREUR (Cubes de livraisons en cours) --- */
 .main-livreur {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 colonnes de cubes côte à côte */
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* 2. Le gros rectangle (le cube) de chaque commande */
 .commande-livraison {
     background-color: var(--white);
     border: 3px solid var(--bordeaux-chic);
     border-radius: 20px;
     padding: 25px;
     box-shadow: var(--shadow-soft);
-    
-    /* Grille interne pour organiser le contenu de chaque commande */
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 15px;
 }
 
-/* 3. Ajustements des blocs à l'intérieur du cube */
 .commande-livraison h2, 
 .commande-livraison #instructions,
 .commande-livraison form {
-    grid-column: span 2; /* Prennent toute la largeur de leur cube */
+    grid-column: span 2;
 }
 
-/* 4. Style de tes textes importants (Adresse & Tel) */
+/* Polices mises en avant pour Lisibilité terrain (Livreur) */
 .gros {
     font-size: 1.4rem !important;
     font-weight: bold;
@@ -892,11 +886,11 @@ blockquote {
     margin-bottom: 10px;
 }
 
-/* 5. Taille normale pour les articles et instructions */
 .commande-livraison #instructions li {
     font-size: 1rem;
     font-weight: normal;
 }
+
 /* ==========================================================================
    FOOTER
    ========================================================================== */
@@ -915,14 +909,19 @@ footer a {
     text-decoration: underline;
 }
 
-
 /* ==========================================================================
-   RESPONSIVE GLOBALE (Tablettes & Mobiles) - TOUJOURS À LA FIN !
+   RESPONSIVE DESIGN (Tablettes & Mobiles)
    ========================================================================== */
+
+/* Tablettes paysage */
 @media (max-width: 1024px) {
     .menu-list { grid-template-columns: repeat(2, 1fr); }
+    table { display: block; overflow-x: auto; white-space: nowrap; }
 }
 
+
+
+/* Tablettes portrait & Petits écrans */
 @media (max-width: 900px) {
     .site-header { padding: 60px 20px; }
     .titre-page { font-size: 3.5rem; }
@@ -936,8 +935,11 @@ footer a {
     .daily-special, .favorites-section { width: 100%; margin: 0 0 20px 0; }
 }
 
+/* Mobiles */
 @media (max-width: 768px) {
+    /* Bascule la grille d'inscription en 1 colonne */
     form:has(fieldset:nth-of-type(3)) { display: flex; flex-direction: column; }
+    
     .menu-list { grid-template-columns: 1fr; }
     .menu-nav {
         position: relative;
@@ -948,19 +950,19 @@ footer a {
         border-radius: 20px;
     }
     .admin-container, .profile-container, main:has(#adresse-client) { margin: 20px 10px; padding: 20px; }
-    table { display: block; overflow-x: auto; white-space: nowrap; }
+    
+    /* Rend les tableaux scrollables horizontalement pour ne pas casser la page */
+    
 }
 
 /* ==========================================================================
-   PAGE MODIFICATION MENU (Restaurateur)
+   INTERFACES RESTAURATEUR & ADMINISTRATEUR
    ========================================================================== */
 
+/* --- RESTAURATEUR : PAGE MODIFICATION MENU --- */
 .gestion-menu { 
     width: 100%; 
 }
-
-
-
 
 .separateur-chic { 
     margin: 40px 0; 
@@ -968,46 +970,37 @@ footer a {
     border-top: 1px dashed var(--pink-border); 
 }
 
-
 td.desc-plat { 
     text-align: left; 
     font-size: 0.9em; 
     color: #666; 
 }
 
-
 .form-action-rapide { 
     display: inline-block; 
     margin-left: 5px; 
 }
 
-
-/* ==========================================================================
-   PANNEAU ADMIN ET GESTION DES COMMANDES - FIX LARGEUR
-   ========================================================================== */
-
-/* 1. On redonne une grande largeur par défaut à l'admin-container */
+/* --- ADMINISTRATEUR : PANNEAU & UTILISATEURS --- */
 .admin-container {
     margin: 40px auto !important; 
-    max-width: 1200px; /* Augmenté à 1200px pour que les tableaux respirent ! */
+    max-width: 1200px;
     width: 95%;
     padding: 20px;
 }
 
-/* 2. Le titre Nom Prénom reste bien au centre */
 .admin-container h2 {
     text-align: center !important;
     margin-bottom: 40px !important;
 }
 
-/* 3. C'est UNIQUEMENT le formulaire de modification de compte qu'on restreint à 600px */
+/* Restreint la largeur du formulaire d'édition Admin uniquement */
 .admin-container form.form-sans-boite {
     max-width: 600px;
-    margin: 0 auto !important; /* Centre le formulaire au milieu des 1200px */
+    margin: 0 auto !important; 
     width: 100% !important;
 }
 
-/* 4. Style et espacement des deux blocs d'infos (Formulaire Admin) */
 .admin-container .info-item {
     background-color: var(--white);
     border: 3px solid var(--bordeaux-chic);
@@ -1018,21 +1011,19 @@ td.desc-plat {
     box-sizing: border-box;
 }
 
-/* 5. Alignement des lignes à l'intérieur du formulaire */
 .admin-container .info-item p {
     display: flex;
     justify-content: space-between; 
     align-items: center;
 }
 
-/* 6. Pour la page commandes.php : on force les tableaux à prendre 100% de la largeur disponible */
+/* Ajustements Tableaux Admin (Force la pleine largeur) */
 .admin-container table {
     width: 100% !important;
     margin-bottom: 30px;
     border-collapse: collapse;
 }
 
-/* 7. Centrage du bouton enregistrer et du lien de retour */
 .admin-container .btn-small,
 .admin-container .link-back {
     display: block !important;

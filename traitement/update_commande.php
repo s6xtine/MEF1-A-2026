@@ -17,7 +17,7 @@ if (file_exists($fichier_commandes)) {
         foreach ($commandes as $cmd) {
             // on cherche la bonne commande
             if ($cmd['id_commande'] === $id_commande_a_modifier) {
-                if ($cmd['statut'] !== 'payé') { //si la commande n'est pas encore payé on peut la modifier 
+                if ($cmd['statut'] !== 'payé') { //si la commande n'est pas le statut payé
                     header('Location: profil.php?erreur=deja_en_cuisine');
                     exit();
                 }

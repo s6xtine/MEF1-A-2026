@@ -1,11 +1,13 @@
 <?php
 session_start();
 $total_panier = 0.0; 
-$mode_modification = isset($_SESSION['modif_id_commande']);
+//si la clé modif_commande existe alors il faut modifier une commande deja payée, et c'est pas une nouvelle commande 
+$mode_modification = isset($_SESSION['modif_id_commande']); 
 $deja_paye = 0.0;
 $difference = 0.0;
 $reste_a_payer = 0.0;
 
+//si on est en mod modif, on récup le montant deja payé 
 if ($mode_modification) {
     $deja_paye = (float)$_SESSION['modif_montant_initial'];
 }
@@ -30,12 +32,13 @@ if ($mode_modification) {
         
         <h2>🛍️ Mon Panier</h2>
 
+        <!-- 1; panier vide ou qui n'exsite pas -->
         <?php if (!isset($_SESSION['panier']) || empty($_SESSION['panier'])): ?>
             <div class="panier-vide">
                 <p>Votre panier est vide pour le moment. </p>
                 <a href="menu.php" class="btn-gossip btn-xs">Voir la carte</a>
             </div>
-
+        <!-- 2; affichage panier -->
         <?php else: ?>
             <table class="table-panier">
                 <thead>
@@ -48,6 +51,7 @@ if ($mode_modification) {
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- on parcour le panier pour afficher articles par articles -->
                     <?php foreach ($_SESSION['panier'] as $id => $article): ?>
                         <?php 
                             $sous_total = (float)$article['prix'] * $article['quantite'];
@@ -61,6 +65,7 @@ if ($mode_modification) {
                             <td><?= number_format((float)$sous_total, 2, ',', ' ') ?> €</td>
                             
                             <td>
+                                <!-- pour supprimer un article, ça nous renvoi vers retirer_panier -->
                                 <a href="traitement/retirer_panier.php?id=<?= htmlspecialchars($id) ?>"  title="Retirer du panier">❌</a>
                             </td>
                         </tr>
@@ -69,8 +74,9 @@ if ($mode_modification) {
             </table>
 
             <?php
-            // Calcul du paiement si application des points de fidélité
+            // on récupère les points de fid du client 
             $points_disponibles = isset($_SESSION['points']) ? (float)$_SESSION['points'] : 0.0;
+            // et le nombre qu'il a choisi d'utiliser
             $points_utilises = isset($_SESSION['points_utilises']) ? (float)$_SESSION['points_utilises'] : 0.0;
 
             //Calcul du montant de base avant application des points
@@ -95,7 +101,7 @@ if ($mode_modification) {
                 <div>
                     <h3>✨ Utiliser mes points de fidélité</h3>
                     <p>Vous avez <strong><?= number_format((float)$points_disponibles, 2, ',', ' ') ?></strong> points en réserve (1 point = 1 €).</p>
-                    
+                    <!-- formulaire pour appliquer les points si il y a une différence positice -->
                     <form action="traitement/appliquer_points.php" method="POST">
                         <label for="pts">Points à déduire :</label>
                         <input type="number" id="pts" name="points_a_utiliser" min="0" step="0.01" max="<?= min((float)$points_disponibles, (float)$montant_base) ?>" value="<?= (float)$points_utilises ?>">
@@ -146,7 +152,7 @@ if ($mode_modification) {
                 $api_key = getAPIKey($vendeur);
                 $control = md5($api_key . "#" . $transaction . "#" . $montant . "#" . $vendeur . "#" . $retour . "#");
                 ?>
-                
+                <!-- si montant =0 alors on n'envoie pas le client sur cy bank pour rien, simule un paiement gratuit -->
                 <?php if ($montant_final == 0): ?>
                     <form action='traitement/traitement_paiement.php' method='GET' class="form-cybank">
                         <input type='hidden' name='status' value='gratuit'>
