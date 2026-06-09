@@ -2,6 +2,7 @@
 session_start();
 
 // pour supprimer un article du panier
+//on utilise GET car info transmise dans url, on verfi si il y a action, supprimer et on a l'id
 if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id'])) {
     $id_a_supprimer = $_GET['id'];
     

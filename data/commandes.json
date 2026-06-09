@@ -56,11 +56,11 @@
             },
             "P02": {
                 "nom": "PANCAKE BACON",
-                "prix": 13.9,
+                "prix": 13.9000000000000003552713678800500929355621337890625,
                 "quantite": 1
             }
         },
-        "total": 18.9,
+        "total": 18.89999999999999857891452847979962825775146484375,
         "statut": "livr\u00e9",
         "livreur": "Sophie Durand"
     },
@@ -162,7 +162,8 @@
         },
         "total": 4.5,
         "statut": "Livr\u00e9e",
-        "livreur": "Jean Dupont"
+        "livreur": "Jean Dupont",
+        "notee": true
     },
     {
         "id_commande": "CMD_2C88C5E07131",
@@ -181,8 +182,9 @@
             }
         },
         "total": 4,
-        "statut": "pay\u00e9",
-        "date_modification": "2026-05-20 11:12:10"
+        "statut": "Livr\u00e9e",
+        "date_modification": "2026-05-20 11:12:10",
+        "livreur": "Sophie Durand"
     },
     {
         "id_commande": "CMD_0511BC341BFB",

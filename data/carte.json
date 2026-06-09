@@ -313,17 +313,6 @@
             ],
             "gout": "sucre",
             "nb_commandes": 90
-        },
-        {
-            "id": "D07",
-            "categorie": "sucre",
-            "nom": "MOMO LE PAIN",
-            "description": "une momo croustillante",
-            "prix": 2,
-            "allergenes": [
-                "lactose"
-            ],
-            "image": "https:\/\/logo-marque.com\/captain-morgan-logo\/"
         }
     ],
     "menus": [

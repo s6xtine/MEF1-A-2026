@@ -10,8 +10,6 @@ $fichier_commandes = 'data/commandes.json';
 $commandes_en_livraison = [];
 
 $mon_nom_livreur = $_SESSION['prenom'] . " " . $_SESSION['nom'];
-
-// On définit $est_admin AVANT de s'en servir dans la boucle
 $est_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 
 if (file_exists($fichier_commandes)) {
